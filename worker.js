@@ -77,7 +77,7 @@ export default {
 - Current Education: TEK-UP University (Diplôme National d'Ingénieur in Computer Science & Cybersecurity, 2025 - 2028)
 - Previous Education: ISIMM - Institut Supérieur d'Informatique et de Mathématiques de Monastir (Licence en Génie Logiciel / Software Engineering, 2022 - 2025)
 - Location: Monastir, Tunisia
-- Contact: Email (wisoghost@gmail.com) | Phone (+216 94101910) | LinkedIn (https://linkedin.com/in/wassim-bannour) | GitHub (https://github.com/WassimBannour1)
+- Contact: Email (wisoghost@gmail.com) | Phone (+216 94101910) | LinkedIn (https://www.linkedin.com/in/wassim-bannour-513448317/) | GitHub (https://github.com/WassimBannour1)
 
 [INDUSTRY CERTIFICATIONS]
 1. RHCSA (Red Hat Certified System Administrator) - Red Hat Enterprise Linux (RHEL), user/group administration, storage configuration (LVM), security policies (SELinux), systemd services, automated provisioning.
