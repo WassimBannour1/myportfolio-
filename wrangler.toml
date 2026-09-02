@@ -1,0 +1,10 @@
+name = "wassim-portfolio-backend"
+main = "worker.js"
+compatibility_date = "2024-09-02"
+
+# Free Cloudflare Workers AI GPU Binding (No API key needed!)
+[ai]
+binding = "AI"
+
+[vars]
+ENVIRONMENT = "production"
