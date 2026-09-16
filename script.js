@@ -2,46 +2,119 @@
  * Wassim Bannour Portfolio - Client Script
  * 
  * Features:
- * 1. Dynamic Cyber Matrix Particle Canvas Background
- * 2. Mobile Drawer Navigation & Scroll Spy
- * 3. Interactive Skills Matrix Filtering
- * 4. AI Twin Chat Client with Cloudflare Worker Support & Deep Knowledge Fallback
- * 5. In-Chat Settings & Connection Tester
+ * 1. Dynamic Cyber Matrix Particle Canvas with Magnetic Mouse Interaction
+ * 2. Dynamic Hero Typewriter Rotating Subtitles
+ * 3. Interactive Live Cyber Terminal HUD with Command Line Engine
+ * 4. Smooth IntersectionObserver Scroll-Reveal & Animated Number Counters
+ * 5. Web Audio API Futuristic SFX Synthesizer (Zero External Audio Files)
+ * 6. Reading Progress Bar & Back to Top Action
+ * 7. Mobile Drawer Navigation & Scroll Spy
+ * 8. Interactive Skills Matrix Filtering & Experience Accordion
+ * 9. AI Twin Chat Client with Cloudflare Worker Support & Deep Knowledge Fallback
  */
 
 // Cloudflare Worker URL stored in localStorage or empty initially
 let CLOUDFLARE_WORKER_URL = localStorage.getItem('WB_WORKER_URL') || '';
 
+// Audio SFX state
+let SFX_ENABLED = localStorage.getItem('WB_SFX_ENABLED') !== 'false';
+let audioCtx = null;
+
+function playFuturisticTone(freq = 880, duration = 0.04, type = 'sine', volume = 0.03) {
+    if (!SFX_ENABLED) return;
+    try {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+        // AudioContext not allowed before user interaction
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // -------------------------------------------------------------
-    // 1. DYNAMIC CYBER MATRIX CANVAS BACKGROUND
+    // 0. SFX AUDIO TOGGLE CONTROLLER
+    // -------------------------------------------------------------
+    const sfxToggleBtn = document.getElementById('sfxToggleBtn');
+    const sfxBtnText = document.getElementById('sfxBtnText');
+    const mobileSfxBtn = document.getElementById('mobileSfxBtn');
+
+    function updateSfxUI() {
+        if (sfxBtnText) sfxBtnText.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
+        if (mobileSfxBtn) mobileSfxBtn.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
+        if (sfxToggleBtn) {
+            if (SFX_ENABLED) sfxToggleBtn.classList.remove('sfx-muted');
+            else sfxToggleBtn.classList.add('sfx-muted');
+        }
+    }
+
+    function toggleSfx() {
+        SFX_ENABLED = !SFX_ENABLED;
+        localStorage.setItem('WB_SFX_ENABLED', SFX_ENABLED ? 'true' : 'false');
+        updateSfxUI();
+        if (SFX_ENABLED) playFuturisticTone(1100, 0.06, 'sine', 0.05);
+    }
+
+    if (sfxToggleBtn) sfxToggleBtn.addEventListener('click', toggleSfx);
+    if (mobileSfxBtn) mobileSfxBtn.addEventListener('click', toggleSfx);
+    updateSfxUI();
+
+    // Attach subtle audio feedback on buttons & links
+    document.querySelectorAll('button, a, .terminal-chip, .skill-filter-btn').forEach(elem => {
+        elem.addEventListener('mouseenter', () => playFuturisticTone(1200, 0.015, 'sine', 0.012));
+        elem.addEventListener('click', () => playFuturisticTone(750, 0.04, 'sine', 0.035));
+    });
+
+    // -------------------------------------------------------------
+    // 1. DYNAMIC CYBER MATRIX CANVAS BACKGROUND (MAGNETIC PARTICLES)
     // -------------------------------------------------------------
     const canvas = document.getElementById('cyberCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width = (canvas.width = window.innerWidth);
         let height = (canvas.height = window.innerHeight);
+        let mouseX = -1000;
+        let mouseY = -1000;
 
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         });
 
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
         // Grid particle nodes
-        const nodes = Array.from({ length: 45 }, () => ({
+        const nodes = Array.from({ length: 48 }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.45,
             radius: Math.random() * 1.5 + 1
         }));
 
         function animateCanvas() {
             ctx.clearRect(0, 0, width, height);
 
-            // Connecting lines
-            ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+            // Connecting lines between close nodes
+            ctx.strokeStyle = 'rgba(0, 240, 255, 0.07)';
             ctx.lineWidth = 0.6;
 
             for (let i = 0; i < nodes.length; i++) {
@@ -57,6 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.stroke();
                     }
                 }
+
+                // Connect to mouse if near
+                const mdx = nodes[i].x - mouseX;
+                const mdy = nodes[i].y - mouseY;
+                const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mdist < 120) {
+                    ctx.strokeStyle = `rgba(0, 240, 255, ${0.25 * (1 - mdist / 120)})`;
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.stroke();
+                }
             }
 
             // Draw nodes
@@ -67,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (node.x < 0 || node.x > width) node.vx *= -1;
                 if (node.y < 0 || node.y > height) node.vy *= -1;
 
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.45)';
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
                 ctx.fill();
@@ -77,6 +162,236 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         animateCanvas();
+    }
+
+    // -------------------------------------------------------------
+    // 1.1 DYNAMIC HERO ROTATING TYPEWRITER
+    // -------------------------------------------------------------
+    const heroTypewriter = document.getElementById('heroTypewriter');
+    if (heroTypewriter) {
+        const phrases = [
+            "Ingénieur Cybersécurité & Linux",
+            "Certifié RHCSA (Red Hat) & PCAP (Python)",
+            "Smart EASM & OSINT Developer @ Talan",
+            "Top 33 Worldwide @ IEEEXtreme 17.0",
+            "Security-by-Design & Fullstack Developer"
+        ];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        let typingSpeed = 65;
+
+        function typeLoop() {
+            const currentPhrase = phrases[phraseIdx];
+            
+            if (isDeleting) {
+                heroTypewriter.textContent = currentPhrase.substring(0, charIdx - 1);
+                charIdx--;
+                typingSpeed = 30;
+            } else {
+                heroTypewriter.textContent = currentPhrase.substring(0, charIdx + 1);
+                charIdx++;
+                typingSpeed = 65;
+            }
+
+            if (!isDeleting && charIdx === currentPhrase.length) {
+                typingSpeed = 2200; // Pause at full phrase
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                typingSpeed = 400; // Pause before next phrase
+            }
+
+            setTimeout(typeLoop, typingSpeed);
+        }
+
+        typeLoop();
+    }
+
+    // -------------------------------------------------------------
+    // 1.2 INTERACTIVE LIVE CYBER TERMINAL CLI ENGINE
+    // -------------------------------------------------------------
+    const terminalForm = document.getElementById('terminalForm');
+    const terminalInput = document.getElementById('terminalInput');
+    const terminalScreen = document.getElementById('terminalScreen');
+    const terminalChips = document.querySelectorAll('.terminal-chip');
+
+    function appendTerminalLog(type, content) {
+        if (!terminalScreen) return;
+        const line = document.createElement('div');
+        line.className = `terminal-log-line ${type}`;
+        line.innerHTML = content;
+        terminalScreen.appendChild(line);
+        terminalScreen.scrollTop = terminalScreen.scrollHeight;
+    }
+
+    function executeTerminalCommand(rawCmd) {
+        const cmd = rawCmd.trim().toLowerCase();
+        if (!cmd) return;
+
+        appendTerminalLog('cmd', `<span class="text-[#10b981]">wassim@tekup-sec</span>:<span class="text-[#38bdf8]">~</span>$ ${rawCmd}`);
+        playFuturisticTone(950, 0.03, 'square', 0.02);
+
+        if (cmd === 'clear') {
+            terminalScreen.innerHTML = '';
+            appendTerminalLog('info text-gray-400', '// Terminal screen cleared. Type "help" for options.');
+            return;
+        }
+
+        if (cmd === 'help') {
+            appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Key strengths & value proposition\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
+            return;
+        }
+
+        if (cmd === 'whoami') {
+            appendTerminalLog('success', `[+] Name: Wassim Bannour`);
+            appendTerminalLog('info', `[+] Role: Cybersecurity & Linux Systems Engineer (RHCSA & PCAP Certified)`);
+            appendTerminalLog('info', `[+] University: TEK-UP (Diplôme National d'Ingénieur en Cybersécurité)`);
+            appendTerminalLog('info', `[+] Location: Monastir / Tunis, Tunisia (Open to on-site, hybrid, & remote)`);
+            return;
+        }
+
+        if (cmd === 'certs' || cmd.includes('cert') || cmd === 'cat certs.txt') {
+            appendTerminalLog('success', `[+] 1. Red Hat Certified System Administrator (RHCSA) — Red Hat, Inc.`);
+            appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89`);
+            appendTerminalLog('success', `[+] 2. Certified Associate in Python Programming (PCAP) — Python Institute`);
+            appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1`);
+            return;
+        }
+
+        if (cmd.startsWith('easm') || cmd.includes('osint') || cmd.includes('talan')) {
+            appendTerminalLog('success', `[+] Target Environment: Smart EASM Platform @ TALAN TUNISIE`);
+            appendTerminalLog('info', `[+] Threat Intelligence Connectors: Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB, Criminal IP`);
+            appendTerminalLog('info', `[+] Automation: Python data ingestion pipelines, attack surface mapping & TLS validation.`);
+            return;
+        }
+
+        if (cmd.startsWith('nmap') || cmd.includes('skill') || cmd === 'stack') {
+            appendTerminalLog('success', `[+] PORT 22/tcp  OPEN  Linux Enterprise (RHEL / CentOS / Bash / SELinux)`);
+            appendTerminalLog('success', `[+] PORT 443/tcp OPEN  Web & API (Node.js / Express / Vue.js / Angular)`);
+            appendTerminalLog('success', `[+] PORT 8080/tcp OPEN Python Automation / OCR Pipelines / NumPy`);
+            appendTerminalLog('success', `[+] PORT 3306/tcp OPEN Relational & NoSQL (SQL, MySQL, MongoDB, Docker)`);
+            return;
+        }
+
+        if (cmd.includes('rank') || cmd.includes('ieee')) {
+            appendTerminalLog('success', `[+] IEEEXtreme 17.0: #33 Worldwide out of thousands of university engineering teams.`);
+            appendTerminalLog('info', `[+] National Rank: #2 in Tunisia (24-hour algorithmic marathon).`);
+            return;
+        }
+
+        if (cmd.includes('hire') || cmd.includes('value')) {
+            appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin + Certified Python Developer + Global Top 33 Competitor.`);
+            appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie (EASM), SW Consulting (AI/OCR), Team Dev (Angular).`);
+            return;
+        }
+
+        if (cmd.includes('contact')) {
+            appendTerminalLog('success', `[+] Email: wisoghost@gmail.com`);
+            appendTerminalLog('info', `[+] Phone: +216 94101910`);
+            appendTerminalLog('info', `[+] LinkedIn: https://www.linkedin.com/in/wassim-bannour-513448317/`);
+            appendTerminalLog('info', `[+] GitHub: https://github.com/WassimBannour1`);
+            return;
+        }
+
+        // Default unknown command
+        appendTerminalLog('warn', `Command not found: "${rawCmd}". Type <strong class="text-[#00f0ff]">help</strong> for a list of valid commands.`);
+    }
+
+    if (terminalForm && terminalInput) {
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = terminalInput.value;
+            terminalInput.value = '';
+            executeTerminalCommand(val);
+        });
+    }
+
+    terminalChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const cmd = chip.getAttribute('data-cmd');
+            if (cmd) executeTerminalCommand(cmd);
+        });
+    });
+
+    // -------------------------------------------------------------
+    // 1.3 SCROLL PROGRESS BAR & BACK TO TOP ACTION
+    // -------------------------------------------------------------
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollFraction = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        
+        if (scrollProgressBar) {
+            scrollProgressBar.style.width = `${scrollFraction}%`;
+        }
+
+        if (backToTopBtn) {
+            if (window.scrollY > 450) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        }
+    });
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // -------------------------------------------------------------
+    // 1.4 SCROLL REVEAL OBSERVER & ANIMATED NUMBER COUNTERS
+    // -------------------------------------------------------------
+    const revealCards = document.querySelectorAll('.reveal-card');
+    
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if (entry.isIntersecting) {
+                    // Stagger reveal slightly for children in the same viewport
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, (idx % 4) * 80);
+
+                    // If it contains a count-target, trigger counter animation
+                    const counter = entry.target.querySelector('.count-target');
+                    if (counter && !counter.dataset.animated) {
+                        counter.dataset.animated = 'true';
+                        animateCountNumber(counter);
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealCards.forEach(card => observer.observe(card));
+    } else {
+        revealCards.forEach(card => card.classList.add('revealed'));
+    }
+
+    function animateCountNumber(elem) {
+        const target = parseInt(elem.getAttribute('data-count'), 10) || 33;
+        const suffix = elem.getAttribute('data-suffix') || '';
+        let start = 1;
+        const duration = 1200;
+        const stepTime = Math.max(10, Math.floor(duration / target));
+
+        const timer = setInterval(() => {
+            start++;
+            elem.textContent = start + suffix;
+            if (start >= target) {
+                elem.textContent = target + suffix;
+                clearInterval(timer);
+            }
+        }, stepTime);
     }
 
     // -------------------------------------------------------------
