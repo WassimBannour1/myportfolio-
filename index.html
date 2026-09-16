@@ -624,70 +624,112 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     <!-- RHCSA Card -->
-                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-red-500/40 hover:border-red-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
-                        <div class="flex items-start justify-between mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/50 text-red-500 flex items-center justify-center text-3xl">
-                                <i class="fa-brands fa-redhat"></i>
+                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-red-500/40 hover:border-red-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-6">
+                                <div class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/50 text-red-500 flex items-center justify-center text-3xl">
+                                    <i class="fa-brands fa-redhat"></i>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]">
+                                    RED HAT CERTIFIED
+                                </span>
                             </div>
-                            <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]">
-                                RED HAT CERTIFIED
-                            </span>
+                            <h3 class="text-2xl font-extrabold text-white mb-1">RHCSA (Red Hat Certified System Administrator)</h3>
+                            <div class="flex items-center gap-2 mb-4 font-mono text-xs text-gray-400">
+                                <span>Émetteur : <strong>Red Hat, Inc.</strong></span>
+                                <span>•</span>
+                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                                Expertise en administration d'entreprise Linux (RHEL/CentOS), durcissement système, automatisation Bash, gestion des droits et utilisateurs, stockage LVM, pare-feu FirewallD et orchestration de services systemd sécurisés.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200 mb-6">
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-terminal text-red-400"></i>
+                                    <span>RHEL Kernel & Bash</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-shield-halved text-red-400"></i>
+                                    <span>SELinux & Hardening</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-hard-drive text-red-400"></i>
+                                    <span>LVM Storage & Stratis</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-network-wired text-red-400"></i>
+                                    <span>FirewallD & Systemd</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-2">RHCSA (Red Hat Certified System Administrator)</h3>
-                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                            Expertise in Linux enterprise administration (RHEL/CentOS), system hardening, Bash automation, user & group permission models, LVM storage, firewall management, and secured system services orchestration.
-                        </p>
-                        <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200">
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-terminal text-red-400"></i>
-                                <span>RHEL Kernel & Bash</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-shield-halved text-red-400"></i>
-                                <span>SELinux & Hardening</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-hard-drive text-red-400"></i>
-                                <span>LVM Storage & Stratis</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-network-wired text-red-400"></i>
-                                <span>FirewallD & Systemd</span>
-                            </div>
+
+                        <!-- Credly Verification Action Bar -->
+                        <div class="pt-4 border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                            <span class="text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-fingerprint text-red-400"></i>
+                                <span>ID de Vérification Red Hat</span>
+                            </span>
+                            <!-- Credly Badge Link: Replace href with exact Credly badge link when available -->
+                            <a href="https://www.credly.com" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                                <i class="fa-solid fa-certificate text-sm"></i>
+                                <span>Vérifier sur Credly</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
                         </div>
                     </div>
 
                     <!-- PCAP Card -->
-                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-yellow-500/40 hover:border-yellow-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(234,179,8,0.15)]">
-                        <div class="flex items-start justify-between mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500 flex items-center justify-center text-3xl">
-                                <i class="fa-brands fa-python"></i>
+                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-yellow-500/40 hover:border-yellow-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(234,179,8,0.15)] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-6">
+                                <div class="w-16 h-16 rounded-2xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500 flex items-center justify-center text-3xl">
+                                    <i class="fa-brands fa-python"></i>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-mono text-xs font-extrabold border border-yellow-500/50 shadow-[0_0_12px_rgba(234,179,8,0.3)]">
+                                    PYTHON INSTITUTE
+                                </span>
                             </div>
-                            <span class="px-3.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-mono text-xs font-extrabold border border-yellow-500/50 shadow-[0_0_12px_rgba(234,179,8,0.3)]">
-                                PYTHON INSTITUTE
-                            </span>
+                            <h3 class="text-2xl font-extrabold text-white mb-1">PCAP (Certified Associate in Python Programming)</h3>
+                            <div class="flex items-center gap-2 mb-4 font-mono text-xs text-gray-400">
+                                <span>Émetteur : <strong>Python Institute / OpenEDG</strong></span>
+                                <span>•</span>
+                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                                Maîtrise certifiée de la programmation orientée objet (POO), des structures de données complexes, des scripts d'automatisation, des pipelines de normalisation de flux de données et de l'architecture logicielle propre.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200 mb-6">
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-cube text-yellow-400"></i>
+                                    <span>Advanced OOP</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-code-branch text-yellow-400"></i>
+                                    <span>Data Structures</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-gears text-yellow-400"></i>
+                                    <span>Automation Scripts</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                    <i class="fa-solid fa-diagram-project text-yellow-400"></i>
+                                    <span>Data Pipelines</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-2">PCAP (Certified Associate in Python Programming)</h3>
-                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                            Advanced mastery of Python concepts, complex data structures, Object-Oriented Programming (OOP), automation pipelines, data normalization scripts, and robust software architecture.
-                        </p>
-                        <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200">
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-cube text-yellow-400"></i>
-                                <span>Advanced OOP</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-code-branch text-yellow-400"></i>
-                                <span>Data Structures</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-gears text-yellow-400"></i>
-                                <span>Automation Scripts</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
-                                <i class="fa-solid fa-diagram-project text-yellow-400"></i>
-                                <span>Data Pipelines</span>
-                            </div>
+
+                        <!-- Credly Verification Action Bar -->
+                        <div class="pt-4 border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                            <span class="text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-fingerprint text-yellow-400"></i>
+                                <span>ID de Vérification Python Institute</span>
+                            </span>
+                            <!-- Credly Badge Link: Replace href with exact Credly badge link when available -->
+                            <a href="https://www.credly.com" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-yellow-500/15 text-yellow-400 border border-yellow-500/50 hover:bg-yellow-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(234,179,8,0.2)]">
+                                <i class="fa-solid fa-certificate text-sm"></i>
+                                <span>Vérifier sur Credly</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
                         </div>
                     </div>
 
