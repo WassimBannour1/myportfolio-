@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wassim Bannour | Cybersecurity & Systems Engineer | AI Twin</title>
-    <meta name="description" content="Portfolio & AI Twin of Wassim Bannour - RHCSA & PCAP Certified Software Engineering Student at TEK-UP. Specializing in Systems Security, Linux Automation, & AI Integration. Top 33 Global IEEEXtreme 17.0 winner.">
+    <meta name="description" content="Portfolio & AI Twin of Wassim Bannour - Cybersecurity & Linux Systems Engineer certified RHCSA & PCAP. Specializing in Systems Security, Linux Automation, EASM & OSINT. Top 33 Global IEEEXtreme 17.0 winner.">
     <meta name="author" content="Wassim Bannour">
-    <meta name="keywords" content="Wassim Bannour, Cybersecurity, Linux, RHCSA, PCAP, Systems Security, Software Engineer, TEK-UP, ISIMM, Fullstack, AI OCR, Tunisia">
+    <meta name="keywords" content="Wassim Bannour, Cybersecurity, Linux, RHCSA, PCAP, Systems Security, EASM, OSINT, TEK-UP, ISIMM, Talan, Fullstack, AI OCR, Tunisia">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Wassim Bannour | Cybersecurity & Systems Engineer">
-    <meta property="og:description" content="RHCSA & PCAP Certified Software Engineer. Top 33 Global IEEEXtreme 17.0 winner. Specializing in Linux Automation, Security & AI Systems.">
+    <meta property="og:description" content="RHCSA & PCAP Certified Cybersecurity & Linux Systems Engineer. Top 33 Global IEEEXtreme 17.0 winner. EASM & OSINT Specialist.">
+    <meta property="og:image" content="1000015101.jpg">
     <meta property="og:type" content="website">
 
     <!-- Google Fonts: Outfit (headings) & JetBrains Mono (code/HUD) -->
@@ -30,14 +31,15 @@
                 extend: {
                     colors: {
                         cyber: {
-                            bg: '#0b0f19',
-                            card: '#111827',
-                            border: '#1f293d',
+                            bg: '#070b14',
+                            card: '#0f172a',
+                            border: '#1e293b',
                             cyan: '#00f0ff',
-                            blue: '#3b82f6',
-                            neon: '#00ff9d',
+                            blue: '#38bdf8',
+                            neon: '#10b981',
+                            purple: '#a855f7',
                             accent: '#6366f1',
-                            darker: '#060911'
+                            darker: '#030712'
                         }
                     },
                     fontFamily: {
@@ -53,11 +55,11 @@
     <style>
         :root {
             --cyber-cyan: #00f0ff;
-            --cyber-blue: #3b82f6;
-            --cyber-green: #00ff9d;
-            --cyber-bg: #0b0f19;
-            --cyber-card: #111827;
-            --cyber-border: #1f293d;
+            --cyber-blue: #38bdf8;
+            --cyber-green: #10b981;
+            --cyber-bg: #070b14;
+            --cyber-card: #0f172a;
+            --cyber-border: #1e293b;
         }
 
         /* Custom Cyber Scrollbar */
@@ -66,12 +68,12 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0b0f19;
+            background: #070b14;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1f293d;
+            background: #1e293b;
             border-radius: 4px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid rgba(0, 240, 255, 0.3);
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #00f0ff;
@@ -88,17 +90,17 @@
 
         /* Glassmorphism Cyber Cards */
         .cyber-card {
-            background: rgba(17, 24, 39, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .cyber-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 12px 35px -10px rgba(0, 240, 255, 0.25);
         }
 
-        /* Glowing Neon Utility Buttons */
+        /* Glowing Neon Buttons */
         .cyber-glow-btn {
             position: relative;
             overflow: hidden;
@@ -111,7 +113,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
             transition: left 0.5s ease;
             z-index: -1;
         }
@@ -162,8 +164,8 @@
         .skill-filter-btn.active {
             background-color: #00f0ff !important;
             color: #000000 !important;
-            font-weight: 700;
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+            font-weight: 800;
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
         }
 
         /* Active Nav Link */
@@ -172,32 +174,110 @@
             font-weight: 700;
             text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
         }
+
+        /* Experience Accordion Animations */
+        .experience-drawer {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, margin-top 0.3s ease;
+        }
+
+        .experience-card.is-expanded .experience-drawer {
+            max-height: 1400px;
+            opacity: 1;
+            margin-top: 1.25rem;
+        }
+
+        .experience-card.is-expanded .expand-chevron {
+            transform: rotate(180deg);
+        }
+
+        .experience-card.is-expanded .expand-status-badge {
+            background-color: rgba(0, 240, 255, 0.2);
+            color: #00f0ff;
+            border-color: rgba(0, 240, 255, 0.6);
+        }
+
+        /* High-Impact Portrait Showcase */
+        .hero-portrait-wrapper {
+            position: relative;
+            background: linear-gradient(145deg, rgba(0, 240, 255, 0.15), rgba(56, 189, 248, 0.05), rgba(16, 185, 129, 0.15));
+            border: 2px solid rgba(0, 240, 255, 0.6);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.25), inset 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+        .hero-portrait-wrapper:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 45px rgba(0, 240, 255, 0.45), inset 0 0 25px rgba(0, 240, 255, 0.2);
+        }
+
+        /* Cyber corner markers */
+        .cyber-corner-tl {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 16px;
+            height: 16px;
+            border-top: 3px solid #00f0ff;
+            border-left: 3px solid #00f0ff;
+            z-index: 20;
+        }
+        .cyber-corner-tr {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            border-top: 3px solid #00f0ff;
+            border-right: 3px solid #00f0ff;
+            z-index: 20;
+        }
+        .cyber-corner-bl {
+            position: absolute;
+            bottom: -2px;
+            left: -2px;
+            width: 16px;
+            height: 16px;
+            border-bottom: 3px solid #00f0ff;
+            border-left: 3px solid #00f0ff;
+            z-index: 20;
+        }
+        .cyber-corner-br {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            border-bottom: 3px solid #00f0ff;
+            border-right: 3px solid #00f0ff;
+            z-index: 20;
+        }
     </style>
 </head>
-<body class="bg-[#0b0f19] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
+<body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
 
     <!-- Dynamic Cyber Grid & Particle Canvas Background -->
-    <canvas id="cyberCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-25"></canvas>
+    <canvas id="cyberCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-30"></canvas>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-[#0b0f19]/80 border-b border-[#1f293d] transition-all duration-300" id="mainHeader">
+    <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-[#070b14]/85 border-b border-[#1e293b] transition-all duration-300" id="mainHeader">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#hero" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-[#00f0ff]/20 to-[#3b82f6]/20 border border-[#00f0ff]/50 flex items-center justify-center text-[#00f0ff] font-mono font-bold text-xl group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
-                    WB
+            <!-- Brand Logo & Thumbnail -->
+            <a href="#hero" class="flex items-center gap-3.5 group">
+                <div class="relative w-11 h-11 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.8)] group-hover:border-[#00f0ff] transition-all">
+                    <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-lg tracking-wide text-white group-hover:text-[#00f0ff] transition-colors">Wassim Bannour</span>
-                    <span class="font-mono text-xs text-[#00f0ff] flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-[#00ff9d] animate-ping"></span>
+                    <span class="font-mono text-xs text-[#00f0ff] flex items-center gap-1.5 font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
                         RHCSA & PCAP Certified
                     </span>
                 </div>
             </a>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8 font-mono text-sm">
+            <nav class="hidden md:flex items-center gap-7 font-mono text-sm">
                 <a href="#achievements" class="hover:text-[#00f0ff] transition-colors nav-link">01. // Achievements</a>
                 <a href="#certifications" class="hover:text-[#00f0ff] transition-colors nav-link">02. // Certs</a>
                 <a href="#experience" class="hover:text-[#00f0ff] transition-colors nav-link">03. // Experience</a>
@@ -206,8 +286,13 @@
             </nav>
 
             <!-- Action CTA & Mobile Menu Toggle -->
-            <div class="flex items-center gap-4">
-                <button id="openAiChatBtn" class="cyber-btn hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+            <div class="flex items-center gap-3.5">
+                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981]/15 font-mono text-xs font-semibold transition-all shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    <i class="fa-solid fa-file-arrow-down text-sm"></i>
+                    <span>DOWNLOAD CV</span>
+                </a>
+
+                <button id="openAiChatBtn" class="cyber-btn hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold tracking-wider transition-all duration-300 shadow-[0_0_12px_rgba(0,240,255,0.3)]">
                     <i class="fa-solid fa-robot text-sm"></i>
                     <span>AI TWIN CHAT</span>
                 </button>
@@ -219,13 +304,16 @@
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-[#0b0f19]/95 border-b border-[#1f293d] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-xl">
+        <div id="mobileMenu" class="hidden md:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
             <a href="#achievements" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">01. // Achievements</a>
             <a href="#certifications" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">02. // Certifications</a>
             <a href="#experience" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">03. // Experience</a>
             <a href="#skills" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">04. // Education & Skills</a>
             <a href="#contact" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">05. // Contact</a>
-            <button id="mobileAiChatBtn" class="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 font-mono text-xs font-semibold">
+            <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="block text-[#10b981] font-bold py-1">
+                <i class="fa-solid fa-file-arrow-down mr-2"></i>Download Official CV (PDF)
+            </a>
+            <button id="mobileAiChatBtn" class="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
                 <i class="fa-solid fa-robot text-sm"></i>
                 <span>LAUNCH AI TWIN</span>
             </button>
@@ -234,229 +322,335 @@
 
     <main class="relative z-10 pt-20">
         
-        <!-- HERO SECTION -->
-        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- HERO SECTION: ULTRA-PROMINENT PORTRAIT & PROFILE -->
+        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full space-y-10">
                 
-                <!-- Hero Left Column -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111827] border border-[#00f0ff]/30 text-[#00f0ff] font-mono text-xs shadow-[0_0_12px_rgba(0,240,255,0.15)]">
-                        <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-pulse"></span>
-                        SYSTEMS SECURITY & AI INTEGRATION
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    
+                    <!-- Hero Left Column: Intro & Headline Details -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f172a] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                            CYBERSECURITY & SYSTEMS LINUX ENGINEER
+                        </div>
+
+                        <div class="space-y-2">
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                                Wassim <span class="bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#a855f7] bg-clip-text text-transparent">Bannour</span>
+                            </h1>
+                            <p class="font-mono text-sm sm:text-base text-[#00f0ff] font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap text-[#38bdf8]"></i>
+                                Ingénieur Cybersécurité & Systèmes Linux | EASM & OSINT @ <span class="text-white underline decoration-[#38bdf8]">TEK-UP</span>
+                            </p>
+                        </div>
+
+                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]">
+                            Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>'Security-by-Design'</em>.
+                        </p>
+
+                        <!-- Key Verified Badges -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-red-500/50 text-red-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(239,68,68,0.15)]">
+                                <i class="fa-brands fa-redhat text-lg text-red-500 mb-1"></i>
+                                <span class="font-bold text-white text-[11px]">RHCSA</span>
+                                <span class="text-[9px] text-gray-400">Red Hat Certified</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-yellow-500/50 text-yellow-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(234,179,8,0.15)]">
+                                <i class="fa-brands fa-python text-lg text-yellow-400 mb-1"></i>
+                                <span class="font-bold text-white text-[11px]">PCAP</span>
+                                <span class="text-[9px] text-gray-400">Python Institute</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-[#00f0ff]/50 text-[#00f0ff] font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(0,240,255,0.15)]">
+                                <i class="fa-solid fa-trophy text-lg text-[#00f0ff] mb-1"></i>
+                                <span class="font-bold text-white text-[11px]">#33 Global</span>
+                                <span class="text-[9px] text-gray-400">IEEEXtreme 17.0</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-emerald-500/50 text-emerald-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+                                <i class="fa-solid fa-shield-virus text-lg text-emerald-400 mb-1"></i>
+                                <span class="font-bold text-white text-[11px]">EASM & OSINT</span>
+                                <span class="text-[9px] text-gray-400">Talan Tunisie</span>
+                            </div>
+                        </div>
+
+                        <!-- Direct Coordinates -->
+                        <div class="pt-1 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs font-mono text-gray-300">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir, Tunisia</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-envelope text-[#38bdf8]"></i> wisoghost@gmail.com</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-[#10b981]"></i> +216 94101910</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-globe text-[#a855f7]"></i> FR (Courant) / EN / AR</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-3 flex flex-wrap gap-3.5">
+                            <button onclick="document.getElementById('openAiChatBtn').click()" class="cyber-glow-btn px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold text-sm font-mono tracking-wider flex items-center gap-2.5 hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] transition-all">
+                                <i class="fa-solid fa-comments text-base"></i>
+                                <span>CHAT WITH AI TWIN</span>
+                            </button>
+
+                            <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-5 py-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-mono text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+                                <i class="fa-solid fa-file-pdf text-base"></i>
+                                <span>Download CV</span>
+                            </a>
+
+                            <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" class="px-4 py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-sm font-semibold flex items-center gap-2 transition-all">
+                                <i class="fa-brands fa-github text-base"></i>
+                                <span>GitHub</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-4 py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-sm font-semibold flex items-center gap-2 transition-all">
+                                <i class="fa-brands fa-linkedin text-base"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none">
-                        Wassim <span class="bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#6366f1] bg-clip-text text-transparent">Bannour</span>
-                    </h1>
+                    <!-- Hero Right Column: Crystal-Clear Prominent Photo Showcase -->
+                    <div class="lg:col-span-5 flex flex-col items-center">
+                        
+                        <div class="w-full max-w-[420px] hero-portrait-wrapper rounded-3xl p-3.5 relative">
+                            <!-- Cyber corner reticles -->
+                            <div class="cyber-corner-tl"></div>
+                            <div class="cyber-corner-tr"></div>
+                            <div class="cyber-corner-bl"></div>
+                            <div class="cyber-corner-br"></div>
 
-                    <p class="font-mono text-sm sm:text-base text-[#00f0ff]/90 leading-relaxed font-semibold">
-                        Software Engineering Student @ <span class="text-white underline decoration-[#3b82f6]">TEK-UP</span> | RHCSA & PCAP Certified
-                    </p>
+                            <!-- Photo Display Container (Completely Unobstructed & Crystal-Clear) -->
+                            <div class="relative w-full rounded-2xl overflow-hidden bg-[#030712] border border-[#00f0ff]/30">
+                                <img src="1000015101.jpg" alt="Wassim Bannour - Cybersecurity Engineer" class="w-full h-auto max-h-[500px] object-contain object-top mx-auto block hover:scale-102 transition-transform duration-300">
+                                
+                                <!-- Floating Status Pill Top Left -->
+                                <div class="absolute top-3 left-3 z-10">
+                                    <span class="px-3 py-1 rounded-full bg-[#070b14]/90 border border-[#10b981] text-[#10b981] font-mono text-[11px] font-extrabold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+                                        STATUS: ACTIVE // OPEN TO ROLES
+                                    </span>
+                                </div>
 
-                    <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-                        Pivoting from fullstack web development and AI/OCR document engineering into high-performance systems security, Linux kernel automation, and secure software architectures. 
-                    </p>
+                                <!-- Floating Cert Tag Top Right -->
+                                <div class="absolute top-3 right-3 z-10">
+                                    <span class="px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-[#00f0ff] text-[#00f0ff] font-mono text-[10px] font-bold backdrop-blur-md shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                                        RHCSA • PCAP
+                                    </span>
+                                </div>
+                            </div>
 
-                    <!-- Key Badges -->
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="px-3 py-1 rounded bg-[#111827] border border-red-500/40 text-red-400 text-xs font-mono font-medium flex items-center gap-1.5">
-                            <i class="fa-brands fa-redhat"></i> RHCSA Certified
-                        </span>
-                        <span class="px-3 py-1 rounded bg-[#111827] border border-yellow-500/40 text-yellow-400 text-xs font-mono font-medium flex items-center gap-1.5">
-                            <i class="fa-brands fa-python"></i> PCAP Certified
-                        </span>
-                        <span class="px-3 py-1 rounded bg-[#111827] border border-[#00f0ff]/40 text-[#00f0ff] text-xs font-mono font-medium flex items-center gap-1.5">
-                            <i class="fa-solid fa-trophy"></i> Top 33 Global IEEEXtreme
-                        </span>
+                            <!-- Under-Photo Identity HUD Card -->
+                            <div class="mt-3 p-3.5 rounded-xl bg-[#070b14]/95 border border-[#1e293b] font-mono text-xs flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-white font-extrabold text-sm flex items-center gap-1.5">
+                                        <span>Wassim Bannour</span>
+                                        <i class="fa-solid fa-circle-check text-[#00f0ff] text-xs"></i>
+                                    </h3>
+                                    <p class="text-[11px] text-gray-400">Cybersecurity & Linux Systems Engineer</p>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 text-[10px] font-bold">
+                                    TEK-UP
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <!-- Mini Interactive Telemetry -->
+                        <div class="w-full max-w-[420px] mt-3 p-3 rounded-xl bg-[#0f172a] border border-[#1e293b] font-mono text-[11px] text-gray-300">
+                            <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#1e293b]">
+                                <span class="text-gray-400">// System Telemetry</span>
+                                <span class="text-[#00f0ff] flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> Security-by-Design</span>
+                            </div>
+                            <p class="text-gray-300"><span class="text-[#38bdf8]">Stack:</span> Linux Admin (RHEL), Python, EASM, OSINT, Node.js, Angular, Docker</p>
+                        </div>
+
                     </div>
 
-                    <!-- Meta details -->
-                    <div class="pt-2 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs font-mono text-gray-400">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir, Tunisia</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-envelope text-[#3b82f6]"></i> wisoghost@gmail.com</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-[#00ff9d]"></i> +216 94101910</span>
-                    </div>
-
-                    <!-- CTA Buttons -->
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <button onclick="document.getElementById('openAiChatBtn').click()" class="cyber-glow-btn px-6 py-3.5 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#3b82f6] text-black font-extrabold text-sm font-mono tracking-wider flex items-center gap-2.5 hover:shadow-[0_0_25px_rgba(0,240,255,0.6)] transition-all">
-                            <i class="fa-solid fa-comments text-base"></i>
-                            <span>CHAT WITH AI TWIN</span>
-                        </button>
-
-                        <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-lg bg-[#111827] text-white border border-[#1f293d] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-sm font-semibold flex items-center gap-2 transition-all">
-                            <i class="fa-brands fa-github text-base"></i>
-                            <span>GitHub</span>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-lg bg-[#111827] text-white border border-[#1f293d] hover:border-[#3b82f6] hover:text-[#3b82f6] font-mono text-sm font-semibold flex items-center gap-2 transition-all">
-                            <i class="fa-brands fa-linkedin text-base"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Hero Right Column: Terminal Card -->
-                <div class="lg:col-span-5">
-                    <div class="cyber-card rounded-xl bg-[#111827]/90 border border-[#1f293d] p-6 shadow-2xl relative overflow-hidden backdrop-blur-md">
-                        <div class="flex items-center justify-between pb-4 mb-4 border-b border-[#1f293d]">
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-                            </div>
-                            <span class="font-mono text-xs text-gray-500">wassim@tekup-sec: ~</span>
-                            <i class="fa-solid fa-terminal text-xs text-[#00f0ff]"></i>
-                        </div>
+                <!-- High-Impact Quick Stats Matrix -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center">
+                        <span class="font-extrabold text-3xl sm:text-4xl text-[#00f0ff] font-mono">33ᵉ</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Mondial IEEEXtreme</p>
+                        <span class="text-[11px] text-gray-400 font-mono">2ᵉ National en Tunisie</span>
+                    </div>
 
-                        <div class="font-mono text-xs sm:text-sm space-y-3 leading-relaxed text-gray-300">
-                            <p class="text-gray-500">// System Profile Status</p>
-                            <p><span class="text-[#00f0ff]">$</span> <span class="text-yellow-400">whoami</span></p>
-                            <p class="pl-4 text-emerald-400">-> Wassim Bannour (Cybersecurity Student & RHCSA SysAdmin)</p>
-                            
-                            <p><span class="text-[#00f0ff]">$</span> <span class="text-yellow-400">neofetch --sysinfo</span></p>
-                            <div class="pl-4 text-gray-400 space-y-1">
-                                <p><span class="text-[#3b82f6]">OS:</span> Red Hat Enterprise Linux / TEK-UP Cyber Stack</p>
-                                <p><span class="text-[#3b82f6]">Certifications:</span> Red Hat RHCSA | Python Institute PCAP</p>
-                                <p><span class="text-[#3b82f6]">Top Global Rank:</span> #33 @ IEEEXtreme 17.0 World Final</p>
-                                <p><span class="text-[#3b82f6]">Core Toolkit:</span> C, Python, Linux Admin, Docker, Node.js, Angular</p>
-                                <p><span class="text-[#3b82f6]">Status:</span> Available for Engineering Internships & Roles</p>
-                            </div>
+                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center">
+                        <span class="font-extrabold text-3xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Red Hat SysAdmin</p>
+                        <span class="text-[11px] text-gray-400 font-mono">Linux Enterprise Kernel</span>
+                    </div>
 
-                            <p class="pt-2"><span class="text-[#00f0ff]">$</span> <span class="text-[#00ff9d] animate-pulse">./launch_ai_twin.sh --interactive</span><span class="terminal-cursor">_</span></p>
-                        </div>
+                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center">
+                        <span class="font-extrabold text-3xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Python Institute</p>
+                        <span class="text-[11px] text-gray-400 font-mono">Algorithms & Pipelines</span>
+                    </div>
+
+                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center">
+                        <span class="font-extrabold text-3xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Talan Tunisie</p>
+                        <span class="text-[11px] text-gray-400 font-mono">Smart Attack Surface & OSINT</span>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- 01. ACHIEVEMENTS SECTION -->
-        <section id="achievements" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1f293d]/50 bg-[#060911]/50">
+        <!-- 01. ACHIEVEMENTS & COMMUNITY SECTION -->
+        <section id="achievements" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#030712]/60">
             <div class="max-w-7xl mx-auto space-y-12">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase">01. // Global Honors & Competitions</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Featured Achievements</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">01. // Global Honors & Community Leadership</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Achievements & Impact</h2>
                     </div>
-                    <p class="text-gray-400 text-sm font-mono max-w-md">Proven track record in algorithmic problem solving under pressure and cybersecurity competitions.</p>
+                    <p class="text-gray-400 text-sm font-mono max-w-md">Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Card 1: IEEEXtreme 17.0 -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#00f0ff]/60 transition-all duration-300 group relative">
-                        <div class="w-14 h-14 rounded-lg bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[#00f0ff] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all">
-                            <i class="fa-solid fa-trophy"></i>
+                    <div class="cyber-card p-6 rounded-2xl bg-[#0f172a] border-2 border-[#00f0ff]/40 hover:border-[#00f0ff] transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00f0ff]/20 text-[#00f0ff]">1er Prix</span>
+                                <span class="text-xs font-mono text-gray-400">Global Competition</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00f0ff] transition-colors">IEEEXtreme 17.0</h3>
+                            <ul class="space-y-2 text-xs text-gray-300 font-sans">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
+                                    <span><strong class="text-white">33ème Place Mondiale</strong> parmi des milliers d'équipes d'ingénieurs internationales.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
+                                    <span><strong class="text-white">2ème Place Nationale</strong> en Tunisie.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
+                                    <span>Résolution de problèmes algorithmiques complexes en 24h non-stop.</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00f0ff]/20 text-[#00f0ff]">1er Prix</span>
-                            <span class="text-xs font-mono text-gray-400">Global Competition</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00f0ff] transition-colors">IEEEXtreme 17.0 Winner</h3>
-                        <ul class="space-y-2 text-sm text-gray-400 font-sans mb-4">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-[#00ff9d] mt-1 text-xs"></i>
-                                <span><strong class="text-white">33rd Place Worldwide</strong> out of thousands of international engineering teams.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-[#00ff9d] mt-1 text-xs"></i>
-                                <span><strong class="text-white">2nd Place National Rank</strong> in Tunisia.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-[#00ff9d] mt-1 text-xs"></i>
-                                <span>24-hour non-stop algorithmic programming marathon.</span>
-                            </li>
-                        </ul>
                     </div>
 
                     <!-- Card 2: CyberTEK 3.0 CTF -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-emerald-500/60 transition-all duration-300 group">
-                        <div class="w-14 h-14 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all">
-                            <i class="fa-solid fa-shield-halved"></i>
+                    <div class="cyber-card p-6 rounded-2xl bg-[#0f172a] border border-emerald-500/40 hover:border-emerald-500 transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400">Cybersecurity</span>
+                                <span class="text-xs font-mono text-gray-400">Capture-The-Flag</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">CyberTEK 3.0 CTF</h3>
+                            <ul class="space-y-2 text-xs text-gray-300 font-sans">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
+                                    <span>Compétition Capture The Flag : Exploitation de failles & défense d'infrastructure.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
+                                    <span>Analyse de paquets réseaux, reverse engineering et sécurité binaire.</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400">Cybersecurity</span>
-                            <span class="text-xs font-mono text-gray-400">Capture-The-Flag</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">CyberTEK 3.0 CTF</h3>
-                        <ul class="space-y-2 text-sm text-gray-400 font-sans mb-4">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs"></i>
-                                <span>Security defense, vulnerability exploitation & network packet analysis.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs"></i>
-                                <span>Reverse engineering and binary exploitation challenges.</span>
-                            </li>
-                        </ul>
                     </div>
 
                     <!-- Card 3: IEEE ISIMM CIS Chapter -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#3b82f6]/60 transition-all duration-300 group">
-                        <div class="w-14 h-14 rounded-lg bg-[#3b82f6]/10 border border-[#3b82f6]/30 text-[#3b82f6] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all">
-                            <i class="fa-solid fa-users-gear"></i>
+                    <div class="cyber-card p-6 rounded-2xl bg-[#0f172a] border border-[#38bdf8]/40 hover:border-[#38bdf8] transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(56,189,248,0.1)]">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/40 text-[#38bdf8] flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#38bdf8]/20 text-[#38bdf8]">Leadership</span>
+                                <span class="text-xs font-mono text-gray-400">Executive Board</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#38bdf8] transition-colors">Trésorier IEEE ISIMM</h3>
+                            <ul class="space-y-2 text-xs text-gray-300 font-sans">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#38bdf8] mt-0.5 text-xs"></i>
+                                    <span>Gestion rigoureuse du budget et optimisation financière des événements techniques.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#38bdf8] mt-0.5 text-xs"></i>
+                                    <span>Négociation de sponsors et partenariats stratégiques pour financer ateliers et conférences.</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#3b82f6]/20 text-[#3b82f6]">Leadership</span>
-                            <span class="text-xs font-mono text-gray-400">Executive Board</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#3b82f6] transition-colors">Treasurer @ IEEE ISIMM</h3>
-                        <ul class="space-y-2 text-sm text-gray-400 font-sans mb-4">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-[#3b82f6] mt-1 text-xs"></i>
-                                <span>Managed computational intelligence chapter budgets and technical events.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-[#3b82f6] mt-1 text-xs"></i>
-                                <span>Organized university workshops in algorithms & AI integration.</span>
-                            </li>
-                        </ul>
                     </div>
+
+                    <!-- Card 4: Congrès TSYP 11 -->
+                    <div class="cyber-card p-6 rounded-2xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/40 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-400">Networking</span>
+                                <span class="text-xs font-mono text-gray-400">National Congress</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Congrès TSYP 11</h3>
+                            <ul class="space-y-2 text-xs text-gray-300 font-sans">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-400 mt-0.5 text-xs"></i>
+                                    <span>Participation au plus grand congrès étudiant en Tunisie (Hammamet).</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-400 mt-0.5 text-xs"></i>
+                                    <span>Immersion dans les tendances technologiques et tables rondes industrielles.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
         </section>
 
         <!-- 02. CERTIFICATIONS SECTION -->
-        <section id="certifications" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1f293d]/50">
+        <section id="certifications" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50">
             <div class="max-w-7xl mx-auto space-y-12">
                 
                 <div>
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase">02. // Professional Credentials</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Industry Certifications</h2>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">02. // Verified Industry Credentials</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Professional Certifications</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     <!-- RHCSA Card -->
-                    <div class="cyber-card p-8 rounded-2xl bg-[#111827] border-2 border-red-500/30 hover:border-red-500 transition-all duration-300 relative overflow-hidden">
+                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-red-500/40 hover:border-red-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
                         <div class="flex items-start justify-between mb-6">
-                            <div class="w-16 h-16 rounded-xl bg-red-500/10 border border-red-500/40 text-red-500 flex items-center justify-center text-3xl">
+                            <div class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/50 text-red-500 flex items-center justify-center text-3xl">
                                 <i class="fa-brands fa-redhat"></i>
                             </div>
-                            <span class="px-3 py-1 rounded bg-red-500/20 text-red-400 font-mono text-xs font-bold border border-red-500/40">
+                            <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]">
                                 RED HAT CERTIFIED
                             </span>
                         </div>
                         <h3 class="text-2xl font-extrabold text-white mb-2">RHCSA (Red Hat Certified System Administrator)</h3>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Enterprise-grade Linux administration on RHEL/CentOS. Comprehensive mastery over kernel automation, storage management, system security, and systemd service orchestration.
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Expertise in Linux enterprise administration (RHEL/CentOS), system hardening, Bash automation, user & group permission models, LVM storage, firewall management, and secured system services orchestration.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs font-mono text-gray-300">
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                        <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-terminal text-red-400"></i>
-                                <span>RHEL Kernel & Shell</span>
+                                <span>RHEL Kernel & Bash</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
-                                <i class="fa-solid fa-lock text-red-400"></i>
-                                <span>SELinux & Security</span>
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-red-400"></i>
+                                <span>SELinux & Hardening</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-hard-drive text-red-400"></i>
                                 <span>LVM Storage & Stratis</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-network-wired text-red-400"></i>
                                 <span>FirewallD & Systemd</span>
                             </div>
@@ -464,35 +658,35 @@
                     </div>
 
                     <!-- PCAP Card -->
-                    <div class="cyber-card p-8 rounded-2xl bg-[#111827] border-2 border-yellow-500/30 hover:border-yellow-500 transition-all duration-300 relative overflow-hidden">
+                    <div class="cyber-card p-8 rounded-3xl bg-[#0f172a] border-2 border-yellow-500/40 hover:border-yellow-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(234,179,8,0.15)]">
                         <div class="flex items-start justify-between mb-6">
-                            <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/40 text-yellow-500 flex items-center justify-center text-3xl">
+                            <div class="w-16 h-16 rounded-2xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500 flex items-center justify-center text-3xl">
                                 <i class="fa-brands fa-python"></i>
                             </div>
-                            <span class="px-3 py-1 rounded bg-yellow-500/20 text-yellow-400 font-mono text-xs font-bold border border-yellow-500/40">
+                            <span class="px-3.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-mono text-xs font-extrabold border border-yellow-500/50 shadow-[0_0_12px_rgba(234,179,8,0.3)]">
                                 PYTHON INSTITUTE
                             </span>
                         </div>
                         <h3 class="text-2xl font-extrabold text-white mb-2">PCAP (Certified Associate in Python Programming)</h3>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Certified competence in Object-Oriented Programming (OOP), algorithms, complex data structures, automated testing, and software construction in Python.
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Advanced mastery of Python concepts, complex data structures, Object-Oriented Programming (OOP), automation pipelines, data normalization scripts, and robust software architecture.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs font-mono text-gray-300">
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                        <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-cube text-yellow-400"></i>
                                 <span>Advanced OOP</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-code-branch text-yellow-400"></i>
                                 <span>Data Structures</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
                                 <i class="fa-solid fa-gears text-yellow-400"></i>
                                 <span>Automation Scripts</span>
                             </div>
-                            <div class="p-2.5 rounded bg-[#0b0f19] border border-[#1f293d] flex items-center gap-2">
-                                <i class="fa-solid fa-file-code text-yellow-400"></i>
-                                <span>File I/O & Modules</span>
+                            <div class="p-3 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center gap-2">
+                                <i class="fa-solid fa-diagram-project text-yellow-400"></i>
+                                <span>Data Pipelines</span>
                             </div>
                         </div>
                     </div>
@@ -502,94 +696,438 @@
         </section>
 
         <!-- 03. EXPERIENCE SECTION -->
-        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1f293d]/50 bg-[#060911]/50">
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#030712]/60">
             <div class="max-w-7xl mx-auto space-y-12">
                 
-                <div>
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase">03. // Track Record</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Professional Experience</h2>
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">03. // Track Record & Engineering Deliverables</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Professional Experience</h2>
+                    </div>
+                    <p class="text-gray-400 text-sm font-mono max-w-md">Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.</p>
                 </div>
 
                 <div class="space-y-6">
                     
-                    <!-- Experience 1: SW CONSULTING -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#00f0ff]/50 transition-all">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Fullstack Developer & AI/OCR Integration</h3>
-                                <span class="text-[#00f0ff] font-mono text-sm font-semibold">SW CONSULTING</span>
+                    <!-- Experience 1: TALAN TUNISIE (Expandable) -->
+                    <div class="experience-card cyber-card p-6 sm:p-8 rounded-2xl bg-[#0f172a] border-2 border-[#00f0ff]/40 hover:border-[#00f0ff] transition-all shadow-[0_0_25px_rgba(0,240,255,0.12)] cursor-pointer group" data-exp="talan">
+                        
+                        <!-- Card Header Summary (Always Visible) -->
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                            <div class="space-y-1.5 flex-1">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.25)]">FLAGSHIP CYBERSECURITY</span>
+                                    <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Tunis, TN</span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#00f0ff] transition-colors flex items-center gap-2">
+                                    <span>Développeur Cybersécurité — Plateforme Smart EASM</span>
+                                </h3>
+                                <div class="flex items-center gap-2 font-mono text-sm">
+                                    <span class="text-[#00f0ff] font-bold">TALAN TUNISIE</span>
+                                    <span class="text-gray-500">•</span>
+                                    <span class="text-gray-300 text-xs">External Attack Surface Management & Threat Intelligence</span>
+                                </div>
                             </div>
-                            <span class="px-3 py-1 rounded bg-[#0b0f19] border border-[#1f293d] text-gray-400 font-mono text-xs self-start sm:self-auto">
-                                2025
-                            </span>
+
+                            <!-- Right Controls: Date Badge + GitHub + Expand Toggle -->
+                            <div class="flex flex-wrap items-center gap-2.5 self-start lg:self-center">
+                                <span class="px-3.5 py-1 rounded-full bg-[#070b14] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold">
+                                    2026 Juil - Août
+                                </span>
+
+                                <!-- GitHub Code Button (Clickable independently) -->
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="View Source Code / GitHub Repository">
+                                    <i class="fa-brands fa-github text-sm text-[#00f0ff]"></i>
+                                    <span>Code</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
+                                </a>
+
+                                <!-- Expand Trigger Button -->
+                                <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#00f0ff]">
+                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#00f0ff] transition-transform duration-300"></i>
+                                </button>
+                            </div>
                         </div>
-                        <ul class="space-y-2.5 text-sm text-gray-300 font-sans mb-4">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-angles-right text-[#00f0ff] mt-1 text-xs"></i>
-                                <span>Engineered automated document data extraction pipelines and AI/OCR text recognition services.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-angles-right text-[#00f0ff] mt-1 text-xs"></i>
-                                <span>Built and maintained the <strong>Quick Dock</strong> platform utilizing <strong>Node.js, Express, and Vue.js</strong> with MongoDB and relational databases.</span>
-                            </li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Node.js</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Vue.js</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">AI/OCR Pipeline</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Express</span>
+
+                        <!-- Card Snippet Overview -->
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                            Conception et développement de la plateforme <strong class="text-white">Smart EASM</strong> pour la découverte continue, la cartographie et la surveillance des actifs exposés sur Internet, avec automatisation avancée des flux <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong>.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] mt-3.5 pt-3 border-t border-[#1e293b]/70">
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-[#00f0ff] border border-[#00f0ff]/40 font-bold">Python (PCAP)</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">Smart EASM</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">OSINT Connectors</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">VirusTotal API</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">Subfinder</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">AbuseIPDB</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">Netlas</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-300 border border-[#1e293b]">Criminal IP</span>
+                        </div>
+
+                        <!-- Expandable Deep-Dive Drawer -->
+                        <div class="experience-drawer space-y-4 pt-3 border-t border-[#1e293b]">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs font-sans">
+                                <!-- Block 1: Architecture -->
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-shield-virus"></i>
+                                        <span>Architecture EASM</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Architecture modulaire conçue pour la découverte passive et active des vecteurs d'attaque externes : domaines racine, sous-domaines orphelins, adresses IP publiques, certificats TLS expirés et ports/services vulnérables.
+                                    </p>
+                                </div>
+
+                                <!-- Block 2: OSINT Connectors -->
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#38bdf8] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-radar"></i>
+                                        <span>Connecteurs OSINT</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Intégration d'APIs tierces et d'outils de reconnaissance : <strong>Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB et Criminal IP</strong> pour une couverture exhaustive de la surface d'attaque.
+                                    </p>
+                                </div>
+
+                                <!-- Block 3: Data Normalization -->
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#10b981] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-code"></i>
+                                        <span>Pipelines Python</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Développement de pipelines <strong>Python</strong> hautement optimisés pour dédupliquer, corréler, normaliser et filtrer les flux volumineux de données OSINT brutes vers des tableaux de bord exploitables.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Drawer Action Bar with Direct GitHub link -->
+                            <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                                    <span>Repository Code & Modules :</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <!-- GitHub Link Placeholder: Update with specific repo link when ready -->
+                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                        <i class="fa-brands fa-github text-sm"></i>
+                                        <span>Explorer le Repo GitHub</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                    </a>
+
+                                    <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                                        <i class="fa-solid fa-robot text-xs text-[#38bdf8]"></i>
+                                        <span>Poser une question à l'AI Twin</span>
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
-                    <!-- Experience 2: TEAM DEV -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#3b82f6]/50 transition-all">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Frontend Web Developer</h3>
-                                <span class="text-[#3b82f6] font-mono text-sm font-semibold">TEAM DEV</span>
+                    <!-- Experience 2: SW CONSULTING (Expandable) -->
+                    <div class="experience-card cyber-card p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#00f0ff]/50 transition-all cursor-pointer group" data-exp="sw">
+                        
+                        <!-- Card Header Summary (Always Visible) -->
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                            <div class="space-y-1.5 flex-1">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40">FULLSTACK & AI/OCR</span>
+                                    <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir, TN</span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#00f0ff] transition-colors flex items-center gap-2">
+                                    <span>Développeur Web Fullstack — OCR & IA Documentaire</span>
+                                </h3>
+                                <div class="flex items-center gap-2 font-mono text-sm">
+                                    <span class="text-[#00f0ff] font-bold">SW CONSULTING</span>
+                                    <span class="text-gray-500">•</span>
+                                    <span class="text-gray-300 text-xs">Plateforme Quick Dock & Moteur d'Extraction Intelligente</span>
+                                </div>
                             </div>
-                            <span class="px-3 py-1 rounded bg-[#0b0f19] border border-[#1f293d] text-gray-400 font-mono text-xs self-start sm:self-auto">
-                                2024
-                            </span>
+
+                            <!-- Right Controls: Date Badge + GitHub + Expand Toggle -->
+                            <div class="flex flex-wrap items-center gap-2.5 self-start lg:self-center">
+                                <span class="px-3.5 py-1 rounded-full bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold">
+                                    2025
+                                </span>
+
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View Source Code / GitHub Repository">
+                                    <i class="fa-brands fa-github text-sm text-[#00f0ff]"></i>
+                                    <span>Code</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
+                                </a>
+
+                                <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#00f0ff]">
+                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#00f0ff] transition-transform duration-300"></i>
+                                </button>
+                            </div>
                         </div>
-                        <ul class="space-y-2.5 text-sm text-gray-300 font-sans mb-4">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-angles-right text-[#3b82f6] mt-1 text-xs"></i>
-                                <span>Constructed high-performance, responsive user interfaces using <strong>Angular</strong> and TypeScript.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-angles-right text-[#3b82f6] mt-1 text-xs"></i>
-                                <span>Integrated real-time RESTful APIs, form validations, and asynchronous state synchronization.</span>
-                            </li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Angular</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">TypeScript</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">REST API</span>
+
+                        <!-- Card Snippet Overview -->
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                            Conception du moteur d'extraction automatique de données par <strong class="text-white">OCR</strong> pour la dématérialisation comptable et développement de la plateforme web <strong class="text-[#00f0ff]">Quick Dock</strong> (Node.js/Express + Vue.js).
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] mt-3.5 pt-3 border-t border-[#1e293b]/70">
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Node.js</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Vue.js</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-[#00f0ff] border border-[#00f0ff]/40 font-bold">AI / OCR (NumPy)</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Express REST</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">MongoDB & SQL</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Dynamic Templates</span>
+                        </div>
+
+                        <!-- Expandable Deep-Dive Drawer -->
+                        <div class="experience-drawer space-y-4 pt-3 border-t border-[#1e293b]">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-sans">
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-brain"></i>
+                                        <span>Moteur OCR & IA Documentaire</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Algorithmes de reconnaissance optique de caractères (OCR) avec pré-traitement d'images (NumPy), extraction automatique des montants HT/TTC, dates et numéros de TVA, éliminant 85% de la saisie manuelle.
+                                    </p>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#10b981] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                        <span>Plateforme Quick Dock (Vue.js + Node.js)</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Génération dynamique de devis et factures avec rendu PDF temps réel, gestion sécurisée des sessions utilisateurs, API RESTful modulaire et intégration de base de données hybride SQL/NoSQL.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Drawer Action Bar with Direct GitHub link -->
+                            <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-[#00f0ff]"></span>
+                                    <span>Code & Architecture Quick Dock :</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                        <i class="fa-brands fa-github text-sm"></i>
+                                        <span>Explorer le Repo GitHub</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                    </a>
+
+                                    <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                                        <i class="fa-solid fa-robot text-xs text-[#38bdf8]"></i>
+                                        <span>En savoir plus via l'IA</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Experience 3: We Are Technology Center -->
-                    <div class="cyber-card p-8 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-emerald-500/50 transition-all">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Software Developer</h3>
-                                <span class="text-emerald-400 font-mono text-sm font-semibold">We Are Technology Center</span>
+                    <!-- Experience 3: TEAM DEV (Expandable) -->
+                    <div class="experience-card cyber-card p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8]/50 transition-all cursor-pointer group" data-exp="teamdev">
+                        
+                        <!-- Card Header Summary (Always Visible) -->
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                            <div class="space-y-1.5 flex-1">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-[#38bdf8]/20 text-[#38bdf8] font-mono text-xs font-extrabold border border-[#38bdf8]/40">FRONTEND ARCHITECTURE</span>
+                                    <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#38bdf8]"></i> Sousse, TN</span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#38bdf8] transition-colors flex items-center gap-2">
+                                    <span>Développeur Frontend — Interface Responsive Angular</span>
+                                </h3>
+                                <div class="flex items-center gap-2 font-mono text-sm">
+                                    <span class="text-[#38bdf8] font-bold">TEAM DEV</span>
+                                    <span class="text-gray-500">•</span>
+                                    <span class="text-gray-300 text-xs">Application Web Responsive & Synchronisation REST API</span>
+                                </div>
                             </div>
-                            <span class="px-3 py-1 rounded bg-[#0b0f19] border border-[#1f293d] text-gray-400 font-mono text-xs self-start sm:self-auto">
-                                2023
-                            </span>
+
+                            <!-- Right Controls: Date Badge + GitHub + Expand Toggle -->
+                            <div class="flex flex-wrap items-center gap-2.5 self-start lg:self-center">
+                                <span class="px-3.5 py-1 rounded-full bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold">
+                                    2024
+                                </span>
+
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View Source Code / GitHub Repository">
+                                    <i class="fa-brands fa-github text-sm text-[#38bdf8]"></i>
+                                    <span>Code</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
+                                </a>
+
+                                <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#38bdf8]">
+                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#38bdf8] transition-transform duration-300"></i>
+                                </button>
+                            </div>
                         </div>
-                        <ul class="space-y-2.5 text-sm text-gray-300 font-sans mb-4">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-angles-right text-emerald-400 mt-1 text-xs"></i>
-                                <span>Engineered a Java Desktop Restaurant Management Application with Java Swing/JFrame UI and SQL storage.</span>
-                            </li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Java</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">Swing / GUI</span>
-                            <span class="px-2.5 py-1 rounded bg-[#0b0f19] text-gray-400 border border-[#1f293d]">SQL</span>
+
+                        <!-- Card Snippet Overview -->
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                            Développement d'interfaces utilisateur modernes sous <strong class="text-white">Angular & TypeScript</strong> avec design adaptatif haute fidélité et intégration asynchrone des flux REST.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] mt-3.5 pt-3 border-t border-[#1e293b]/70">
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-[#38bdf8] border border-[#38bdf8]/40 font-bold">Angular</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">TypeScript</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">REST API Sync</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Reactive Forms</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Responsive UX</span>
+                        </div>
+
+                        <!-- Expandable Deep-Dive Drawer -->
+                        <div class="experience-drawer space-y-4 pt-3 border-t border-[#1e293b]">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-sans">
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#38bdf8] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-mobile-screen"></i>
+                                        <span>Design System & Responsive UI</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Structure modulaire de composants réutilisables, formulaires réactifs avec validation dynamique et gestion fluide des états d'affichage sur mobiles, tablettes et écrans larges.
+                                    </p>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-gauge-high"></i>
+                                        <span>Performance & Intégration REST</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Optimisation du temps de rendu DOM, mise en cache côté client, gestion des erreurs HTTP et synchronisation temps réel avec les microservices backend.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Drawer Action Bar with Direct GitHub link -->
+                            <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+                                    <span>Code Frontend Angular :</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                        <i class="fa-brands fa-github text-sm"></i>
+                                        <span>Explorer le Repo GitHub</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                    </a>
+
+                                    <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                                        <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
+                                        <span>Discuter avec l'IA</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 4: We Are Technology Center (Expandable) -->
+                    <div class="experience-card cyber-card p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-emerald-500/50 transition-all cursor-pointer group" data-exp="techcenter">
+                        
+                        <!-- Card Header Summary (Always Visible) -->
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                            <div class="space-y-1.5 flex-1">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40">JAVA DESKTOP & SQL</span>
+                                    <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-emerald-400"></i> Monastir, TN</span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                    <span>Développeur Logiciel — Solution de Gestion en Java</span>
+                                </h3>
+                                <div class="flex items-center gap-2 font-mono text-sm">
+                                    <span class="text-emerald-400 font-bold">We Are Technology Center</span>
+                                    <span class="text-gray-500">•</span>
+                                    <span class="text-gray-300 text-xs">Application Desktop Restaurant Management (Swing/JFrame & SQL)</span>
+                                </div>
+                            </div>
+
+                            <!-- Right Controls: Date Badge + GitHub + Expand Toggle -->
+                            <div class="flex flex-wrap items-center gap-2.5 self-start lg:self-center">
+                                <span class="px-3.5 py-1 rounded-full bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold">
+                                    2023
+                                </span>
+
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-emerald-400 hover:text-emerald-400 text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View Source Code / GitHub Repository">
+                                    <i class="fa-brands fa-github text-sm text-emerald-400"></i>
+                                    <span>Code</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
+                                </a>
+
+                                <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-emerald-400">
+                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <i class="fa-solid fa-chevron-down expand-chevron text-xs text-emerald-400 transition-transform duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card Snippet Overview -->
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                            Digitalisation complète de la prise de commande, de la gestion des tables et du suivi des stocks via une application desktop <strong class="text-white">Java Swing (JFrame)</strong> connectée à une base de données relationnelle SQL.
+                        </p>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] mt-3.5 pt-3 border-t border-[#1e293b]/70">
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-emerald-400 border border-emerald-500/40 font-bold">Java</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Java Swing (JFrame)</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">SQL Database</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">OOP Architecture</span>
+                            <span class="px-2 py-0.5 rounded bg-[#070b14] text-gray-200 border border-[#1e293b]">Desktop GUI</span>
+                        </div>
+
+                        <!-- Expandable Deep-Dive Drawer -->
+                        <div class="experience-drawer space-y-4 pt-3 border-t border-[#1e293b]">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs font-sans">
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-emerald-400 font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-cash-register"></i>
+                                        <span>Gestion Opérationnelle & Prise de Commande</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Interface ergonomique pour les serveurs et gérants : attribution dynamique des tables, calcul instantané des additions, génération de tickets de caisse et traçabilité des commandes en temps réel.
+                                    </p>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
+                                    <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
+                                        <i class="fa-solid fa-database"></i>
+                                        <span>Persistance des Données & Inventaire SQL</span>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                        Schéma relationnel robuste pour l'inventaire des ingrédients, alertes de rupture de stock, statistiques de vente journalières et historique d'activité financière.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Drawer Action Bar with Direct GitHub link -->
+                            <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                    <span>Code Source Java Desktop :</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                        <i class="fa-brands fa-github text-sm"></i>
+                                        <span>Explorer le Repo GitHub</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                    </a>
+
+                                    <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-emerald-400 hover:text-emerald-400 font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                                        <i class="fa-solid fa-robot text-xs text-emerald-400"></i>
+                                        <span>Discuter avec l'IA</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -598,35 +1136,77 @@
         </section>
 
         <!-- 04. EDUCATION & TECH STACK SECTION -->
-        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1f293d]/50">
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50">
             <div class="max-w-7xl mx-auto space-y-16">
                 
-                <!-- Education -->
+                <!-- Education & Academic Timeline -->
                 <div>
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase">04. // Academic Background & Technical Skills</span>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">04. // Academic Background & Technical Skills</span>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-8">Education & Degrees</h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Degree 1 -->
-                        <div class="cyber-card p-6 rounded-xl bg-[#111827] border border-[#1f293d]">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-mono text-[#00f0ff] font-bold">2025 - 2028 (In Progress)</span>
-                                <span class="px-2.5 py-0.5 rounded bg-[#00f0ff]/10 text-[#00f0ff] font-mono text-[10px]">ENGINEERING</span>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Degree 1: TEK-UP -->
+                        <div class="cyber-card p-7 rounded-2xl bg-[#0f172a] border-2 border-[#00f0ff]/40 hover:border-[#00f0ff] transition-all flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-mono text-[#00f0ff] font-bold">2025 - Présent</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold">INGÉNIEUR</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Diplôme National d'Ingénieur en Informatique</h3>
+                                <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">TEK-UP University (Ariana, TN)</p>
+                                <p class="text-xs text-gray-200 mb-2.5"><strong>Spécialisation :</strong> Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée.</p>
+                                <p class="text-[11px] text-gray-400"><strong>Cours pertinents :</strong> Administration Linux Avancée, Cryptographie, Analyse de Vulnérabilités, Secure Coding.</p>
                             </div>
-                            <h3 class="text-lg font-bold text-white">Diplôme National d'Ingénieur in Computer Science</h3>
-                            <p class="text-gray-400 text-sm font-semibold mb-2">TEK-UP University</p>
-                            <p class="text-xs text-gray-400">Specialization in Systems Security, Network Defense, Linux Automation, and Cryptography.</p>
                         </div>
 
-                        <!-- Degree 2 -->
-                        <div class="cyber-card p-6 rounded-xl bg-[#111827] border border-[#1f293d]">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-mono text-gray-400 font-bold">2022 - 2025</span>
-                                <span class="px-2.5 py-0.5 rounded bg-gray-800 text-gray-300 font-mono text-[10px]">LICENCE</span>
+                        <!-- Degree 2: ISIMM -->
+                        <div class="cyber-card p-7 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-mono text-gray-400 font-bold">2022 - 2025</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-gray-800 text-gray-200 font-mono text-xs font-bold">LICENCE</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Licence en Génie Logiciel</h3>
+                                <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">ISIMM (Monastir, TN)</p>
+                                <p class="text-xs text-gray-200 mb-2.5">Institut Supérieur d'Informatique et de Mathématiques de Monastir.</p>
+                                <p class="text-[11px] text-gray-400">Fondations algorithmiques, architectures logicielles, structures de données, POO avancée et bases de données.</p>
                             </div>
-                            <h3 class="text-lg font-bold text-white">Licence en Génie Logiciel (Software Engineering)</h3>
-                            <p class="text-gray-400 text-sm font-semibold mb-2">ISIMM (Monastir)</p>
-                            <p class="text-xs text-gray-400">Algorithmic complexity, fullstack software architecture, data structures, and database design.</p>
+                        </div>
+
+                        <!-- Degree 3: Lycée Bekalta -->
+                        <div class="cyber-card p-7 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-emerald-500 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-mono text-gray-400 font-bold">2018 - 2022</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold">BACCALAURÉAT</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Baccalauréat Technique</h3>
+                                <p class="text-emerald-400 text-xs font-mono font-bold mb-3">Lycée Secondaire Bekalta (Monastir)</p>
+                                <p class="text-xs text-gray-200 mb-2.5"><strong>Mention :</strong> Assez Bien (13.72 / 20)</p>
+                                <p class="text-[11px] text-gray-400">Sciences techniques, logique électronique et modélisation mathématique.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages Row -->
+                <div class="cyber-card p-7 rounded-2xl bg-[#0f172a] border border-[#1e293b]">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-earth-africa text-[#00f0ff]"></i>
+                        <span>Langues & Communication</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+                        <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Français</span>
+                            <span class="text-[#00f0ff] font-bold">Courant</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Anglais</span>
+                            <span class="text-[#38bdf8] font-bold">Professionnel (Courant)</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">Arabe</span>
+                            <span class="text-[#10b981] font-bold">Langue maternelle</span>
                         </div>
                     </div>
                 </div>
@@ -641,10 +1221,10 @@
 
                         <!-- Filter Buttons -->
                         <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <button class="skill-filter-btn active px-3.5 py-1.5 rounded-lg bg-[#111827] text-white border border-[#1f293d] transition-all" data-filter="all">All Stack</button>
-                            <button class="skill-filter-btn px-3.5 py-1.5 rounded-lg bg-[#111827] text-gray-400 border border-[#1f293d] transition-all" data-filter="sys">Systems & Sec</button>
-                            <button class="skill-filter-btn px-3.5 py-1.5 rounded-lg bg-[#111827] text-gray-400 border border-[#1f293d] transition-all" data-filter="dev">Languages & Web</button>
-                            <button class="skill-filter-btn px-3.5 py-1.5 rounded-lg bg-[#111827] text-gray-400 border border-[#1f293d] transition-all" data-filter="tools">DevOps & DB</button>
+                            <button class="skill-filter-btn active px-4 py-2 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] transition-all" data-filter="all">All Stack</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="sys">Security & Linux</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="dev">Languages & Web</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="tools">DevOps, OSINT & DB</button>
                         </div>
                     </div>
 
@@ -652,87 +1232,101 @@
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="skillsGrid">
                         
                         <!-- Linux RHEL -->
-                        <div class="skill-card sys p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-red-500 transition-all group">
+                        <div class="skill-card sys p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-500 transition-all group">
                             <i class="fa-brands fa-redhat text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Linux RHEL</h4>
                             <span class="text-[10px] font-mono text-gray-400">RHCSA Certified</span>
                         </div>
 
                         <!-- Python -->
-                        <div class="skill-card dev sys p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-yellow-400 transition-all group">
+                        <div class="skill-card dev sys tools p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-yellow-400 transition-all group">
                             <i class="fa-brands fa-python text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Python</h4>
                             <span class="text-[10px] font-mono text-gray-400">PCAP Certified</span>
                         </div>
 
-                        <!-- C -->
-                        <div class="skill-card dev sys p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-[#00f0ff] transition-all group">
+                        <!-- EASM & Attack Surface -->
+                        <div class="skill-card sys tools p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
+                            <i class="fa-solid fa-radar text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-sm font-bold text-white">Smart EASM</h4>
+                            <span class="text-[10px] font-mono text-gray-400">Attack Surface Mgmt</span>
+                        </div>
+
+                        <!-- OSINT Tooling -->
+                        <div class="skill-card sys tools p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
+                            <i class="fa-solid fa-eye text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-sm font-bold text-white">OSINT Tools</h4>
+                            <span class="text-[10px] font-mono text-gray-400">Subfinder, VT, Netlas</span>
+                        </div>
+
+                        <!-- Bash Scripting -->
+                        <div class="skill-card sys dev p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-green-400 transition-all group">
+                            <i class="fa-solid fa-terminal text-3xl text-green-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-sm font-bold text-white">Bash Scripting</h4>
+                            <span class="text-[10px] font-mono text-gray-400">System Automation</span>
+                        </div>
+
+                        <!-- C Language -->
+                        <div class="skill-card dev sys p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
                             <i class="fa-solid fa-c text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">C Language</h4>
                             <span class="text-[10px] font-mono text-gray-400">Low-Level Systems</span>
                         </div>
 
                         <!-- Java -->
-                        <div class="skill-card dev p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-orange-500 transition-all group">
+                        <div class="skill-card dev p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-orange-500 transition-all group">
                             <i class="fa-brands fa-java text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Java</h4>
-                            <span class="text-[10px] font-mono text-gray-400">OOP & Spring</span>
+                            <span class="text-[10px] font-mono text-gray-400">OOP & Spring Boot</span>
                         </div>
 
                         <!-- Docker -->
-                        <div class="skill-card tools sys p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-blue-400 transition-all group">
+                        <div class="skill-card tools sys p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-blue-400 transition-all group">
                             <i class="fa-brands fa-docker text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Docker</h4>
                             <span class="text-[10px] font-mono text-gray-400">Containers</span>
                         </div>
 
-                        <!-- Node.js -->
-                        <div class="skill-card dev tools p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-emerald-500 transition-all group">
+                        <!-- Node.js & Express -->
+                        <div class="skill-card dev tools p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-500 transition-all group">
                             <i class="fa-brands fa-node text-3xl text-emerald-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Node.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Express / REST</span>
+                            <span class="text-[10px] font-mono text-gray-400">Express / REST APIs</span>
                         </div>
 
                         <!-- Angular -->
-                        <div class="skill-card dev p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-red-600 transition-all group">
+                        <div class="skill-card dev p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-600 transition-all group">
                             <i class="fa-brands fa-angular text-3xl text-red-600 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Angular</h4>
-                            <span class="text-[10px] font-mono text-gray-400">TypeScript UI</span>
+                            <span class="text-[10px] font-mono text-gray-400">TypeScript SPA</span>
                         </div>
 
                         <!-- Vue.js -->
-                        <div class="skill-card dev p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-emerald-400 transition-all group">
+                        <div class="skill-card dev p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-400 transition-all group">
                             <i class="fa-brands fa-vuejs text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Vue.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Reactive Web</span>
+                            <span class="text-[10px] font-mono text-gray-400">Reactive Web UI</span>
                         </div>
 
-                        <!-- SQL & NoSQL -->
-                        <div class="skill-card tools p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-sky-400 transition-all group">
+                        <!-- SQL & Databases -->
+                        <div class="skill-card tools p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-sky-400 transition-all group">
                             <i class="fa-solid fa-database text-3xl text-sky-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">SQL & Mongo</h4>
-                            <span class="text-[10px] font-mono text-gray-400">MySQL, Postgres</span>
+                            <h4 class="text-sm font-bold text-white">Databases</h4>
+                            <span class="text-[10px] font-mono text-gray-400">MySQL, Postgres, Mongo</span>
                         </div>
 
-                        <!-- AI / OCR -->
-                        <div class="skill-card tools dev p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-purple-400 transition-all group">
+                        <!-- AI / OCR (NumPy) -->
+                        <div class="skill-card tools dev p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-purple-400 transition-all group">
                             <i class="fa-solid fa-brain text-3xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">AI & OCR</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Doc Engine</span>
-                        </div>
-
-                        <!-- Git & GitHub -->
-                        <div class="skill-card tools p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-gray-400 transition-all group">
-                            <i class="fa-brands fa-github text-3xl text-white mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Git / GitHub</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Version Control</span>
+                            <h4 class="text-sm font-bold text-white">AI / OCR</h4>
+                            <span class="text-[10px] font-mono text-gray-400">NumPy & Doc Extraction</span>
                         </div>
 
                         <!-- Security Hardening -->
-                        <div class="skill-card sys p-4 rounded-lg bg-[#111827] border border-[#1f293d] text-center hover:border-[#00ff9d] transition-all group">
-                            <i class="fa-solid fa-shield-virus text-3xl text-[#00ff9d] mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Security Ops</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Audit & Hardening</span>
+                        <div class="skill-card sys p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
+                            <i class="fa-solid fa-shield-halved text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-sm font-bold text-white">Security Hardening</h4>
+                            <span class="text-[10px] font-mono text-gray-400">SELinux, SSH & Audits</span>
                         </div>
 
                     </div>
@@ -742,34 +1336,34 @@
         </section>
 
         <!-- 05. CONTACT SECTION -->
-        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1f293d]/50 bg-[#060911]/50">
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#030712]/60">
             <div class="max-w-4xl mx-auto space-y-10 text-center">
                 
                 <div class="space-y-3">
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase">05. // Direct Link</span>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">05. // Direct Link</span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Let's Connect & Collaborate</h2>
-                    <p class="text-gray-400 text-base max-w-xl mx-auto">
-                        Whether you are looking for a systems security specialist, high-performance Linux software engineer, or AI integration engineering, feel free to reach out directly.
+                    <p class="text-gray-300 text-base max-w-xl mx-auto">
+                        Whether you are looking for a cybersecurity specialist, Linux systems engineer, or intelligent software developer, feel free to reach out directly.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 font-mono text-sm">
-                    <a href="mailto:wisoghost@gmail.com" class="p-6 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#00f0ff] hover:text-[#00f0ff] transition-all flex flex-col items-center gap-3 group">
-                        <i class="fa-solid fa-envelope text-2xl text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
+                    <a href="mailto:wisoghost@gmail.com" class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] transition-all flex flex-col items-center gap-3 group shadow-lg">
+                        <i class="fa-solid fa-envelope text-3xl text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
                         <span class="font-bold text-white group-hover:text-[#00f0ff]">Email</span>
-                        <span class="text-xs text-gray-400">wisoghost@gmail.com</span>
+                        <span class="text-xs text-gray-300">wisoghost@gmail.com</span>
                     </a>
 
-                    <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="p-6 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#3b82f6] hover:text-[#3b82f6] transition-all flex flex-col items-center gap-3 group">
-                        <i class="fa-brands fa-linkedin text-2xl text-[#3b82f6] group-hover:scale-110 transition-transform"></i>
-                        <span class="font-bold text-white group-hover:text-[#3b82f6]">LinkedIn</span>
-                        <span class="text-xs text-gray-400">/in/wassim-bannour-513448317</span>
+                    <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] transition-all flex flex-col items-center gap-3 group shadow-lg">
+                        <i class="fa-brands fa-linkedin text-3xl text-[#38bdf8] group-hover:scale-110 transition-transform"></i>
+                        <span class="font-bold text-white group-hover:text-[#38bdf8]">LinkedIn</span>
+                        <span class="text-xs text-gray-300">/in/wassim-bannour-513448317</span>
                     </a>
 
-                    <a href="tel:+21694101910" class="p-6 rounded-xl bg-[#111827] border border-[#1f293d] hover:border-[#00ff9d] hover:text-[#00ff9d] transition-all flex flex-col items-center gap-3 group">
-                        <i class="fa-solid fa-phone text-2xl text-[#00ff9d] group-hover:scale-110 transition-transform"></i>
-                        <span class="font-bold text-white group-hover:text-[#00ff9d]">Phone</span>
-                        <span class="text-xs text-gray-400">+216 94101910</span>
+                    <a href="tel:+21694101910" class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] hover:text-[#10b981] transition-all flex flex-col items-center gap-3 group shadow-lg">
+                        <i class="fa-solid fa-phone text-3xl text-[#10b981] group-hover:scale-110 transition-transform"></i>
+                        <span class="font-bold text-white group-hover:text-[#10b981]">Phone</span>
+                        <span class="text-xs text-gray-300">+216 94101910</span>
                     </a>
                 </div>
 
@@ -779,11 +1373,11 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-[#1f293d] py-8 px-4 font-mono text-xs text-center text-gray-500">
+    <footer class="border-t border-[#1e293b] py-8 px-4 font-mono text-xs text-center text-gray-500">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 Wassim Bannour. Hosted on Cloudflare Pages & Cloudflare Workers.</p>
+            <p>© 2026 Wassim Bannour. Systems Security & Linux Engineering.</p>
             <p class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#00ff9d]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
                 Status: Systems Operational & Ready for Hire
             </p>
         </div>
@@ -791,42 +1385,42 @@
 
     <!-- AI TWIN FLOATING CHAT WIDGET -->
     <div id="aiChatModal" class="fixed bottom-6 right-6 z-50 transition-all duration-300 transform translate-y-full opacity-0 pointer-events-none max-w-md w-[calc(100vw-3rem)]">
-        <div class="cyber-card rounded-2xl bg-[#111827] border-2 border-[#00f0ff]/50 shadow-[0_0_30px_rgba(0,240,255,0.25)] flex flex-col h-[560px] overflow-hidden backdrop-blur-2xl relative">
+        <div class="cyber-card rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/60 shadow-[0_0_35px_rgba(0,240,255,0.35)] flex flex-col h-[560px] overflow-hidden backdrop-blur-2xl relative">
             
             <!-- Chat Header -->
-            <div class="px-4 py-3 bg-[#0b0f19] border-b border-[#1f293d] flex items-center justify-between">
+            <div class="px-4 py-3.5 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="relative">
-                        <div class="w-8 h-8 rounded-lg bg-[#00f0ff]/20 border border-[#00f0ff] flex items-center justify-center text-[#00f0ff] text-sm">
-                            <i class="fa-solid fa-robot"></i>
+                        <div class="w-9 h-9 rounded-xl overflow-hidden border-2 border-[#00f0ff] flex items-center justify-center shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                            <img src="1000015101.jpg" alt="Wassim AI Twin" class="w-full h-full object-cover object-top">
                         </div>
-                        <span id="headerStatusDot" class="w-2.5 h-2.5 rounded-full bg-[#00ff9d] border-2 border-[#0b0f19] absolute -top-1 -right-1"></span>
+                        <span id="headerStatusDot" class="w-2.5 h-2.5 rounded-full bg-[#10b981] border-2 border-[#070b14] absolute -top-1 -right-1"></span>
                     </div>
                     <div>
                         <h4 class="font-bold text-sm text-white flex items-center gap-1.5 leading-tight">
                             Wassim's AI Twin
-                            <span id="backendModeBadge" class="text-[9px] px-1.5 py-0.2 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono">CLAUDE-3.5</span>
+                            <span id="backendModeBadge" class="text-[9px] px-1.5 py-0.2 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">CYBER-AI</span>
                         </h4>
                         <span id="backendStatusSubtext" class="text-[10px] font-mono text-gray-400 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#00ff9d] inline-block"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] inline-block"></span>
                             <span>Engine: Ready (Autonomous / Worker)</span>
                         </span>
                     </div>
                 </div>
                 
                 <div class="flex items-center gap-1">
-                    <button id="chatSettingsToggleBtn" class="text-gray-400 hover:text-[#00f0ff] p-1.5 rounded-lg hover:bg-[#111827] transition-colors focus:outline-none" title="Backend & Worker Settings">
+                    <button id="chatSettingsToggleBtn" class="text-gray-400 hover:text-[#00f0ff] p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" title="Backend & Worker Settings">
                         <i class="fa-solid fa-gear text-sm"></i>
                     </button>
-                    <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-[#111827] transition-colors focus:outline-none" aria-label="Close Chat">
+                    <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" aria-label="Close Chat">
                         <i class="fa-solid fa-xmark text-base"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Backend Settings Drawer (Collapsible) -->
-            <div id="chatSettingsPanel" class="hidden bg-[#060911]/95 border-b border-[#1f293d] p-4 text-xs font-mono space-y-3 backdrop-blur-xl z-20">
-                <div class="flex items-center justify-between pb-1 border-b border-[#1f293d]/60">
+            <div id="chatSettingsPanel" class="hidden bg-[#030712]/98 border-b border-[#1e293b] p-4 text-xs font-mono space-y-3 backdrop-blur-xl z-20">
+                <div class="flex items-center justify-between pb-1 border-b border-[#1e293b]">
                     <span class="text-[#00f0ff] font-bold flex items-center gap-1.5">
                         <i class="fa-solid fa-server"></i> Cloudflare Worker Backend Config
                     </span>
@@ -836,57 +1430,60 @@
                 </div>
 
                 <div class="space-y-1">
-                    <label class="text-gray-400 block text-[11px]">Cloudflare Worker URL:</label>
-                    <input type="text" id="workerUrlInput" placeholder="https://wassim-portfolio-backend.YOUR-SUBDOMAIN.workers.dev" class="w-full bg-[#111827] border border-[#1f293d] focus:border-[#00f0ff] text-white px-2.5 py-1.5 rounded text-xs focus:outline-none">
+                    <label class="text-gray-300 block text-[11px]">Cloudflare Worker URL:</label>
+                    <input type="text" id="workerUrlInput" placeholder="https://wassim-portfolio-backend.YOUR-SUBDOMAIN.workers.dev" class="w-full bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-2.5 py-1.5 rounded text-xs focus:outline-none">
                 </div>
 
                 <div class="flex items-center gap-2 pt-1">
                     <button id="saveWorkerUrlBtn" class="flex-1 px-3 py-1.5 bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/40 rounded hover:bg-[#00f0ff] hover:text-black font-semibold transition-colors">
                         Save & Apply
                     </button>
-                    <button id="testWorkerBtn" class="px-3 py-1.5 bg-[#111827] text-gray-300 border border-[#1f293d] rounded hover:border-[#00f0ff] hover:text-white transition-colors">
+                    <button id="testWorkerBtn" class="px-3 py-1.5 bg-[#0f172a] text-gray-300 border border-[#1e293b] rounded hover:border-[#00f0ff] hover:text-white transition-colors">
                         Test Worker
                     </button>
                 </div>
 
-                <div id="workerTestResult" class="text-[11px] text-gray-400 hidden p-2 rounded bg-[#111827] border border-[#1f293d]">
+                <div id="workerTestResult" class="text-[11px] text-gray-400 hidden p-2 rounded bg-[#0f172a] border border-[#1e293b]">
                 </div>
 
-                <p class="text-[10px] text-gray-500 leading-tight">
-                    * If your Cloudflare Worker is not uploaded yet, the AI Twin automatically operates via the built-in Cyber Engine with full knowledge of Wassim's CV!
+                <p class="text-[10px] text-gray-400 leading-tight">
+                    * The AI Twin operates seamlessly via the built-in Cyber Engine with full CV knowledge or via your remote Cloudflare Worker!
                 </p>
             </div>
 
             <!-- Chat Message Stream -->
             <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 font-sans text-sm">
                 <div class="chat-bubble assistant flex items-start gap-2.5 max-w-[90%]">
-                    <div class="w-7 h-7 rounded bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/40 flex items-center justify-center text-xs shrink-0 mt-0.5 font-mono font-bold">
-                        WB
+                    <div class="w-8 h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md">
+                        <img src="1000015101.jpg" alt="Wassim" class="w-full h-full object-cover object-top">
                     </div>
-                    <div class="p-3.5 rounded-xl bg-[#1f293d]/80 text-gray-200 border border-[#1f293d] leading-relaxed">
-                        Hello! I am Wassim's AI Twin. Ask me anything about his <strong>RHCSA / PCAP certifications</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his <strong>software engineering experience</strong>.
+                    <div class="p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] leading-relaxed shadow-sm">
+                        Hello! I am Wassim's AI Twin. Ask me about his <strong>RHCSA & PCAP certifications</strong>, his <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his fullstack engineering background!
                     </div>
                 </div>
             </div>
 
             <!-- Pre-built Prompt Pills -->
-            <div class="px-4 py-2 bg-[#060911] border-t border-[#1f293d] overflow-x-auto flex gap-2 no-scrollbar text-xs font-mono">
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#111827] text-[#00f0ff] border border-[#00f0ff]/30 hover:bg-[#00f0ff] hover:text-black transition-colors" data-prompt="What are Wassim's top skills & certifications?">
+            <div class="px-4 py-2 bg-[#030712] border-t border-[#1e293b] overflow-x-auto flex gap-2 no-scrollbar text-xs font-mono">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black transition-colors font-bold" data-prompt="What are Wassim's top skills & certifications?">
                     ⚡ Top Skills & Certs
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#111827] text-[#3b82f6] border border-[#3b82f6]/30 hover:bg-[#3b82f6] hover:text-white transition-colors" data-prompt="Tell me about his IEEEXtreme ranking.">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT).">
+                    🛡️ Talan EASM & OSINT
+                </button>
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold" data-prompt="Tell me about his IEEEXtreme 17.0 ranking.">
                     🏆 IEEEXtreme #33 Rank
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#111827] text-[#00ff9d] border border-[#00ff9d]/30 hover:bg-[#00ff9d] hover:text-black transition-colors" data-prompt="Why should we hire Wassim for software engineering?">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold" data-prompt="Why should we hire Wassim for a security / software role?">
                     🚀 Why hire Wassim?
                 </button>
             </div>
 
             <!-- Chat Input Bar -->
-            <form id="chatForm" class="p-3 bg-[#0b0f19] border-t border-[#1f293d] flex items-center gap-2">
-                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." autocomplete="off" class="flex-1 bg-[#111827] border border-[#1f293d] focus:border-[#00f0ff] text-white px-3.5 py-2 rounded-xl text-sm focus:outline-none font-mono">
-                <button type="submit" id="sendBtn" class="w-9 h-9 rounded-xl bg-[#00f0ff] text-black font-bold flex items-center justify-center hover:shadow-[0_0_12px_rgba(0,240,255,0.6)] transition-all">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
+            <form id="chatForm" class="p-3 bg-[#070b14] border-t border-[#1e293b] flex items-center gap-2">
+                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-3.5 py-2.5 rounded-xl text-sm focus:outline-none font-mono">
+                <button type="submit" id="sendBtn" class="w-10 h-10 rounded-xl bg-[#00f0ff] text-black font-extrabold flex items-center justify-center hover:shadow-[0_0_15px_rgba(0,240,255,0.7)] transition-all">
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
                 </button>
             </form>
 
@@ -894,9 +1491,9 @@
     </div>
 
     <!-- Floating Chat Trigger Button (Bottom Right) -->
-    <button id="floatingChatBtn" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#00f0ff] to-[#3b82f6] text-black font-bold flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.5)] hover:scale-110 transition-all duration-300 group" aria-label="Open AI Chat">
+    <button id="floatingChatBtn" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#00f0ff] to-[#38bdf8] text-black font-bold flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.6)] hover:scale-110 transition-all duration-300 group" aria-label="Open AI Chat">
         <i class="fa-solid fa-robot text-2xl group-hover:rotate-12 transition-transform"></i>
-        <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#00ff9d] border-2 border-[#0b0f19]"></span>
+        <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#10b981] border-2 border-[#070b14]"></span>
     </button>
 
     <!-- Custom Client Script -->
