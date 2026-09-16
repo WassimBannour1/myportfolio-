@@ -295,6 +295,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        if (cmd.includes('tux') || cmd.includes('road') || cmd.includes('journey')) {
+            appendTerminalLog('success', `[+] Initiating Linux Cyber Road with Tux 2077...`);
+            appendTerminalLog('info', `[+] Telemetry: 8 Milestones Active | Auto-Cruise Ready.`);
+            const roadSection = document.getElementById('cyber-road');
+            if (roadSection) {
+                roadSection.scrollIntoView({ behavior: 'smooth' });
+                if (window.selectCyberStation) window.selectCyberStation(currentStationIdx || 0);
+            }
+            return;
+        }
+
         // Default unknown command
         appendTerminalLog('warn', `Command not found: "${rawCmd}". Type <strong class="text-[#00f0ff]">help</strong> for a list of valid commands.`);
     }
@@ -462,6 +473,316 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // -------------------------------------------------------------
+    // 3.2 INTERACTIVE CYBER ROAD & TUX 2077 ENGINE
+    // -------------------------------------------------------------
+    const cyberStations = [
+        {
+            id: 'bac',
+            badge: 'FOUNDATIONS',
+            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            date: '2018 - 2022',
+            location: 'Bekalta, TN',
+            title: 'Baccalauréat Technique (Mention Assez Bien)',
+            org: 'Lycée Secondaire Bekalta — Moyenne 13.72 / 20',
+            desc: 'Solides fondations en logique électronique, analyse combinatoire et séquentielle, manipulation de structures de données primitives et modélisation algorithmique.',
+            speech: '"Foundational logic circuits & hardware systems initialized at Bekalta!"',
+            tags: ['Logique Numérique', 'Électronique', 'Algorithmique', 'Systèmes Techniques'],
+            actionText: 'Détails Formation',
+            actionHref: '#skills',
+            nodeColor: 'border-[#00f0ff]/40'
+        },
+        {
+            id: 'isimm',
+            badge: 'LICENCE PRO',
+            badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
+            date: '2022 - 2025',
+            location: 'Monastir, TN',
+            title: 'Licence en Génie Logiciel',
+            org: 'ISIMM — Institut Supérieur d\'Informatique et de Mathématiques',
+            desc: 'Formation approfondie en conception logicielle, programmation orientée objet (Java, C++), bases de données relationnelles & NoSQL, et architectures web distribuées.',
+            speech: '"Software patterns, data structures & OOP architectures mastered at ISIMM!"',
+            tags: ['Java (OOP)', 'C++', 'SQL / NoSQL', 'Web Architecture', 'Design Patterns'],
+            actionText: 'Consulter le Cursus',
+            actionHref: '#skills',
+            nodeColor: 'border-[#38bdf8]/40'
+        },
+        {
+            id: 'ieee',
+            badge: 'GLOBAL HONORS',
+            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            date: '2023 - 2024',
+            location: 'Global / ISIMM',
+            title: 'Top 33 Mondial IEEEXtreme 17.0 & Trésorier IEEE',
+            org: 'IEEE Region 8 & IEEE ISIMM Student Branch',
+            desc: '33ème rang mondial parmi des milliers d\'équipes d\'ingénieurs internationales et 2ème rang national en Tunisie (24h de marathon algorithmique non-stop). Trésorier de l\'exécutif IEEE pour la gestion financière des événements.',
+            speech: '"Algorithmic optimization engaged! Top 33 Worldwide rank locked in 24h!"',
+            tags: ['IEEEXtreme #33', 'Competitive Coding', 'Marathon 24h', 'Leadership Exécutif', 'Trésorerie'],
+            actionText: 'Voir les Honneurs',
+            actionHref: '#achievements',
+            nodeColor: 'border-[#00f0ff]/40'
+        },
+        {
+            id: 'swconsult',
+            badge: 'AI AUTOMATION',
+            badgeColor: 'text-purple-400 bg-purple-500/20 border-purple-500/40',
+            date: '2025',
+            location: 'Monastir, TN',
+            title: 'Développeur Fullstack & IA OCR (QuickDoc)',
+            org: 'SW CONSULTING — Plateforme d\'Extraction Intelligente',
+            desc: 'Développement complet de QuickDoc pour l\'automatisation de l\'extraction de factures/devis par OCR et classification IA. Conception avec Vue.js, Node.js, Express et NumPy.',
+            speech: '"Automating document extraction with AI OCR & fullstack microservices!"',
+            tags: ['Vue.js', 'Node.js', 'AI / OCR', 'NumPy', 'Scrum Agile'],
+            actionText: 'GitHub QuickDoc',
+            actionHref: 'https://github.com/WassimBannour1/QuickDoc',
+            nodeColor: 'border-purple-500/40'
+        },
+        {
+            id: 'talan',
+            badge: 'FLAGSHIP CYBERSEC',
+            badgeColor: 'text-[#10b981] bg-emerald-500/20 border-emerald-500/40',
+            date: '2026 (Juil - Août)',
+            location: 'Tunis, TN',
+            title: 'Développeur Cybersécurité — Smart EASM & OSINT',
+            org: 'TALAN TUNISIE — External Attack Surface Management',
+            desc: 'Conception et développement de la plateforme Smart EASM pour la découverte continue des actifs exposés et la corrélation de renseignements sur les menaces (VirusTotal, Subfinder, crt.sh, AbuseIPDB, Criminal IP).',
+            speech: '"Intercepting OSINT feeds & continuous attack surface vulnerability discovery at Talan!"',
+            tags: ['Smart EASM', 'OSINT Connectors', 'Python', 'VirusTotal API', 'Subfinder', 'Threat Intelligence'],
+            actionText: 'Détails Expérience',
+            actionHref: '#experience',
+            nodeColor: 'border-emerald-500/40'
+        },
+        {
+            id: 'certs',
+            badge: 'CREDLY VERIFIED',
+            badgeColor: 'text-yellow-400 bg-yellow-500/20 border-yellow-500/40',
+            date: '2026',
+            location: 'Global Credentials',
+            title: 'Certifications RHCSA & PCAP Vérifiées',
+            org: 'Red Hat, Inc. & Python Institute (Badges Credly Officiels)',
+            desc: 'Double certification d\'élite : Red Hat Certified System Administrator (Administration Linux Enterprise RHEL, SELinux, Storage LVM, FirewallD) + Certified Associate in Python Programming.',
+            speech: '"Kernel tuned, SELinux enforced, Red Hat Enterprise & Python certified!"',
+            tags: ['RHCSA (Red Hat)', 'PCAP (Python)', 'SELinux Enforcing', 'LVM Storage', 'Credly Badges'],
+            actionText: 'Vérifier sur Credly',
+            actionHref: '#certifications',
+            nodeColor: 'border-yellow-500/40'
+        },
+        {
+            id: 'tekup',
+            badge: 'ACTIVE STATION',
+            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            date: '2025 - Présent',
+            location: 'Ariana, TN',
+            title: 'Diplôme National d\'Ingénieur en Cybersécurité',
+            org: 'TEK-UP University — Cycle Ingénieur',
+            desc: 'Spécialisation avancée en Sécurité des Systèmes d\'Information, Durcissement Linux (Hardening), Cryptographie appliquée, Analyse de Vulnérabilités et Pratiques Security-by-Design.',
+            speech: '"Active command station: Scaling enterprise cybersecurity & system defense at TEK-UP!"',
+            tags: ['Ingénieur Cybersécurité', 'Linux Hardening', 'Crypto Appliquée', 'Security-by-Design', 'TEK-UP'],
+            actionText: 'Détails Cursus',
+            actionHref: '#skills',
+            nodeColor: 'border-[#00f0ff]/40'
+        },
+        {
+            id: 'target',
+            badge: 'FORWARD VECTOR',
+            badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
+            date: 'Horizon Recrutement',
+            location: 'On-site / Hybrid / Remote',
+            title: 'Ingénierie Cybersécurité & Systèmes Linux',
+            org: 'Prêt pour Rôles à Fort Impact Stratégique',
+            desc: 'Disponible pour intégrer des équipes d\'ingénierie d\'élite en Cybersécurité, Administration Systèmes Linux Enterprise, DevSecOps et Conception Logicielle Résiliente.',
+            speech: '"Target locked! Ready to architect secure enterprise systems for top engineering teams!"',
+            tags: ['Open to Roles', 'Cybersecurity Engineer', 'Linux Admin', 'DevSecOps', 'Tunisie / International'],
+            actionText: 'Contacter Wassim',
+            actionHref: '#contact',
+            nodeColor: 'border-[#38bdf8]/40'
+        }
+    ];
+
+    let currentStationIdx = 0;
+    let autoCruiseInterval = null;
+    let isAutoCruising = false;
+
+    window.selectCyberStation = function(idx, playSfx = true) {
+        if (idx < 0) idx = cyberStations.length - 1;
+        if (idx >= cyberStations.length) idx = 0;
+        currentStationIdx = idx;
+        const station = cyberStations[idx];
+
+        // Update station buttons
+        const stationBtns = document.querySelectorAll('.station-btn');
+        stationBtns.forEach((btn, bIdx) => {
+            if (bIdx === idx) {
+                btn.classList.add('active');
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update Highway node cards
+        const nodeCards = document.querySelectorAll('.road-node-card');
+        nodeCards.forEach((card, cIdx) => {
+            if (cIdx === idx) {
+                card.style.borderColor = '#00f0ff';
+                card.style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.4)';
+                card.style.transform = 'translateY(-3px)';
+            } else {
+                card.style.borderColor = '#1e293b';
+                card.style.boxShadow = 'none';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+
+        // Update Tux Speech & HUD
+        const tuxSpeechText = document.getElementById('tuxSpeechText');
+        const tuxStationBadge = document.getElementById('tuxStationBadge');
+        if (tuxSpeechText) tuxSpeechText.textContent = station.speech;
+        if (tuxStationBadge) tuxStationBadge.textContent = `STATION 0${idx + 1} / 08`;
+
+        // Animate Tux Glider (subtle tilt and slide physics)
+        const tuxContainer = document.getElementById('cyberTuxContainer');
+        if (tuxContainer) {
+            tuxContainer.style.transform = `scale(1.05) rotate(${((idx % 2 === 0 ? 1 : -1) * 2)}deg)`;
+            setTimeout(() => {
+                tuxContainer.style.transform = 'scale(1) rotate(0deg)';
+            }, 350);
+        }
+
+        // Update Dossier Card
+        const dossierBadge = document.getElementById('dossierBadge');
+        const dossierDate = document.getElementById('dossierDate');
+        const dossierLocation = document.getElementById('dossierLocation');
+        const dossierTitle = document.getElementById('dossierTitle');
+        const dossierOrg = document.getElementById('dossierOrg');
+        const dossierDesc = document.getElementById('dossierDesc');
+        const dossierTags = document.getElementById('dossierTags');
+        const dossierActionBtn = document.getElementById('dossierActionBtn');
+        const dossierActionText = document.getElementById('dossierActionText');
+
+        if (dossierBadge) {
+            dossierBadge.textContent = station.badge;
+            dossierBadge.className = `px-2.5 py-0.5 rounded-md font-mono text-xs font-extrabold border ${station.badgeColor}`;
+        }
+        if (dossierDate) dossierDate.textContent = station.date;
+        if (dossierLocation) dossierLocation.innerHTML = `<i class="fa-solid fa-location-dot text-[#00f0ff]"></i> ${station.location}`;
+        if (dossierTitle) dossierTitle.textContent = station.title;
+        if (dossierOrg) dossierOrg.textContent = station.org;
+        if (dossierDesc) dossierDesc.textContent = station.desc;
+
+        if (dossierTags) {
+            dossierTags.innerHTML = station.tags.map((t, i) => 
+                `<span class="px-2 py-0.5 rounded bg-[#0f172a] ${i === 0 ? 'text-[#00f0ff] border border-[#00f0ff]/30 font-bold' : 'text-gray-300 border border-[#1e293b]'}">${t}</span>`
+            ).join('');
+        }
+
+        if (dossierActionBtn) {
+            dossierActionBtn.href = station.actionHref;
+            if (station.actionHref.startsWith('http')) {
+                dossierActionBtn.target = '_blank';
+                dossierActionBtn.rel = 'noopener noreferrer';
+            } else {
+                dossierActionBtn.removeAttribute('target');
+                dossierActionBtn.removeAttribute('rel');
+            }
+        }
+        if (dossierActionText) dossierActionText.textContent = station.actionText;
+
+        if (playSfx) {
+            playFuturisticTone(850 + idx * 45, 0.035, 'triangle', 0.025);
+        }
+    };
+
+    // Attach Station Button Clicks
+    const stationBtns = document.querySelectorAll('.station-btn');
+    stationBtns.forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+            selectCyberStation(idx);
+            stopAutoCruise();
+        });
+    });
+
+    // Prev / Next Station Controls
+    const prevStationBtn = document.getElementById('prevStationBtn');
+    const nextStationBtn = document.getElementById('nextStationBtn');
+    if (prevStationBtn) {
+        prevStationBtn.addEventListener('click', () => {
+            selectCyberStation(currentStationIdx - 1);
+            stopAutoCruise();
+        });
+    }
+    if (nextStationBtn) {
+        nextStationBtn.addEventListener('click', () => {
+            selectCyberStation(currentStationIdx + 1);
+            stopAutoCruise();
+        });
+    }
+
+    // Auto-Cruise Mode
+    const autoCruiseBtn = document.getElementById('autoCruiseBtn');
+    const autoCruiseIcon = document.getElementById('autoCruiseIcon');
+    const autoCruiseText = document.getElementById('autoCruiseText');
+
+    function startAutoCruise() {
+        isAutoCruising = true;
+        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-pause text-xs';
+        if (autoCruiseText) autoCruiseText.textContent = 'Cruising...';
+        if (autoCruiseBtn) {
+            autoCruiseBtn.classList.add('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
+        }
+        autoCruiseInterval = setInterval(() => {
+            selectCyberStation(currentStationIdx + 1, false);
+            playFuturisticTone(900, 0.02, 'sine', 0.015);
+        }, 3600);
+    }
+
+    function stopAutoCruise() {
+        isAutoCruising = false;
+        if (autoCruiseInterval) {
+            clearInterval(autoCruiseInterval);
+            autoCruiseInterval = null;
+        }
+        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-play text-xs';
+        if (autoCruiseText) autoCruiseText.textContent = 'Auto-Cruise';
+        if (autoCruiseBtn) {
+            autoCruiseBtn.classList.remove('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
+        }
+    }
+
+    if (autoCruiseBtn) {
+        autoCruiseBtn.addEventListener('click', () => {
+            if (isAutoCruising) stopAutoCruise();
+            else startAutoCruise();
+        });
+    }
+
+    // Interactive Tux Mascot Click Easter Egg
+    const cyberTuxContainer = document.getElementById('cyberTuxContainer');
+    if (cyberTuxContainer) {
+        const hackerQuotes = [
+            "SELinux Status: Enforcing. System security level: Optimal.",
+            "RHEL 9 kernel loaded! Red Hat Certified System Administrator ready.",
+            "Bypassing firewalls... OSINT reconnaissance scanner active!",
+            "Global algorithmic rank: #33 Worldwide IEEEXtreme 17.0 confirmed.",
+            "Python PCAP data normalization pipeline online & running.",
+            "Welcome to Wassim Bannour's Cyber Terminal. Security-by-Design engaged!"
+        ];
+        let quoteIdx = 0;
+
+        cyberTuxContainer.addEventListener('click', () => {
+            const tuxSpeechText = document.getElementById('tuxSpeechText');
+            if (tuxSpeechText) {
+                tuxSpeechText.textContent = `"${hackerQuotes[quoteIdx % hackerQuotes.length]}"`;
+                quoteIdx++;
+            }
+            playFuturisticTone(1350, 0.06, 'sawtooth', 0.04);
+            cyberTuxContainer.style.transform = 'scale(1.12) rotate(-4deg)';
+            setTimeout(() => {
+                cyberTuxContainer.style.transform = 'scale(1) rotate(0deg)';
+            }, 300);
+        });
+    }
 
     // -------------------------------------------------------------
     // 4. AI TWIN CHAT WIDGET & CLOUDFLARE WORKER CLIENT
