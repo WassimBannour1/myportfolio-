@@ -85,8 +85,10 @@ export default {
 [INDUSTRY CERTIFICATIONS]
 1. RHCSA (Red Hat Certified System Administrator) – Red Hat:
    - Linux administration on RHEL/CentOS, system hardening, user/group permission models, LVM storage, firewall management (FirewallD), and systemd orchestration.
+   - Credly Verification Link: https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1
 2. PCAP (Certified Associate in Python Programming) – Python Institute:
    - Advanced Python concepts, OOP, data structures, automation scripts, and data normalization pipelines.
+   - Credly Verification Link: https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89
 
 [PROFESSIONAL WORK EXPERIENCE]
 1. TALAN TUNISIE (Tunis, TN) — 2026 Juillet - Août | Développeur Cybersécurité
