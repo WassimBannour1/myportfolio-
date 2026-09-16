@@ -295,12 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (cmd.includes('tux') || cmd.includes('road') || cmd.includes('journey')) {
-            appendTerminalLog('success', `[+] Initiating Linux Cyber Road with Tux 2077...`);
-            appendTerminalLog('info', `[+] Telemetry: 8 Milestones Active | Auto-Cruise Ready.`);
-            const roadSection = document.getElementById('cyber-road');
-            if (roadSection) {
-                roadSection.scrollIntoView({ behavior: 'smooth' });
+        if (cmd.includes('pipeline') || cmd.includes('radar') || cmd.includes('road') || cmd.includes('journey')) {
+            appendTerminalLog('success', `[+] Initializing Cyber Operations Radar & Defense Pipeline...`);
+            appendTerminalLog('info', `[+] Telemetry: 8 Milestones Active | Real-Time Telemetry Operational.`);
+            const pipelineSection = document.getElementById('pipeline');
+            if (pipelineSection) {
+                pipelineSection.scrollIntoView({ behavior: 'smooth' });
                 if (window.selectCyberStation) window.selectCyberStation(currentStationIdx || 0);
             }
             return;
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 3.2 INTERACTIVE CYBER ROAD & TUX 2077 ENGINE
+    // 3.2 INTERACTIVE CYBER OPERATIONS RADAR & ENGINEERING PIPELINE
     // -------------------------------------------------------------
     const cyberStations = [
         {
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Baccalauréat Technique (Mention Assez Bien)',
             org: 'Lycée Secondaire Bekalta — Moyenne 13.72 / 20',
             desc: 'Solides fondations en logique électronique, analyse combinatoire et séquentielle, manipulation de structures de données primitives et modélisation algorithmique.',
-            speech: '"Foundational logic circuits & hardware systems initialized at Bekalta!"',
+            speech: '"[+] Logique électronique & modélisation numérique initialisées avec succès."',
             tags: ['Logique Numérique', 'Électronique', 'Algorithmique', 'Systèmes Techniques'],
             actionText: 'Détails Formation',
             actionHref: '#skills',
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Licence en Génie Logiciel',
             org: 'ISIMM — Institut Supérieur d\'Informatique et de Mathématiques',
             desc: 'Formation approfondie en conception logicielle, programmation orientée objet (Java, C++), bases de données relationnelles & NoSQL, et architectures web distribuées.',
-            speech: '"Software patterns, data structures & OOP architectures mastered at ISIMM!"',
+            speech: '"[+] Conception logicielle OOP, algorithmique avancée & architectures distribuées validées."',
             tags: ['Java (OOP)', 'C++', 'SQL / NoSQL', 'Web Architecture', 'Design Patterns'],
             actionText: 'Consulter le Cursus',
             actionHref: '#skills',
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Top 33 Mondial IEEEXtreme 17.0 & Trésorier IEEE',
             org: 'IEEE Region 8 & IEEE ISIMM Student Branch',
             desc: '33ème rang mondial parmi des milliers d\'équipes d\'ingénieurs internationales et 2ème rang national en Tunisie (24h de marathon algorithmique non-stop). Trésorier de l\'exécutif IEEE pour la gestion financière des événements.',
-            speech: '"Algorithmic optimization engaged! Top 33 Worldwide rank locked in 24h!"',
+            speech: '"[+] Performance algorithmique confirmée : Top 33 Mondial IEEEXtreme 17.0 (24h marathon non-stop)."',
             tags: ['IEEEXtreme #33', 'Competitive Coding', 'Marathon 24h', 'Leadership Exécutif', 'Trésorerie'],
             actionText: 'Voir les Honneurs',
             actionHref: '#achievements',
@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Développeur Fullstack & IA OCR (QuickDoc)',
             org: 'SW CONSULTING — Plateforme d\'Extraction Intelligente',
             desc: 'Développement complet de QuickDoc pour l\'automatisation de l\'extraction de factures/devis par OCR et classification IA. Conception avec Vue.js, Node.js, Express et NumPy.',
-            speech: '"Automating document extraction with AI OCR & fullstack microservices!"',
+            speech: '"[+] Pipeline OCR & extraction automatisée par IA déployés en production chez SW Consulting."',
             tags: ['Vue.js', 'Node.js', 'AI / OCR', 'NumPy', 'Scrum Agile'],
             actionText: 'GitHub QuickDoc',
             actionHref: 'https://github.com/WassimBannour1/QuickDoc',
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Développeur Cybersécurité — Smart EASM & OSINT',
             org: 'TALAN TUNISIE — External Attack Surface Management',
             desc: 'Conception et développement de la plateforme Smart EASM pour la découverte continue des actifs exposés et la corrélation de renseignements sur les menaces (VirusTotal, Subfinder, crt.sh, AbuseIPDB, Criminal IP).',
-            speech: '"Intercepting OSINT feeds & continuous attack surface vulnerability discovery at Talan!"',
+            speech: '"[+] Connecteurs OSINT multi-sources & cartographie de surface d\'attaque externe opérationnels chez Talan."',
             tags: ['Smart EASM', 'OSINT Connectors', 'Python', 'VirusTotal API', 'Subfinder', 'Threat Intelligence'],
             actionText: 'Détails Expérience',
             actionHref: '#experience',
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Certifications RHCSA & PCAP Vérifiées',
             org: 'Red Hat, Inc. & Python Institute (Badges Credly Officiels)',
             desc: 'Double certification d\'élite : Red Hat Certified System Administrator (Administration Linux Enterprise RHEL, SELinux, Storage LVM, FirewallD) + Certified Associate in Python Programming.',
-            speech: '"Kernel tuned, SELinux enforced, Red Hat Enterprise & Python certified!"',
+            speech: '"[+] Double accréditation officielle validée : Red Hat RHCSA (Linux Kernel) & PCAP (Python Institute)."',
             tags: ['RHCSA (Red Hat)', 'PCAP (Python)', 'SELinux Enforcing', 'LVM Storage', 'Credly Badges'],
             actionText: 'Vérifier sur Credly',
             actionHref: '#certifications',
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Diplôme National d\'Ingénieur en Cybersécurité',
             org: 'TEK-UP University — Cycle Ingénieur',
             desc: 'Spécialisation avancée en Sécurité des Systèmes d\'Information, Durcissement Linux (Hardening), Cryptographie appliquée, Analyse de Vulnérabilités et Pratiques Security-by-Design.',
-            speech: '"Active command station: Scaling enterprise cybersecurity & system defense at TEK-UP!"',
+            speech: '"[+] Poste actif : Sécurisation d\'infrastructures critiques, Linux Hardening & Security-by-Design chez TEK-UP."',
             tags: ['Ingénieur Cybersécurité', 'Linux Hardening', 'Crypto Appliquée', 'Security-by-Design', 'TEK-UP'],
             actionText: 'Détails Cursus',
             actionHref: '#skills',
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Ingénierie Cybersécurité & Systèmes Linux',
             org: 'Prêt pour Rôles à Fort Impact Stratégique',
             desc: 'Disponible pour intégrer des équipes d\'ingénierie d\'élite en Cybersécurité, Administration Systèmes Linux Enterprise, DevSecOps et Conception Logicielle Résiliente.',
-            speech: '"Target locked! Ready to architect secure enterprise systems for top engineering teams!"',
+            speech: '"[+] Prêt pour déploiement immédiat en ingénierie Cybersécurité, Administration Linux Enterprise & DevSecOps."',
             tags: ['Open to Roles', 'Cybersecurity Engineer', 'Linux Admin', 'DevSecOps', 'Tunisie / International'],
             actionText: 'Contacter Wassim',
             actionHref: '#contact',
@@ -635,19 +635,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update Tux Speech & HUD
+        // Update Telemetry Callout & HUD
         const tuxSpeechText = document.getElementById('tuxSpeechText');
         const tuxStationBadge = document.getElementById('tuxStationBadge');
         if (tuxSpeechText) tuxSpeechText.textContent = station.speech;
-        if (tuxStationBadge) tuxStationBadge.textContent = `STATION 0${idx + 1} / 08`;
+        if (tuxStationBadge) tuxStationBadge.textContent = `MILESTONE 0${idx + 1} / 08`;
 
-        // Animate Tux Glider (subtle tilt and slide physics)
-        const tuxContainer = document.getElementById('cyberTuxContainer');
-        if (tuxContainer) {
-            tuxContainer.style.transform = `scale(1.05) rotate(${((idx % 2 === 0 ? 1 : -1) * 2)}deg)`;
+        // Pulse Radar Screen
+        const radarContainer = document.getElementById('cyberTuxContainer');
+        if (radarContainer) {
+            radarContainer.style.transform = 'scale(1.04)';
             setTimeout(() => {
-                tuxContainer.style.transform = 'scale(1) rotate(0deg)';
-            }, 350);
+                radarContainer.style.transform = 'scale(1)';
+            }, 300);
         }
 
         // Update Dossier Card
@@ -719,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auto-Cruise Mode
+    // Auto-Cruise / Live Scan Mode
     const autoCruiseBtn = document.getElementById('autoCruiseBtn');
     const autoCruiseIcon = document.getElementById('autoCruiseIcon');
     const autoCruiseText = document.getElementById('autoCruiseText');
@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startAutoCruise() {
         isAutoCruising = true;
         if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-pause text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = 'Cruising...';
+        if (autoCruiseText) autoCruiseText.textContent = 'Scanning...';
         if (autoCruiseBtn) {
             autoCruiseBtn.classList.add('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
         }
@@ -743,8 +743,8 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(autoCruiseInterval);
             autoCruiseInterval = null;
         }
-        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-play text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = 'Auto-Cruise';
+        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-radar text-xs';
+        if (autoCruiseText) autoCruiseText.textContent = 'Live Scan';
         if (autoCruiseBtn) {
             autoCruiseBtn.classList.remove('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
         }
@@ -757,29 +757,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Interactive Tux Mascot Click Easter Egg
-    const cyberTuxContainer = document.getElementById('cyberTuxContainer');
-    if (cyberTuxContainer) {
-        const hackerQuotes = [
-            "SELinux Status: Enforcing. System security level: Optimal.",
-            "RHEL 9 kernel loaded! Red Hat Certified System Administrator ready.",
-            "Bypassing firewalls... OSINT reconnaissance scanner active!",
-            "Global algorithmic rank: #33 Worldwide IEEEXtreme 17.0 confirmed.",
-            "Python PCAP data normalization pipeline online & running.",
-            "Welcome to Wassim Bannour's Cyber Terminal. Security-by-Design engaged!"
+    // Interactive Radar Screen Click Telemetry
+    const radarContainerElem = document.getElementById('cyberTuxContainer');
+    if (radarContainerElem) {
+        const securityStatusReports = [
+            "[+] SELinux Status: Enforcing. Kernel security profile: Optimal.",
+            "[+] RHEL 9 Enterprise stack verified. Red Hat RHCSA Certified.",
+            "[+] External Attack Surface Management (EASM) recon feeds active.",
+            "[+] IEEEXtreme 17.0: #33 Worldwide global rank verified.",
+            "[+] Python PCAP automated normalization pipelines online.",
+            "[+] System Integrity: 100% | Security-by-Design architecture enforced."
         ];
-        let quoteIdx = 0;
+        let reportIdx = 0;
 
-        cyberTuxContainer.addEventListener('click', () => {
+        radarContainerElem.addEventListener('click', () => {
             const tuxSpeechText = document.getElementById('tuxSpeechText');
             if (tuxSpeechText) {
-                tuxSpeechText.textContent = `"${hackerQuotes[quoteIdx % hackerQuotes.length]}"`;
-                quoteIdx++;
+                tuxSpeechText.textContent = `"${securityStatusReports[reportIdx % securityStatusReports.length]}"`;
+                reportIdx++;
             }
-            playFuturisticTone(1350, 0.06, 'sawtooth', 0.04);
-            cyberTuxContainer.style.transform = 'scale(1.12) rotate(-4deg)';
+            playFuturisticTone(1200, 0.05, 'sawtooth', 0.035);
+            radarContainerElem.style.transform = 'scale(1.06)';
             setTimeout(() => {
-                cyberTuxContainer.style.transform = 'scale(1) rotate(0deg)';
+                radarContainerElem.style.transform = 'scale(1)';
             }, 300);
         });
     }

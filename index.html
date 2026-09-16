@@ -338,65 +338,43 @@
             opacity: 0.5;
         }
 
-        /* Cyber Tux Hacker Mascot & Road Animations */
-        .cyber-tux-body-group {
-            animation: tuxHover 3s ease-in-out infinite alternate;
-            transform-origin: 120px 215px;
+        /* Cyber Security Operations Radar & Pipeline Animations */
+        .radar-sweep-line {
+            transform-origin: 120px 120px;
+            animation: radarRotate 4.5s linear infinite;
         }
-        @keyframes tuxHover {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-7px) rotate(1deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        @keyframes radarRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        .cyber-shadow-pulse {
-            animation: shadowPulse 3s ease-in-out infinite alternate;
-            transform-origin: 120px 245px;
+        .radar-ring-pulse {
+            animation: ringPulse 3.2s ease-out infinite;
+            transform-origin: 120px 120px;
         }
-        @keyframes shadowPulse {
-            0% { transform: scale(1); opacity: 0.45; }
-            50% { transform: scale(0.85); opacity: 0.2; }
-            100% { transform: scale(1); opacity: 0.45; }
+        @keyframes ringPulse {
+            0% { transform: scale(0.5); opacity: 0.8; }
+            50% { opacity: 0.3; }
+            100% { transform: scale(1.18); opacity: 0; }
         }
-        .cyber-visor-scanbeam {
-            animation: visorScan 2s ease-in-out infinite alternate;
+        .telemetry-node-ping {
+            animation: nodePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
-        @keyframes visorScan {
-            0% { transform: translateX(0px); opacity: 0.95; }
-            50% { opacity: 0.4; }
-            100% { transform: translateX(54px); opacity: 0.95; }
+        @keyframes nodePing {
+            0%, 100% { transform: scale(1); opacity: 0.95; }
+            50% { transform: scale(1.35); opacity: 0.4; }
         }
-        .cyber-sentinel-drone {
-            animation: droneOrbit 4s ease-in-out infinite;
-            transform-origin: 205px 55px;
+        .waveform-path {
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: waveformDraw 3s linear infinite;
         }
-        @keyframes droneOrbit {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(6deg); }
-        }
-        .cyber-thruster-exhaust {
-            animation: thrusterFlicker 0.12s ease-in-out infinite alternate;
-            transform-origin: 120px 225px;
-        }
-        @keyframes thrusterFlicker {
-            0% { transform: scaleY(0.85); opacity: 0.7; }
-            100% { transform: scaleY(1.18); opacity: 1; }
-        }
-        .cyber-blink-dot {
-            animation: cyberBlink 1s step-end infinite;
-        }
-        @keyframes cyberBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
-        }
-        .cyber-pulse-dot {
-            animation: pulseFast 0.8s ease-in-out infinite alternate;
-        }
-        @keyframes pulseFast {
-            0% { opacity: 0.4; }
-            100% { opacity: 1; }
+        @keyframes waveformDraw {
+            0% { stroke-dashoffset: 200; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -200; }
         }
 
-        /* Cyber Highway Road Track & Beam Pulse */
+        /* Cyber Highway Pipeline Track & Beam Pulse */
         .cyber-road-track {
             position: relative;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(7, 11, 20, 0.98) 100%);
@@ -457,22 +435,6 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.4); }
         }
-
-        /* Tux Companion Glider Movement */
-        .tux-glider-container {
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-        }
-        .speech-bubble-tail {
-            position: absolute;
-            left: 50%;
-            bottom: -8px;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid #00f0ff;
-        }
     </style>
 </head>
 <body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
@@ -510,7 +472,7 @@
                 <a href="#achievements" class="hover:text-[#00f0ff] transition-colors nav-link">01. // Achievements</a>
                 <a href="#certifications" class="hover:text-[#00f0ff] transition-colors nav-link">02. // Certs</a>
                 <a href="#experience" class="hover:text-[#00f0ff] transition-colors nav-link">03. // Experience</a>
-                <a href="#cyber-road" class="hover:text-[#00f0ff] transition-colors nav-link flex items-center gap-1.5 text-[#00f0ff] font-semibold"><i class="fa-solid fa-route text-xs"></i> 04. // Cyber Road</a>
+                <a href="#pipeline" class="hover:text-[#00f0ff] transition-colors nav-link flex items-center gap-1.5 text-[#00f0ff] font-semibold"><i class="fa-solid fa-shield-halved text-xs"></i> 04. // Pipeline Radar</a>
                 <a href="#skills" class="hover:text-[#00f0ff] transition-colors nav-link">05. // Education & Stack</a>
                 <a href="#contact" class="hover:text-[#00f0ff] transition-colors nav-link">06. // Contact</a>
             </nav>
@@ -549,7 +511,7 @@
             <a href="#achievements" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">01. // Achievements</a>
             <a href="#certifications" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">02. // Certifications</a>
             <a href="#experience" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">03. // Experience</a>
-            <a href="#cyber-road" class="block text-[#00f0ff] font-bold hover:text-[#00f0ff] py-1 mobile-link flex items-center gap-2"><i class="fa-solid fa-route text-xs"></i> 04. // Cyber Road (Tux 2077)</a>
+            <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#00f0ff] py-1 mobile-link flex items-center gap-2"><i class="fa-solid fa-shield-halved text-xs"></i> 04. // Pipeline & Career Radar</a>
             <a href="#skills" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">05. // Education & Skills</a>
             <a href="#contact" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">06. // Contact</a>
             <div class="pt-2 flex items-center justify-between border-t border-[#1e293b]">
@@ -1484,8 +1446,8 @@
             </div>
         </section>
 
-        <!-- 04. INTERACTIVE CYBER ROAD & CAREER PIPELINE SECTION -->
-        <section id="cyber-road" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#040814]/80 relative overflow-hidden">
+        <!-- 04. CYBER OPERATIONS RADAR & ENGINEERING PIPELINE SECTION -->
+        <section id="pipeline" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#040814]/80 relative overflow-hidden">
             
             <div class="max-w-7xl mx-auto space-y-10">
                 
@@ -1493,13 +1455,13 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-card">
                     <div>
                         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,240,255,0.2)] mb-2">
-                            <i class="fa-solid fa-route"></i>
-                            <span>04. // LINUX HACKER HIGHWAY & PIPELINE</span>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>04. // DEFENSE RADAR & PIPELINE TRAJECTORY</span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Cyber Journey & Linux Road</h2>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Cyber Operations Radar & Pipeline</h2>
                     </div>
                     <p class="text-gray-300 text-xs sm:text-sm font-mono max-w-md">
-                        Explore Wassim's complete trajectory with <strong class="text-[#00f0ff]">Tux 2077</strong> (Cyber Hacker Mascot) cruising along the interactive career pipeline.
+                        Real-time security telemetry, attack surface intelligence, and chronological milestone architecture across Wassim's career.
                     </p>
                 </div>
 
@@ -1545,8 +1507,8 @@
                     <!-- Mode & Prev/Next Controls -->
                     <div class="flex items-center gap-2 self-end md:self-center font-mono text-xs">
                         <button id="autoCruiseBtn" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#10b981]/50 text-[#10b981] hover:bg-[#10b981]/20 font-bold transition-all flex items-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
-                            <i class="fa-solid fa-play text-xs" id="autoCruiseIcon"></i>
-                            <span id="autoCruiseText">Auto-Cruise</span>
+                            <i class="fa-solid fa-radar text-xs" id="autoCruiseIcon"></i>
+                            <span id="autoCruiseText">Live Scan</span>
                         </button>
                         
                         <div class="flex items-center gap-1">
@@ -1561,174 +1523,114 @@
 
                 </div>
 
-                <!-- THE INTERACTIVE ROAD STAGE (Cyber Tux & Milestone Telemetry) -->
+                <!-- THE INTERACTIVE STAGE (Cyber Radar & Milestone Dossier) -->
                 <div class="cyber-road-track rounded-3xl p-6 sm:p-8 relative reveal-card overflow-hidden">
                     
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                         
-                        <!-- Left Column: The Cyber Hacker Penguin (Tux 2077) Mascot & Speech Telemetry -->
+                        <!-- Left Column: Sophisticated Cyber Operations Radar HUD -->
                         <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
                             
-                            <!-- Tux Dynamic Reactive Speech Bubble -->
-                            <div class="w-full max-w-[320px] mb-3 p-3.5 rounded-2xl bg-[#070b14]/95 border-2 border-[#00f0ff]/60 shadow-[0_0_20px_rgba(0,240,255,0.3)] relative font-mono text-xs">
+                            <!-- Dynamic Operations Telemetry Callout -->
+                            <div class="w-full max-w-[340px] mb-3 p-3.5 rounded-2xl bg-[#070b14]/95 border border-[#00f0ff]/40 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative font-mono text-xs">
                                 <div class="flex items-center justify-between pb-1 mb-1.5 border-b border-[#1e293b]">
-                                    <span class="text-[#10b981] font-bold text-[10px] flex items-center gap-1">
-                                        <i class="fa-solid fa-terminal"></i> TUX_2077 // SEC_OPS
+                                    <span class="text-[#10b981] font-bold text-[10px] flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+                                        SEC_OPS // TELEMETRY RADAR
                                     </span>
-                                    <span id="tuxStationBadge" class="text-[9px] px-1.5 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-extrabold">
-                                        STATION 01 / 08
+                                    <span id="tuxStationBadge" class="text-[9px] px-2 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-extrabold">
+                                        MILESTONE 01 / 08
                                     </span>
                                 </div>
                                 <p id="tuxSpeechText" class="text-gray-200 text-xs font-semibold leading-relaxed">
                                     "Foundational logic circuits & hardware systems initialized at Bekalta!"
                                 </p>
-                                <div class="speech-bubble-tail"></div>
                             </div>
 
-                            <!-- Animated Cyber Tux SVG Stage (Clickable Easter Egg) -->
-                            <div class="relative w-56 sm:w-64 h-64 sm:h-72 cursor-pointer group tux-glider-container" id="cyberTuxContainer" title="Click Cyber Tux to trigger hacker sound & voice line!">
+                            <!-- High-Tech Animated Radar Screen SVG -->
+                            <div class="relative w-60 sm:w-68 h-60 sm:h-68 cursor-pointer group" id="cyberTuxContainer" title="Click to pulse radar scan telemetry!">
                                 
-                                <!-- Floating Scanning Reticle Overlay -->
-                                <div class="absolute -top-2 -right-2 px-2 py-0.5 rounded-md bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-[9px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                                    [CLICK TUX]
-                                </div>
-
-                                <!-- Pure SVG Cyber Hacker Penguin Vector -->
-                                <svg id="cyberTuxSvg" class="w-full h-full drop-shadow-[0_0_30px_rgba(0,240,255,0.45)]" viewBox="0 0 240 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-full h-full drop-shadow-[0_0_35px_rgba(0,240,255,0.35)]" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
-                                        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#1e293b"/>
-                                            <stop offset="50%" stop-color="#0f172a"/>
-                                            <stop offset="100%" stop-color="#070b14"/>
-                                        </linearGradient>
-                                        <linearGradient id="hoodieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#0b1329"/>
-                                            <stop offset="100%" stop-color="#020617"/>
-                                        </linearGradient>
-                                        <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95"/>
-                                            <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.85"/>
-                                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.95"/>
-                                        </linearGradient>
-                                        <radialGradient id="plasmaGlow" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="#00f0ff" stop-opacity="1"/>
-                                            <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.5"/>
-                                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+                                        <radialGradient id="radarBgGrad" cx="50%" cy="50%" r="50%">
+                                            <stop offset="0%" stop-color="#0f172a" stop-opacity="0.9"/>
+                                            <stop offset="70%" stop-color="#070b14" stop-opacity="0.95"/>
+                                            <stop offset="100%" stop-color="#030712" stop-opacity="1"/>
                                         </radialGradient>
-                                        <linearGradient id="thrusterFlame" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" stop-color="#00f0ff"/>
-                                            <stop offset="40%" stop-color="#38bdf8"/>
-                                            <stop offset="80%" stop-color="#a855f7"/>
-                                            <stop offset="100%" stop-color="transparent"/>
+                                        <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
+                                            <stop offset="50%" stop-color="#10b981" stop-opacity="0.3"/>
+                                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
                                         </linearGradient>
-                                        <filter id="neonGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
-                                            <feGaussianBlur stdDeviation="3" result="blur" />
-                                            <feMerge>
-                                                <feMergeNode in="blur" />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
-                                        </filter>
+                                        <linearGradient id="neonCyanEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#00f0ff"/>
+                                            <stop offset="100%" stop-color="#10b981"/>
+                                        </linearGradient>
                                     </defs>
 
-                                    <!-- Base Cyber Ground Shadow -->
-                                    <ellipse cx="120" cy="245" rx="75" ry="10" fill="url(#plasmaGlow)" opacity="0.45" class="cyber-shadow-pulse" />
+                                    <!-- Radar Background Body -->
+                                    <circle cx="120" cy="120" r="110" fill="url(#radarBgGrad)" stroke="#1e293b" stroke-width="2" />
 
-                                    <!-- Cyber Thruster Flame Exhaust (Animated) -->
-                                    <g class="cyber-thruster-exhaust">
-                                        <polygon points="65,225 75,255 85,225" fill="url(#thrusterFlame)" opacity="0.85" />
-                                        <polygon points="155,225 165,255 175,225" fill="url(#thrusterFlame)" opacity="0.85" />
-                                        <circle cx="75" cy="245" r="4" fill="#00f0ff" filter="url(#neonGlowFilter)" />
-                                        <circle cx="165" cy="245" r="4" fill="#00f0ff" filter="url(#neonGlowFilter)" />
+                                    <!-- Concentric Target Distance Rings -->
+                                    <circle cx="120" cy="120" r="95" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 3" />
+                                    <circle cx="120" cy="120" r="70" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.2" />
+                                    <circle cx="120" cy="120" r="45" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.2" />
+                                    <circle cx="120" cy="120" r="20" stroke="#00f0ff" stroke-opacity="0.6" stroke-width="1.5" />
+
+                                    <!-- Expanding Pulse Wave -->
+                                    <circle cx="120" cy="120" r="85" stroke="#00f0ff" stroke-width="1.5" fill="none" class="radar-ring-pulse" />
+
+                                    <!-- Crosshair Axes -->
+                                    <line x1="120" y1="10" x2="120" y2="230" stroke="#1e293b" stroke-width="1" />
+                                    <line x1="10" y1="120" x2="230" y2="120" stroke="#1e293b" stroke-width="1" />
+                                    <line x1="42" y1="42" x2="198" y2="198" stroke="#1e293b" stroke-width="0.8" stroke-dasharray="2 2" />
+                                    <line x1="42" y1="198" x2="198" y2="42" stroke="#1e293b" stroke-width="0.8" stroke-dasharray="2 2" />
+
+                                    <!-- Rotating Radar Sweep Cone -->
+                                    <g class="radar-sweep-line">
+                                        <path d="M120 120 L 120 15 A 105 105 0 0 1 205 60 Z" fill="url(#radarSweepGrad)" />
+                                        <line x1="120" y1="120" x2="120" y2="10" stroke="#00f0ff" stroke-width="2.5" />
                                     </g>
 
-                                    <!-- Cyber Hoverboard Deck -->
-                                    <g class="cyber-hoverboard">
-                                        <path d="M40 220 C 40 212, 200 212, 200 220 L 190 228 C 190 232, 50 232, 50 228 Z" fill="#0f172a" stroke="#00f0ff" stroke-width="2.5" filter="url(#neonGlowFilter)" />
-                                        <!-- Cyber Board LEDs & Circuitry -->
-                                        <circle cx="60" cy="222" r="2.5" fill="#10b981" />
-                                        <circle cx="75" cy="222" r="2.5" fill="#00f0ff" />
-                                        <circle cx="165" cy="222" r="2.5" fill="#00f0ff" />
-                                        <circle cx="180" cy="222" r="2.5" fill="#10b981" />
-                                        <line x1="85" y1="222" x2="155" y2="222" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 2" />
+                                    <!-- Active Defense Nodes on Radar (Pulsing) -->
+                                    <g class="telemetry-node-ping">
+                                        <!-- Node 1: Kernel (Top-Right) -->
+                                        <circle cx="170" cy="70" r="4" fill="#00f0ff" />
+                                        <circle cx="170" cy="70" r="8" stroke="#00f0ff" stroke-width="1" fill="none" opacity="0.6" />
+                                        <!-- Node 2: EASM / OSINT (Bottom-Right) -->
+                                        <circle cx="165" cy="165" r="4" fill="#10b981" />
+                                        <circle cx="165" cy="165" r="8" stroke="#10b981" stroke-width="1" fill="none" opacity="0.6" />
+                                        <!-- Node 3: Certifications (Bottom-Left) -->
+                                        <circle cx="75" cy="165" r="4" fill="#f59e0b" />
+                                        <circle cx="75" cy="165" r="8" stroke="#f59e0b" stroke-width="1" fill="none" opacity="0.6" />
+                                        <!-- Node 4: Algorithms (Top-Left) -->
+                                        <circle cx="70" cy="75" r="4" fill="#a855f7" />
+                                        <circle cx="70" cy="75" r="8" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.6" />
                                     </g>
 
-                                    <!-- Penguin Mascot Group (Animated Bobbing & Tilting) -->
-                                    <g class="cyber-tux-body-group">
-                                        
-                                        <!-- Penguin Cybernetic Feet on Deck -->
-                                        <path d="M72 215 C 60 215, 62 205, 82 205 C 92 205, 96 215, 96 218 Z" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
-                                        <path d="M144 215 C 134 215, 138 205, 158 205 C 178 205, 180 215, 168 218 Z" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
+                                    <!-- Central Shield & Secure Core Icon -->
+                                    <circle cx="120" cy="120" r="14" fill="#070b14" stroke="#00f0ff" stroke-width="2" />
+                                    <path d="M115 114 L 120 112 L 125 114 L 125 122 C 125 125, 120 128, 120 128 C 120 128, 115 125, 115 122 Z" fill="#00f0ff" />
 
-                                        <!-- Penguin Outer Torso / Hoodie -->
-                                        <path d="M60 145 C 50 175, 55 210, 80 212 C 100 214, 140 214, 160 212 C 185 210, 190 175, 180 145 C 175 110, 165 95, 150 85 C 140 78, 100 78, 90 85 C 75 95, 65 110, 60 145 Z" fill="url(#hoodieGrad)" stroke="#00f0ff" stroke-width="2" />
-
-                                        <!-- Cyber Armor Seams / Glow Lines -->
-                                        <path d="M68 150 Q 85 190 100 208" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.6" fill="none" stroke-dasharray="4 2" />
-                                        <path d="M172 150 Q 155 190 140 208" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.6" fill="none" stroke-dasharray="4 2" />
-
-                                        <!-- Penguin Inner Slate Chest Plate -->
-                                        <path d="M85 130 C 80 160, 85 195, 100 202 C 110 206, 130 206, 140 202 C 155 195, 160 160, 155 130 C 150 115, 138 108, 120 108 C 102 108, 90 115, 85 130 Z" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
-
-                                        <!-- Cyber Chest Terminal Hologram Badge -->
-                                        <rect x="100" y="142" width="40" height="26" rx="5" fill="#070b14" stroke="#00f0ff" stroke-width="1.5" filter="url(#neonGlowFilter)" />
-                                        <text x="106" y="158" fill="#10b981" font-family="monospace" font-size="10" font-weight="bold">&gt;_</text>
-                                        <text x="120" y="158" fill="#00f0ff" font-family="monospace" font-size="9" font-weight="bold">SEC</text>
-                                        <circle cx="134" cy="148" r="1.5" fill="#ef4444" class="cyber-pulse-dot" />
-
-                                        <!-- Left Flipper: Cyber Mechanical Arm & Hologram Datapad -->
-                                        <g class="cyber-left-arm">
-                                            <path d="M58 140 C 40 155, 35 175, 50 190 C 58 198, 68 185, 68 175 Z" fill="#0f172a" stroke="#00f0ff" stroke-width="1.8" />
-                                            <line x1="48" y1="158" x2="62" y2="175" stroke="#10b981" stroke-width="1.5" />
-                                            <!-- Datapad Hologram in hand -->
-                                            <polygon points="30,165 52,155 48,185 26,192" fill="#00f0ff" fill-opacity="0.25" stroke="#00f0ff" stroke-width="1.2" />
-                                            <line x1="33" y1="172" x2="47" y2="165" stroke="#10b981" stroke-width="1" />
-                                            <line x1="31" y1="180" x2="45" y2="173" stroke="#00f0ff" stroke-width="1" />
-                                        </g>
-
-                                        <!-- Right Flipper: Arm with Laser Tool & Wire -->
-                                        <g class="cyber-right-arm">
-                                            <path d="M182 140 C 200 155, 205 175, 190 190 C 182 198, 172 185, 172 175 Z" fill="#0f172a" stroke="#00f0ff" stroke-width="1.8" />
-                                            <line x1="192" y1="158" x2="178" y2="175" stroke="#38bdf8" stroke-width="1.5" />
-                                            <circle cx="195" cy="188" r="3" fill="#10b981" filter="url(#neonGlowFilter)" />
-                                        </g>
-
-                                        <!-- Hacker Hoodie Head & Collar -->
-                                        <path d="M75 90 C 70 50, 95 30, 120 30 C 145 30, 170 50, 165 90 C 160 108, 145 118, 120 118 C 95 118, 80 108, 75 90 Z" fill="url(#hoodieGrad)" stroke="#10b981" stroke-width="2" />
-                                        <path d="M82 82 C 80 55, 98 40, 120 40 C 142 40, 160 55, 158 82 C 155 98, 142 108, 120 108 C 98 108, 85 98, 82 82 Z" fill="#070b14" />
-
-                                        <!-- Cyber Headset & Antenna -->
-                                        <path d="M68 62 L 68 78 L 74 78 L 74 62 Z" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
-                                        <line x1="71" y1="62" x2="62" y2="42" stroke="#00f0ff" stroke-width="2" />
-                                        <circle cx="61" cy="40" r="3" fill="#10b981" filter="url(#neonGlowFilter)" class="cyber-blink-dot" />
-
-                                        <!-- Tux Cyber Visor / AR Goggles (Futuristic Screen) -->
-                                        <g class="cyber-visor-group">
-                                            <path d="M84 62 C 84 55, 156 55, 156 62 L 152 82 C 152 86, 88 86, 88 82 Z" fill="url(#visorGrad)" stroke="#00f0ff" stroke-width="2" filter="url(#neonGlowFilter)" />
-                                            
-                                            <!-- Visor Matrix Data Grid Lines -->
-                                            <line x1="92" y1="68" x2="148" y2="68" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.8" stroke-dasharray="2 2" />
-                                            <line x1="94" y1="74" x2="146" y2="74" stroke="#070b14" stroke-width="1" stroke-opacity="0.6" />
-                                            
-                                            <!-- Visor Scanning Laser Beam (CSS Animated) -->
-                                            <line x1="90" y1="60" x2="90" y2="84" stroke="#ffffff" stroke-width="2.5" class="cyber-visor-scanbeam" />
-                                        </g>
-
-                                        <!-- Beak (Classic Penguin Orange with Cyber Edge) -->
-                                        <polygon points="110,80 130,80 120,95" fill="#f59e0b" stroke="#b45309" stroke-width="1.5" />
-                                        <polygon points="113,88 127,88 120,95" fill="#d97706" />
-
-                                    </g>
-
-                                    <!-- Orbiting Mini-Drone Sentinel "Byte-Bot" -->
-                                    <g class="cyber-sentinel-drone">
-                                        <ellipse cx="205" cy="55" rx="14" ry="12" fill="#0f172a" stroke="#00f0ff" stroke-width="1.5" filter="url(#neonGlowFilter)" />
-                                        <circle cx="205" cy="55" r="5" fill="#00f0ff" />
-                                        <circle cx="205" cy="55" r="2" fill="#ffffff" />
-                                        <line x1="205" y1="43" x2="205" y2="35" stroke="#10b981" stroke-width="1.5" />
-                                        <circle cx="205" cy="34" r="2" fill="#10b981" />
-                                        <path d="M198 65 L 180 90 L 215 90 Z" fill="#00f0ff" fill-opacity="0.15" />
-                                    </g>
+                                    <!-- Ticks & Degree Labels -->
+                                    <text x="120" y="24" fill="#94a3b8" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">000°</text>
+                                    <text x="216" y="123" fill="#94a3b8" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">090°</text>
+                                    <text x="120" y="222" fill="#94a3b8" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">180°</text>
+                                    <text x="24" y="123" fill="#94a3b8" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">270°</text>
                                 </svg>
+
+                            </div>
+
+                            <!-- Live Security Telemetry Readout Metrics -->
+                            <div class="w-full max-w-[340px] mt-3 p-3 rounded-xl bg-[#070b14]/90 border border-[#1e293b] font-mono text-[10px] space-y-1">
+                                <div class="flex items-center justify-between text-[#00f0ff]">
+                                    <span>[+] POSTURE: HARDENED</span>
+                                    <span>SELinux: ENFORCING</span>
+                                </div>
+                                <div class="flex items-center justify-between text-gray-400">
+                                    <span>[+] EASM: RECON ACTIVE</span>
+                                    <span>IEEE: #33 GLOBAL</span>
+                                </div>
                             </div>
 
                         </div>
@@ -1795,7 +1697,7 @@
 
                     </div>
 
-                    <!-- Cyber Highway Neon Track with 8 Checkpoint Nodes -->
+                    <!-- Cyber Highway Pipeline Track with 8 Checkpoint Nodes -->
                     <div class="mt-8 pt-6 border-t border-[#1e293b]/70 relative">
                         <div class="road-energy-line hidden sm:block"></div>
                         
@@ -2224,9 +2126,9 @@
 
     <!-- Floating Quick Actions (Bottom Right) -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
-        <!-- Floating Tux 2077 Road Quick Launcher -->
-        <a href="#cyber-road" id="floatingTuxBtn" class="w-11 h-11 rounded-2xl bg-[#0f172a]/95 backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black shadow-[0_0_15px_rgba(0,240,255,0.35)] flex items-center justify-center transition-all duration-300 hover:scale-110 group" title="Cruise the Cyber Road with Tux 2077">
-            <i class="fa-solid fa-route text-sm group-hover:rotate-12 transition-transform"></i>
+        <!-- Floating Cyber Pipeline Quick Launcher -->
+        <a href="#pipeline" id="floatingRadarBtn" class="w-11 h-11 rounded-2xl bg-[#0f172a]/95 backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black shadow-[0_0_15px_rgba(0,240,255,0.35)] flex items-center justify-center transition-all duration-300 hover:scale-110 group" title="Jump to Security Pipeline & Radar">
+            <i class="fa-solid fa-shield-halved text-sm group-hover:scale-110 transition-transform"></i>
         </a>
 
         <!-- Back to Top Button -->
