@@ -96,8 +96,10 @@ export default {
 2. SW CONSULTING (Monastir, TN) — 2025 | Développeur Web Fullstack
    - Intelligent Automation: Automated data extraction engine via OCR for invoices and quotes; AI categorization algorithms for client files.
    - Quick Dock platform: Fullstack application using Node.js (Backend) and Vue.js (Frontend) with dynamic document templates and database optimization.
+   - Public GitHub Repository: https://github.com/WassimBannour1/QuickDoc
 3. TEAM DEV (Sousse, TN) — 2024 | Développeur Frontend
-   - Responsive user interface in Angular & TypeScript for reservation platform; optimized components for low latency; real-time REST API synchronization.
+   - Stadium-Booking platform: Responsive user interface in Angular & TypeScript for reservation platform; optimized components for low latency; real-time REST API synchronization.
+   - Public GitHub Repository: https://github.com/WassimBannour1/Stadium-Booking
 4. We Are Technology Center (Monastir, TN) — 2023 | Développeur Logiciel
    - Java Desktop Restaurant Management Application with Java Swing (JFrame) and SQL database backend for table, stock, and sales history management.
 
