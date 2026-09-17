@@ -105,7 +105,13 @@ const I18N_DATA = {
         'ai.pill4': '🚀 Pourquoi recruter Wassim ?',
         'ai.input_ph': 'Posez vos questions de recruteur...',
         'footer.copy': '© 2026 Wassim Bannour. Sécurité des Systèmes & Ingénierie Linux.',
-        'footer.status': 'Statut : Systèmes Opérationnels & Disponible Immédiatement'
+        'footer.status': 'Statut : Systèmes Opérationnels & Disponible Immédiatement',
+        'terminal.title': 'wassim@tekup-sec: ~ (Console Cybersécurité Interactive)',
+        'terminal.subtext': 'Tapez une commande ou cliquez sur un bouton ci-dessous',
+        'terminal.quickrun': 'Exécution Rapide :',
+        'terminal.clear_btn': 'effacer',
+        'terminal.exec_btn': 'EXÉC',
+        'terminal.placeholder': 'tapez \'help\', \'whoami\', \'certs\', \'easm\', \'skills\', \'clear\'...'
     },
     en: {
         'nav.achievements': '01. // Achievements',
@@ -186,7 +192,13 @@ const I18N_DATA = {
         'ai.pill4': '🚀 Why hire Wassim?',
         'ai.input_ph': 'Ask recruiter questions...',
         'footer.copy': '© 2026 Wassim Bannour. Systems Security & Linux Engineering.',
-        'footer.status': 'Status: Systems Operational & Ready for Hire'
+        'footer.status': 'Status: Systems Operational & Ready for Hire',
+        'terminal.title': 'wassim@tekup-sec: ~ (Interactive Live Cyber Console)',
+        'terminal.subtext': 'Type a command or click a chip below',
+        'terminal.quickrun': 'Quick Run:',
+        'terminal.clear_btn': 'clear',
+        'terminal.exec_btn': 'EXEC',
+        'terminal.placeholder': 'type \'help\', \'whoami\', \'certs\', \'easm\', \'skills\', \'clear\'...'
     }
 };
 
@@ -214,6 +226,27 @@ function playFuturisticTone(freq = 880, duration = 0.04, type = 'sine', volume =
         // AudioContext not allowed before user interaction
     }
 }
+
+/**
+ * Render and reset Terminal HUD screen content according to active language
+ */
+window.renderTerminalScreen = function(lang) {
+    const terminalScreen = document.getElementById('terminalScreen');
+    if (!terminalScreen) return;
+    const isFr = lang === 'fr';
+    terminalScreen.innerHTML = `
+        <div class="terminal-log-line info text-gray-400">${isFr ? '// Wassim Bannour Terminal de Télémétrie Cyber v2.4 (RHCSA / PCAP / EASM)' : '// Wassim Bannour Cyber Telemetry Terminal v2.4 (RHCSA / PCAP / EASM)'}</div>
+        <div class="terminal-log-line info text-gray-400">${isFr ? '// Tapez \'help\' pour voir les opérations ou cliquez sur un bouton ci-dessus.' : '// Type \'help\' to view available operations or click any quick chip above.'}</div>
+        <div class="terminal-log-line cmd mt-2">
+            <span class="text-[#10b981]">wassim@tekup-sec</span>:<span class="text-[#38bdf8]">~</span>$ easm --status
+        </div>
+        <div class="terminal-log-line success">${isFr ? '[+] Plateforme Surface d\'Attaque : Active & Surveillance Continue' : '[+] Attack Surface Platform: Active & Monitoring'}</div>
+        <div class="terminal-log-line info">${isFr ? '[+] Certifications Vérifiées : Red Hat RHCSA & Python PCAP' : '[+] Verified Certifications: Red Hat RHCSA & Python PCAP'}</div>
+        <div class="terminal-log-line info">${isFr ? '[+] Classement Mondial : #33 Mondial IEEEXtreme 17.0 (2ème National TN)' : '[+] Global Ranking: #33 Worldwide IEEEXtreme 17.0 (2nd National TN)'}</div>
+        <div class="terminal-log-line text-[#00f0ff] font-bold">${isFr ? '[✓] Statut : Prêt pour opportunités à fort impact en Cybersécurité & Ingénierie Systèmes.' : '[✓] Status: Ready for High-Impact Cybersecurity & Systems Engineering Opportunities.'}</div>
+    `;
+    terminalScreen.scrollTop = terminalScreen.scrollHeight;
+};
 
 /**
  * Set and apply active language (fr / en) across the portfolio
@@ -259,6 +292,11 @@ window.setLanguage = function(lang, silent = false) {
     // Trigger Typewriter language update
     if (window.updateTypewriterPhrases) {
         window.updateTypewriterPhrases(lang);
+    }
+
+    // Trigger Terminal Screen update
+    if (window.renderTerminalScreen) {
+        window.renderTerminalScreen(lang);
     }
 
     if (!silent && window.showCyberToast) {
@@ -529,81 +567,131 @@ document.addEventListener('DOMContentLoaded', () => {
         const cmd = rawCmd.trim().toLowerCase();
         if (!cmd) return;
 
+        const isFr = CURRENT_LANG === 'fr';
+
         appendTerminalLog('cmd', `<span class="text-[#10b981]">wassim@tekup-sec</span>:<span class="text-[#38bdf8]">~</span>$ ${rawCmd}`);
         playFuturisticTone(950, 0.03, 'square', 0.02);
 
         if (cmd === 'clear') {
             terminalScreen.innerHTML = '';
-            appendTerminalLog('info text-gray-400', '// Terminal screen cleared. Type "help" for options.');
+            appendTerminalLog('info text-gray-400', isFr ? '// Écran du terminal effacé. Tapez "help" pour voir les options.' : '// Terminal screen cleared. Type "help" for options.');
             return;
         }
 
         if (cmd === 'help') {
-            appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">proofs</strong> : Official verified documents, attestations & degrees\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Recruiter Fast-Track (Open in 60s summary)\n- <strong class="text-[#00f0ff]">cv</strong> : Download official Wassim Bannour CV (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
+            if (isFr) {
+                appendTerminalLog('info', `Commandes Disponibles:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identité, cursus TEK-UP & spécialisation Linux / Sécurité\n- <strong class="text-[#00f0ff]">certs</strong> : Certifications officielles Red Hat RHCSA & Python PCAP\n- <strong class="text-[#00f0ff]">proofs</strong> : Répertoire des attestations de stages & diplômes vérifiables\n- <strong class="text-[#00f0ff]">easm</strong> : Modules Smart EASM & connecteurs OSINT @ Talan Tunisie\n- <strong class="text-[#00f0ff]">skills</strong> : Stack technique complète (Linux, DevSecOps, Python, Web)\n- <strong class="text-[#00f0ff]">rank</strong> : Performance IEEEXtreme 17.0 (#33 mondial, #2 Tunisie)\n- <strong class="text-[#00f0ff]">hire</strong> : Ouvrir le Dossier Recruteur Express (60s)\n- <strong class="text-[#00f0ff]">cv</strong> : Télécharger le CV officiel de Wassim Bannour (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Coordonnées directes (Email, téléphone, LinkedIn)\n- <strong class="text-[#00f0ff]">clear</strong> : Effacer l'écran de la console`);
+            } else {
+                appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">proofs</strong> : Official verified documents, attestations & degrees\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Recruiter Fast-Track (Open in 60s summary)\n- <strong class="text-[#00f0ff]">cv</strong> : Download official Wassim Bannour CV (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
+            }
             return;
         }
 
         if (cmd === 'whoami') {
-            appendTerminalLog('success', `[+] Name: Wassim Bannour`);
-            appendTerminalLog('info', `[+] Role: Cybersecurity & Linux Systems Engineer (RHCSA & PCAP Certified)`);
-            appendTerminalLog('info', `[+] University: TEK-UP (Diplôme National d'Ingénieur en Cybersécurité)`);
-            appendTerminalLog('info', `[+] Location: Monastir / Tunis, Tunisia (Open to on-site, hybrid, & remote)`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] Nom : Wassim Bannour`);
+                appendTerminalLog('info', `[+] Rôle : Ingénieur Cybersécurité & Systèmes Linux (Certifié RHCSA & PCAP)`);
+                appendTerminalLog('info', `[+] Université : TEK-UP (Diplôme National d'Ingénieur en Cybersécurité)`);
+                appendTerminalLog('info', `[+] Localisation : Monastir / Tunis, Tunisie (Disponible sur site, hybride & remote)`);
+            } else {
+                appendTerminalLog('success', `[+] Name: Wassim Bannour`);
+                appendTerminalLog('info', `[+] Role: Cybersecurity & Linux Systems Engineer (RHCSA & PCAP Certified)`);
+                appendTerminalLog('info', `[+] University: TEK-UP (National Engineering Degree in Cybersecurity)`);
+                appendTerminalLog('info', `[+] Location: Monastir / Tunis, Tunisia (Open to on-site, hybrid, & remote)`);
+            }
             return;
         }
 
         if (cmd === 'certs' || cmd.includes('cert') || cmd === 'cat certs.txt') {
-            appendTerminalLog('success', `[+] 1. Red Hat Certified System Administrator (RHCSA) — Red Hat, Inc.`);
-            appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89`);
-            appendTerminalLog('success', `[+] 2. Certified Associate in Python Programming (PCAP) — Python Institute`);
-            appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] 1. Red Hat Certified System Administrator (RHCSA) — Red Hat, Inc.`);
+                appendTerminalLog('info', `    Identifiant : Vérifié | Lien Credly : https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89`);
+                appendTerminalLog('success', `[+] 2. Certified Associate in Python Programming (PCAP) — Python Institute`);
+                appendTerminalLog('info', `    Identifiant : Vérifié | Lien Credly : https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1`);
+            } else {
+                appendTerminalLog('success', `[+] 1. Red Hat Certified System Administrator (RHCSA) — Red Hat, Inc.`);
+                appendTerminalLog('info', `    Credential ID: Verified | Credly Link: https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89`);
+                appendTerminalLog('success', `[+] 2. Certified Associate in Python Programming (PCAP) — Python Institute`);
+                appendTerminalLog('info', `    Credential ID: Verified | Credly Link: https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1`);
+            }
             return;
         }
 
         if (cmd.includes('proof') || cmd.includes('attest') || cmd.includes('doc')) {
-            appendTerminalLog('success', `[+] Official Documents Directory (proofs/):`);
-            appendTerminalLog('info', `    [1] TALAN Tunisie (EASM & OSINT Stage) -> proofs/attestation_talan.pdf`);
-            appendTerminalLog('info', `    [2] SW Consulting (QuickDoc AI/OCR Stage) -> proofs/attestation_sw_consulting.pdf`);
-            appendTerminalLog('info', `    [3] Team Dev (Stadium-Booking Angular Stage) -> proofs/attestation_teamdev.pdf`);
-            appendTerminalLog('info', `    [4] We Are TechCenter (Java Desktop Stage) -> proofs/attestation_techcenter.pdf`);
-            appendTerminalLog('info', `    [5] ISIMM Licence en Sciences de l'Informatique -> proofs/diplome_isimm.pdf`);
-            appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
-            appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
-            appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
-            appendTerminalLog('text-[#00f0ff]', `[✓] Click any [Attestation] / [Diplôme] button on the portfolio to open the verification lightbox.`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] Répertoire des Attestations Officielles (proofs/) :`);
+                appendTerminalLog('info', `    [1] TALAN Tunisie (Stage EASM & OSINT) -> proofs/attestation_talan.pdf`);
+                appendTerminalLog('info', `    [2] SW Consulting (Stage QuickDoc AI/OCR) -> proofs/attestation_sw_consulting.pdf`);
+                appendTerminalLog('info', `    [3] Team Dev (Stage Stadium-Booking Angular) -> proofs/attestation_teamdev.pdf`);
+                appendTerminalLog('info', `    [4] We Are TechCenter (Stage Java Desktop) -> proofs/attestation_techcenter.pdf`);
+                appendTerminalLog('info', `    [5] ISIMM Licence en Sciences de l'Informatique -> proofs/diplome_isimm.pdf`);
+                appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
+                appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
+                appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
+                appendTerminalLog('text-[#00f0ff]', `[✓] Cliquez sur un bouton [Attestation] ou [Diplôme] sur le site pour ouvrir la visionneuse.`);
+            } else {
+                appendTerminalLog('success', `[+] Official Documents Directory (proofs/):`);
+                appendTerminalLog('info', `    [1] TALAN Tunisie (EASM & OSINT Stage) -> proofs/attestation_talan.pdf`);
+                appendTerminalLog('info', `    [2] SW Consulting (QuickDoc AI/OCR Stage) -> proofs/attestation_sw_consulting.pdf`);
+                appendTerminalLog('info', `    [3] Team Dev (Stadium-Booking Angular Stage) -> proofs/attestation_teamdev.pdf`);
+                appendTerminalLog('info', `    [4] We Are TechCenter (Java Desktop Stage) -> proofs/attestation_techcenter.pdf`);
+                appendTerminalLog('info', `    [5] ISIMM Licence en Sciences de l'Informatique -> proofs/diplome_isimm.pdf`);
+                appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
+                appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
+                appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
+                appendTerminalLog('text-[#00f0ff]', `[✓] Click any [Attestation] / [Diplôme] button on the portfolio to open the verification lightbox.`);
+            }
             return;
         }
 
         if (cmd.startsWith('easm') || cmd.includes('osint') || cmd.includes('talan')) {
-            appendTerminalLog('success', `[+] Target Environment: Smart EASM Platform @ TALAN TUNISIE`);
-            appendTerminalLog('info', `[+] Threat Intelligence Connectors: Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB, Criminal IP`);
-            appendTerminalLog('info', `[+] Automation: Python data ingestion pipelines, attack surface mapping & TLS validation.`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] Environnement Cible : Plateforme Smart EASM @ TALAN TUNISIE`);
+                appendTerminalLog('info', `[+] Connecteurs Threat Intelligence : Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB, Criminal IP`);
+                appendTerminalLog('info', `[+] Automatisation : Pipelines d'ingestion Python, cartographie de surface d'attaque & validation TLS.`);
+            } else {
+                appendTerminalLog('success', `[+] Target Environment: Smart EASM Platform @ TALAN TUNISIE`);
+                appendTerminalLog('info', `[+] Threat Intelligence Connectors: Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB, Criminal IP`);
+                appendTerminalLog('info', `[+] Automation: Python data ingestion pipelines, attack surface mapping & TLS validation.`);
+            }
             return;
         }
 
         if (cmd.startsWith('nmap') || cmd.includes('skill') || cmd === 'stack') {
-            appendTerminalLog('success', `[+] PORT 22/tcp  OPEN  Linux Enterprise (RHEL / CentOS / Bash / SELinux)`);
-            appendTerminalLog('success', `[+] PORT 443/tcp OPEN  Web & API (Node.js / Express / Vue.js / Angular)`);
-            appendTerminalLog('success', `[+] PORT 8080/tcp OPEN Python Automation / OCR Pipelines / NumPy`);
-            appendTerminalLog('success', `[+] PORT 3306/tcp OPEN Relational & NoSQL (SQL, MySQL, MongoDB, Docker)`);
+            appendTerminalLog('success', `[+] PORT 22/tcp   OPEN  Linux Enterprise (RHEL / CentOS / Bash / SELinux)`);
+            appendTerminalLog('success', `[+] PORT 443/tcp  OPEN  Web & API (Node.js / Express / Vue.js / Angular)`);
+            appendTerminalLog('success', `[+] PORT 8080/tcp OPEN  Python Automation / OCR Pipelines / NumPy`);
+            appendTerminalLog('success', `[+] PORT 3306/tcp OPEN  Relational & NoSQL (SQL, MySQL, MongoDB, Docker)`);
             return;
         }
 
         if (cmd.includes('rank') || cmd.includes('ieee')) {
-            appendTerminalLog('success', `[+] IEEEXtreme 17.0: #33 Worldwide out of thousands of university engineering teams.`);
-            appendTerminalLog('info', `[+] National Rank: #2 in Tunisia (24-hour algorithmic marathon).`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] IEEEXtreme 17.0 : 33ème Place Mondiale parmi des milliers d'équipes d'ingénieurs.`);
+                appendTerminalLog('info', `[+] Rang National : 2ème en Tunisie (Marathon algorithmique de 24h non-stop).`);
+            } else {
+                appendTerminalLog('success', `[+] IEEEXtreme 17.0: #33 Worldwide out of thousands of university engineering teams.`);
+                appendTerminalLog('info', `[+] National Rank: #2 in Tunisia (24-hour algorithmic marathon).`);
+            }
             return;
         }
 
         if (cmd.includes('hire') || cmd.includes('value') || cmd.includes('pitch') || cmd.includes('fasttrack')) {
-            appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin (RHCSA) + Certified Python Dev (PCAP) + Global Top 33.`);
-            appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
-            appendTerminalLog('text-[#00f0ff]', `[+] Launching Recruiter Fast-Track Dossier in 60s...`);
+            if (isFr) {
+                appendTerminalLog('success', `[✓] Valeur Clé : Administrateur Linux Certifié (RHCSA) + Développeur Python Certifié (PCAP) + Top 33 Mondial.`);
+                appendTerminalLog('info', `[✓] Expérience : Réalisations prouvées en production chez Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
+                appendTerminalLog('text-[#00f0ff]', `[+] Ouverture du Dossier Recruteur Express (60s)...`);
+            } else {
+                appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin (RHCSA) + Certified Python Dev (PCAP) + Global Top 33.`);
+                appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
+                appendTerminalLog('text-[#00f0ff]', `[+] Launching Recruiter Fast-Track Dossier in 60s...`);
+            }
             if (window.openHireMeModal) window.openHireMeModal();
             return;
         }
 
         if (cmd === 'cv' || cmd.includes('resume') || cmd.includes('download')) {
-            appendTerminalLog('success', `[+] Initiating official CV download: Wassim_Bannour_CV.pdf`);
+            appendTerminalLog('success', isFr ? `[+] Téléchargement du CV officiel en cours : Wassim_Bannour_CV.pdf` : `[+] Initiating official CV download: Wassim_Bannour_CV.pdf`);
             const link = document.createElement('a');
             link.href = 'wassim_bnannour_cv.pdf';
             link.download = 'Wassim_Bannour_CV.pdf';
@@ -622,8 +710,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (cmd.includes('pipeline') || cmd.includes('radar') || cmd.includes('road') || cmd.includes('journey')) {
-            appendTerminalLog('success', `[+] Initializing Cyber Operations Radar & Defense Pipeline...`);
-            appendTerminalLog('info', `[+] Telemetry: 8 Milestones Active | Real-Time Telemetry Operational.`);
+            if (isFr) {
+                appendTerminalLog('success', `[+] Initialisation du Radar des Opérations & Pipeline de Sécurité...`);
+                appendTerminalLog('info', `[+] Télémétrie : 8 Étapes Actives | Télémétrie Opérationnelle.`);
+            } else {
+                appendTerminalLog('success', `[+] Initializing Cyber Operations Radar & Defense Pipeline...`);
+                appendTerminalLog('info', `[+] Telemetry: 8 Milestones Active | Real-Time Telemetry Operational.`);
+            }
             const pipelineSection = document.getElementById('pipeline');
             if (pipelineSection) {
                 pipelineSection.scrollIntoView({ behavior: 'smooth' });
@@ -633,7 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Default unknown command
-        appendTerminalLog('warn', `Command not found: "${rawCmd}". Type <strong class="text-[#00f0ff]">help</strong> for a list of valid commands.`);
+        appendTerminalLog('warn', isFr ? `Commande non reconnue : "${rawCmd}". Tapez <strong class="text-[#00f0ff]">help</strong> pour la liste des commandes.` : `Command not found: "${rawCmd}". Type <strong class="text-[#00f0ff]">help</strong> for a list of valid commands.`);
     }
 
     if (terminalForm && terminalInput) {
