@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (cmd === 'help') {
-            appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Key strengths & value proposition\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
+            appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">proofs</strong> : Official verified documents, attestations & degrees\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Recruiter Fast-Track (Open in 60s summary)\n- <strong class="text-[#00f0ff]">cv</strong> : Download official Wassim Bannour CV (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
             return;
         }
 
@@ -257,6 +257,20 @@ document.addEventListener('DOMContentLoaded', () => {
             appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89`);
             appendTerminalLog('success', `[+] 2. Certified Associate in Python Programming (PCAP) — Python Institute`);
             appendTerminalLog('info', `    Credential ID: Verified | Verification Link: https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1`);
+            return;
+        }
+
+        if (cmd.includes('proof') || cmd.includes('attest') || cmd.includes('doc')) {
+            appendTerminalLog('success', `[+] Official Documents Directory (proofs/):`);
+            appendTerminalLog('info', `    [1] TALAN Tunisie (EASM & OSINT Stage) -> proofs/attestation_talan.pdf`);
+            appendTerminalLog('info', `    [2] SW Consulting (QuickDoc AI/OCR Stage) -> proofs/attestation_sw_consulting.pdf`);
+            appendTerminalLog('info', `    [3] Team Dev (Stadium-Booking Angular Stage) -> proofs/attestation_teamdev.pdf`);
+            appendTerminalLog('info', `    [4] We Are TechCenter (Java Desktop Stage) -> proofs/attestation_techcenter.pdf`);
+            appendTerminalLog('info', `    [5] ISIMM Licence en Sciences de l'Informatique -> proofs/diplome_isimm.pdf`);
+            appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
+            appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
+            appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
+            appendTerminalLog('text-[#00f0ff]', `[✓] Click any [Attestation] / [Diplôme] button on the portfolio to open the verification lightbox.`);
             return;
         }
 
@@ -281,9 +295,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (cmd.includes('hire') || cmd.includes('value')) {
-            appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin + Certified Python Developer + Global Top 33 Competitor.`);
-            appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie (EASM), SW Consulting (AI/OCR), Team Dev (Angular).`);
+        if (cmd.includes('hire') || cmd.includes('value') || cmd.includes('pitch') || cmd.includes('fasttrack')) {
+            appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin (RHCSA) + Certified Python Dev (PCAP) + Global Top 33.`);
+            appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
+            appendTerminalLog('text-[#00f0ff]', `[+] Launching Recruiter Fast-Track Dossier in 60s...`);
+            if (window.openHireMeModal) window.openHireMeModal();
+            return;
+        }
+
+        if (cmd === 'cv' || cmd.includes('resume') || cmd.includes('download')) {
+            appendTerminalLog('success', `[+] Initiating official CV download: Wassim_Bannour_CV.pdf`);
+            const link = document.createElement('a');
+            link.href = 'wassim_bnannour_cv.pdf';
+            link.download = 'Wassim_Bannour_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
             return;
         }
 
@@ -1166,4 +1193,157 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
+
+// -------------------------------------------------------------
+// 8. GLOBAL UTILITIES: CYBER TOAST, CLIPBOARD & MODAL HANDLERS
+// -------------------------------------------------------------
+
+/**
+ * Show a sleek glowing Cyber Toast notification on screen
+ */
+window.showCyberToast = function(message, type = 'success') {
+    const container = document.getElementById('cyberToastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'cyber-toast px-4 py-3 rounded-2xl bg-[#070b14]/95 border border-[#00f0ff]/60 text-white font-mono text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)] backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto max-w-sm';
+    
+    let iconHtml = '<i class="fa-solid fa-circle-check text-[#10b981] text-sm"></i>';
+    if (type === 'info') iconHtml = '<i class="fa-solid fa-circle-info text-[#00f0ff] text-sm"></i>';
+    if (type === 'warn') iconHtml = '<i class="fa-solid fa-triangle-exclamation text-yellow-400 text-sm"></i>';
+
+    toast.innerHTML = `
+        ${iconHtml}
+        <span class="flex-1 leading-tight">${message}</span>
+        <button class="text-gray-400 hover:text-white text-xs ml-1 focus:outline-none" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    `;
+
+    container.appendChild(toast);
+    playFuturisticTone(1050, 0.04, 'sine', 0.04);
+
+    setTimeout(() => {
+        toast.classList.add('closing');
+        setTimeout(() => toast.remove(), 260);
+    }, 3600);
+};
+
+/**
+ * Copy text to clipboard with instant Cyber Toast feedback
+ */
+window.copyToClipboard = function(text, label = 'Élément') {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            window.showCyberToast(`<strong>${label}</strong> copié dans le presse-papier !`, 'success');
+        }).catch(() => {
+            fallbackCopyTextToClipboard(text, label);
+        });
+    } else {
+        fallbackCopyTextToClipboard(text, label);
+    }
+};
+
+function fallbackCopyTextToClipboard(text, label) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        window.showCyberToast(`<strong>${label}</strong> copié dans le presse-papier !`, 'success');
+    } catch (err) {
+        window.showCyberToast(`Impossible de copier automatiquement : ${text}`, 'warn');
+    }
+    document.body.removeChild(textArea);
+}
+
+/**
+ * Open Official Document Verification Lightbox
+ */
+window.openDocViewer = function(title, issuer, filePath, description) {
+    const modal = document.getElementById('docViewerModal');
+    const modalTitle = document.getElementById('docModalTitle');
+    const modalIssuer = document.getElementById('docModalIssuer');
+    const modalDesc = document.getElementById('docModalDesc');
+    const downloadBtn = document.getElementById('docDirectDownloadBtn');
+    const openTabBtn = document.getElementById('docOpenTabBtn');
+    const statusTitle = document.getElementById('docViewerStatusTitle');
+    const statusSubtext = document.getElementById('docViewerStatusSubtext');
+
+    if (!modal) return;
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalIssuer) modalIssuer.textContent = `Émis par : ${issuer}`;
+    if (modalDesc) modalDesc.textContent = description || `Document officiel de référence attestant des compétences et réalisations de Wassim Bannour.`;
+
+    if (downloadBtn) {
+        downloadBtn.href = filePath;
+        downloadBtn.setAttribute('download', filePath.split('/').pop() || 'document.pdf');
+    }
+
+    if (openTabBtn) {
+        openTabBtn.href = filePath;
+    }
+
+    if (statusTitle) statusTitle.textContent = `${title}`;
+    if (statusSubtext) statusSubtext.innerHTML = `Fichier indexé : <code class="text-[#00f0ff]">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">Consultez en plein écran ou téléchargez la copie officielle numérisée.</span>`;
+
+    modal.classList.add('active');
+    playFuturisticTone(880, 0.05, 'sine', 0.04);
+};
+
+window.closeDocViewer = function() {
+    const modal = document.getElementById('docViewerModal');
+    if (modal) {
+        modal.classList.remove('active');
+        playFuturisticTone(520, 0.04, 'sine', 0.03);
+    }
+};
+
+/**
+ * Open Recruiter Fast-Track Dossier Modal
+ */
+window.openHireMeModal = function() {
+    const modal = document.getElementById('hireMeModal');
+    if (modal) {
+        modal.classList.add('active');
+        playFuturisticTone(920, 0.06, 'sine', 0.05);
+    }
+};
+
+window.closeHireMeModal = function() {
+    const modal = document.getElementById('hireMeModal');
+    if (modal) {
+        modal.classList.remove('active');
+        playFuturisticTone(520, 0.04, 'sine', 0.03);
+    }
+};
+
+// Close modals when clicking backdrop outside container
+document.addEventListener('click', (e) => {
+    const docModal = document.getElementById('docViewerModal');
+    if (docModal && docModal.classList.contains('active') && e.target === docModal) {
+        window.closeDocViewer();
+    }
+    const hireModal = document.getElementById('hireMeModal');
+    if (hireModal && hireModal.classList.contains('active') && e.target === hireModal) {
+        window.closeHireMeModal();
+    }
+});
+
+// Close modals on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        window.closeDocViewer();
+        window.closeHireMeModal();
+        const aiChatModal = document.getElementById('aiChatModal');
+        if (aiChatModal && aiChatModal.classList.contains('active')) {
+            document.getElementById('closeAiChatBtn')?.click();
+        }
+    }
 });
