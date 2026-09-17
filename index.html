@@ -440,11 +440,13 @@
         .cyber-modal-overlay {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
         .cyber-modal-overlay.active {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
         .cyber-modal-container {
             transform: scale(0.94) translateY(15px);
@@ -2290,7 +2292,7 @@
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </button>
             </form>
-
+        </div>
     </div>
 
     <!-- OFFICIAL DOCUMENT VERIFICATION MODAL / LIGHTBOX -->
