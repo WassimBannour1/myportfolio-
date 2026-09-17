@@ -20,6 +20,176 @@ let CLOUDFLARE_WORKER_URL = localStorage.getItem('WB_WORKER_URL') || '';
 let SFX_ENABLED = localStorage.getItem('WB_SFX_ENABLED') !== 'false';
 let audioCtx = null;
 
+// Multi-Language & Theme State
+let CURRENT_LANG = localStorage.getItem('WB_LANG') || 'fr';
+let CURRENT_THEME = localStorage.getItem('WB_THEME') || 'dark';
+
+// Complete Bilingual Dictionary (French & English)
+const I18N_DATA = {
+    fr: {
+        'nav.achievements': '01. // Réalisations',
+        'nav.certs': '02. // Certifications',
+        'nav.experience': '03. // Expérience',
+        'nav.pipeline': '04. // Pipeline Radar',
+        'nav.skills': '05. // Diplômes & Stack',
+        'nav.contact': '06. // Contact',
+        'nav.fasttrack': 'FAST-TRACK',
+        'nav.aichat': 'AI TWIN',
+        'hero.badge': 'INGÉNIEUR CYBERSÉCURITÉ & SYSTÈMES LINUX',
+        'hero.role_prefix': 'role:~$',
+        'hero.education': 'Diplôme National d\'Ingénieur Cybersécurité @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span>',
+        'hero.bio': 'Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>\'Security-by-Design\'</em>.',
+        'hero.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
+        'hero.btn_aichat': 'Chat AI Twin',
+        'hero.status_pill': 'STATUT : ACTIF // DISPONIBLE',
+        'hero.stat_rank': 'Mondial IEEEXtreme',
+        'hero.stat_certs': 'Red Hat SysAdmin',
+        'hero.stat_stage': 'Python Institute',
+        'hero.stat_sec': 'Talan Tunisie',
+        'achievements.tag': '01. // Parcours & Distinctions',
+        'achievements.title': 'Réalisations Majeures & Distinctions',
+        'achievements.subtitle': 'Excellence prouvée en résolution algorithmique sous pression, cybersécurité compétitive et leadership technique.',
+        'certs.tag': '02. // Titres & Certifications Professionnelles',
+        'certs.title': 'Certifications Professionnelles Vérifiées',
+        'certs.verify_credly': 'Vérifier sur Credly',
+        'exp.tag': '03. // Parcours Professionnel & Projets',
+        'exp.title': 'Expérience Professionnelle & Stages',
+        'exp.subtitle': 'Cliquez sur une expérience pour afficher les détails d\'architecture, réalisations techniques et dépôts de code source.',
+        'pipeline.tag': '04. // Pipeline de Compétences & Radar Opérationnel',
+        'pipeline.title': 'Centre d\'Opérations & Pipeline de Sécurité',
+        'pipeline.radar_title': 'Matrice Télémetrie & Surveillance Active',
+        'edu.tag': '05. // Formation & Diplômes Académiques',
+        'edu.title': 'Cursus Universitaire & Ingénierie',
+        'skills.tag': '05.2 // Matrice de Compétences Techniques',
+        'skills.title': 'Stack Technique & Outils de Sécurité',
+        'contact.tag': '06. // Communication & Prise de Contact',
+        'contact.title': 'Initier une Proposition ou un Échange',
+        'contact.desc': 'Disponible immédiatement pour des opportunités en Cybersécurité, Administration Linux RHEL, DevSecOps ou Développement Python.',
+        'contact.name_label': 'Nom & Prénom / Entreprise',
+        'contact.email_label': 'Adresse E-mail',
+        'contact.subject_label': 'Objet du Message',
+        'contact.message_label': 'Votre Message / Proposition',
+        'contact.send_btn': 'Envoyer le Message',
+        'hire.title': 'Dossier Recruteur Express (60s)',
+        'hire.subtitle': 'Pourquoi recruter Wassim Bannour en 60 secondes',
+        'hire.pillar1_title': 'Certifié RHCSA (Linux)',
+        'hire.pillar1_desc': 'Administration système RHEL entreprise, tuning kernel, politiques SELinux et automatisation Bash en production.',
+        'hire.pillar2_title': 'Certifié PCAP (Python)',
+        'hire.pillar2_desc': 'Pipelines d\'ingestion haute performance, algorithmes OCR (NumPy) et architecture orientée objet rigoureuse.',
+        'hire.pillar3_title': 'Top 33 Mondial (IEEE)',
+        'hire.pillar3_desc': 'Classé 33ème mondial en algorithmique sous pression extrême (24h non-stop) parmi des milliers d\'équipes d\'ingénieurs.',
+        'hire.pillar4_title': 'EASM & Threat Intel (Talan)',
+        'hire.pillar4_desc': 'Conception réelle de plateforme d\'attaque surface externe, connecteurs OSINT multiples et surveillance continue des vulnérabilités.',
+        'hire.avail': 'Disponibilité : Immédiate // PFE & Postes Ingénieur',
+        'hire.target_roles': '<strong>Postes cibles :</strong> Ingénieur Cybersécurité, Administrateur Systèmes Linux / RHEL, Ingénieur DevSecOps, Développeur Python / Backend Sécurisé.',
+        'hire.btn_email': 'Envoyer une Proposition (Email)',
+        'hire.btn_call': 'Appel Direct (+216 94101910)',
+        'hire.cv_pdf': 'Télécharger le CV Complet (PDF)',
+        'hire.close': 'Fermer',
+        'doc.title_default': 'Attestation Officielle',
+        'doc.issuer_default': 'Organisme Émetteur',
+        'doc.verified': 'VÉRIFIABLE',
+        'doc.status_title': 'Document Officiel',
+        'doc.status_subtext': 'Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification authentique.',
+        'doc.download': 'Télécharger le Document',
+        'doc.fullscreen': 'Ouvrir Plein Écran',
+        'doc.authenticity': '<i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i> Authenticité garantie • Wassim Bannour',
+        'doc.ask_email': 'Demander par Email',
+        'doc.close': 'Fermer',
+        'ai.title': 'AI Twin de Wassim',
+        'ai.engine_status': 'Moteur : Prêt (Autonome / Worker)',
+        'ai.welcome': 'Bonjour ! Je suis l\'AI Twin de Wassim. Posez-moi des questions sur ses <strong>certifications RHCSA & PCAP</strong>, son travail en <strong>Smart EASM & OSINT chez Talan Tunisie</strong>, son <strong>33ᵉ rang mondial à IEEEXtreme</strong> ou son profil d\'ingénieur !',
+        'ai.pill1': '⚡ Compétences & Certifs',
+        'ai.pill2': '🛡️ Talan EASM & OSINT',
+        'ai.pill3': '🏆 Rang #33 IEEEXtreme',
+        'ai.pill4': '🚀 Pourquoi recruter Wassim ?',
+        'ai.input_ph': 'Posez vos questions de recruteur...',
+        'footer.copy': '© 2026 Wassim Bannour. Sécurité des Systèmes & Ingénierie Linux.',
+        'footer.status': 'Statut : Systèmes Opérationnels & Disponible Immédiatement'
+    },
+    en: {
+        'nav.achievements': '01. // Achievements',
+        'nav.certs': '02. // Certifications',
+        'nav.experience': '03. // Experience',
+        'nav.pipeline': '04. // Pipeline Radar',
+        'nav.skills': '05. // Degrees & Stack',
+        'nav.contact': '06. // Contact',
+        'nav.fasttrack': 'FAST-TRACK',
+        'nav.aichat': 'AI TWIN',
+        'hero.badge': 'CYBERSECURITY & SYSTEMS LINUX ENGINEER',
+        'hero.role_prefix': 'role:~$',
+        'hero.education': 'National Engineering Degree in Cybersecurity @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span>',
+        'hero.bio': 'Specialized in <strong>infrastructure hardening</strong> and <strong>intelligent automation</strong> (<em>Python / Bash</em>). Combines technical full-stack software expertise with <strong>EASM</strong> and <strong>OSINT</strong> methodologies for proactive attack surface monitoring. Ranked <strong>33rd worldwide</strong> in competitive programming (<strong>IEEEXtreme</strong>), combining algorithmic precision with <em>\'Security-by-Design\'</em> principles.',
+        'hero.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
+        'hero.btn_aichat': 'Chat AI Twin',
+        'hero.status_pill': 'STATUS: ACTIVE // OPEN TO ROLES',
+        'hero.stat_rank': 'Worldwide IEEEXtreme',
+        'hero.stat_certs': 'Red Hat SysAdmin',
+        'hero.stat_stage': 'Python Institute',
+        'hero.stat_sec': 'Talan Tunisie',
+        'achievements.tag': '01. // Track Record & Distinctions',
+        'achievements.title': 'Major Achievements & Distinctions',
+        'achievements.subtitle': 'Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.',
+        'certs.tag': '02. // Verified Industry Credentials',
+        'certs.title': 'Professional Certifications',
+        'certs.verify_credly': 'Verify on Credly',
+        'exp.tag': '03. // Career History & Projects',
+        'exp.title': 'Professional Experience & Internships',
+        'exp.subtitle': 'Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.',
+        'pipeline.tag': '04. // Security Radar & Career Pipeline',
+        'pipeline.title': 'Security Operations & Pipeline Radar',
+        'pipeline.radar_title': 'Telemetry & Active Monitoring Matrix',
+        'edu.tag': '05. // Academic Background & Degrees',
+        'edu.title': 'Academic Degrees & Engineering Studies',
+        'skills.tag': '05.2 // Technical Skills Matrix',
+        'skills.title': 'Technical Stack & Security Tooling',
+        'contact.tag': '06. // Contact & Inquiries',
+        'contact.title': 'Start a Discussion or Job Proposal',
+        'contact.desc': 'Available immediately for roles in Cybersecurity, Linux/RHEL Administration, DevSecOps, or Python Software Security.',
+        'contact.name_label': 'Your Full Name / Company',
+        'contact.email_label': 'Email Address',
+        'contact.subject_label': 'Subject',
+        'contact.message_label': 'Your Message / Proposal',
+        'contact.send_btn': 'Send Message',
+        'hire.title': 'Recruiter Fast-Track Dossier',
+        'hire.subtitle': 'Why Hire Wassim Bannour in 60 Seconds',
+        'hire.pillar1_title': 'RHCSA Certified (Linux)',
+        'hire.pillar1_desc': 'Enterprise RHEL system administration, kernel tuning, SELinux security policies, and production Bash automation.',
+        'hire.pillar2_title': 'PCAP Certified (Python)',
+        'hire.pillar2_desc': 'High-performance data ingestion pipelines, OCR algorithms (NumPy), and clean object-oriented architecture.',
+        'hire.pillar3_title': 'Top 33 Worldwide (IEEE)',
+        'hire.pillar3_desc': 'Ranked 33rd worldwide in extreme algorithmic problem solving (24h non-stop) among thousands of engineering teams.',
+        'hire.pillar4_title': 'EASM & Threat Intel (Talan)',
+        'hire.pillar4_desc': 'Production external attack surface platform, multiple OSINT connectors, and continuous vulnerability monitoring.',
+        'hire.avail': 'Availability: Immediate // PFE & Full-Time Engineer Roles',
+        'hire.target_roles': '<strong>Target Roles:</strong> Cybersecurity Engineer, Linux / RHEL Systems Administrator, DevSecOps Engineer, Python / Backend Security Developer.',
+        'hire.btn_email': 'Send Job Proposal (Email)',
+        'hire.btn_call': 'Direct Phone Call (+216 94101910)',
+        'hire.cv_pdf': 'Download Full CV (PDF)',
+        'hire.close': 'Close',
+        'doc.title_default': 'Official Proof Document',
+        'doc.issuer_default': 'Issuing Organization',
+        'doc.verified': 'VERIFIABLE',
+        'doc.status_title': 'Official Document',
+        'doc.status_subtext': 'This document is stored in the <code class="text-[#00f0ff]">proofs/</code> directory for authentic verification.',
+        'doc.download': 'Download Document',
+        'doc.fullscreen': 'Open Fullscreen',
+        'doc.authenticity': '<i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i> Guaranteed Authenticity • Wassim Bannour',
+        'doc.ask_email': 'Request via Email',
+        'doc.close': 'Close',
+        'ai.title': 'Wassim\'s AI Twin',
+        'ai.engine_status': 'Engine: Ready (Autonomous / Worker)',
+        'ai.welcome': 'Hello! I am Wassim\'s AI Twin. Ask me about his <strong>RHCSA & PCAP certifications</strong>, his <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his fullstack engineering background!',
+        'ai.pill1': '⚡ Top Skills & Certs',
+        'ai.pill2': '🛡️ Talan EASM & OSINT',
+        'ai.pill3': '🏆 IEEEXtreme #33 Rank',
+        'ai.pill4': '🚀 Why hire Wassim?',
+        'ai.input_ph': 'Ask recruiter questions...',
+        'footer.copy': '© 2026 Wassim Bannour. Systems Security & Linux Engineering.',
+        'footer.status': 'Status: Systems Operational & Ready for Hire'
+    }
+};
+
 function playFuturisticTone(freq = 880, duration = 0.04, type = 'sine', volume = 0.03) {
     if (!SFX_ENABLED) return;
     try {
@@ -45,7 +215,115 @@ function playFuturisticTone(freq = 880, duration = 0.04, type = 'sine', volume =
     }
 }
 
+/**
+ * Set and apply active language (fr / en) across the portfolio
+ */
+window.setLanguage = function(lang, silent = false) {
+    if (!I18N_DATA[lang]) lang = 'fr';
+    CURRENT_LANG = lang;
+    localStorage.setItem('WB_LANG', lang);
+    document.documentElement.lang = lang;
+
+    const dict = I18N_DATA[lang];
+
+    // Update Text elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+    });
+
+    // Update HTML elements
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key]) el.innerHTML = dict[key];
+    });
+
+    // Update Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) el.setAttribute('placeholder', dict[key]);
+    });
+
+    // Update Titles / Tooltips
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        if (dict[key]) el.setAttribute('title', dict[key]);
+    });
+
+    // Update Language Buttons Text
+    const langBtnText = document.getElementById('langBtnText');
+    const mobileLangText = document.getElementById('mobileLangText');
+    if (langBtnText) langBtnText.textContent = lang.toUpperCase();
+    if (mobileLangText) mobileLangText.textContent = lang.toUpperCase();
+
+    // Trigger Typewriter language update
+    if (window.updateTypewriterPhrases) {
+        window.updateTypewriterPhrases(lang);
+    }
+
+    if (!silent && window.showCyberToast) {
+        window.showCyberToast(lang === 'fr' ? 'Langue : Français activé' : 'Language: English activated', 'info');
+    }
+};
+
+/**
+ * Set and apply active theme (dark / light) across the portfolio
+ */
+window.setTheme = function(theme, silent = false) {
+    if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+    CURRENT_THEME = theme;
+    localStorage.setItem('WB_THEME', theme);
+
+    const isLight = theme === 'light';
+    document.documentElement.classList.toggle('light-mode', isLight);
+    document.body.classList.toggle('light-mode', isLight);
+
+    const themeIcon = document.getElementById('themeIcon');
+    const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+    if (themeIcon) {
+        themeIcon.className = isLight ? 'fa-solid fa-sun text-amber-500' : 'fa-solid fa-moon text-yellow-400';
+    }
+    if (mobileThemeIcon) {
+        mobileThemeIcon.className = isLight ? 'fa-solid fa-sun text-amber-500' : 'fa-solid fa-moon text-yellow-400';
+    }
+    if (themeToggleBtn) {
+        themeToggleBtn.setAttribute('title', isLight ? 'Basculer en Mode Sombre' : 'Basculer en Mode Clair');
+    }
+
+    if (!silent && window.showCyberToast) {
+        window.showCyberToast(isLight ? 'Mode Clair Activé' : 'Mode Sombre Activé', 'info');
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Initialize Theme and Language from Storage (silently on load)
+    window.setTheme(CURRENT_THEME, true);
+    window.setLanguage(CURRENT_LANG, true);
+
+    // Language Toggle Buttons
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const mobileLangBtn = document.getElementById('mobileLangBtn');
+    function toggleLanguage() {
+        const nextLang = CURRENT_LANG === 'fr' ? 'en' : 'fr';
+        window.setLanguage(nextLang);
+        playFuturisticTone(980, 0.04, 'sine', 0.04);
+    }
+    if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
+    if (mobileLangBtn) mobileLangBtn.addEventListener('click', toggleLanguage);
+
+    // Theme Toggle Buttons
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+    function toggleTheme() {
+        const nextTheme = CURRENT_THEME === 'dark' ? 'light' : 'dark';
+        window.setTheme(nextTheme);
+        playFuturisticTone(1100, 0.05, 'sine', 0.04);
+    }
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleTheme);
 
     // -------------------------------------------------------------
     // 0. SFX AUDIO TOGGLE CONTROLLER
@@ -113,8 +391,12 @@ document.addEventListener('DOMContentLoaded', () => {
         function animateCanvas() {
             ctx.clearRect(0, 0, width, height);
 
+            const isLight = document.documentElement.classList.contains('light-mode');
+            const lineBaseColor = isLight ? 'rgba(2, 132, 199, 0.12)' : 'rgba(0, 240, 255, 0.07)';
+            const nodeFillColor = isLight ? 'rgba(2, 132, 199, 0.5)' : 'rgba(0, 240, 255, 0.45)';
+
             // Connecting lines between close nodes
-            ctx.strokeStyle = 'rgba(0, 240, 255, 0.07)';
+            ctx.strokeStyle = lineBaseColor;
             ctx.lineWidth = 0.6;
 
             for (let i = 0; i < nodes.length; i++) {
@@ -136,7 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mdy = nodes[i].y - mouseY;
                 const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
                 if (mdist < 120) {
-                    ctx.strokeStyle = `rgba(0, 240, 255, ${0.25 * (1 - mdist / 120)})`;
+                    ctx.strokeStyle = isLight 
+                        ? `rgba(2, 132, 199, ${0.35 * (1 - mdist / 120)})`
+                        : `rgba(0, 240, 255, ${0.25 * (1 - mdist / 120)})`;
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(mouseX, mouseY);
@@ -152,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (node.x < 0 || node.x > width) node.vx *= -1;
                 if (node.y < 0 || node.y > height) node.vy *= -1;
 
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.45)';
+                ctx.fillStyle = nodeFillColor;
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
                 ctx.fill();
@@ -169,20 +453,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     const heroTypewriter = document.getElementById('heroTypewriter');
     if (heroTypewriter) {
-        const phrases = [
+        const phrasesFr = [
             "Ingénieur Cybersécurité & Linux",
             "Certifié RHCSA (Red Hat) & PCAP (Python)",
+            "Smart EASM & OSINT Developer @ Talan",
+            "Top 33 Mondial @ IEEEXtreme 17.0",
+            "Security-by-Design & Fullstack Developer"
+        ];
+        const phrasesEn = [
+            "Cybersecurity & Linux Systems Engineer",
+            "RHCSA (Red Hat) & PCAP (Python) Certified",
             "Smart EASM & OSINT Developer @ Talan",
             "Top 33 Worldwide @ IEEEXtreme 17.0",
             "Security-by-Design & Fullstack Developer"
         ];
+        let phrases = CURRENT_LANG === 'en' ? phrasesEn : phrasesFr;
         let phraseIdx = 0;
         let charIdx = 0;
         let isDeleting = false;
         let typingSpeed = 65;
 
+        window.updateTypewriterPhrases = function(lang) {
+            phrases = lang === 'en' ? phrasesEn : phrasesFr;
+            phraseIdx = 0;
+            charIdx = 0;
+            isDeleting = false;
+        };
+
         function typeLoop() {
-            const currentPhrase = phrases[phraseIdx];
+            const currentPhrase = phrases[phraseIdx] || phrases[0];
             
             if (isDeleting) {
                 heroTypewriter.textContent = currentPhrase.substring(0, charIdx - 1);

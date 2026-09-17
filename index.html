@@ -471,6 +471,87 @@
             from { transform: translateY(0) scale(1); opacity: 1; }
             to { transform: translateY(100%) scale(0.9); opacity: 0; }
         }
+
+        /* -------------------------------------------------------------
+           CYBER LIGHT MODE (CLEAN OPS CENTER HIGH-CONTRAST THEME)
+           ------------------------------------------------------------- */
+        html.light-mode body {
+            background-color: #f8fafc !important;
+            color: #334155 !important;
+        }
+        html.light-mode #mainHeader {
+            background-color: rgba(248, 250, 252, 0.92) !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #mobileMenu {
+            background-color: rgba(248, 250, 252, 0.98) !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode .cyber-card {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06) !important;
+        }
+        html.light-mode .cyber-card:hover {
+            box-shadow: 0 16px 32px -8px rgba(2, 132, 199, 0.18) !important;
+            border-color: #0284c7 !important;
+        }
+        html.light-mode .text-white {
+            color: #0f172a !important;
+        }
+        html.light-mode .text-gray-200,
+        html.light-mode .text-gray-300 {
+            color: #334155 !important;
+        }
+        html.light-mode .text-gray-400 {
+            color: #64748b !important;
+        }
+        html.light-mode .bg-\[\#070b14\],
+        html.light-mode .bg-\[\#030712\] {
+            background-color: #f1f5f9 !important;
+        }
+        html.light-mode .bg-\[\#0f172a\] {
+            background-color: #ffffff !important;
+        }
+        html.light-mode .border-\[\#1e293b\] {
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode .cyber-modal-container {
+            background-color: #ffffff !important;
+            border-color: #0284c7 !important;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2) !important;
+        }
+        html.light-mode #docViewerModal .cyber-modal-container,
+        html.light-mode #hireMeModal .cyber-modal-container {
+            background-color: #ffffff !important;
+        }
+        html.light-mode .cyber-road-track {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%) !important;
+            border-color: #cbd5e1 !important;
+        }
+        html.light-mode #heroTypewriter {
+            color: #0284c7 !important;
+        }
+        html.light-mode .hero-portrait-wrapper {
+            background: linear-gradient(145deg, rgba(2, 132, 199, 0.08), rgba(255, 255, 255, 0.9), rgba(16, 185, 129, 0.08)) !important;
+            border-color: #0284c7 !important;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15) !important;
+        }
+        html.light-mode .cyber-orb-1 {
+            background: radial-gradient(circle, #38bdf8 0%, #bae6fd 100%) !important;
+            opacity: 0.3 !important;
+        }
+        html.light-mode .cyber-orb-2 {
+            background: radial-gradient(circle, #c084fc 0%, #f3e8ff 100%) !important;
+            opacity: 0.25 !important;
+        }
+        html.light-mode .cyber-orb-3 {
+            background: radial-gradient(circle, #34d399 0%, #d1fae5 100%) !important;
+            opacity: 0.25 !important;
+        }
+        html.light-mode #terminalScreen {
+            background-color: #070b14 !important; /* Keep the terminal HUD authentic cyberpunk */
+        }
     </style>
 </head>
 <body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
@@ -504,40 +585,51 @@
             </a>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center gap-5 font-mono text-sm">
-                <a href="#achievements" class="hover:text-[#00f0ff] transition-colors nav-link">01. // Achievements</a>
-                <a href="#certifications" class="hover:text-[#00f0ff] transition-colors nav-link">02. // Certs</a>
-                <a href="#experience" class="hover:text-[#00f0ff] transition-colors nav-link">03. // Experience</a>
-                <a href="#pipeline" class="hover:text-[#00f0ff] transition-colors nav-link flex items-center gap-1.5 text-[#00f0ff] font-semibold"><i class="fa-solid fa-shield-halved text-xs"></i> 04. // Pipeline Radar</a>
-                <a href="#skills" class="hover:text-[#00f0ff] transition-colors nav-link">05. // Education & Stack</a>
-                <a href="#contact" class="hover:text-[#00f0ff] transition-colors nav-link">06. // Contact</a>
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-5 font-mono text-sm">
+                <a href="#achievements" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.achievements">01. // Achievements</a>
+                <a href="#certifications" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.certs">02. // Certs</a>
+                <a href="#experience" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.experience">03. // Experience</a>
+                <a href="#pipeline" class="hover:text-[#00f0ff] transition-colors nav-link flex items-center gap-1.5 text-[#00f0ff] font-semibold"><i class="fa-solid fa-shield-halved text-xs"></i> <span data-i18n="nav.pipeline">04. // Pipeline Radar</span></a>
+                <a href="#skills" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.skills">05. // Education & Stack</a>
+                <a href="#contact" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.contact">06. // Contact</a>
             </nav>
 
-            <!-- Action CTA & SFX Toggle & Mobile Menu Toggle -->
-            <div class="flex items-center gap-2.5">
+            <!-- Action CTA & Controls -->
+            <div class="flex items-center gap-2">
                 
+                <!-- Language Toggle Button (FR / EN) -->
+                <button id="langToggleBtn" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/50 font-mono text-xs font-bold transition-all" title="Changer de langue / Switch Language">
+                    <i class="fa-solid fa-language text-sm text-[#00f0ff]"></i>
+                    <span id="langBtnText">FR</span>
+                </button>
+
+                <!-- Theme Toggle Button (Dark / Light) -->
+                <button id="themeToggleBtn" class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#0f172a] text-gray-300 hover:text-yellow-400 border border-[#1e293b] hover:border-yellow-400/50 font-mono text-xs transition-all" title="Basculer Mode Sombre / Clair">
+                    <i id="themeIcon" class="fa-solid fa-moon text-yellow-400"></i>
+                </button>
+
                 <!-- Audio SFX Toggle Button -->
-                <button id="sfxToggleBtn" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0f172a] text-gray-400 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/50 font-mono text-xs transition-all" title="Toggle Futuristic Audio SFX">
+                <button id="sfxToggleBtn" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-400 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/50 font-mono text-xs transition-all" title="Toggle Futuristic Audio SFX">
                     <span class="inline-flex items-center gap-0.5 text-[#00f0ff]">
                         <span class="sound-wave-bar"></span>
                         <span class="sound-wave-bar"></span>
                         <span class="sound-wave-bar"></span>
                     </span>
-                    <span id="sfxBtnText" class="text-[11px] font-bold">SFX: ON</span>
+                    <span id="sfxBtnText" class="text-[11px] font-bold">SFX</span>
                 </button>
 
                 <!-- Recruiter Fast-Track High-Impact Button -->
-                <button onclick="window.openHireMeModal()" class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)]" title="Executive Summary & Why Hire Wassim in 60s">
+                <button onclick="window.openHireMeModal()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)]" title="Executive Summary & Why Hire Wassim in 60s">
                     <i class="fa-solid fa-bolt text-xs text-yellow-400"></i>
-                    <span>FAST-TRACK</span>
+                    <span data-i18n="nav.fasttrack">FAST-TRACK</span>
                 </button>
 
-                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981]/15 font-mono text-xs font-semibold transition-all shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="hidden 2xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981]/15 font-mono text-xs font-semibold transition-all shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                     <i class="fa-solid fa-file-arrow-down text-sm"></i>
-                    <span>CV (PDF)</span>
+                    <span>CV</span>
                 </a>
 
-                <button id="openAiChatBtn" class="cyber-btn hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold tracking-wider transition-all duration-300 shadow-[0_0_12px_rgba(0,240,255,0.3)]">
+                <button id="openAiChatBtn" class="cyber-btn hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold tracking-wider transition-all duration-300 shadow-[0_0_12px_rgba(0,240,255,0.3)]">
                     <i class="fa-solid fa-robot text-sm"></i>
                     <span>AI TWIN</span>
                 </button>
@@ -550,28 +642,34 @@
 
         <!-- Mobile Drawer Navigation -->
         <div id="mobileMenu" class="hidden md:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
-            <a href="#achievements" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">01. // Achievements</a>
-            <a href="#certifications" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">02. // Certifications</a>
-            <a href="#experience" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">03. // Experience</a>
-            <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#00f0ff] py-1 mobile-link flex items-center gap-2"><i class="fa-solid fa-shield-halved text-xs"></i> 04. // Pipeline & Career Radar</a>
-            <a href="#skills" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">05. // Education & Skills</a>
-            <a href="#contact" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link">06. // Contact</a>
-            <div class="pt-2 flex items-center justify-between border-t border-[#1e293b]">
-                <span class="text-xs text-gray-400">Audio Feedback:</span>
-                <button id="mobileSfxBtn" class="px-3 py-1 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold">
+            <div class="grid grid-cols-3 gap-2 pb-3 border-b border-[#1e293b]">
+                <button id="mobileLangBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-language"></i> <span id="mobileLangText">FR</span>
+                </button>
+                <button id="mobileThemeBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1">
+                    <i id="mobileThemeIcon" class="fa-solid fa-moon"></i> <span>Theme</span>
+                </button>
+                <button id="mobileSfxBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1">
                     SFX: ON
                 </button>
             </div>
+            <a href="#achievements" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.achievements">01. // Achievements</a>
+            <a href="#certifications" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.certs">02. // Certifications</a>
+            <a href="#experience" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.experience">03. // Experience</a>
+            <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#00f0ff] py-1 mobile-link flex items-center gap-2"><i class="fa-solid fa-shield-halved text-xs"></i> <span data-i18n="nav.pipeline">04. // Pipeline & Career Radar</span></a>
+            <a href="#skills" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.skills">05. // Education & Skills</a>
+            <a href="#contact" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.contact">06. // Contact</a>
+            
             <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="block text-[#10b981] font-bold py-1">
                 <i class="fa-solid fa-file-arrow-down mr-2"></i>Download Official CV (PDF)
             </a>
             <button onclick="document.getElementById('mobileMenu').classList.add('hidden'); window.openHireMeModal();" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.25)]">
                 <i class="fa-solid fa-bolt text-yellow-400"></i>
-                <span>RECRUITER FAST-TRACK (60s)</span>
+                <span data-i18n="nav.fasttrack">RECRUITER FAST-TRACK (60s)</span>
             </button>
             <button id="mobileAiChatBtn" class="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
                 <i class="fa-solid fa-robot text-sm"></i>
-                <span>LAUNCH AI TWIN</span>
+                <span data-i18n="nav.aichat">LAUNCH AI TWIN</span>
             </button>
         </div>
     </header>
@@ -589,7 +687,7 @@
                         
                         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f172a] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.2)]">
                             <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
-                            CYBERSECURITY & SYSTEMS LINUX ENGINEER
+                            <span data-i18n="hero.badge">CYBERSECURITY & SYSTEMS LINUX ENGINEER</span>
                         </div>
 
                         <div class="space-y-3">
@@ -600,18 +698,18 @@
                             <!-- Dynamic Cyber Typewriter Subtitle -->
                             <div class="font-mono text-xs sm:text-sm text-[#00f0ff] font-bold flex items-center gap-2 bg-[#070b14]/90 px-3.5 py-2 rounded-xl border border-[#1e293b] shadow-inner w-fit">
                                 <i class="fa-solid fa-terminal text-[#00f0ff]"></i>
-                                <span class="text-gray-400">role:~$</span>
+                                <span class="text-gray-400" data-i18n="hero.role_prefix">role:~$</span>
                                 <span id="heroTypewriter" class="text-white">Ingénieur Cybersécurité & Linux</span>
                                 <span class="terminal-cursor">|</span>
                             </div>
 
                             <p class="font-mono text-xs sm:text-sm text-gray-300 flex items-center gap-2">
                                 <i class="fa-solid fa-graduation-cap text-[#38bdf8]"></i>
-                                Diplôme National d'Ingénieur Cybersécurité @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span>
+                                <span data-i18n-html="hero.education">Diplôme National d'Ingénieur Cybersécurité @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span></span>
                             </p>
                         </div>
 
-                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]">
+                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]" data-i18n-html="hero.bio">
                             Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>'Security-by-Design'</em>.
                         </p>
 
@@ -659,12 +757,12 @@
                         <div class="pt-3 flex flex-wrap gap-3">
                             <button onclick="window.openHireMeModal()" class="cyber-glow-btn px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] text-black font-extrabold text-sm font-mono tracking-wider flex items-center gap-2.5 hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] transition-all">
                                 <i class="fa-solid fa-bolt text-base"></i>
-                                <span>RECRUITER FAST-TRACK (60s)</span>
+                                <span data-i18n="hero.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
                             </button>
 
                             <button onclick="document.getElementById('openAiChatBtn').click()" class="px-5 py-3.5 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff]/15 font-mono text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]">
                                 <i class="fa-solid fa-comments text-base"></i>
-                                <span>Chat AI Twin</span>
+                                <span data-i18n="hero.btn_aichat">Chat AI Twin</span>
                             </button>
 
                             <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-4 py-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-mono text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]">
@@ -702,7 +800,7 @@
                                 <div class="absolute top-3 left-3 z-10">
                                     <span class="px-3 py-1 rounded-full bg-[#070b14]/90 border border-[#10b981] text-[#10b981] font-mono text-[11px] font-extrabold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
                                         <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
-                                        STATUS: ACTIVE // OPEN TO ROLES
+                                        <span data-i18n="hero.status_pill">STATUS: ACTIVE // OPEN TO ROLES</span>
                                     </span>
                                 </div>
 
@@ -721,7 +819,7 @@
                                         <span>Wassim Bannour</span>
                                         <i class="fa-solid fa-circle-check text-[#00f0ff] text-xs"></i>
                                     </h3>
-                                    <p class="text-[11px] text-gray-400">Cybersecurity & Linux Systems Engineer</p>
+                                    <p class="text-[11px] text-gray-400" data-i18n="hero.badge">Cybersecurity & Linux Systems Engineer</p>
                                 </div>
                                 <span class="px-2.5 py-1 rounded bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 text-[10px] font-bold">
                                     TEK-UP
@@ -747,25 +845,25 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Mondial IEEEXtreme</p>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_rank">Mondial IEEEXtreme</p>
                         <span class="text-[11px] text-gray-400 font-mono">2ᵉ National en Tunisie</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Red Hat SysAdmin</p>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_certs">Red Hat SysAdmin</p>
                         <span class="text-[11px] text-gray-400 font-mono">Linux Enterprise Kernel</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Python Institute</p>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_stage">Python Institute</p>
                         <span class="text-[11px] text-gray-400 font-mono">Algorithms & Pipelines</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1">Talan Tunisie</p>
+                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_sec">Talan Tunisie</p>
                         <span class="text-[11px] text-gray-400 font-mono">Smart Attack Surface & OSINT</span>
                     </div>
                 </div>
@@ -829,10 +927,10 @@
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">01. // Global Honors & Community Leadership</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Achievements & Impact</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="achievements.tag">01. // Global Honors & Community Leadership</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="achievements.title">Achievements & Impact</h2>
                     </div>
-                    <p class="text-gray-400 text-sm font-mono max-w-md">Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.</p>
+                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="achievements.subtitle">Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -845,7 +943,7 @@
                                 </div>
                                 <button onclick="window.openDocViewer('Certificat Officiel IEEEXtreme 17.0 (Top 33 Mondial)', 'IEEE Global', 'proofs/cert_ieeextreme.pdf', 'Certificat officiel attestant de la 33ème place mondiale parmi des milliers d\'équipes universitaires.')" class="px-2.5 py-1 rounded-lg bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black font-mono text-[11px] font-bold flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]" title="Vérifier le certificat officiel IEEE">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Certificat</span>
+                                    <span data-i18n="doc.verified">Certificat</span>
                                 </button>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
@@ -952,8 +1050,8 @@
             <div class="max-w-7xl mx-auto space-y-12">
                 
                 <div class="reveal-card">
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">02. // Verified Industry Credentials</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Professional Certifications</h2>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="certs.tag">02. // Verified Industry Credentials</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="certs.title">Professional Certifications</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -975,7 +1073,7 @@
                                 <span>•</span>
                                 <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
                             </div>
-                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed" data-i18n-html="certs.rhcsa_desc">
                                 Expertise en administration d'entreprise Linux (RHEL/CentOS), durcissement système, automatisation Bash, gestion des droits et utilisateurs, stockage LVM, pare-feu FirewallD et orchestration de services systemd sécurisés.
                             </p>
                             <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200 mb-6">
@@ -1007,7 +1105,7 @@
                             <!-- Credly Badge Link for RHCSA -->
                             <a href="https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(239,68,68,0.2)]" title="Vérifier la certification Red Hat RHCSA sur Credly">
                                 <i class="fa-solid fa-certificate text-sm"></i>
-                                <span>Vérifier sur Credly</span>
+                                <span data-i18n="certs.verify_credly">Vérifier sur Credly</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
                         </div>
@@ -1030,7 +1128,7 @@
                                 <span>•</span>
                                 <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
                             </div>
-                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed" data-i18n-html="certs.pcap_desc">
                                 Maîtrise certifiée de la programmation orientée objet (POO), des structures de données complexes, des scripts d'automatisation, des pipelines de normalisation de flux de données et de l'architecture logicielle propre.
                             </p>
                             <div class="grid grid-cols-2 gap-2.5 text-xs font-mono text-gray-200 mb-6">
@@ -1062,7 +1160,7 @@
                             <!-- Credly Badge Link for PCAP -->
                             <a href="https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-yellow-500/15 text-yellow-400 border border-yellow-500/50 hover:bg-yellow-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(234,179,8,0.2)]" title="Vérifier la certification Python PCAP sur Credly">
                                 <i class="fa-solid fa-certificate text-sm"></i>
-                                <span>Vérifier sur Credly</span>
+                                <span data-i18n="certs.verify_credly">Vérifier sur Credly</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
                         </div>
@@ -1078,10 +1176,10 @@
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-card">
                     <div>
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">03. // Track Record & Engineering Deliverables</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Professional Experience</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="exp.tag">03. // Track Record & Engineering Deliverables</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="exp.title">Professional Experience</h2>
                     </div>
-                    <p class="text-gray-400 text-sm font-mono max-w-md">Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.</p>
+                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="exp.subtitle">Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.</p>
                 </div>
 
                 <div class="space-y-6">
@@ -1880,8 +1978,8 @@
                 <!-- Education & Academic Timeline -->
                 <div>
                     <div class="reveal-card">
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">05. // Academic Background & Technical Skills</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-8">Education & Degrees</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="edu.tag">05. // Academic Background & Technical Skills</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-8" data-i18n="edu.title">Education & Degrees</h2>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1895,13 +1993,13 @@
                                 <h3 class="text-xl font-bold text-white">Diplôme National d'Ingénieur en Informatique</h3>
                                 <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">TEK-UP University (Ariana, TN)</p>
                                 <p class="text-xs text-gray-200 mb-2.5"><strong>Spécialisation :</strong> Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée.</p>
-                                <p class="text-[11px] text-gray-400"><strong>Cours pertinents :</strong> Administration Linux Avancée, Cryptographie, Analyse de Vulnérabilités, Secure Coding.</p>
+                                <p class="text-[11px] text-gray-400" data-i18n-html="edu.tekup_desc"><strong>Cours pertinents :</strong> Administration Linux Avancée, Cryptographie, Analyse de Vulnérabilités, Secure Coding.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
                                 <span class="text-[11px] font-mono text-gray-400">Cursus Cybersécurité</span>
                                 <button type="button" onclick="window.openDocViewer('Attestation Cursus Ingénieur Cybersécurité', 'TEK-UP University', 'proofs/tekup_attestation.pdf', 'Attestation d\'inscription et formation d\'Ingénieur en Cybersécurité.')" class="px-3 py-1 rounded-lg bg-[#00f0ff]/15 border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black text-[#00f0ff] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,240,255,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Attestation</span>
+                                    <span data-i18n="doc.verified">Attestation</span>
                                 </button>
                             </div>
                         </div>
@@ -1916,13 +2014,13 @@
                                 <h3 class="text-xl font-bold text-white">Licence en Génie Logiciel</h3>
                                 <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">ISIMM (Monastir, TN)</p>
                                 <p class="text-xs text-gray-200 mb-2.5">Institut Supérieur d'Informatique et de Mathématiques de Monastir.</p>
-                                <p class="text-[11px] text-gray-400">Fondations algorithmiques, architectures logicielles, structures de données, POO avancée et bases de données.</p>
+                                <p class="text-[11px] text-gray-400" data-i18n-html="edu.isimm_desc">Fondations algorithmiques, architectures logicielles, structures de données, POO avancée et bases de données.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
                                 <span class="text-[11px] font-mono text-gray-400">Diplôme National</span>
                                 <button type="button" onclick="window.openDocViewer('Diplôme National de Licence en Sciences de l\'Informatique', 'ISIMM / Université de Monastir', 'proofs/diplome_isimm.pdf', 'Diplôme officiel de Licence en Sciences de l\'Informatique (Génie Logiciel).')" class="px-3 py-1 rounded-lg bg-[#38bdf8]/15 border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black text-[#38bdf8] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(56,189,248,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Diplôme</span>
+                                    <span data-i18n="doc.verified">Diplôme</span>
                                 </button>
                             </div>
                         </div>
@@ -1937,13 +2035,13 @@
                                 <h3 class="text-xl font-bold text-white">Baccalauréat Technique</h3>
                                 <p class="text-emerald-400 text-xs font-mono font-bold mb-3">Lycée Secondaire Bekalta (Monastir)</p>
                                 <p class="text-xs text-gray-200 mb-2.5"><strong>Mention :</strong> Assez Bien (13.72 / 20)</p>
-                                <p class="text-[11px] text-gray-400">Sciences techniques, logique électronique et modélisation mathématique.</p>
+                                <p class="text-[11px] text-gray-400" data-i18n-html="edu.bac_desc">Sciences techniques, logique électronique et modélisation mathématique.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
                                 <span class="text-[11px] font-mono text-gray-400">Mention Assez Bien</span>
                                 <button type="button" onclick="window.openDocViewer('Diplôme du Baccalauréat Technique', 'Ministère de l\'Éducation', 'proofs/diplome_bac.pdf', 'Diplôme officiel du Baccalauréat Technique — Mention Assez Bien (13.72/20).')" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(16,185,129,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Diplôme</span>
+                                    <span data-i18n="doc.verified">Diplôme</span>
                                 </button>
                             </div>
                         </div>
@@ -1976,7 +2074,7 @@
                 <div>
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 reveal-card">
                         <div>
-                            <h3 class="text-2xl font-bold text-white">Interactive Tech Stack Matrix</h3>
+                            <h3 class="text-2xl font-bold text-white" data-i18n="skills.title">Interactive Tech Stack Matrix</h3>
                             <p class="text-xs font-mono text-gray-400">Filter skills across systems security, development, and toolchains.</p>
                         </div>
 
@@ -2101,9 +2199,9 @@
             <div class="max-w-4xl mx-auto space-y-10 text-center">
                 
                 <div class="space-y-3 reveal-card">
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold">06. // Direct Link</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Let's Connect & Collaborate</h2>
-                    <p class="text-gray-300 text-base max-w-xl mx-auto">
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="contact.tag">06. // Direct Link</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="contact.title">Let's Connect & Collaborate</h2>
+                    <p class="text-gray-300 text-base max-w-xl mx-auto" data-i18n="contact.desc">
                         Whether you are looking for a cybersecurity specialist, Linux systems engineer, or intelligent software developer, feel free to reach out directly.
                     </p>
                 </div>
@@ -2165,10 +2263,10 @@
                     </p>
                     <div class="flex flex-wrap items-center justify-center gap-3">
                         <button onclick="window.openHireMeModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] transition-all">
-                            <i class="fa-solid fa-bolt mr-1.5"></i> RECRUITER FAST-TRACK (60s)
+                            <i class="fa-solid fa-bolt mr-1.5"></i> <span data-i18n="hero.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
                         </button>
                         <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-5 py-2.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold transition-all shadow-[0_0_12px_rgba(16,185,129,0.25)]">
-                            <i class="fa-solid fa-file-pdf mr-1.5"></i> TÉLÉCHARGER LE CV (PDF)
+                            <i class="fa-solid fa-file-pdf mr-1.5"></i> <span>TÉLÉCHARGER LE CV (PDF)</span>
                         </a>
                     </div>
                 </div>
@@ -2181,10 +2279,10 @@
     <!-- FOOTER -->
     <footer class="border-t border-[#1e293b] py-8 px-4 font-mono text-xs text-center text-gray-500">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 Wassim Bannour. Systems Security & Linux Engineering.</p>
+            <p data-i18n="footer.copy">© 2026 Wassim Bannour. Systems Security & Linux Engineering.</p>
             <p class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
-                Status: Systems Operational & Ready for Hire
+                <span data-i18n="footer.status">Status: Systems Operational & Ready for Hire</span>
             </p>
         </div>
     </footer>
@@ -2204,12 +2302,12 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-sm text-white flex items-center gap-1.5 leading-tight">
-                            Wassim's AI Twin
+                            <span data-i18n="ai.title">Wassim's AI Twin</span>
                             <span id="backendModeBadge" class="text-[9px] px-1.5 py-0.2 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">CYBER-AI</span>
                         </h4>
                         <span id="backendStatusSubtext" class="text-[10px] font-mono text-gray-400 flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] inline-block"></span>
-                            <span>Engine: Ready (Autonomous / Worker)</span>
+                            <span data-i18n="ai.engine_status">Engine: Ready (Autonomous / Worker)</span>
                         </span>
                     </div>
                 </div>
@@ -2263,7 +2361,7 @@
                     <div class="w-8 h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md">
                         <img src="1000015101.jpg" alt="Wassim" class="w-full h-full object-cover object-top">
                     </div>
-                    <div class="p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] leading-relaxed shadow-sm">
+                    <div data-i18n-html="ai.welcome" class="p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] leading-relaxed shadow-sm">
                         Hello! I am Wassim's AI Twin. Ask me about his <strong>RHCSA & PCAP certifications</strong>, his <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his fullstack engineering background!
                     </div>
                 </div>
@@ -2271,23 +2369,23 @@
 
             <!-- Pre-built Prompt Pills -->
             <div class="px-4 py-2 bg-[#030712] border-t border-[#1e293b] overflow-x-auto flex gap-2 no-scrollbar text-xs font-mono">
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black transition-colors font-bold" data-prompt="What are Wassim's top skills & certifications?">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black transition-colors font-bold" data-prompt="What are Wassim's top skills & certifications?" data-i18n="ai.pill1">
                     ⚡ Top Skills & Certs
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT).">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT)." data-i18n="ai.pill2">
                     🛡️ Talan EASM & OSINT
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold" data-prompt="Tell me about his IEEEXtreme 17.0 ranking.">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold" data-prompt="Tell me about his IEEEXtreme 17.0 ranking." data-i18n="ai.pill3">
                     🏆 IEEEXtreme #33 Rank
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold" data-prompt="Why should we hire Wassim for a security / software role?">
+                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold" data-prompt="Why should we hire Wassim for a security / software role?" data-i18n="ai.pill4">
                     🚀 Why hire Wassim?
                 </button>
             </div>
 
             <!-- Chat Input Bar -->
             <form id="chatForm" class="p-3 bg-[#070b14] border-t border-[#1e293b] flex items-center gap-2">
-                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-3.5 py-2.5 rounded-xl text-sm focus:outline-none font-mono">
+                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." data-i18n-placeholder="ai.input_ph" autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-3.5 py-2.5 rounded-xl text-sm focus:outline-none font-mono">
                 <button type="submit" id="sendBtn" class="w-10 h-10 rounded-xl bg-[#00f0ff] text-black font-extrabold flex items-center justify-center hover:shadow-[0_0_15px_rgba(0,240,255,0.7)] transition-all">
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                 </button>
@@ -2305,13 +2403,13 @@
                         <i class="fa-solid fa-file-shield"></i>
                     </div>
                     <div>
-                        <h3 id="docModalTitle" class="text-white font-extrabold text-base leading-tight">Attestation Officielle</h3>
-                        <p id="docModalIssuer" class="text-xs font-mono text-[#38bdf8]">Organisme Émetteur</p>
+                        <h3 id="docModalTitle" data-i18n="doc.title_default" class="text-white font-extrabold text-base leading-tight">Attestation Officielle</h3>
+                        <p id="docModalIssuer" data-i18n="doc.issuer_default" class="text-xs font-mono text-[#38bdf8]">Organisme Émetteur</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="px-2.5 py-1 rounded-full bg-[#10b981]/20 text-[#10b981] border border-[#10b981]/40 font-mono text-[10px] font-bold hidden sm:inline-flex items-center gap-1">
-                        <i class="fa-solid fa-certificate"></i> VÉRIFIABLE
+                        <i class="fa-solid fa-certificate"></i> <span data-i18n="doc.verified">VÉRIFIABLE</span>
                     </span>
                     <button onclick="window.closeDocViewer()" class="w-8 h-8 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-white hover:border-[#00f0ff] flex items-center justify-center transition-all" aria-label="Fermer">
                         <i class="fa-solid fa-xmark"></i>
@@ -2331,18 +2429,18 @@
                         <div class="w-16 h-16 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[#00f0ff] flex items-center justify-center text-3xl mx-auto shadow-[0_0_20px_rgba(0,240,255,0.25)]">
                             <i class="fa-solid fa-file-pdf"></i>
                         </div>
-                        <h4 id="docViewerStatusTitle" class="text-white font-bold text-sm">Document Officiel</h4>
-                        <p id="docViewerStatusSubtext" class="text-gray-400 text-xs leading-relaxed">
-                            Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification.
+                        <h4 id="docViewerStatusTitle" data-i18n="doc.status_title" class="text-white font-bold text-sm">Document Officiel</h4>
+                        <p id="docViewerStatusSubtext" data-i18n-html="doc.status_subtext" class="text-gray-400 text-xs leading-relaxed">
+                            Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification authentique.
                         </p>
                         <div class="pt-2 flex flex-wrap justify-center gap-2">
                             <a id="docDirectDownloadBtn" href="#" download class="px-4 py-2 rounded-xl bg-[#00f0ff] text-black font-bold font-mono text-xs inline-flex items-center gap-2 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all">
                                 <i class="fa-solid fa-download"></i>
-                                <span>Télécharger le Document</span>
+                                <span data-i18n="doc.download">Télécharger le Document</span>
                             </a>
                             <a id="docOpenTabBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8]/20 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                <span>Ouvrir Plein Écran</span>
+                                <span data-i18n="doc.fullscreen">Ouvrir Plein Écran</span>
                             </a>
                         </div>
                     </div>
@@ -2351,15 +2449,15 @@
 
             <!-- Modal Footer -->
             <div class="px-5 py-3.5 bg-[#070b14] border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-2">
-                <span class="text-[11px] font-mono text-gray-400">
+                <span data-i18n-html="doc.authenticity" class="text-[11px] font-mono text-gray-400">
                     <i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i>
                     Authenticité garantie • Wassim Bannour
                 </span>
                 <div class="flex items-center gap-2">
                     <a href="mailto:wisoghost@gmail.com?subject=Demande%20de%20document%20officiel%20-%20Wassim%20Bannour" class="px-3 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-[#00f0ff] hover:border-[#00f0ff] font-mono text-xs transition-all">
-                        <i class="fa-solid fa-envelope mr-1 text-[#00f0ff]"></i> Demander par Email
+                        <i class="fa-solid fa-envelope mr-1 text-[#00f0ff]"></i> <span data-i18n="doc.ask_email">Demander par Email</span>
                     </a>
-                    <button onclick="window.closeDocViewer()" class="px-4 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all">
+                    <button onclick="window.closeDocViewer()" data-i18n="doc.close" class="px-4 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all">
                         Fermer
                     </button>
                 </div>
@@ -2377,8 +2475,8 @@
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <div>
-                        <h3 class="text-white font-extrabold text-base leading-tight">Recruiter Fast-Track Dossier</h3>
-                        <p class="text-xs font-mono text-yellow-400">Why Hire Wassim Bannour in 60 Seconds</p>
+                        <h3 data-i18n="hire.title" class="text-white font-extrabold text-base leading-tight">Recruiter Fast-Track Dossier</h3>
+                        <p data-i18n="hire.subtitle" class="text-xs font-mono text-yellow-400">Why Hire Wassim Bannour in 60 Seconds</p>
                     </div>
                 </div>
                 <button onclick="window.closeHireMeModal()" class="w-8 h-8 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-white hover:border-yellow-400 flex items-center justify-center transition-all" aria-label="Close">
@@ -2393,9 +2491,9 @@
                     <div class="p-3.5 rounded-xl bg-[#030712] border border-red-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-red-400 font-bold text-xs">
                             <i class="fa-brands fa-redhat text-sm"></i>
-                            <span>RHCSA Certified (Linux)</span>
+                            <span data-i18n="hire.pillar1_title">RHCSA Certified (Linux)</span>
                         </div>
-                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                        <p data-i18n="hire.pillar1_desc" class="text-gray-300 text-[11px] leading-relaxed">
                             Enterprise RHEL system administration, kernel tuning, SELinux security policies, and production Bash automation.
                         </p>
                     </div>
@@ -2403,9 +2501,9 @@
                     <div class="p-3.5 rounded-xl bg-[#030712] border border-yellow-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-yellow-400 font-bold text-xs">
                             <i class="fa-brands fa-python text-sm"></i>
-                            <span>PCAP Certified (Python)</span>
+                            <span data-i18n="hire.pillar2_title">PCAP Certified (Python)</span>
                         </div>
-                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                        <p data-i18n="hire.pillar2_desc" class="text-gray-300 text-[11px] leading-relaxed">
                             High-performance data ingestion pipelines, OCR algorithms (NumPy), and clean object-oriented architecture.
                         </p>
                     </div>
@@ -2413,9 +2511,9 @@
                     <div class="p-3.5 rounded-xl bg-[#030712] border border-[#00f0ff]/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-[#00f0ff] font-bold text-xs">
                             <i class="fa-solid fa-trophy text-sm"></i>
-                            <span>Top 33 Worldwide (IEEE)</span>
+                            <span data-i18n="hire.pillar3_title">Top 33 Worldwide (IEEE)</span>
                         </div>
-                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                        <p data-i18n="hire.pillar3_desc" class="text-gray-300 text-[11px] leading-relaxed">
                             Classé 33ème mondial en algorithmique sous pression extrême (24h non-stop) parmi des milliers d'équipes d'ingénieurs.
                         </p>
                     </div>
@@ -2423,9 +2521,9 @@
                     <div class="p-3.5 rounded-xl bg-[#030712] border border-emerald-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
                             <i class="fa-solid fa-shield-virus text-sm"></i>
-                            <span>EASM & Threat Intel (Talan)</span>
+                            <span data-i18n="hire.pillar4_title">EASM & Threat Intel (Talan)</span>
                         </div>
-                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                        <p data-i18n="hire.pillar4_desc" class="text-gray-300 text-[11px] leading-relaxed">
                             Conception réelle de plateforme d'attaque surface externe, connecteurs OSINT multiples et surveillance continue des vulnérabilités.
                         </p>
                     </div>
@@ -2434,10 +2532,10 @@
                 <!-- Availability & Target Roles -->
                 <div class="p-4 rounded-xl bg-[#030712] border border-[#1e293b] space-y-2 font-mono">
                     <div class="flex items-center justify-between text-[#10b981] font-bold text-xs">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> Disponibilité : Immédiate // PFE & Postes Ingénieur</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> <span data-i18n="hire.avail">Disponibilité : Immédiate // PFE & Postes Ingénieur</span></span>
                         <span class="text-gray-400 text-[10px]">Tunisie / France / Remote</span>
                     </div>
-                    <p class="text-gray-300 text-[11px]">
+                    <p data-i18n-html="hire.target_roles" class="text-gray-300 text-[11px]">
                         <strong>Postes cibles :</strong> Ingénieur Cybersécurité, Administrateur Systèmes Linux / RHEL, Ingénieur DevSecOps, Développeur Python / Full Stack Sécurisé.
                     </p>
                 </div>
@@ -2446,11 +2544,11 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono">
                     <a href="mailto:wisoghost@gmail.com?subject=Proposition%20de%20recrutement%20-%20Wassim%20Bannour" class="p-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] transition-all">
                         <i class="fa-solid fa-paper-plane"></i>
-                        <span>Envoyer une Proposition (Email)</span>
+                        <span data-i18n="hire.btn_email">Envoyer une Proposition (Email)</span>
                     </a>
                     <a href="tel:+21694101910" class="p-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                         <i class="fa-solid fa-phone"></i>
-                        <span>Appel Direct (+216 94101910)</span>
+                        <span data-i18n="hire.btn_call">Appel Direct (+216 94101910)</span>
                     </a>
                 </div>
             </div>
@@ -2458,9 +2556,9 @@
             <!-- Modal Footer -->
             <div class="px-6 py-3.5 bg-[#070b14] border-t border-[#1e293b] flex items-center justify-between">
                 <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="text-xs font-mono text-[#00f0ff] hover:underline flex items-center gap-1 font-bold">
-                    <i class="fa-solid fa-file-pdf"></i> Télécharger le CV Complet (PDF)
+                    <i class="fa-solid fa-file-pdf"></i> <span data-i18n="hire.cv_pdf">Télécharger le CV Complet (PDF)</span>
                 </a>
-                <button onclick="window.closeHireMeModal()" class="px-4 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-white font-mono text-xs transition-all">
+                <button onclick="window.closeHireMeModal()" data-i18n="hire.close" class="px-4 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-white font-mono text-xs transition-all">
                     Fermer
                 </button>
             </div>
