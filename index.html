@@ -431,6 +431,10 @@
             box-shadow: 0 0 12px #00f0ff;
             animation: pingDot 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
+        .road-node-card.active {
+            border-color: #00f0ff !important;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+        }
         @keyframes pingDot {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.4); }
@@ -473,76 +477,123 @@
         }
 
         /* -------------------------------------------------------------
-           CYBER LIGHT MODE (CLEAN OPS CENTER HIGH-CONTRAST THEME)
+           CYBER LIGHT MODE (TACTICAL OPS CENTER / CLEAN LIGHT THEME)
            ------------------------------------------------------------- */
         html.light-mode {
             color-scheme: light;
+            --cyber-bg: #f8fafc;
+            --cyber-card: #ffffff;
+            --cyber-border: #e2e8f0;
         }
 
+        html.light-mode,
         html.light-mode body {
             background-color: #f0f4f9 !important;
+            background: #f0f4f9 !important;
             color: #1e293b !important;
         }
 
-        /* Header & Drawers */
-        html.light-mode #mainHeader {
-            background: rgba(255, 255, 255, 0.94) !important;
-            border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+        /* Ambient Glowing Cyber Orbs in Light Mode */
+        html.light-mode .cyber-orb-1 {
+            background: radial-gradient(circle, #38bdf8 0%, rgba(240, 244, 249, 0) 70%) !important;
+            opacity: 0.35 !important;
+        }
+        html.light-mode .cyber-orb-2 {
+            background: radial-gradient(circle, #c084fc 0%, rgba(240, 244, 249, 0) 70%) !important;
+            opacity: 0.3 !important;
+        }
+        html.light-mode .cyber-orb-3 {
+            background: radial-gradient(circle, #34d399 0%, rgba(240, 244, 249, 0) 70%) !important;
+            opacity: 0.3 !important;
+        }
+        html.light-mode #cyberCanvas {
+            opacity: 0.45 !important;
         }
 
+        /* Header & Navigation */
+        html.light-mode #mainHeader {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.07) !important;
+        }
+        html.light-mode #mainHeader span.text-white,
+        html.light-mode #mainHeader a span.text-white {
+            color: #0f172a !important;
+        }
+        html.light-mode #mainHeader nav {
+            background: rgba(241, 245, 249, 0.9) !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+        }
+        html.light-mode .header-settings-pill {
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+        html.light-mode .header-settings-pill div.bg-\[\#1e293b\] {
+            background-color: #cbd5e1 !important;
+        }
+        html.light-mode #openAiChatBtn {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+        html.light-mode #openAiChatBtn:hover {
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+            background-color: rgba(2, 132, 199, 0.08) !important;
+        }
         html.light-mode #mobileMenu {
             background: rgba(255, 255, 255, 0.98) !important;
-            border-color: #cbd5e1 !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
         }
-
-        /* Navigation Links */
         html.light-mode nav a.nav-link {
             color: #475569 !important;
         }
         html.light-mode nav a.nav-link:hover,
         html.light-mode nav a.nav-link.active {
             color: #0284c7 !important;
+            background: rgba(2, 132, 199, 0.12) !important;
         }
-
-        /* General Cyber Cards & Containers */
-        html.light-mode .cyber-card {
-            background: #ffffff !important;
-            border-color: #e2e8f0 !important;
-            box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
-        }
-        html.light-mode .cyber-card:hover {
-            border-color: #0284c7 !important;
-            box-shadow: 0 14px 30px -4px rgba(2, 132, 199, 0.18), 0 4px 8px -2px rgba(2, 132, 199, 0.08) !important;
-        }
-
-        /* Section backgrounds */
-        html.light-mode section.bg-\[\#030712\]\/60,
-        html.light-mode .bg-\[\#030712\]\/60 {
-            background-color: #f8fafc !important;
-        }
-        html.light-mode section.bg-\[\#070b14\],
-        html.light-mode .bg-\[\#070b14\] {
-            background-color: #f0f4f9 !important;
-        }
-        html.light-mode .bg-\[\#0f172a\] {
+        html.light-mode #mobileLangBtn,
+        html.light-mode #mobileThemeBtn,
+        html.light-mode #mobileSfxBtn {
             background-color: #ffffff !important;
-        }
-        html.light-mode .bg-\[\#030712\] {
-            background-color: #f1f5f9 !important;
-        }
-        html.light-mode .bg-\[\#0a101f\] {
-            background-color: #e2e8f0 !important;
-        }
-
-        /* Borders */
-        html.light-mode .border-\[\#1e293b\],
-        html.light-mode .border-\[\#1e293b\]\/50 {
             border-color: #cbd5e1 !important;
+            color: #334155 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
         }
 
-        /* Headings & Text */
+        /* Universal Section Backgrounds in Light Mode */
+        html.light-mode section {
+            background-color: #f0f4f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #hero,
+        html.light-mode #skills,
+        html.light-mode #certifications {
+            background-color: #f0f4f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #achievements,
+        html.light-mode #experience,
+        html.light-mode #pipeline,
+        html.light-mode #contact {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        /* Footer */
+        html.light-mode footer {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            color: #64748b !important;
+        }
+        html.light-mode footer p {
+            color: #64748b !important;
+        }
+
+        /* Headings & Text Hierarchy */
         html.light-mode h1,
         html.light-mode h2,
         html.light-mode h3,
@@ -550,22 +601,19 @@
         html.light-mode .text-white {
             color: #0f172a !important;
         }
-
         html.light-mode p,
         html.light-mode .text-gray-200,
         html.light-mode .text-gray-300 {
             color: #334155 !important;
         }
-
         html.light-mode .text-gray-400 {
             color: #64748b !important;
         }
-
         html.light-mode .text-gray-500 {
             color: #94a3b8 !important;
         }
 
-        /* Cyber Accent Texts in Light Mode (Deep, Sharp & High Contrast) */
+        /* High-Contrast Cyber Accents */
         html.light-mode .text-\[\#00f0ff\] {
             color: #0284c7 !important;
         }
@@ -587,38 +635,166 @@
             color: #dc2626 !important;
         }
 
-        /* Hero Portrait & Typewriter */
-        html.light-mode .hero-portrait-wrapper {
+        /* Universal Cyber Cards & Containers */
+        html.light-mode .cyber-card {
+            background: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+        }
+        html.light-mode .cyber-card:hover {
+            border-color: #0284c7 !important;
+            box-shadow: 0 16px 35px -4px rgba(2, 132, 199, 0.18), 0 4px 10px -2px rgba(2, 132, 199, 0.08) !important;
+        }
+
+        /* Universal Background Overrides */
+        html.light-mode [class*="bg-[#070b14]"],
+        html.light-mode [class*="bg-[#030712]"],
+        html.light-mode [class*="bg-[#0a0f1d]"],
+        html.light-mode [class*="bg-[#0a101f]"],
+        html.light-mode [class*="bg-[#040814]"],
+        html.light-mode [class*="bg-[#0f172a]"],
+        html.light-mode [class*="bg-[#060a14]"] {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        /* Universal Borders */
+        html.light-mode [class*="border-[#1e293b]"] {
+            border-color: #e2e8f0 !important;
+        }
+
+        /* =============================================================
+           1. HERO SECTION
+           ============================================================= */
+        html.light-mode #hero .hero-portrait-wrapper {
             background: linear-gradient(145deg, rgba(2, 132, 199, 0.12), #ffffff, rgba(5, 150, 105, 0.1)) !important;
             border-color: #0284c7 !important;
             box-shadow: 0 12px 35px rgba(2, 132, 199, 0.18) !important;
         }
+        html.light-mode #heroTypewriterContainer,
+        html.light-mode #hero div.font-mono.text-xs.sm\:text-sm.text-\[\#00f0ff\].font-bold {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+        }
         html.light-mode #heroTypewriter {
             color: #0284c7 !important;
         }
+        html.light-mode #hero p[data-i18n-html="hero.bio"],
+        html.light-mode #heroBioBox {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            color: #334155 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #hero p[data-i18n-html="hero.bio"] strong,
+        html.light-mode #heroBioBox strong {
+            color: #0f172a !important;
+        }
+        html.light-mode #hero .stat-card,
+        html.light-mode #hero .grid.grid-cols-2.sm\:grid-cols-4 > div {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #hero .stat-card span.text-white,
+        html.light-mode #hero .grid.grid-cols-2.sm\:grid-cols-4 span.text-white {
+            color: #0f172a !important;
+        }
+        html.light-mode #hero button[onclick*="copyToClipboard"] {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #hero button[onclick*="copyToClipboard"]:hover {
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+        }
+        html.light-mode #hero a[download],
+        html.light-mode #hero a[href*="github"],
+        html.light-mode #hero a[href*="linkedin"] {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #hero a[download] {
+            color: #059669 !important;
+            border-color: rgba(5, 150, 105, 0.4) !important;
+        }
+        html.light-mode #hero a[href*="github"]:hover {
+            border-color: #0f172a !important;
+            color: #0f172a !important;
+        }
+        html.light-mode #hero a[href*="linkedin"]:hover {
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+        }
 
-        /* Terminal Screen - Keep Dark Glass HUD aesthetic with light container border */
-        html.light-mode #terminalScreen {
-            background-color: #070b14 !important;
-            color: #e2e8f0 !important;
+        /* Hero Portrait & Under-Photo Details */
+        html.light-mode #heroPortraitContainer,
+        html.light-mode .hero-portrait-wrapper > div.relative.w-full {
+            background-color: #f8fafc !important;
+            border-color: #cbd5e1 !important;
         }
-        html.light-mode #terminalScreen .text-gray-400 {
-            color: #94a3b8 !important;
+        html.light-mode .hero-portrait-wrapper span[data-i18n="hero.status_pill"] {
+            color: #059669 !important;
         }
-        html.light-mode #terminalScreen .text-gray-300 {
-            color: #cbd5e1 !important;
+        html.light-mode .hero-portrait-wrapper span[data-i18n="hero.status_pill"] + span,
+        html.light-mode .hero-portrait-wrapper .absolute.top-3.left-3 span,
+        html.light-mode .hero-portrait-wrapper .absolute.top-3.right-3 span {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
         }
-        html.light-mode #terminalScreen .text-\[\#00f0ff\] {
-            color: #00f0ff !important;
+        html.light-mode .hero-portrait-wrapper .absolute.top-3.left-3 span {
+            color: #059669 !important;
+            border-color: rgba(5, 150, 105, 0.5) !important;
         }
-        html.light-mode #terminalScreen .text-\[\#10b981\] {
-            color: #10b981 !important;
+        html.light-mode .hero-portrait-wrapper .absolute.top-3.right-3 span {
+            color: #0284c7 !important;
+            border-color: rgba(2, 132, 199, 0.5) !important;
         }
-        html.light-mode #terminalScreen .text-\[\#38bdf8\] {
-            color: #38bdf8 !important;
+        html.light-mode .hero-portrait-wrapper + div,
+        html.light-mode .hero-portrait-wrapper ~ div,
+        html.light-mode .hero-portrait-wrapper .mt-3,
+        html.light-mode #heroIdentityCard,
+        html.light-mode #heroTelemetryCard {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+        }
+        html.light-mode .hero-portrait-wrapper .mt-3 h3,
+        html.light-mode #heroIdentityCard h3 {
+            color: #0f172a !important;
+        }
+        html.light-mode .hero-portrait-wrapper .mt-3 p,
+        html.light-mode #heroIdentityCard p {
+            color: #64748b !important;
         }
 
-        /* Quick Action Chips in Terminal */
+        /* =============================================================
+           INTERACTIVE TERMINAL CONSOLE IN LIGHT MODE
+           ============================================================= */
+        html.light-mode .cyber-card:has(#terminalScreen) {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+        }
+        html.light-mode .cyber-card:has(#terminalScreen) > div:first-child {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode .cyber-card:has(#terminalScreen) > div:first-child span.text-gray-400 {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+        html.light-mode .cyber-card:has(#terminalScreen) > div:nth-child(2) {
+            background-color: #f1f5f9 !important;
+            border-color: #e2e8f0 !important;
+        }
         html.light-mode .terminal-chip {
             background-color: #ffffff !important;
             border-color: #cbd5e1 !important;
@@ -630,37 +806,387 @@
             color: #ffffff !important;
             border-color: #0284c7 !important;
         }
-
-        /* Interactive Timeline Track */
-        html.light-mode .cyber-road-track {
-            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%) !important;
+        html.light-mode #terminalScreen {
+            background-color: #f8fafc !important;
+            color: #1e293b !important;
+            border-top: 1px solid #e2e8f0 !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+        html.light-mode #terminalScreen .terminal-log-line {
+            color: #334155 !important;
+        }
+        html.light-mode #terminalScreen .text-gray-400,
+        html.light-mode #terminalScreen .text-gray-500 {
+            color: #64748b !important;
+        }
+        html.light-mode #terminalScreen .text-gray-300,
+        html.light-mode #terminalScreen .text-gray-200 {
+            color: #334155 !important;
+        }
+        html.light-mode #terminalScreen .text-\[\#00f0ff\] {
+            color: #0284c7 !important;
+        }
+        html.light-mode #terminalScreen .text-\[\#10b981\] {
+            color: #059669 !important;
+        }
+        html.light-mode #terminalScreen .text-\[\#38bdf8\] {
+            color: #0369a1 !important;
+        }
+        html.light-mode #terminalScreen .terminal-log-line.success {
+            color: #059669 !important;
+            font-weight: 600;
+        }
+        html.light-mode #terminalScreen .terminal-log-line.info {
+            color: #475569 !important;
+        }
+        html.light-mode #terminalScreen .terminal-log-line.cmd {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+        html.light-mode form#terminalForm {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #terminalInput {
+            color: #0f172a !important;
+        }
+        html.light-mode #terminalForm button[type="submit"] {
+            background-color: #f1f5f9 !important;
             border-color: #cbd5e1 !important;
+            color: #0284c7 !important;
+            font-weight: 700;
+        }
+        html.light-mode #terminalForm button[type="submit"]:hover {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+            border-color: #0284c7 !important;
         }
 
-        /* Modals & Lightboxes */
+        /* =============================================================
+           04. RADAR & PIPELINE SECTION IN LIGHT MODE
+           ============================================================= */
+        html.light-mode #pipeline {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #pipeline .p-3\.5.sm\:p-4.rounded-2xl {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode .station-btn {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        html.light-mode .station-btn:hover {
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+        }
+        html.light-mode .station-btn.active {
+            background: #0284c7 !important;
+            border-color: #0284c7 !important;
+            color: #ffffff !important;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3) !important;
+        }
+        html.light-mode #autoCruiseBtn {
+            background-color: #ffffff !important;
+            border-color: #059669 !important;
+            color: #059669 !important;
+        }
+        html.light-mode #prevStationBtn,
+        html.light-mode #nextStationBtn {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        html.light-mode .cyber-road-track {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
+            background-image: 
+                linear-gradient(to right, rgba(2, 132, 199, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(2, 132, 199, 0.08) 1px, transparent 1px) !important;
+        }
+        html.light-mode #pipeline .w-full.max-w-\[340px\] {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+        }
+        html.light-mode #tuxSpeechText {
+            color: #0f172a !important;
+            font-weight: 600;
+        }
+        html.light-mode #tuxStationBadge {
+            background-color: rgba(2, 132, 199, 0.12) !important;
+            color: #0284c7 !important;
+        }
+        html.light-mode #radarCircleBg {
+            fill: url(#radarBgGradLight) !important;
+            stroke: #cbd5e1 !important;
+        }
+        html.light-mode .radar-sweep-line path {
+            fill: url(#radarSweepGradLight) !important;
+        }
+        html.light-mode #cyberTuxContainer svg text {
+            fill: #475569 !important;
+        }
+        html.light-mode #cyberTuxContainer circle[fill="#070b14"] {
+            fill: #ffffff !important;
+            stroke: #0284c7 !important;
+        }
+
+        /* Milestone Dossier Card in Light Mode */
+        html.light-mode #stationDossierCard {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+        }
+        html.light-mode #stationDossierCard h3,
+        html.light-mode #stationDossierCard #dossierTitle {
+            color: #0f172a !important;
+            font-weight: 800;
+        }
+        html.light-mode #stationDossierCard p,
+        html.light-mode #stationDossierCard #dossierDesc {
+            color: #334155 !important;
+        }
+        html.light-mode #stationDossierCard #dossierOrg {
+            color: #0284c7 !important;
+            font-weight: 700;
+        }
+        html.light-mode #dossierDate,
+        html.light-mode #dossierLocation {
+            color: #64748b !important;
+        }
+        html.light-mode #dossierTags span {
+            background-color: #f1f5f9 !important;
+            color: #1e293b !important;
+            border-color: #cbd5e1 !important;
+            font-weight: 600;
+        }
+        html.light-mode #dossierActionBtn {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+            border-color: #0284c7 !important;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3) !important;
+        }
+        html.light-mode #stationDossierCard button[onclick*="openAiChatBtn"] {
+            background-color: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+            color: #0284c7 !important;
+        }
+
+        /* 8 Highway Track Nodes in Light Mode */
+        html.light-mode .road-node-card {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode .road-node-card span.text-white,
+        html.light-mode .road-node-card span.block {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+        html.light-mode .road-node-card span.text-gray-400 {
+            color: #64748b !important;
+        }
+        html.light-mode .road-node-card span.rounded-full {
+            background-color: #f1f5f9 !important;
+            color: #475569 !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+        html.light-mode .road-node-card.active {
+            border-color: #0284c7 !important;
+            background-color: #f0f9ff !important;
+            box-shadow: 0 0 15px rgba(2, 132, 199, 0.25) !important;
+        }
+        html.light-mode .road-node-card.active span.text-white,
+        html.light-mode .road-node-card.active span.block {
+            color: #0284c7 !important;
+        }
+        html.light-mode .road-node-card.active span.rounded-full {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+            border-color: #0284c7 !important;
+        }
+
+        /* =============================================================
+           01. ACHIEVEMENTS SECTION IN LIGHT MODE
+           ============================================================= */
+        html.light-mode #achievements .cyber-card {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+        }
+        html.light-mode #achievements .cyber-card h3 {
+            color: #0f172a !important;
+        }
+        html.light-mode #achievements .cyber-card ul li span {
+            color: #334155 !important;
+        }
+        html.light-mode #achievements .cyber-card ul li span strong {
+            color: #0f172a !important;
+        }
+        html.light-mode #achievements button[onclick*="openDocViewer"] {
+            background-color: #f0f9ff !important;
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+        }
+
+        /* =============================================================
+           02. CERTIFICATIONS SECTION IN LIGHT MODE
+           ============================================================= */
+        html.light-mode #certifications .cyber-card {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+        }
+        html.light-mode #certifications .cyber-card h3 {
+            color: #0f172a !important;
+        }
+        html.light-mode #certifications .grid.grid-cols-2 .p-3,
+        html.light-mode #certifications .p-3.rounded-xl {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            color: #1e293b !important;
+        }
+        html.light-mode #certifications .p-3.rounded-xl h4 {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+        html.light-mode #certifications .p-3.rounded-xl p {
+            color: #475569 !important;
+        }
+        html.light-mode #certifications button[onclick*="openDocViewer"] {
+            background-color: #f0f9ff !important;
+            border-color: #0284c7 !important;
+            color: #0284c7 !important;
+        }
+
+        /* =============================================================
+           03. EXPERIENCE SECTION IN LIGHT MODE
+           ============================================================= */
+        html.light-mode .experience-card {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+        }
+        html.light-mode .experience-card h3 {
+            color: #0f172a !important;
+        }
+        html.light-mode .experience-card p {
+            color: #334155 !important;
+        }
+        html.light-mode .experience-card span[class*="bg-[#070b14]"],
+        html.light-mode .experience-card a[class*="bg-[#070b14]"],
+        html.light-mode .experience-card button[class*="bg-[#070b14]"] {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        html.light-mode .experience-drawer .p-4 {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode .experience-drawer .p-4 p {
+            color: #334155 !important;
+        }
+        html.light-mode .experience-drawer .p-3\.5 {
+            background-color: #f1f5f9 !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        /* =============================================================
+           05. EDUCATION & SKILLS MATRIX IN LIGHT MODE
+           ============================================================= */
+        html.light-mode #skills .cyber-card,
+        html.light-mode .skill-card {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #skills .cyber-card h3 {
+            color: #0f172a !important;
+        }
+        html.light-mode #skills span[data-i18n="edu.badge_ing"] {
+            background-color: rgba(2, 132, 199, 0.15) !important;
+            color: #0284c7 !important;
+            border: 1px solid rgba(2, 132, 199, 0.35) !important;
+            font-weight: 800 !important;
+        }
+        html.light-mode #skills span[data-i18n="edu.badge_lic"] {
+            background-color: rgba(3, 105, 161, 0.15) !important;
+            color: #0369a1 !important;
+            border: 1px solid rgba(3, 105, 161, 0.35) !important;
+            font-weight: 800 !important;
+        }
+        html.light-mode #skills span[data-i18n="edu.badge_bac"] {
+            background-color: rgba(5, 150, 105, 0.15) !important;
+            color: #059669 !important;
+            border: 1px solid rgba(5, 150, 105, 0.35) !important;
+            font-weight: 800 !important;
+        }
+        html.light-mode #skills .grid.grid-cols-1.sm\:grid-cols-3 .p-4 {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light-mode #skills .grid.grid-cols-1.sm\:grid-cols-3 span.text-white {
+            color: #0f172a !important;
+        }
+        html.light-mode .skill-card h4 {
+            color: #0f172a !important;
+        }
+        html.light-mode .skill-card span[class*="bg-[#070b14]"] {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+
+        /* =============================================================
+           06. CONTACT SECTION IN LIGHT MODE
+           ============================================================= */
+        html.light-mode #contact .grid.grid-cols-1.sm\:grid-cols-3 .p-6 {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+        html.light-mode #contact span.text-white {
+            color: #0f172a !important;
+        }
+        html.light-mode #contact span.text-gray-300 {
+            color: #64748b !important;
+        }
+        html.light-mode #contact button[class*="bg-[#070b14]"] {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+
+        /* =============================================================
+           MODALS & DIALOGS IN LIGHT MODE
+           ============================================================= */
         html.light-mode .cyber-modal-container {
             background-color: #ffffff !important;
             border-color: #0284c7 !important;
             box-shadow: 0 25px 60px -10px rgba(15, 23, 42, 0.25) !important;
         }
         html.light-mode #docViewerModal .cyber-modal-container,
-        html.light-mode #hireMeModal .cyber-modal-container {
+        html.light-mode #fastTrackModal .cyber-modal-container,
+        html.light-mode #hireMeModal .cyber-modal-container,
+        html.light-mode #aiChatModal .cyber-modal-container {
             background-color: #ffffff !important;
         }
         html.light-mode #docViewerFrameContainer {
             background-color: #f8fafc !important;
             border-color: #cbd5e1 !important;
         }
-        html.light-mode #hireMeModal .bg-\[\#030712\] {
-            background-color: #f8fafc !important;
-            border-color: #e2e8f0 !important;
-        }
-
-        /* AI Chat Widget */
-        html.light-mode #aiChatModal .cyber-card {
-            background-color: #ffffff !important;
-            border-color: #0284c7 !important;
-            box-shadow: 0 20px 50px -10px rgba(2, 132, 199, 0.25) !important;
+        html.light-mode #hireMeModal h3,
+        html.light-mode #hireMeModal p,
+        html.light-mode #fastTrackModal h3,
+        html.light-mode #fastTrackModal p {
+            color: #0f172a !important;
         }
         html.light-mode #chatMessages .chat-bubble.assistant > div:last-child {
             background-color: #f1f5f9 !important;
@@ -680,22 +1206,13 @@
             background-color: #0284c7 !important;
             color: #ffffff !important;
         }
-
-        /* Glowing Ambient Orbs */
-        html.light-mode .cyber-orb-1 {
-            background: radial-gradient(circle, #38bdf8 0%, rgba(240, 244, 249, 0) 70%) !important;
-            opacity: 0.35 !important;
-        }
-        html.light-mode .cyber-orb-2 {
-            background: radial-gradient(circle, #c084fc 0%, rgba(240, 244, 249, 0) 70%) !important;
-            opacity: 0.3 !important;
-        }
-        html.light-mode .cyber-orb-3 {
-            background: radial-gradient(circle, #34d399 0%, rgba(240, 244, 249, 0) 70%) !important;
-            opacity: 0.3 !important;
+        html.light-mode #chatForm input#chatInput {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
         }
 
-        /* Floating Action Buttons */
+        /* Floating Controls */
         html.light-mode #floatingRadarBtn,
         html.light-mode #backToTopBtn {
             background-color: #ffffff !important;
@@ -725,109 +1242,133 @@
     <canvas id="cyberCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-35"></canvas>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-[#070b14]/85 border-b border-[#1e293b] transition-all duration-300" id="mainHeader">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo & Thumbnail -->
-            <a href="#hero" class="flex items-center gap-3.5 group">
-                <div class="relative w-11 h-11 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.8)] group-hover:border-[#00f0ff] transition-all">
+    <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-xl bg-[#070b14]/90 border-b border-[#1e293b]/80 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between gap-4">
+            
+            <!-- Brand Identity & Mini-Avatar -->
+            <a href="#hero" class="flex items-center gap-3 group shrink-0 focus:outline-none" title="Wassim Bannour - Portfolio">
+                <div class="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-[#00f0ff]/70 shadow-[0_0_15px_rgba(0,240,255,0.35)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.7)] group-hover:border-[#00f0ff] transition-all">
                     <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-lg tracking-wide text-white group-hover:text-[#00f0ff] transition-colors">Wassim Bannour</span>
-                    <span class="font-mono text-xs text-[#00f0ff] flex items-center gap-1.5 font-semibold">
-                        <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
-                        RHCSA & PCAP Certified
-                    </span>
+                    <span class="font-bold text-sm sm:text-base tracking-wide text-white group-hover:text-[#00f0ff] transition-colors leading-tight">Wassim Bannour</span>
+                    <div class="flex items-center gap-1.5 font-mono text-[11px] text-slate-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                        <span class="text-[#00f0ff] font-semibold">RHCSA</span>
+                        <span class="text-slate-500">•</span>
+                        <span class="text-[#38bdf8] font-semibold">PCAP</span>
+                    </div>
                 </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex items-center gap-4 xl:gap-5 font-mono text-sm">
-                <a href="#achievements" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.achievements">01. // Achievements</a>
-                <a href="#certifications" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.certs">02. // Certs</a>
-                <a href="#experience" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.experience">03. // Experience</a>
-                <a href="#pipeline" class="hover:text-[#00f0ff] transition-colors nav-link flex items-center gap-1.5 text-[#00f0ff] font-semibold"><i class="fa-solid fa-shield-halved text-xs"></i> <span data-i18n="nav.pipeline">04. // Pipeline Radar</span></a>
-                <a href="#skills" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.skills">05. // Education & Stack</a>
-                <a href="#contact" class="hover:text-[#00f0ff] transition-colors nav-link" data-i18n="nav.contact">06. // Contact</a>
+            <!-- Center: Floating Glass Navigation Bar (Clean, uncluttered, macOS style) -->
+            <nav class="hidden xl:flex items-center gap-1 bg-[#0b1120]/85 border border-[#1e293b] rounded-full px-3 py-1.5 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] font-mono text-xs">
+                <a href="#achievements" class="px-3 py-1.5 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 transition-all nav-link" data-i18n="nav.achievements">Distinctions</a>
+                <a href="#certifications" class="px-3 py-1.5 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 transition-all nav-link" data-i18n="nav.certs">Certifications</a>
+                <a href="#experience" class="px-3 py-1.5 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 transition-all nav-link" data-i18n="nav.experience">Expérience</a>
+                <a href="#pipeline" class="px-3 py-1.5 rounded-full text-[#00f0ff] hover:text-[#38bdf8] hover:bg-[#00f0ff]/10 font-semibold transition-all nav-link flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-[11px]"></i>
+                    <span data-i18n="nav.pipeline">Radar</span>
+                </a>
+                <a href="#skills" class="px-3 py-1.5 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 transition-all nav-link" data-i18n="nav.skills">Formation</a>
+                <a href="#contact" class="px-3 py-1.5 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 transition-all nav-link" data-i18n="nav.contact">Contact</a>
             </nav>
 
-            <!-- Action CTA & Controls -->
-            <div class="flex items-center gap-2">
+            <!-- Right Controls & CTAs -->
+            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
                 
-                <!-- Language Toggle Button (FR / EN) -->
-                <button id="langToggleBtn" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/50 font-mono text-xs font-bold transition-all" title="Changer de langue / Switch Language">
-                    <i class="fa-solid fa-language text-sm text-[#00f0ff]"></i>
-                    <span id="langBtnText">FR</span>
-                </button>
+                <!-- Unified Quick-Switchers Capsule (FR/EN + Theme + SFX) -->
+                <div class="header-settings-pill hidden sm:flex items-center bg-[#0b1120]/85 border border-[#1e293b] rounded-full p-1 shadow-inner">
+                    <!-- Language Toggle -->
+                    <button id="langToggleBtn" class="flex items-center gap-1 px-2.5 py-1 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 font-mono text-xs font-bold transition-all focus:outline-none" title="Changer de langue / Switch Language">
+                        <i class="fa-solid fa-globe text-[11px] text-[#00f0ff]"></i>
+                        <span id="langBtnText">FR</span>
+                    </button>
+                    
+                    <!-- Divider -->
+                    <div class="h-3.5 w-px bg-[#1e293b]"></div>
+                    
+                    <!-- Theme Toggle -->
+                    <button id="themeToggleBtn" class="flex items-center justify-center w-7 h-7 rounded-full text-slate-300 hover:text-yellow-400 hover:bg-white/5 transition-all focus:outline-none" title="Mode Sombre / Clair">
+                        <i id="themeIcon" class="fa-solid fa-moon text-xs text-yellow-400"></i>
+                    </button>
+                    
+                    <!-- Divider -->
+                    <div class="h-3.5 w-px bg-[#1e293b] hidden md:block"></div>
+                    
+                    <!-- SFX Toggle -->
+                    <button id="sfxToggleBtn" class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-slate-400 hover:text-[#00f0ff] hover:bg-white/5 font-mono text-[11px] transition-all focus:outline-none" title="Effets Sonores Cyber SFX">
+                        <span class="inline-flex items-center gap-0.5 text-[#00f0ff]">
+                            <span class="sound-wave-bar"></span>
+                            <span class="sound-wave-bar"></span>
+                            <span class="sound-wave-bar"></span>
+                        </span>
+                        <span id="sfxBtnText" class="font-bold">SFX</span>
+                    </button>
+                </div>
 
-                <!-- Theme Toggle Button (Dark / Light) -->
-                <button id="themeToggleBtn" class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#0f172a] text-gray-300 hover:text-yellow-400 border border-[#1e293b] hover:border-yellow-400/50 font-mono text-xs transition-all" title="Basculer Mode Sombre / Clair">
-                    <i id="themeIcon" class="fa-solid fa-moon text-yellow-400"></i>
-                </button>
-
-                <!-- Audio SFX Toggle Button -->
-                <button id="sfxToggleBtn" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-400 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/50 font-mono text-xs transition-all" title="Toggle Futuristic Audio SFX">
-                    <span class="inline-flex items-center gap-0.5 text-[#00f0ff]">
-                        <span class="sound-wave-bar"></span>
-                        <span class="sound-wave-bar"></span>
-                        <span class="sound-wave-bar"></span>
-                    </span>
-                    <span id="sfxBtnText" class="text-[11px] font-bold">SFX</span>
-                </button>
-
-                <!-- Recruiter Fast-Track High-Impact Button -->
-                <button onclick="window.openHireMeModal()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)]" title="Executive Summary & Why Hire Wassim in 60s">
-                    <i class="fa-solid fa-bolt text-xs text-yellow-400"></i>
+                <!-- Recruiter Fast-Track High-Impact CTA -->
+                <button onclick="window.openHireMeModal()" class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#00f0ff]/15 via-[#38bdf8]/15 to-[#a855f7]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)] hover:shadow-[0_0_22px_rgba(0,240,255,0.5)] cursor-pointer" title="Executive Summary & Why Hire Wassim in 60s">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
                     <span data-i18n="nav.fasttrack">FAST-TRACK</span>
                 </button>
 
-                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="hidden 2xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981]/15 font-mono text-xs font-semibold transition-all shadow-[0_0_10px_rgba(16,185,129,0.2)]">
-                    <i class="fa-solid fa-file-arrow-down text-sm"></i>
-                    <span>CV</span>
-                </a>
-
-                <button id="openAiChatBtn" class="cyber-btn hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold tracking-wider transition-all duration-300 shadow-[0_0_12px_rgba(0,240,255,0.3)]">
-                    <i class="fa-solid fa-robot text-sm"></i>
-                    <span>AI TWIN</span>
+                <!-- AI Twin Assistant CTA -->
+                <button id="openAiChatBtn" class="cyber-btn hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0b1120] text-slate-200 border border-[#1e293b] hover:border-[#00f0ff]/60 hover:text-[#00f0ff] font-mono text-xs font-semibold transition-all shadow-sm group cursor-pointer" title="Lancer l'assistant IA de Wassim">
+                    <span class="w-2 h-2 rounded-full bg-[#10b981] group-hover:animate-ping"></span>
+                    <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
+                    <span data-i18n="nav.aichat">AI TWIN</span>
                 </button>
 
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-400 hover:text-[#00f0ff] focus:outline-none" aria-label="Toggle menu">
-                    <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                <!-- Mobile Hamburger Button -->
+                <button id="mobileMenuBtn" class="xl:hidden p-2 text-slate-300 hover:text-[#00f0ff] focus:outline-none transition-colors" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
+        <div id="mobileMenu" class="hidden xl:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
+            <!-- Mobile Quick Settings -->
             <div class="grid grid-cols-3 gap-2 pb-3 border-b border-[#1e293b]">
-                <button id="mobileLangBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-language"></i> <span id="mobileLangText">FR</span>
+                <button id="mobileLangBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-globe text-xs"></i> <span id="mobileLangText">FR</span>
                 </button>
-                <button id="mobileThemeBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1">
-                    <i id="mobileThemeIcon" class="fa-solid fa-moon"></i> <span>Theme</span>
+                <button id="mobileThemeBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm">
+                    <i id="mobileThemeIcon" class="fa-solid fa-moon text-xs"></i> <span>Theme</span>
                 </button>
-                <button id="mobileSfxBtn" class="px-2 py-1.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1">
+                <button id="mobileSfxBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1 shadow-sm">
                     SFX: ON
                 </button>
             </div>
-            <a href="#achievements" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.achievements">01. // Achievements</a>
-            <a href="#certifications" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.certs">02. // Certifications</a>
-            <a href="#experience" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.experience">03. // Experience</a>
-            <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#00f0ff] py-1 mobile-link flex items-center gap-2"><i class="fa-solid fa-shield-halved text-xs"></i> <span data-i18n="nav.pipeline">04. // Pipeline & Career Radar</span></a>
-            <a href="#skills" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.skills">05. // Education & Skills</a>
-            <a href="#contact" class="block text-gray-300 hover:text-[#00f0ff] py-1 mobile-link" data-i18n="nav.contact">06. // Contact</a>
             
-            <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="block text-[#10b981] font-bold py-1">
-                <i class="fa-solid fa-file-arrow-down mr-2"></i>Download Official CV (PDF)
-            </a>
-            <button onclick="document.getElementById('mobileMenu').classList.add('hidden'); window.openHireMeModal();" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.25)]">
-                <i class="fa-solid fa-bolt text-yellow-400"></i>
-                <span data-i18n="nav.fasttrack">RECRUITER FAST-TRACK (60s)</span>
-            </button>
-            <button id="mobileAiChatBtn" class="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
-                <i class="fa-solid fa-robot text-sm"></i>
-                <span data-i18n="nav.aichat">LAUNCH AI TWIN</span>
-            </button>
+            <!-- Mobile Links -->
+            <div class="space-y-2 pt-1">
+                <a href="#achievements" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.achievements">Distinctions</a>
+                <a href="#certifications" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.certs">Certifications</a>
+                <a href="#experience" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.experience">Expérience</a>
+                <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#38bdf8] hover:translate-x-1 py-1.5 transition-all mobile-link flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                    <span data-i18n="nav.pipeline">Radar des Opérations</span>
+                </a>
+                <a href="#skills" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.skills">Formation & Compétences</a>
+                <a href="#contact" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.contact">Contact</a>
+            </div>
+            
+            <div class="pt-2 border-t border-[#1e293b] space-y-2.5">
+                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 font-mono text-xs font-bold shadow-sm">
+                    <i class="fa-solid fa-file-arrow-down text-sm"></i>
+                    <span data-i18n="nav.cv_download">Télécharger le CV Officiel (PDF)</span>
+                </a>
+                <button onclick="document.getElementById('mobileMenu').classList.add('hidden'); window.openHireMeModal();" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.25)]">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
+                    <span data-i18n="nav.fasttrack">FAST-TRACK (60s)</span>
+                </button>
+                <button id="mobileAiChatBtn" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                    <i class="fa-solid fa-robot text-sm"></i>
+                    <span data-i18n="nav.launch_ai">LANCER L'AI TWIN</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -853,7 +1394,7 @@
                             </h1>
 
                             <!-- Dynamic Cyber Typewriter Subtitle -->
-                            <div class="font-mono text-xs sm:text-sm text-[#00f0ff] font-bold flex items-center gap-2 bg-[#070b14]/90 px-3.5 py-2 rounded-xl border border-[#1e293b] shadow-inner w-fit">
+                            <div id="heroTypewriterContainer" class="font-mono text-xs sm:text-sm text-[#00f0ff] font-bold flex items-center gap-2 bg-[#070b14]/90 px-3.5 py-2 rounded-xl border border-[#1e293b] shadow-inner w-fit">
                                 <i class="fa-solid fa-terminal text-[#00f0ff]"></i>
                                 <span class="text-gray-400" data-i18n="hero.role_prefix">role:~$</span>
                                 <span id="heroTypewriter" class="text-white">Ingénieur Cybersécurité & Linux</span>
@@ -866,7 +1407,7 @@
                             </p>
                         </div>
 
-                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]" data-i18n-html="hero.bio">
+                        <p id="heroBioBox" class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]" data-i18n-html="hero.bio">
                             Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>'Security-by-Design'</em>.
                         </p>
 
@@ -942,7 +1483,7 @@
                     <!-- Hero Right Column: Crystal-Clear Prominent Photo Showcase -->
                     <div class="lg:col-span-5 flex flex-col items-center">
                         
-                        <div class="w-full max-w-[420px] hero-portrait-wrapper rounded-3xl p-3.5 relative">
+                        <div id="heroPortraitContainer" class="w-full max-w-[420px] hero-portrait-wrapper rounded-3xl p-3.5 relative">
                             <!-- Cyber corner reticles -->
                             <div class="cyber-corner-tl"></div>
                             <div class="cyber-corner-tr"></div>
@@ -970,7 +1511,7 @@
                             </div>
 
                             <!-- Under-Photo Identity HUD Card -->
-                            <div class="mt-3 p-3.5 rounded-xl bg-[#070b14]/95 border border-[#1e293b] font-mono text-xs flex items-center justify-between">
+                            <div id="heroIdentityCard" class="mt-3 p-3.5 rounded-xl bg-[#070b14]/95 border border-[#1e293b] font-mono text-xs flex items-center justify-between">
                                 <div>
                                     <h3 class="text-white font-extrabold text-sm flex items-center gap-1.5">
                                         <span>Wassim Bannour</span>
@@ -986,12 +1527,12 @@
                         </div>
 
                         <!-- Mini Interactive Telemetry -->
-                        <div class="w-full max-w-[420px] mt-3 p-3 rounded-xl bg-[#0f172a] border border-[#1e293b] font-mono text-[11px] text-gray-300">
+                        <div id="heroTelemetryCard" class="w-full max-w-[420px] mt-3 p-3 rounded-xl bg-[#0f172a] border border-[#1e293b] font-mono text-[11px] text-gray-300">
                             <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#1e293b]">
-                                <span class="text-gray-400">// System Telemetry</span>
-                                <span class="text-[#00f0ff] flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> Security-by-Design</span>
+                                <span class="text-gray-400" data-i18n="hero.telemetry_title">// System Telemetry</span>
+                                <span class="text-[#00f0ff] flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero.security_by_design">Security-by-Design</span></span>
                             </div>
-                            <p class="text-gray-300"><span class="text-[#38bdf8]">Stack:</span> Linux Admin (RHEL), Python, EASM, OSINT, Node.js, Angular, Docker</p>
+                            <p class="text-gray-300" data-i18n-html="hero.stack_label"><span class="text-[#38bdf8]">Stack :</span> Admin Linux (RHEL), Python, EASM, OSINT, Node.js, Angular, Docker</p>
                         </div>
 
                     </div>
@@ -1003,25 +1544,25 @@
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
                         <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_rank">Mondial IEEEXtreme</p>
-                        <span class="text-[11px] text-gray-400 font-mono">2ᵉ National en Tunisie</span>
+                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_rank_sub">2ᵉ National en Tunisie</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
                         <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_certs">Red Hat SysAdmin</p>
-                        <span class="text-[11px] text-gray-400 font-mono">Linux Enterprise Kernel</span>
+                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_certs_sub">Noyau Linux Entreprise</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
                         <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_stage">Python Institute</p>
-                        <span class="text-[11px] text-gray-400 font-mono">Algorithms & Pipelines</span>
+                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_stage_sub">Algorithmes & Pipelines</span>
                     </div>
 
                     <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card">
                         <span class="font-extrabold text-3xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
                         <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_sec">Talan Tunisie</p>
-                        <span class="text-[11px] text-gray-400 font-mono">Smart Attack Surface & OSINT</span>
+                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_sec_sub">Surface d'Attaque & OSINT</span>
                     </div>
                 </div>
 
@@ -1075,10 +1616,10 @@
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="achievements.tag">01. // Global Honors & Community Leadership</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="achievements.title">Achievements & Impact</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="achievements.tag">01. // Parcours & Distinctions</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="achievements.title">Réalisations Majeures & Distinctions</h2>
                     </div>
-                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="achievements.subtitle">Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.</p>
+                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="achievements.subtitle">Excellence prouvée en résolution algorithmique sous pression, cybersécurité compétitive et leadership technique.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1091,26 +1632,26 @@
                                 </div>
                                 <button onclick="window.openDocViewer('Certificat Officiel IEEEXtreme 17.0 (Top 33 Mondial)', 'IEEE Global', 'proofs/cert_ieeextreme.pdf', 'Certificat officiel attestant de la 33ème place mondiale parmi des milliers d\'équipes universitaires.')" class="px-2.5 py-1 rounded-lg bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black font-mono text-[11px] font-bold flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]" title="Vérifier le certificat officiel IEEE">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span data-i18n="doc.verified">Certificat</span>
+                                    <span data-i18n="doc.cert_btn">Certificat</span>
                                 </button>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00f0ff]/20 text-[#00f0ff]">1er Prix</span>
-                                <span class="text-xs font-mono text-gray-400">Global Competition</span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00f0ff]/20 text-[#00f0ff]" data-i18n="achievements.c1_badge">1er Prix</span>
+                                <span class="text-xs font-mono text-gray-400" data-i18n="achievements.c1_type">Compétition Mondiale</span>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00f0ff] transition-colors">IEEEXtreme 17.0</h3>
                             <ul class="space-y-2 text-xs text-gray-300 font-sans">
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
-                                    <span><strong class="text-white">33ème Place Mondiale</strong> parmi des milliers d'équipes d'ingénieurs internationales.</span>
+                                    <span data-i18n-html="achievements.c1_li1"><strong class="text-white">33ème Place Mondiale</strong> parmi des milliers d'équipes d'ingénieurs internationales.</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
-                                    <span><strong class="text-white">2ème Place Nationale</strong> en Tunisie.</span>
+                                    <span data-i18n-html="achievements.c1_li2"><strong class="text-white">2ème Place Nationale</strong> en Tunisie.</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-[#10b981] mt-0.5 text-xs"></i>
-                                    <span>Résolution de problèmes algorithmiques complexes en 24h non-stop.</span>
+                                    <span data-i18n="achievements.c1_li3">Résolution de problèmes algorithmiques complexes en 24h non-stop.</span>
                                 </li>
                             </ul>
                         </div>
@@ -1123,18 +1664,18 @@
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400">Cybersecurity</span>
-                                <span class="text-xs font-mono text-gray-400">Capture-The-Flag</span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400" data-i18n="achievements.c2_badge">Cybersécurité</span>
+                                <span class="text-xs font-mono text-gray-400" data-i18n="achievements.c2_type">Capture-The-Flag</span>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">CyberTEK 3.0 CTF</h3>
                             <ul class="space-y-2 text-xs text-gray-300 font-sans">
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
-                                    <span>Compétition Capture The Flag : Exploitation de failles & défense d'infrastructure.</span>
+                                    <span data-i18n="achievements.c2_li1">Compétition Capture The Flag : Exploitation de failles & défense d'infrastructure.</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-xs"></i>
-                                    <span>Analyse de paquets réseaux, reverse engineering et sécurité binaire.</span>
+                                    <span data-i18n="achievements.c2_li2">Analyse de paquets réseaux, reverse engineering et sécurité binaire.</span>
                                 </li>
                             </ul>
                         </div>
@@ -1147,18 +1688,18 @@
                                 <i class="fa-solid fa-users-gear"></i>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#38bdf8]/20 text-[#38bdf8]">Leadership</span>
-                                <span class="text-xs font-mono text-gray-400">Executive Board</span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#38bdf8]/20 text-[#38bdf8]" data-i18n="achievements.c3_badge">Leadership</span>
+                                <span class="text-xs font-mono text-gray-400" data-i18n="achievements.c3_type">Bureau Exécutif</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#38bdf8] transition-colors">Trésorier IEEE ISIMM</h3>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#38bdf8] transition-colors" data-i18n="achievements.c3_title">Trésorier IEEE ISIMM</h3>
                             <ul class="space-y-2 text-xs text-gray-300 font-sans">
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-[#38bdf8] mt-0.5 text-xs"></i>
-                                    <span>Gestion rigoureuse du budget et optimisation financière des événements techniques.</span>
+                                    <span data-i18n="achievements.c3_li1">Gestion rigoureuse du budget et optimisation financière des événements techniques.</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-[#38bdf8] mt-0.5 text-xs"></i>
-                                    <span>Négociation de sponsors et partenariats stratégiques pour financer ateliers et conférences.</span>
+                                    <span data-i18n="achievements.c3_li2">Négociation de sponsors et partenariats stratégiques pour financer ateliers et conférences.</span>
                                 </li>
                             </ul>
                         </div>
@@ -1171,18 +1712,18 @@
                                 <i class="fa-solid fa-network-wired"></i>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-400">Networking</span>
-                                <span class="text-xs font-mono text-gray-400">National Congress</span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-400" data-i18n="achievements.c4_badge">Réseautage</span>
+                                <span class="text-xs font-mono text-gray-400" data-i18n="achievements.c4_type">Congrès National</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Congrès TSYP 11</h3>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors" data-i18n="achievements.c4_title">Congrès TSYP 11</h3>
                             <ul class="space-y-2 text-xs text-gray-300 font-sans">
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-purple-400 mt-0.5 text-xs"></i>
-                                    <span>Participation au plus grand congrès étudiant en Tunisie (Hammamet).</span>
+                                    <span data-i18n="achievements.c4_li1">Participation au plus grand congrès étudiant en Tunisie (Hammamet).</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-circle-check text-purple-400 mt-0.5 text-xs"></i>
-                                    <span>Immersion dans les tendances technologiques et tables rondes industrielles.</span>
+                                    <span data-i18n="achievements.c4_li2">Immersion dans les tendances technologiques et tables rondes industrielles.</span>
                                 </li>
                             </ul>
                         </div>
@@ -1198,8 +1739,8 @@
             <div class="max-w-7xl mx-auto space-y-12">
                 
                 <div class="reveal-card">
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="certs.tag">02. // Verified Industry Credentials</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="certs.title">Professional Certifications</h2>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="certs.tag">02. // Titres & Certifications Professionnelles</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="certs.title">Certifications Professionnelles Vérifiées</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1211,15 +1752,15 @@
                                 <div class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/50 text-red-500 flex items-center justify-center text-3xl">
                                     <i class="fa-brands fa-redhat"></i>
                                 </div>
-                                <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]">
-                                    RED HAT CERTIFIED
+                                <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]" data-i18n="certs.rhcsa_badge">
+                                    RED HAT CERTIFIÉ
                                 </span>
                             </div>
                             <h3 class="text-2xl font-extrabold text-white mb-1">RHCSA (Red Hat Certified System Administrator)</h3>
                             <div class="flex items-center gap-2 mb-4 font-mono text-xs text-gray-400">
-                                <span>Émetteur : <strong>Red Hat, Inc.</strong></span>
+                                <span><span data-i18n="certs.issuer_prefix">Émetteur :</span> <strong>Red Hat, Inc.</strong></span>
                                 <span>•</span>
-                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
+                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> <span data-i18n="certs.credly_verified">Badge Credly Vérifié</span></span>
                             </div>
                             <p class="text-gray-300 text-sm mb-6 leading-relaxed" data-i18n-html="certs.rhcsa_desc">
                                 Expertise en administration d'entreprise Linux (RHEL/CentOS), durcissement système, automatisation Bash, gestion des droits et utilisateurs, stockage LVM, pare-feu FirewallD et orchestration de services systemd sécurisés.
@@ -1248,7 +1789,7 @@
                         <div class="pt-4 border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                             <span class="text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
                                 <i class="fa-solid fa-fingerprint text-red-400"></i>
-                                <span>ID de Vérification Red Hat</span>
+                                <span data-i18n="certs.rhcsa_verify_id">ID de Vérification Red Hat</span>
                             </span>
                             <!-- Credly Badge Link for RHCSA -->
                             <a href="https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(239,68,68,0.2)]" title="Vérifier la certification Red Hat RHCSA sur Credly">
@@ -1266,15 +1807,15 @@
                                 <div class="w-16 h-16 rounded-2xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500 flex items-center justify-center text-3xl">
                                     <i class="fa-brands fa-python"></i>
                                 </div>
-                                <span class="px-3.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-mono text-xs font-extrabold border border-yellow-500/50 shadow-[0_0_12px_rgba(234,179,8,0.3)]">
+                                <span class="px-3.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-mono text-xs font-extrabold border border-yellow-500/50 shadow-[0_0_12px_rgba(234,179,8,0.3)]" data-i18n="certs.pcap_badge">
                                     PYTHON INSTITUTE
                                 </span>
                             </div>
                             <h3 class="text-2xl font-extrabold text-white mb-1">PCAP (Certified Associate in Python Programming)</h3>
                             <div class="flex items-center gap-2 mb-4 font-mono text-xs text-gray-400">
-                                <span>Émetteur : <strong>Python Institute / OpenEDG</strong></span>
+                                <span><span data-i18n="certs.issuer_prefix">Émetteur :</span> <strong>Python Institute / OpenEDG</strong></span>
                                 <span>•</span>
-                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> Badge Credly Vérifié</span>
+                                <span class="text-[#10b981] flex items-center gap-1 font-bold"><i class="fa-solid fa-circle-check"></i> <span data-i18n="certs.credly_verified">Badge Credly Vérifié</span></span>
                             </div>
                             <p class="text-gray-300 text-sm mb-6 leading-relaxed" data-i18n-html="certs.pcap_desc">
                                 Maîtrise certifiée de la programmation orientée objet (POO), des structures de données complexes, des scripts d'automatisation, des pipelines de normalisation de flux de données et de l'architecture logicielle propre.
@@ -1303,7 +1844,7 @@
                         <div class="pt-4 border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                             <span class="text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
                                 <i class="fa-solid fa-fingerprint text-yellow-400"></i>
-                                <span>ID de Vérification Python Institute</span>
+                                <span data-i18n="certs.pcap_verify_id">ID de Vérification Python Institute</span>
                             </span>
                             <!-- Credly Badge Link for PCAP -->
                             <a href="https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-yellow-500/15 text-yellow-400 border border-yellow-500/50 hover:bg-yellow-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(234,179,8,0.2)]" title="Vérifier la certification Python PCAP sur Credly">
@@ -1324,10 +1865,10 @@
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-card">
                     <div>
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="exp.tag">03. // Track Record & Engineering Deliverables</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="exp.title">Professional Experience</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="exp.tag">03. // Parcours Professionnel & Projets</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1" data-i18n="exp.title">Expérience Professionnelle & Stages</h2>
                     </div>
-                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="exp.subtitle">Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.</p>
+                    <p class="text-gray-400 text-sm font-mono max-w-md" data-i18n="exp.subtitle">Cliquez sur une expérience pour afficher les détails d'architecture, réalisations techniques et dépôts de code source.</p>
                 </div>
 
                 <div class="space-y-6">
@@ -1339,48 +1880,48 @@
                         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div class="space-y-1.5 flex-1">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="px-2.5 py-0.5 rounded-md bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.25)]">FLAGSHIP CYBERSECURITY</span>
+                                    <span class="px-2.5 py-0.5 rounded-md bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.25)]" data-i18n="exp.talan_badge">FLAGSHIP CYBERSECURITY</span>
                                     <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Tunis, TN</span>
                                 </div>
                                 <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#00f0ff] transition-colors flex items-center gap-2">
-                                    <span>Développeur Cybersécurité — Plateforme Smart EASM</span>
+                                    <span data-i18n="exp.talan_role">Développeur Cybersécurité — Plateforme Smart EASM</span>
                                 </h3>
                                 <div class="flex items-center gap-2 font-mono text-sm">
                                     <span class="text-[#00f0ff] font-bold">TALAN TUNISIE</span>
                                     <span class="text-gray-500">•</span>
-                                    <span class="text-gray-300 text-xs">External Attack Surface Management & Threat Intelligence</span>
+                                    <span class="text-gray-300 text-xs" data-i18n="exp.talan_sub">External Attack Surface Management & Threat Intelligence</span>
                                 </div>
                             </div>
 
                             <!-- Right Controls: Date Badge + Attestation + GitHub + Expand Toggle -->
                             <div class="flex flex-wrap items-center gap-2 self-start lg:self-center">
-                                <span class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold">
+                                <span class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold" data-i18n="exp.talan_date">
                                     2026 Juil - Août
                                 </span>
 
                                 <!-- Attestation Button -->
                                 <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3 py-1.5 rounded-xl bg-[#00f0ff]/15 border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black text-[#00f0ff] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(0,240,255,0.2)]" title="Vérifier l'Attestation Officielle de Stage TALAN">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Attestation</span>
+                                    <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
 
                                 <!-- GitHub Code Button (Clickable independently) -->
                                 <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="View Source Code / GitHub Repository">
                                     <i class="fa-brands fa-github text-sm text-[#00f0ff]"></i>
-                                    <span>Code</span>
+                                    <span data-i18n="exp.btn_code">Code</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
                                 </a>
 
                                 <!-- Expand Trigger Button -->
                                 <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#00f0ff]">
-                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <span class="expand-btn-text text-[11px]" data-i18n="exp.btn_details">Détails</span>
                                     <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#00f0ff] transition-transform duration-300"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Card Snippet Overview -->
-                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed" data-i18n-html="exp.talan_summary">
                             Conception et développement de la plateforme <strong class="text-white">Smart EASM</strong> pour la découverte continue, la cartographie et la surveillance des actifs exposés sur Internet, avec automatisation avancée des flux <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong>.
                         </p>
 
@@ -1404,9 +1945,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-shield-virus"></i>
-                                        <span>Architecture EASM</span>
+                                        <span data-i18n="exp.talan_b1_title">Architecture EASM</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.talan_b1_desc">
                                         Architecture modulaire conçue pour la découverte passive et active des vecteurs d'attaque externes : domaines racine, sous-domaines orphelins, adresses IP publiques, certificats TLS expirés et ports/services vulnérables.
                                     </p>
                                 </div>
@@ -1415,9 +1956,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#38bdf8] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-radar"></i>
-                                        <span>Connecteurs OSINT</span>
+                                        <span data-i18n="exp.talan_b2_title">Connecteurs OSINT</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n-html="exp.talan_b2_desc">
                                         Intégration d'APIs tierces et d'outils de reconnaissance : <strong>Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB et Criminal IP</strong> pour une couverture exhaustive de la surface d'attaque.
                                     </p>
                                 </div>
@@ -1426,9 +1967,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#10b981] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-code"></i>
-                                        <span>Pipelines Python</span>
+                                        <span data-i18n="exp.talan_b3_title">Pipelines Python</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n-html="exp.talan_b3_desc">
                                         Développement de pipelines <strong>Python</strong> hautement optimisés pour dédupliquer, corréler, normaliser et filtrer les flux volumineux de données OSINT brutes vers des tableaux de bord exploitables.
                                     </p>
                                 </div>
@@ -1438,24 +1979,24 @@
                             <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
                                     <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                                    <span>Vérification & Source Code TALAN :</span>
+                                    <span data-i18n="exp.talan_verify">Vérification & Source Code TALAN :</span>
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
                                     <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3.5 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
-                                        <span>Consulter l'Attestation</span>
+                                        <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
                                     <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-200 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
-                                        <span>Explorer le Repo</span>
+                                        <span data-i18n="exp.btn_explore_repo">Explorer le Repo</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                     </a>
 
                                     <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-[#38bdf8]"></i>
-                                        <span>Poser une question à l'IA</span>
+                                        <span data-i18n="exp.btn_ask_ai">Poser une question à l'IA</span>
                                     </button>
                                 </div>
                             </div>
@@ -1470,16 +2011,16 @@
                         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div class="space-y-1.5 flex-1">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40">FULLSTACK & AI/OCR</span>
+                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40" data-i18n="exp.sw_badge">FULLSTACK & IA/OCR</span>
                                     <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir, TN</span>
                                 </div>
                                 <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#00f0ff] transition-colors flex items-center gap-2">
-                                    <span>Développeur Web Fullstack — OCR & IA Documentaire</span>
+                                    <span data-i18n="exp.sw_role">Développeur Web Fullstack — OCR & IA Documentaire</span>
                                 </h3>
                                 <div class="flex items-center gap-2 font-mono text-sm">
                                     <span class="text-[#00f0ff] font-bold">SW CONSULTING</span>
                                     <span class="text-gray-500">•</span>
-                                    <span class="text-gray-300 text-xs">Plateforme Quick Dock & Moteur d'Extraction Intelligente</span>
+                                    <span class="text-gray-300 text-xs" data-i18n="exp.sw_sub">Plateforme Quick Dock & Moteur d'Extraction Intelligente</span>
                                 </div>
                             </div>
 
@@ -1491,7 +2032,7 @@
 
                                 <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(16,185,129,0.2)]" title="Vérifier l'Attestation de Stage SW Consulting">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Attestation</span>
+                                    <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
 
                                 <a href="https://github.com/WassimBannour1/QuickDoc" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View QuickDoc Repository on GitHub">
@@ -1501,14 +2042,14 @@
                                 </a>
 
                                 <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#00f0ff]">
-                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <span class="expand-btn-text text-[11px]" data-i18n="exp.btn_details">Détails</span>
                                     <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#00f0ff] transition-transform duration-300"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Card Snippet Overview -->
-                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed" data-i18n-html="exp.sw_summary">
                             Conception du moteur d'extraction automatique de données par <strong class="text-white">OCR</strong> pour la dématérialisation comptable et développement de la plateforme web <strong class="text-[#00f0ff]">Quick Dock</strong> (Node.js/Express + Vue.js).
                         </p>
 
@@ -1528,9 +2069,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-brain"></i>
-                                        <span>Moteur OCR & IA Documentaire</span>
+                                        <span data-i18n="exp.sw_b1_title">Moteur OCR & IA Documentaire</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.sw_b1_desc">
                                         Algorithmes de reconnaissance optique de caractères (OCR) avec pré-traitement d'images (NumPy), extraction automatique des montants HT/TTC, dates et numéros de TVA, éliminant 85% de la saisie manuelle.
                                     </p>
                                 </div>
@@ -1538,9 +2079,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#10b981] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-layer-group"></i>
-                                        <span>Plateforme Quick Dock (Vue.js + Node.js)</span>
+                                        <span data-i18n="exp.sw_b2_title">Plateforme Quick Dock (Vue.js + Node.js)</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.sw_b2_desc">
                                         Génération dynamique de devis et factures avec rendu PDF temps réel, gestion sécurisée des sessions utilisateurs, API RESTful modulaire et intégration de base de données hybride SQL/NoSQL.
                                     </p>
                                 </div>
@@ -1550,30 +2091,29 @@
                             <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
                                     <span class="w-2 h-2 rounded-full bg-[#00f0ff]"></span>
-                                    <span>Code & Architecture Quick Dock :</span>
+                                    <span data-i18n="exp.sw_verify">Code & Architecture Quick Dock :</span>
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
                                     <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
-                                        <span>Consulter l'Attestation</span>
+                                        <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
                                     <a href="https://github.com/WassimBannour1/QuickDoc" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
-                                        <span>Explorer le Repo QuickDoc</span>
+                                        <span data-i18n="exp.sw_explore_repo">Explorer le Repo QuickDoc</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                     </a>
 
                                     <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-[#38bdf8]"></i>
-                                        <span>En savoir plus via l'IA</span>
+                                        <span data-i18n="exp.sw_learn_ai">En savoir plus via l'IA</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Experience 3: TEAM DEV (Expandable) -->
                     <div class="experience-card cyber-card reveal-card p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8]/50 transition-all cursor-pointer group" data-exp="teamdev">
                         
@@ -1581,16 +2121,16 @@
                         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div class="space-y-1.5 flex-1">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="px-2.5 py-0.5 rounded-md bg-[#38bdf8]/20 text-[#38bdf8] font-mono text-xs font-extrabold border border-[#38bdf8]/40">FRONTEND ARCHITECTURE</span>
+                                    <span class="px-2.5 py-0.5 rounded-md bg-[#38bdf8]/20 text-[#38bdf8] font-mono text-xs font-extrabold border border-[#38bdf8]/40" data-i18n="exp.team_badge">ARCHITECTURE FRONTEND</span>
                                     <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-[#38bdf8]"></i> Sousse, TN</span>
                                 </div>
                                 <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#38bdf8] transition-colors flex items-center gap-2">
-                                    <span>Développeur Frontend — Interface Responsive Angular</span>
+                                    <span data-i18n="exp.team_role">Développeur Frontend — Interface Responsive Angular</span>
                                 </h3>
                                 <div class="flex items-center gap-2 font-mono text-sm">
                                     <span class="text-[#38bdf8] font-bold">TEAM DEV</span>
                                     <span class="text-gray-500">•</span>
-                                    <span class="text-gray-300 text-xs">Plateforme Stadium-Booking & Synchronisation REST API</span>
+                                    <span class="text-gray-300 text-xs" data-i18n="exp.team_sub">Plateforme Stadium-Booking & Synchronisation REST API</span>
                                 </div>
                             </div>
 
@@ -1602,7 +2142,7 @@
 
                                 <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3 py-1.5 rounded-xl bg-[#38bdf8]/15 border border-[#38bdf8]/50 hover:bg-[#38bdf8] hover:text-black text-[#38bdf8] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(56,189,248,0.2)]" title="Vérifier l'Attestation de Stage Team Dev">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Attestation</span>
+                                    <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
 
                                 <a href="https://github.com/WassimBannour1/Stadium-Booking" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View Stadium-Booking Repository on GitHub">
@@ -1612,14 +2152,14 @@
                                 </a>
 
                                 <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-[#38bdf8]">
-                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <span class="expand-btn-text text-[11px]" data-i18n="exp.btn_details">Détails</span>
                                     <i class="fa-solid fa-chevron-down expand-chevron text-xs text-[#38bdf8] transition-transform duration-300"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Card Snippet Overview -->
-                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed" data-i18n-html="exp.team_summary">
                             Développement d'interfaces utilisateur modernes sous <strong class="text-white">Angular & TypeScript</strong> avec design adaptatif haute fidélité et intégration asynchrone des flux REST.
                         </p>
 
@@ -1638,9 +2178,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#38bdf8] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-mobile-screen"></i>
-                                        <span>Design System & Responsive UI</span>
+                                        <span data-i18n="exp.team_b1_title">Design System & UI Responsive</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.team_b1_desc">
                                         Structure modulaire de composants réutilisables, formulaires réactifs avec validation dynamique et gestion fluide des états d'affichage sur mobiles, tablettes et écrans larges.
                                     </p>
                                 </div>
@@ -1648,9 +2188,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-gauge-high"></i>
-                                        <span>Performance & Intégration REST</span>
+                                        <span data-i18n="exp.team_b2_title">Performance & Intégration REST</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.team_b2_desc">
                                         Optimisation du temps de rendu DOM, mise en cache côté client, gestion des erreurs HTTP et synchronisation temps réel avec les microservices backend.
                                     </p>
                                 </div>
@@ -1660,24 +2200,24 @@
                             <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
                                     <span class="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
-                                    <span>Code Frontend Angular :</span>
+                                    <span data-i18n="exp.team_verify">Code Frontend Angular :</span>
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
                                     <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
-                                        <span>Consulter l'Attestation</span>
+                                        <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
                                     <a href="https://github.com/WassimBannour1/Stadium-Booking" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
-                                        <span>Explorer le Repo Stadium-Booking</span>
+                                        <span data-i18n="exp.team_explore_repo">Explorer le Repo Stadium-Booking</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                     </a>
 
                                     <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
-                                        <span>Discuter avec l'IA</span>
+                                        <span data-i18n="exp.team_chat_ai">Discuter avec l'IA</span>
                                     </button>
                                 </div>
                             </div>
@@ -1691,16 +2231,16 @@
                         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div class="space-y-1.5 flex-1">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40">JAVA DESKTOP & SQL</span>
+                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs font-extrabold border border-emerald-500/40" data-i18n="exp.tech_badge">JAVA DESKTOP & SQL</span>
                                     <span class="text-gray-400 text-xs font-mono flex items-center gap-1"><i class="fa-solid fa-location-dot text-emerald-400"></i> Monastir, TN</span>
                                 </div>
                                 <h3 class="text-xl sm:text-2xl font-extrabold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-2">
-                                    <span>Développeur Logiciel — Solution de Gestion en Java</span>
+                                    <span data-i18n="exp.tech_role">Développeur Logiciel — Solution de Gestion en Java</span>
                                 </h3>
                                 <div class="flex items-center gap-2 font-mono text-sm">
                                     <span class="text-emerald-400 font-bold">We Are Technology Center</span>
                                     <span class="text-gray-500">•</span>
-                                    <span class="text-gray-300 text-xs">Application Desktop Restaurant Management (Swing/JFrame & SQL)</span>
+                                    <span class="text-gray-300 text-xs" data-i18n="exp.tech_sub">Application Desktop Restaurant Management (Swing/JFrame & SQL)</span>
                                 </div>
                             </div>
 
@@ -1712,24 +2252,24 @@
 
                                 <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(16,185,129,0.2)]" title="Vérifier l'Attestation de Stage TechCenter">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span>Attestation</span>
+                                    <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
 
                                 <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-emerald-400 hover:text-emerald-400 text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all" title="View Source Code / GitHub Repository">
                                     <i class="fa-brands fa-github text-sm text-emerald-400"></i>
-                                    <span>Code</span>
+                                    <span data-i18n="exp.btn_code">Code</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
                                 </a>
 
                                 <button type="button" class="expand-status-badge px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all group-hover:border-emerald-400">
-                                    <span class="expand-btn-text text-[11px]">Détails</span>
+                                    <span class="expand-btn-text text-[11px]" data-i18n="exp.btn_details">Détails</span>
                                     <i class="fa-solid fa-chevron-down expand-chevron text-xs text-emerald-400 transition-transform duration-300"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Card Snippet Overview -->
-                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed" data-i18n-html="exp.tech_summary">
                             Digitalisation complète de la prise de commande, de la gestion des tables et du suivi des stocks via une application desktop <strong class="text-white">Java Swing (JFrame)</strong> connectée à une base de données relationnelle SQL.
                         </p>
 
@@ -1748,9 +2288,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-emerald-400 font-bold font-mono text-xs">
                                         <i class="fa-solid fa-cash-register"></i>
-                                        <span>Gestion Opérationnelle & Prise de Commande</span>
+                                        <span data-i18n="exp.tech_b1_title">Gestion Opérationnelle & Prise de Commande</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.tech_b1_desc">
                                         Interface ergonomique pour les serveurs et gérants : attribution dynamique des tables, calcul instantané des additions, génération de tickets de caisse et traçabilité des commandes en temps réel.
                                     </p>
                                 </div>
@@ -1758,9 +2298,9 @@
                                 <div class="p-4 rounded-xl bg-[#070b14]/90 border border-[#1e293b] space-y-2">
                                     <div class="flex items-center gap-2 text-[#00f0ff] font-bold font-mono text-xs">
                                         <i class="fa-solid fa-database"></i>
-                                        <span>Persistance des Données & Inventaire SQL</span>
+                                        <span data-i18n="exp.tech_b2_title">Persistance des Données & Inventaire SQL</span>
                                     </div>
-                                    <p class="text-gray-300 leading-relaxed text-[11px]">
+                                    <p class="text-gray-300 leading-relaxed text-[11px]" data-i18n="exp.tech_b2_desc">
                                         Schéma relationnel robuste pour l'inventaire des ingrédients, alertes de rupture de stock, statistiques de vente journalières et historique d'activité financière.
                                     </p>
                                 </div>
@@ -1770,24 +2310,24 @@
                             <div class="p-3.5 rounded-xl bg-[#070b14] border border-[#1e293b] flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                    <span>Code Source Java Desktop :</span>
+                                    <span data-i18n="exp.tech_verify">Code Source Java Desktop :</span>
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
                                     <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
-                                        <span>Consulter l'Attestation</span>
+                                        <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
                                     <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
-                                        <span>Explorer le Repo GitHub</span>
+                                        <span data-i18n="exp.tech_explore_repo">Explorer le Repo GitHub</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                     </a>
 
                                     <button type="button" onclick="event.stopPropagation(); document.getElementById('openAiChatBtn').click();" class="px-3.5 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-emerald-400 hover:text-emerald-400 font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-emerald-400"></i>
-                                        <span>Discuter avec l'IA</span>
+                                        <span data-i18n="exp.tech_chat_ai">Discuter avec l'IA</span>
                                     </button>
                                 </div>
                             </div>
@@ -1808,12 +2348,12 @@
                     <div>
                         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,240,255,0.2)] mb-2">
                             <i class="fa-solid fa-shield-halved"></i>
-                            <span>04. // DEFENSE RADAR & PIPELINE TRAJECTORY</span>
+                            <span data-i18n="pipeline.tag">04. // RADAR DE DÉFENSE & TRAJECTOIRE</span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Cyber Operations Radar & Pipeline</h2>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="pipeline.title">Radar des Opérations Cyber & Pipeline</h2>
                     </div>
-                    <p class="text-gray-300 text-xs sm:text-sm font-mono max-w-md">
-                        Real-time security telemetry, attack surface intelligence, and chronological milestone architecture across Wassim's career.
+                    <p class="text-gray-300 text-xs sm:text-sm font-mono max-w-md" data-i18n="pipeline.subtitle">
+                        Télémétrie de sécurité temps réel, renseignement sur les surfaces d'attaque et architecture chronologique des jalons de Wassim.
                     </p>
                 </div>
 
@@ -1860,7 +2400,7 @@
                     <div class="flex items-center gap-2 self-end md:self-center font-mono text-xs">
                         <button id="autoCruiseBtn" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#10b981]/50 text-[#10b981] hover:bg-[#10b981]/20 font-bold transition-all flex items-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                             <i class="fa-solid fa-radar text-xs" id="autoCruiseIcon"></i>
-                            <span id="autoCruiseText">Live Scan</span>
+                            <span id="autoCruiseText" data-i18n="pipeline.livescan">Scan Direct</span>
                         </button>
                         
                         <div class="flex items-center gap-1">
@@ -1888,7 +2428,7 @@
                                 <div class="flex items-center justify-between pb-1 mb-1.5 border-b border-[#1e293b]">
                                     <span class="text-[#10b981] font-bold text-[10px] flex items-center gap-1.5">
                                         <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
-                                        SEC_OPS // TELEMETRY RADAR
+                                        <span data-i18n="pipeline.telemetry_title">SEC_OPS // TÉLÉMÉTRIE RADAR</span>
                                     </span>
                                     <span id="tuxStationBadge" class="text-[9px] px-2 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-extrabold">
                                         MILESTONE 01 / 08
@@ -1909,10 +2449,20 @@
                                             <stop offset="70%" stop-color="#070b14" stop-opacity="0.95"/>
                                             <stop offset="100%" stop-color="#030712" stop-opacity="1"/>
                                         </radialGradient>
+                                        <radialGradient id="radarBgGradLight" cx="50%" cy="50%" r="50%">
+                                            <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+                                            <stop offset="70%" stop-color="#f8fafc" stop-opacity="1"/>
+                                            <stop offset="100%" stop-color="#e2e8f0" stop-opacity="1"/>
+                                        </radialGradient>
                                         <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                             <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
                                             <stop offset="50%" stop-color="#10b981" stop-opacity="0.3"/>
                                             <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+                                        </linearGradient>
+                                        <linearGradient id="radarSweepGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.5"/>
+                                            <stop offset="50%" stop-color="#059669" stop-opacity="0.2"/>
+                                            <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
                                         </linearGradient>
                                         <linearGradient id="neonCyanEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
                                             <stop offset="0%" stop-color="#00f0ff"/>
@@ -1921,7 +2471,7 @@
                                     </defs>
 
                                     <!-- Radar Background Body -->
-                                    <circle cx="120" cy="120" r="110" fill="url(#radarBgGrad)" stroke="#1e293b" stroke-width="2" />
+                                    <circle id="radarCircleBg" cx="120" cy="120" r="110" fill="url(#radarBgGrad)" stroke="#1e293b" stroke-width="2" />
 
                                     <!-- Concentric Target Distance Rings -->
                                     <circle cx="120" cy="120" r="95" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 3" />
@@ -1976,12 +2526,12 @@
                             <!-- Live Security Telemetry Readout Metrics -->
                             <div class="w-full max-w-[340px] mt-3 p-3 rounded-xl bg-[#070b14]/90 border border-[#1e293b] font-mono text-[10px] space-y-1">
                                 <div class="flex items-center justify-between text-[#00f0ff]">
-                                    <span>[+] POSTURE: HARDENED</span>
-                                    <span>SELinux: ENFORCING</span>
+                                    <span data-i18n="pipeline.posture_label">[+] POSTURE : DURCIE</span>
+                                    <span data-i18n="pipeline.selinux_label">SELinux : STRICT (ENFORCING)</span>
                                 </div>
                                 <div class="flex items-center justify-between text-gray-400">
-                                    <span>[+] EASM: RECON ACTIVE</span>
-                                    <span>IEEE: #33 GLOBAL</span>
+                                    <span data-i18n="pipeline.easm_label">[+] EASM : RECON ACTIVE</span>
+                                    <span data-i18n="pipeline.ieee_label">IEEE : #33 MONDIAL</span>
                                 </div>
                             </div>
 
@@ -2021,7 +2571,7 @@
 
                                 <!-- Stack Tags for Station -->
                                 <div class="space-y-1.5 pt-2">
-                                    <span class="text-[10px] font-mono text-gray-400 uppercase font-bold">// Station Capabilities:</span>
+                                    <span class="text-[10px] font-mono text-gray-400 uppercase font-bold" data-i18n="pipeline.capabilities_label">// Capacités de la Station :</span>
                                     <div id="dossierTags" class="flex flex-wrap gap-1.5 font-mono text-xs">
                                         <span class="px-2 py-0.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/30">Logique Numérique</span>
                                         <span class="px-2 py-0.5 rounded bg-[#0f172a] text-gray-300 border border-[#1e293b]">Électronique</span>
@@ -2034,12 +2584,12 @@
                                 <div class="pt-3 flex flex-wrap items-center gap-3 border-t border-[#1e293b]">
                                     <a id="dossierActionBtn" href="#skills" class="cyber-glow-btn px-4 py-2 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-solid fa-arrow-right"></i>
-                                        <span id="dossierActionText">Consulter les Détails</span>
+                                        <span id="dossierActionText" data-i18n="pipeline.btn_details">Consulter les Détails</span>
                                     </a>
 
                                     <button type="button" onclick="document.getElementById('openAiChatBtn').click()" class="px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
-                                        <span>Interroger l'AI Twin sur ce jalon</span>
+                                        <span data-i18n="pipeline.btn_ask_ai">Interroger l'AI Twin sur ce jalon</span>
                                     </button>
                                 </div>
 
@@ -2126,8 +2676,8 @@
                 <!-- Education & Academic Timeline -->
                 <div>
                     <div class="reveal-card">
-                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="edu.tag">05. // Academic Background & Technical Skills</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-8" data-i18n="edu.title">Education & Degrees</h2>
+                        <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="edu.tag">05. // Formation & Diplômes Académiques</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-8" data-i18n="edu.title">Cursus Universitaire & Diplômes</h2>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -2135,19 +2685,19 @@
                         <div class="cyber-card reveal-card p-7 rounded-2xl bg-[#0f172a] border-2 border-[#00f0ff]/40 hover:border-[#00f0ff] transition-all flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
                             <div>
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="text-xs font-mono text-[#00f0ff] font-bold">2025 - Présent</span>
-                                    <span class="px-2.5 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold">INGÉNIEUR</span>
+                                    <span class="text-xs font-mono text-[#00f0ff] font-bold" data-i18n="edu.tekup_date">2025 - Présent</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold" data-i18n="edu.badge_ing">INGÉNIEUR</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-white">Diplôme National d'Ingénieur en Informatique</h3>
+                                <h3 class="text-xl font-bold text-white" data-i18n="edu.tekup_title">Diplôme National d'Ingénieur en Informatique</h3>
                                 <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">TEK-UP University (Ariana, TN)</p>
-                                <p class="text-xs text-gray-200 mb-2.5"><strong>Spécialisation :</strong> Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée.</p>
+                                <p class="text-xs text-gray-200 mb-2.5" data-i18n-html="edu.tekup_spec"><strong>Spécialisation :</strong> Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée.</p>
                                 <p class="text-[11px] text-gray-400" data-i18n-html="edu.tekup_desc"><strong>Cours pertinents :</strong> Administration Linux Avancée, Cryptographie, Analyse de Vulnérabilités, Secure Coding.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
-                                <span class="text-[11px] font-mono text-gray-400">Cursus Cybersécurité</span>
+                                <span class="text-[11px] font-mono text-gray-400" data-i18n="edu.tekup_track">Cursus Cybersécurité</span>
                                 <button type="button" onclick="window.openDocViewer('Attestation Cursus Ingénieur Cybersécurité', 'TEK-UP University', 'proofs/tekup_attestation.pdf', 'Attestation d\'inscription et formation d\'Ingénieur en Cybersécurité.')" class="px-3 py-1 rounded-lg bg-[#00f0ff]/15 border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black text-[#00f0ff] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,240,255,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span data-i18n="doc.verified">Attestation</span>
+                                    <span data-i18n="doc.attest_btn">Attestation</span>
                                 </button>
                             </div>
                         </div>
@@ -2157,18 +2707,18 @@
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <span class="text-xs font-mono text-gray-400 font-bold">2022 - 2025</span>
-                                    <span class="px-2.5 py-0.5 rounded bg-gray-800 text-gray-200 font-mono text-xs font-bold">LICENCE</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/40 font-mono text-xs font-extrabold shadow-[0_0_10px_rgba(56,189,248,0.2)]" data-i18n="edu.badge_lic">LICENCE</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-white">Licence en Génie Logiciel</h3>
+                                <h3 class="text-xl font-bold text-white" data-i18n="edu.isimm_title">Licence en Génie Logiciel</h3>
                                 <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">ISIMM (Monastir, TN)</p>
-                                <p class="text-xs text-gray-200 mb-2.5">Institut Supérieur d'Informatique et de Mathématiques de Monastir.</p>
+                                <p class="text-xs text-gray-200 mb-2.5" data-i18n="edu.isimm_inst">Institut Supérieur d'Informatique et de Mathématiques de Monastir.</p>
                                 <p class="text-[11px] text-gray-400" data-i18n-html="edu.isimm_desc">Fondations algorithmiques, architectures logicielles, structures de données, POO avancée et bases de données.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
-                                <span class="text-[11px] font-mono text-gray-400">Diplôme National</span>
+                                <span class="text-[11px] font-mono text-gray-400" data-i18n="edu.isimm_nat">Diplôme National</span>
                                 <button type="button" onclick="window.openDocViewer('Diplôme National de Licence en Sciences de l\'Informatique', 'ISIMM / Université de Monastir', 'proofs/diplome_isimm.pdf', 'Diplôme officiel de Licence en Sciences de l\'Informatique (Génie Logiciel).')" class="px-3 py-1 rounded-lg bg-[#38bdf8]/15 border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black text-[#38bdf8] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(56,189,248,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span data-i18n="doc.verified">Diplôme</span>
+                                    <span data-i18n="doc.diploma_btn">Diplôme</span>
                                 </button>
                             </div>
                         </div>
@@ -2178,18 +2728,18 @@
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <span class="text-xs font-mono text-gray-400 font-bold">2018 - 2022</span>
-                                    <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold">BACCALAURÉAT</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold" data-i18n="edu.badge_bac">BACCALAURÉAT</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-white">Baccalauréat Technique</h3>
+                                <h3 class="text-xl font-bold text-white" data-i18n="edu.bac_title">Baccalauréat Technique</h3>
                                 <p class="text-emerald-400 text-xs font-mono font-bold mb-3">Lycée Secondaire Bekalta (Monastir)</p>
-                                <p class="text-xs text-gray-200 mb-2.5"><strong>Mention :</strong> Assez Bien (13.72 / 20)</p>
+                                <p class="text-xs text-gray-200 mb-2.5" data-i18n-html="edu.bac_mention"><strong>Mention :</strong> Assez Bien (13.72 / 20)</p>
                                 <p class="text-[11px] text-gray-400" data-i18n-html="edu.bac_desc">Sciences techniques, logique électronique et modélisation mathématique.</p>
                             </div>
                             <div class="pt-4 mt-4 border-t border-[#1e293b] flex items-center justify-between">
-                                <span class="text-[11px] font-mono text-gray-400">Mention Assez Bien</span>
+                                <span class="text-[11px] font-mono text-gray-400" data-i18n="edu.bac_mention_tag">Mention Assez Bien</span>
                                 <button type="button" onclick="window.openDocViewer('Diplôme du Baccalauréat Technique', 'Ministère de l\'Éducation', 'proofs/diplome_bac.pdf', 'Diplôme officiel du Baccalauréat Technique — Mention Assez Bien (13.72/20).')" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(16,185,129,0.15)]">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
-                                    <span data-i18n="doc.verified">Diplôme</span>
+                                    <span data-i18n="doc.diploma_btn">Diplôme</span>
                                 </button>
                             </div>
                         </div>
@@ -2200,20 +2750,20 @@
                 <div class="cyber-card reveal-card p-7 rounded-2xl bg-[#0f172a] border border-[#1e293b]">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-earth-africa text-[#00f0ff]"></i>
-                        <span>Langues & Communication</span>
+                        <span data-i18n="lang.title">Langues & Communication</span>
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
                         <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
-                            <span class="text-white font-bold text-sm">Français</span>
-                            <span class="text-[#00f0ff] font-bold">Courant</span>
+                            <span class="text-white font-bold text-sm" data-i18n="lang.french">Français</span>
+                            <span class="text-[#00f0ff] font-bold" data-i18n="lang.french_level">Courant</span>
                         </div>
                         <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
-                            <span class="text-white font-bold text-sm">Anglais</span>
-                            <span class="text-[#38bdf8] font-bold">Professionnel (Courant)</span>
+                            <span class="text-white font-bold text-sm" data-i18n="lang.english">Anglais</span>
+                            <span class="text-[#38bdf8] font-bold" data-i18n="lang.english_level">Professionnel (Courant)</span>
                         </div>
                         <div class="p-4 rounded-xl bg-[#070b14] border border-[#1e293b] flex items-center justify-between">
-                            <span class="text-white font-bold text-sm">Arabe</span>
-                            <span class="text-[#10b981] font-bold">Langue maternelle</span>
+                            <span class="text-white font-bold text-sm" data-i18n="lang.arabic">Arabe</span>
+                            <span class="text-[#10b981] font-bold" data-i18n="lang.arabic_level">Langue maternelle</span>
                         </div>
                     </div>
                 </div>
@@ -2222,16 +2772,16 @@
                 <div>
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 reveal-card">
                         <div>
-                            <h3 class="text-2xl font-bold text-white" data-i18n="skills.title">Interactive Tech Stack Matrix</h3>
-                            <p class="text-xs font-mono text-gray-400">Filter skills across systems security, development, and toolchains.</p>
+                            <h3 class="text-2xl font-bold text-white" data-i18n="skills.title">Stack Technique & Outils de Sécurité</h3>
+                            <p class="text-xs font-mono text-gray-400" data-i18n="skills.subtitle">Filtrer les compétences par sécurité des systèmes, développement et chaîne d'outils.</p>
                         </div>
 
                         <!-- Filter Buttons -->
                         <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <button class="skill-filter-btn active px-4 py-2 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] transition-all" data-filter="all">All Stack</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="sys">Security & Linux</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="dev">Languages & Web</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="tools">DevOps, OSINT & DB</button>
+                            <button class="skill-filter-btn active px-4 py-2 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] transition-all" data-filter="all" data-i18n="skills.filter_all">Toutes les compétences</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="sys" data-i18n="skills.filter_sys">Sécurité & Linux</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="dev" data-i18n="skills.filter_dev">Langages & Web</button>
+                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="tools" data-i18n="skills.filter_tools">DevOps, OSINT & BDD</button>
                         </div>
                     </div>
 
@@ -2242,98 +2792,98 @@
                         <div class="skill-card sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-500 transition-all group">
                             <i class="fa-brands fa-redhat text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Linux RHEL</h4>
-                            <span class="text-[10px] font-mono text-gray-400">RHCSA Certified</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.rhel_sub">Certifié RHCSA</span>
                         </div>
 
                         <!-- Python -->
                         <div class="skill-card dev sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-yellow-400 transition-all group">
                             <i class="fa-brands fa-python text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Python</h4>
-                            <span class="text-[10px] font-mono text-gray-400">PCAP Certified</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.python_sub">Certifié PCAP</span>
                         </div>
 
                         <!-- EASM & Attack Surface -->
                         <div class="skill-card sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
                             <i class="fa-solid fa-radar text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Smart EASM</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Attack Surface Mgmt</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.easm_sub">Gestion Surface d'Attaque</span>
                         </div>
 
                         <!-- OSINT Tooling -->
                         <div class="skill-card sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
                             <i class="fa-solid fa-eye text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">OSINT Tools</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Subfinder, VT, Netlas</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.osint_sub">Subfinder, VT, Netlas</span>
                         </div>
 
                         <!-- Bash Scripting -->
                         <div class="skill-card sys dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-green-400 transition-all group">
                             <i class="fa-solid fa-terminal text-3xl text-green-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Bash Scripting</h4>
-                            <span class="text-[10px] font-mono text-gray-400">System Automation</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.bash_sub">Automatisation Système</span>
                         </div>
 
                         <!-- C Language -->
                         <div class="skill-card dev sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
                             <i class="fa-solid fa-c text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">C Language</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Low-Level Systems</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.c_sub">Systèmes Bas Niveau</span>
                         </div>
 
                         <!-- Java -->
                         <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-orange-500 transition-all group">
                             <i class="fa-brands fa-java text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Java</h4>
-                            <span class="text-[10px] font-mono text-gray-400">OOP & Spring Boot</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.java_sub">POO & Spring Boot</span>
                         </div>
 
                         <!-- Docker -->
                         <div class="skill-card tools sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-blue-400 transition-all group">
                             <i class="fa-brands fa-docker text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Docker</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Containers</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.docker_sub">Conteneurs</span>
                         </div>
 
                         <!-- Node.js & Express -->
                         <div class="skill-card dev tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-500 transition-all group">
                             <i class="fa-brands fa-node text-3xl text-emerald-500 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Node.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Express / REST APIs</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.node_sub">APIs Express / REST</span>
                         </div>
 
                         <!-- Angular -->
                         <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-600 transition-all group">
                             <i class="fa-brands fa-angular text-3xl text-red-600 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Angular</h4>
-                            <span class="text-[10px] font-mono text-gray-400">TypeScript SPA</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.angular_sub">TypeScript SPA</span>
                         </div>
 
                         <!-- Vue.js -->
                         <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-400 transition-all group">
                             <i class="fa-brands fa-vuejs text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Vue.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400">Reactive Web UI</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.vue_sub">UI Web Réactive</span>
                         </div>
 
                         <!-- SQL & Databases -->
                         <div class="skill-card tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-sky-400 transition-all group">
                             <i class="fa-solid fa-database text-3xl text-sky-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Databases</h4>
-                            <span class="text-[10px] font-mono text-gray-400">MySQL, Postgres, Mongo</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.db_sub">MySQL, Postgres, Mongo</span>
                         </div>
 
                         <!-- AI / OCR (NumPy) -->
                         <div class="skill-card tools dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-purple-400 transition-all group">
                             <i class="fa-solid fa-brain text-3xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">AI / OCR</h4>
-                            <span class="text-[10px] font-mono text-gray-400">NumPy & Doc Extraction</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.ai_sub">NumPy & Extraction Doc</span>
                         </div>
 
                         <!-- Security Hardening -->
                         <div class="skill-card sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
                             <i class="fa-solid fa-shield-halved text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
                             <h4 class="text-sm font-bold text-white">Security Hardening</h4>
-                            <span class="text-[10px] font-mono text-gray-400">SELinux, SSH & Audits</span>
+                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.sec_sub">SELinux, SSH & Audits</span>
                         </div>
 
                     </div>
@@ -2347,10 +2897,10 @@
             <div class="max-w-4xl mx-auto space-y-10 text-center">
                 
                 <div class="space-y-3 reveal-card">
-                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="contact.tag">06. // Direct Link</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="contact.title">Let's Connect & Collaborate</h2>
+                    <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="contact.tag">06. // Communication & Prise de Contact</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="contact.title">Initier une Proposition ou un Échange</h2>
                     <p class="text-gray-300 text-base max-w-xl mx-auto" data-i18n="contact.desc">
-                        Whether you are looking for a cybersecurity specialist, Linux systems engineer, or intelligent software developer, feel free to reach out directly.
+                        Disponible immédiatement pour des opportunités en Cybersécurité, Administration Linux RHEL, DevSecOps ou Développement Python.
                     </p>
                 </div>
 
@@ -2358,14 +2908,14 @@
                     <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#00f0ff] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
                         <div class="flex flex-col items-center gap-2">
                             <i class="fa-solid fa-envelope text-3xl text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#00f0ff]">Email Direct</span>
+                            <span class="font-bold text-white group-hover:text-[#00f0ff]" data-i18n="contact.email_title">Email Direct</span>
                             <span class="text-xs text-gray-300">wisoghost@gmail.com</span>
                         </div>
                         <div class="flex items-center gap-2 pt-2">
                             <a href="mailto:wisoghost@gmail.com?subject=Prise%20de%20contact%20professionnelle%20-%20Wassim%20Bannour" class="px-3 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-paper-plane mr-1"></i> Envoyer
+                                <i class="fa-solid fa-paper-plane mr-1"></i> <span data-i18n="contact.email_btn">Envoyer</span>
                             </a>
-                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" title="Copier l'email">
+                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.email_copy" title="Copier l'email">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
@@ -2374,14 +2924,14 @@
                     <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
                         <div class="flex flex-col items-center gap-2">
                             <i class="fa-brands fa-linkedin text-3xl text-[#38bdf8] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#38bdf8]">LinkedIn Profil</span>
+                            <span class="font-bold text-white group-hover:text-[#38bdf8]" data-i18n="contact.linkedin_title">Profil LinkedIn</span>
                             <span class="text-xs text-gray-300">Wassim Bannour</span>
                         </div>
                         <div class="flex items-center gap-2 pt-2">
                             <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Ouvrir
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> <span data-i18n="contact.linkedin_btn">Ouvrir</span>
                             </a>
-                            <button onclick="window.copyToClipboard('https://www.linkedin.com/in/wassim-bannour-513448317/', 'Lien LinkedIn')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" title="Copier le lien LinkedIn">
+                            <button onclick="window.copyToClipboard('https://www.linkedin.com/in/wassim-bannour-513448317/', 'Lien LinkedIn')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.linkedin_copy" title="Copier le lien LinkedIn">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
@@ -2390,14 +2940,14 @@
                     <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
                         <div class="flex flex-col items-center gap-2">
                             <i class="fa-solid fa-phone text-3xl text-[#10b981] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#10b981]">Téléphone Mobile</span>
+                            <span class="font-bold text-white group-hover:text-[#10b981]" data-i18n="contact.phone_title">Téléphone Mobile</span>
                             <span class="text-xs text-gray-300">+216 94101910</span>
                         </div>
                         <div class="flex items-center gap-2 pt-2">
                             <a href="tel:+21694101910" class="px-3 py-1.5 rounded-lg bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-phone mr-1"></i> Appeler
+                                <i class="fa-solid fa-phone mr-1"></i> <span data-i18n="contact.phone_btn">Appeler</span>
                             </a>
-                            <button onclick="window.copyToClipboard('+21694101910', 'Téléphone (+216 94101910)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" title="Copier le numéro">
+                            <button onclick="window.copyToClipboard('+21694101910', 'Téléphone (+216 94101910)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.phone_copy" title="Copier le numéro">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
@@ -2406,15 +2956,15 @@
 
                 <!-- Recruiter Quick Summary Banner -->
                 <div class="p-6 rounded-2xl bg-gradient-to-r from-[#00f0ff]/10 via-[#38bdf8]/10 to-[#10b981]/10 border border-[#00f0ff]/30 text-center font-mono text-xs space-y-3 reveal-card">
-                    <p class="text-white text-sm font-bold">
+                    <p class="text-white text-sm font-bold" data-i18n="contact.banner_text">
                         ⚡ Recruteurs & Responsables Techniques : Téléchargez le dossier complet en 1 clic
                     </p>
                     <div class="flex flex-wrap items-center justify-center gap-3">
                         <button onclick="window.openHireMeModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] transition-all">
-                            <i class="fa-solid fa-bolt mr-1.5"></i> <span data-i18n="hero.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
+                            <i class="fa-solid fa-bolt mr-1.5"></i> <span data-i18n="contact.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
                         </button>
                         <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-5 py-2.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold transition-all shadow-[0_0_12px_rgba(16,185,129,0.25)]">
-                            <i class="fa-solid fa-file-pdf mr-1.5"></i> <span>TÉLÉCHARGER LE CV (PDF)</span>
+                            <i class="fa-solid fa-file-pdf mr-1.5"></i> <span data-i18n="contact.btn_cv_pdf">TÉLÉCHARGER LE CV (PDF)</span>
                         </a>
                     </div>
                 </div>

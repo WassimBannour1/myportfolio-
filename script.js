@@ -27,14 +27,19 @@ let CURRENT_THEME = localStorage.getItem('WB_THEME') || 'dark';
 // Complete Bilingual Dictionary (French & English)
 const I18N_DATA = {
     fr: {
-        'nav.achievements': '01. // Réalisations',
-        'nav.certs': '02. // Certifications',
-        'nav.experience': '03. // Expérience',
-        'nav.pipeline': '04. // Pipeline Radar',
-        'nav.skills': '05. // Diplômes & Stack',
-        'nav.contact': '06. // Contact',
+        // Navigation
+        'nav.achievements': 'Distinctions',
+        'nav.certs': 'Certifications',
+        'nav.experience': 'Expérience',
+        'nav.pipeline': 'Radar',
+        'nav.skills': 'Formation',
+        'nav.contact': 'Contact',
         'nav.fasttrack': 'FAST-TRACK',
         'nav.aichat': 'AI TWIN',
+        'nav.cv_download': 'Télécharger le CV Officiel (PDF)',
+        'nav.launch_ai': 'LANCER L\'AI TWIN',
+
+        // Hero
         'hero.badge': 'INGÉNIEUR CYBERSÉCURITÉ & SYSTÈMES LINUX',
         'hero.role_prefix': 'role:~$',
         'hero.education': 'Diplôme National d\'Ingénieur Cybersécurité @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span>',
@@ -43,33 +48,194 @@ const I18N_DATA = {
         'hero.btn_aichat': 'Chat AI Twin',
         'hero.status_pill': 'STATUT : ACTIF // DISPONIBLE',
         'hero.stat_rank': 'Mondial IEEEXtreme',
+        'hero.stat_rank_sub': '2ᵉ National en Tunisie',
         'hero.stat_certs': 'Red Hat SysAdmin',
+        'hero.stat_certs_sub': 'Noyau Linux Entreprise',
         'hero.stat_stage': 'Python Institute',
+        'hero.stat_stage_sub': 'Algorithmes & Pipelines',
         'hero.stat_sec': 'Talan Tunisie',
+        'hero.stat_sec_sub': 'Surface d\'Attaque & OSINT',
+        'hero.telemetry_title': '// Télémétrie Système',
+        'hero.security_by_design': 'Sécurité dès la Conception',
+        'hero.stack_label': '<span class="text-[#38bdf8]">Stack :</span> Admin Linux (RHEL), Python, EASM, OSINT, Node.js, Angular, Docker',
+
+        // Section 01: Achievements
         'achievements.tag': '01. // Parcours & Distinctions',
         'achievements.title': 'Réalisations Majeures & Distinctions',
         'achievements.subtitle': 'Excellence prouvée en résolution algorithmique sous pression, cybersécurité compétitive et leadership technique.',
+        'achievements.c1_badge': '1er Prix',
+        'achievements.c1_type': 'Compétition Mondiale',
+        'achievements.c1_li1': '<strong class="text-white">33ème Place Mondiale</strong> parmi des milliers d\'équipes d\'ingénieurs internationales.',
+        'achievements.c1_li2': '<strong class="text-white">2ème Place Nationale</strong> en Tunisie.',
+        'achievements.c1_li3': 'Résolution de problèmes algorithmiques complexes en 24h non-stop.',
+        'achievements.c2_badge': 'Cybersécurité',
+        'achievements.c2_type': 'Capture-The-Flag',
+        'achievements.c2_li1': 'Compétition Capture The Flag : Exploitation de failles & défense d\'infrastructure.',
+        'achievements.c2_li2': 'Analyse de paquets réseaux, reverse engineering et sécurité binaire.',
+        'achievements.c3_badge': 'Leadership',
+        'achievements.c3_type': 'Bureau Exécutif',
+        'achievements.c3_title': 'Trésorier IEEE ISIMM',
+        'achievements.c3_li1': 'Gestion rigoureuse du budget et optimisation financière des événements techniques.',
+        'achievements.c3_li2': 'Négociation de sponsors et partenariats stratégiques pour financer ateliers et conférences.',
+        'achievements.c4_badge': 'Réseautage',
+        'achievements.c4_type': 'Congrès National',
+        'achievements.c4_title': 'Congrès TSYP 11',
+        'achievements.c4_li1': 'Participation au plus grand congrès étudiant en Tunisie (Hammamet).',
+        'achievements.c4_li2': 'Immersion dans les tendances technologiques et tables rondes industrielles.',
+
+        // Section 02: Certifications
         'certs.tag': '02. // Titres & Certifications Professionnelles',
         'certs.title': 'Certifications Professionnelles Vérifiées',
+        'certs.rhcsa_badge': 'RED HAT CERTIFIÉ',
+        'certs.issuer_prefix': 'Émetteur :',
+        'certs.credly_verified': 'Badge Credly Vérifié',
+        'certs.rhcsa_desc': 'Expertise en administration d\'entreprise Linux (RHEL/CentOS), durcissement système, automatisation Bash, gestion des droits et utilisateurs, stockage LVM, pare-feu FirewallD et orchestration de services systemd sécurisés.',
+        'certs.rhcsa_verify_id': 'ID de Vérification Red Hat',
+        'certs.pcap_badge': 'PYTHON INSTITUTE',
+        'certs.pcap_desc': 'Maîtrise certifiée de la programmation orientée objet (POO), des structures de données complexes, des scripts d\'automatisation, des pipelines de normalisation de flux de données et de l\'architecture logicielle propre.',
+        'certs.pcap_verify_id': 'ID de Vérification Python Institute',
         'certs.verify_credly': 'Vérifier sur Credly',
+
+        // Section 03: Experience
         'exp.tag': '03. // Parcours Professionnel & Projets',
         'exp.title': 'Expérience Professionnelle & Stages',
         'exp.subtitle': 'Cliquez sur une expérience pour afficher les détails d\'architecture, réalisations techniques et dépôts de code source.',
-        'pipeline.tag': '04. // Pipeline de Compétences & Radar Opérationnel',
-        'pipeline.title': 'Centre d\'Opérations & Pipeline de Sécurité',
-        'pipeline.radar_title': 'Matrice Télémetrie & Surveillance Active',
+        'exp.btn_details': 'Détails',
+        'exp.btn_attestation': 'Attestation',
+        'exp.btn_code': 'Code',
+        'exp.talan_badge': 'FLAGSHIP CYBERSECURITY',
+        'exp.talan_role': 'Développeur Cybersécurité — Plateforme Smart EASM',
+        'exp.talan_sub': 'External Attack Surface Management & Threat Intelligence',
+        'exp.talan_date': '2026 Juil - Août',
+        'exp.talan_summary': 'Conception et développement de la plateforme <strong class="text-white">Smart EASM</strong> pour la découverte continue, la cartographie et la surveillance des actifs exposés sur Internet, avec automatisation avancée des flux <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong>.',
+        'exp.talan_b1_title': 'Architecture EASM',
+        'exp.talan_b1_desc': 'Architecture modulaire conçue pour la découverte passive et active des vecteurs d\'attaque externes : domaines racine, sous-domaines orphelins, adresses IP publiques, certificats TLS expirés et ports/services vulnérables.',
+        'exp.talan_b2_title': 'Connecteurs OSINT',
+        'exp.talan_b2_desc': 'Intégration d\'APIs tierces et d\'outils de reconnaissance : <strong>Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB et Criminal IP</strong> pour une couverture exhaustive de la surface d\'attaque.',
+        'exp.talan_b3_title': 'Pipelines Python',
+        'exp.talan_b3_desc': 'Développement de pipelines <strong>Python</strong> hautement optimisés pour dédupliquer, corréler, normaliser et filtrer les flux volumineux de données OSINT brutes vers des tableaux de bord exploitables.',
+        'exp.talan_verify': 'Vérification & Source Code TALAN :',
+        'exp.btn_view_attest': 'Consulter l\'Attestation',
+        'exp.btn_explore_repo': 'Explorer le Repo',
+        'exp.btn_ask_ai': 'Poser une question à l\'IA',
+        'exp.sw_badge': 'FULLSTACK & IA/OCR',
+        'exp.sw_role': 'Développeur Web Fullstack — OCR & IA Documentaire',
+        'exp.sw_sub': 'Plateforme Quick Dock & Moteur d\'Extraction Intelligente',
+        'exp.sw_summary': 'Conception du moteur d\'extraction automatique de données par <strong class="text-white">OCR</strong> pour la dématérialisation comptable et développement de la plateforme web <strong class="text-[#00f0ff]">Quick Dock</strong> (Node.js/Express + Vue.js).',
+        'exp.sw_b1_title': 'Moteur OCR & IA Documentaire',
+        'exp.sw_b1_desc': 'Algorithmes de reconnaissance optique de caractères (OCR) avec pré-traitement d\'images (NumPy), extraction automatique des montants HT/TTC, dates et numéros de TVA, éliminant 85% de la saisie manuelle.',
+        'exp.sw_b2_title': 'Plateforme Quick Dock (Vue.js + Node.js)',
+        'exp.sw_b2_desc': 'Génération dynamique de devis et factures avec rendu PDF temps réel, gestion sécurisée des sessions utilisateurs, API RESTful modulaire et intégration de base de données hybride SQL/NoSQL.',
+        'exp.sw_verify': 'Code & Architecture Quick Dock :',
+        'exp.sw_explore_repo': 'Explorer le Repo QuickDoc',
+        'exp.sw_learn_ai': 'En savoir plus via l\'IA',
+        'exp.team_badge': 'ARCHITECTURE FRONTEND',
+        'exp.team_role': 'Développeur Frontend — Interface Responsive Angular',
+        'exp.team_sub': 'Plateforme Stadium-Booking & Synchronisation REST API',
+        'exp.team_summary': 'Développement d\'interfaces utilisateur modernes sous <strong class="text-white">Angular & TypeScript</strong> avec design adaptatif haute fidélité et intégration asynchrone des flux REST.',
+        'exp.team_b1_title': 'Design System & UI Responsive',
+        'exp.team_b1_desc': 'Structure modulaire de composants réutilisables, formulaires réactifs avec validation dynamique et gestion fluide des états d\'affichage sur mobiles, tablettes et écrans larges.',
+        'exp.team_b2_title': 'Performance & Intégration REST',
+        'exp.team_b2_desc': 'Optimisation du temps de rendu DOM, mise en cache côté client, gestion des erreurs HTTP et synchronisation temps réel avec les microservices backend.',
+        'exp.team_verify': 'Code Frontend Angular :',
+        'exp.team_explore_repo': 'Explorer le Repo Stadium-Booking',
+        'exp.team_chat_ai': 'Discuter avec l\'IA',
+        'exp.tech_badge': 'JAVA DESKTOP & SQL',
+        'exp.tech_role': 'Développeur Logiciel — Solution de Gestion en Java',
+        'exp.tech_sub': 'Application Desktop Restaurant Management (Swing/JFrame & SQL)',
+        'exp.tech_summary': 'Digitalisation complète de la prise de commande, de la gestion des tables et du suivi des stocks via une application desktop <strong class="text-white">Java Swing (JFrame)</strong> connectée à une base de données relationnelle SQL.',
+        'exp.tech_b1_title': 'Gestion Opérationnelle & Prise de Commande',
+        'exp.tech_b1_desc': 'Interface ergonomique pour les serveurs et gérants : attribution dynamique des tables, calcul instantané des additions, génération de tickets de caisse et traçabilité des commandes en temps réel.',
+        'exp.tech_b2_title': 'Persistance des Données & Inventaire SQL',
+        'exp.tech_b2_desc': 'Schéma relationnel robuste pour l\'inventaire des ingrédients, alertes de rupture de stock, statistiques de vente journalières et historique d\'activité financière.',
+        'exp.tech_verify': 'Code Source Java Desktop :',
+        'exp.tech_explore_repo': 'Explorer le Repo GitHub',
+        'exp.tech_chat_ai': 'Discuter avec l\'IA',
+
+        // Section 04: Radar & Milestone Timeline
+        'pipeline.tag': '04. // RADAR DE DÉFENSE & TRAJECTOIRE',
+        'pipeline.title': 'Radar des Opérations Cyber & Pipeline',
+        'pipeline.subtitle': 'Télémétrie de sécurité temps réel, renseignement sur les surfaces d\'attaque et architecture chronologique des jalons de Wassim.',
+        'pipeline.livescan': 'Scan Direct',
+        'pipeline.telemetry_title': 'SEC_OPS // TÉLÉMÉTRIE RADAR',
+        'pipeline.posture_label': '[+] POSTURE : DURCIE',
+        'pipeline.selinux_label': 'SELinux : STRICT (ENFORCING)',
+        'pipeline.easm_label': '[+] EASM : RECON ACTIVE',
+        'pipeline.ieee_label': 'IEEE : #33 MONDIAL',
+        'pipeline.capabilities_label': '// Capacités de la Station :',
+        'pipeline.btn_details': 'Consulter les Détails',
+        'pipeline.btn_ask_ai': 'Interroger l\'AI Twin sur ce jalon',
+
+        // Section 05: Education & Degrees
         'edu.tag': '05. // Formation & Diplômes Académiques',
-        'edu.title': 'Cursus Universitaire & Ingénierie',
+        'edu.title': 'Cursus Universitaire & Diplômes',
+        'edu.badge_ing': 'INGÉNIEUR',
+        'edu.tekup_date': '2025 - Présent',
+        'edu.tekup_title': 'Diplôme National d\'Ingénieur en Informatique',
+        'edu.tekup_spec': '<strong>Spécialisation :</strong> Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée.',
+        'edu.tekup_desc': '<strong>Cours pertinents :</strong> Administration Linux Avancée, Cryptographie, Analyse de Vulnérabilités, Secure Coding.',
+        'edu.tekup_track': 'Cursus Cybersécurité',
+        'edu.badge_lic': 'LICENCE',
+        'edu.isimm_title': 'Licence en Génie Logiciel',
+        'edu.isimm_inst': 'Institut Supérieur d\'Informatique et de Mathématiques de Monastir.',
+        'edu.isimm_desc': 'Fondations algorithmiques, architectures logicielles, structures de données, POO avancée et bases de données.',
+        'edu.isimm_nat': 'Diplôme National',
+        'edu.badge_bac': 'BACCALAURÉAT',
+        'edu.bac_title': 'Baccalauréat Technique',
+        'edu.bac_mention': '<strong>Mention :</strong> Assez Bien (13.72 / 20)',
+        'edu.bac_desc': 'Sciences techniques, logique électronique et modélisation mathématique.',
+        'edu.bac_mention_tag': 'Mention Assez Bien',
+
+        // Section 05.1: Languages & Communication
+        'lang.title': 'Langues & Communication',
+        'lang.french': 'Français',
+        'lang.french_level': 'Courant',
+        'lang.english': 'Anglais',
+        'lang.english_level': 'Professionnel (Courant)',
+        'lang.arabic': 'Arabe',
+        'lang.arabic_level': 'Langue maternelle',
+
+        // Section 05.2: Skills Matrix
         'skills.tag': '05.2 // Matrice de Compétences Techniques',
         'skills.title': 'Stack Technique & Outils de Sécurité',
+        'skills.subtitle': 'Filtrer les compétences par sécurité des systèmes, développement et chaîne d\'outils.',
+        'skills.filter_all': 'Toutes les compétences',
+        'skills.filter_sys': 'Sécurité & Linux',
+        'skills.filter_dev': 'Langages & Web',
+        'skills.filter_tools': 'DevOps, OSINT & BDD',
+        'skills.rhel_sub': 'Certifié RHCSA',
+        'skills.python_sub': 'Certifié PCAP',
+        'skills.easm_sub': 'Gestion Surface d\'Attaque',
+        'skills.osint_sub': 'Subfinder, VT, Netlas',
+        'skills.bash_sub': 'Automatisation Système',
+        'skills.c_sub': 'Systèmes Bas Niveau',
+        'skills.java_sub': 'POO & Spring Boot',
+        'skills.docker_sub': 'Conteneurs',
+        'skills.node_sub': 'APIs Express / REST',
+        'skills.angular_sub': 'TypeScript SPA',
+        'skills.vue_sub': 'UI Web Réactive',
+        'skills.db_sub': 'MySQL, Postgres, Mongo',
+        'skills.ai_sub': 'NumPy & Extraction Doc',
+        'skills.sec_sub': 'SELinux, SSH & Audits',
+
+        // Section 06: Contact & Fast-Track Banner
         'contact.tag': '06. // Communication & Prise de Contact',
         'contact.title': 'Initier une Proposition ou un Échange',
         'contact.desc': 'Disponible immédiatement pour des opportunités en Cybersécurité, Administration Linux RHEL, DevSecOps ou Développement Python.',
-        'contact.name_label': 'Nom & Prénom / Entreprise',
-        'contact.email_label': 'Adresse E-mail',
-        'contact.subject_label': 'Objet du Message',
-        'contact.message_label': 'Votre Message / Proposition',
-        'contact.send_btn': 'Envoyer le Message',
+        'contact.email_title': 'Email Direct',
+        'contact.email_btn': 'Envoyer',
+        'contact.email_copy': 'Copier l\'email',
+        'contact.linkedin_title': 'Profil LinkedIn',
+        'contact.linkedin_btn': 'Ouvrir',
+        'contact.linkedin_copy': 'Copier le lien LinkedIn',
+        'contact.phone_title': 'Téléphone Mobile',
+        'contact.phone_btn': 'Appeler',
+        'contact.phone_copy': 'Copier le numéro',
+        'contact.banner_text': '⚡ Recruteurs & Responsables Techniques : Téléchargez le dossier complet en 1 clic',
+        'contact.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
+        'contact.btn_cv_pdf': 'TÉLÉCHARGER LE CV (PDF)',
+
+        // Modals & Proof Viewer
         'hire.title': 'Dossier Recruteur Express (60s)',
         'hire.subtitle': 'Pourquoi recruter Wassim Bannour en 60 secondes',
         'hire.pillar1_title': 'Certifié RHCSA (Linux)',
@@ -89,6 +255,9 @@ const I18N_DATA = {
         'doc.title_default': 'Attestation Officielle',
         'doc.issuer_default': 'Organisme Émetteur',
         'doc.verified': 'VÉRIFIABLE',
+        'doc.cert_btn': 'Certificat',
+        'doc.attest_btn': 'Attestation',
+        'doc.diploma_btn': 'Diplôme',
         'doc.status_title': 'Document Officiel',
         'doc.status_subtext': 'Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification authentique.',
         'doc.download': 'Télécharger le Document',
@@ -114,14 +283,19 @@ const I18N_DATA = {
         'terminal.placeholder': 'tapez \'help\', \'whoami\', \'certs\', \'easm\', \'skills\', \'clear\'...'
     },
     en: {
-        'nav.achievements': '01. // Achievements',
-        'nav.certs': '02. // Certifications',
-        'nav.experience': '03. // Experience',
-        'nav.pipeline': '04. // Pipeline Radar',
-        'nav.skills': '05. // Degrees & Stack',
-        'nav.contact': '06. // Contact',
+        // Navigation
+        'nav.achievements': 'Achievements',
+        'nav.certs': 'Certifications',
+        'nav.experience': 'Experience',
+        'nav.pipeline': 'Radar',
+        'nav.skills': 'Education',
+        'nav.contact': 'Contact',
         'nav.fasttrack': 'FAST-TRACK',
         'nav.aichat': 'AI TWIN',
+        'nav.cv_download': 'Download Official CV (PDF)',
+        'nav.launch_ai': 'LAUNCH AI TWIN',
+
+        // Hero
         'hero.badge': 'CYBERSECURITY & SYSTEMS LINUX ENGINEER',
         'hero.role_prefix': 'role:~$',
         'hero.education': 'National Engineering Degree in Cybersecurity @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span>',
@@ -130,33 +304,194 @@ const I18N_DATA = {
         'hero.btn_aichat': 'Chat AI Twin',
         'hero.status_pill': 'STATUS: ACTIVE // OPEN TO ROLES',
         'hero.stat_rank': 'Worldwide IEEEXtreme',
+        'hero.stat_rank_sub': '2nd National in Tunisia',
         'hero.stat_certs': 'Red Hat SysAdmin',
+        'hero.stat_certs_sub': 'Enterprise Linux Kernel',
         'hero.stat_stage': 'Python Institute',
+        'hero.stat_stage_sub': 'Algorithms & Pipelines',
         'hero.stat_sec': 'Talan Tunisie',
+        'hero.stat_sec_sub': 'Attack Surface & OSINT',
+        'hero.telemetry_title': '// System Telemetry',
+        'hero.security_by_design': 'Security-by-Design',
+        'hero.stack_label': '<span class="text-[#38bdf8]">Stack:</span> Linux Admin (RHEL), Python, EASM, OSINT, Node.js, Angular, Docker',
+
+        // Section 01: Achievements
         'achievements.tag': '01. // Track Record & Distinctions',
         'achievements.title': 'Major Achievements & Distinctions',
         'achievements.subtitle': 'Proven track record in algorithmic problem solving under pressure, competitive cybersecurity, and engineering leadership.',
+        'achievements.c1_badge': '1st Prize',
+        'achievements.c1_type': 'Global Competition',
+        'achievements.c1_li1': '<strong class="text-white">33rd Worldwide Rank</strong> among thousands of international engineering teams.',
+        'achievements.c1_li2': '<strong class="text-white">2nd National Rank</strong> in Tunisia.',
+        'achievements.c1_li3': 'Complex algorithmic problem solving in a 24-hour non-stop marathon.',
+        'achievements.c2_badge': 'Cybersecurity',
+        'achievements.c2_type': 'Capture-The-Flag',
+        'achievements.c2_li1': 'Capture The Flag competition: Exploit development & infrastructure defense.',
+        'achievements.c2_li2': 'Network packet analysis, reverse engineering, and binary security.',
+        'achievements.c3_badge': 'Leadership',
+        'achievements.c3_type': 'Executive Board',
+        'achievements.c3_title': 'IEEE ISIMM Treasurer',
+        'achievements.c3_li1': 'Rigorous budget management and financial optimization for technical events.',
+        'achievements.c3_li2': 'Sponsorship negotiations and strategic partnerships to fund workshops and tech conferences.',
+        'achievements.c4_badge': 'Networking',
+        'achievements.c4_type': 'National Congress',
+        'achievements.c4_title': 'TSYP 11 Congress',
+        'achievements.c4_li1': 'Participation in the largest engineering student congress in Tunisia (Hammamet).',
+        'achievements.c4_li2': 'Immersion in emerging technology trends and industrial panel discussions.',
+
+        // Section 02: Certifications
         'certs.tag': '02. // Verified Industry Credentials',
         'certs.title': 'Professional Certifications',
+        'certs.rhcsa_badge': 'RED HAT CERTIFIED',
+        'certs.issuer_prefix': 'Issuer:',
+        'certs.credly_verified': 'Verified Credly Badge',
+        'certs.rhcsa_desc': 'Expertise in enterprise Linux administration (RHEL/CentOS), system hardening, Bash automation, user & permissions management, LVM storage, FirewallD security, and systemd service orchestration.',
+        'certs.rhcsa_verify_id': 'Red Hat Verification ID',
+        'certs.pcap_badge': 'PYTHON INSTITUTE',
+        'certs.pcap_desc': 'Certified mastery of object-oriented programming (OOP), complex data structures, automation scripting, data stream normalization pipelines, and clean software architecture.',
+        'certs.pcap_verify_id': 'Python Institute Verification ID',
         'certs.verify_credly': 'Verify on Credly',
+
+        // Section 03: Experience
         'exp.tag': '03. // Career History & Projects',
         'exp.title': 'Professional Experience & Internships',
         'exp.subtitle': 'Click any experience card below to expand in-depth architecture breakdowns, technical achievements, and source code repositories.',
-        'pipeline.tag': '04. // Security Radar & Career Pipeline',
-        'pipeline.title': 'Security Operations & Pipeline Radar',
-        'pipeline.radar_title': 'Telemetry & Active Monitoring Matrix',
+        'exp.btn_details': 'Details',
+        'exp.btn_attestation': 'Attestation',
+        'exp.btn_code': 'Code',
+        'exp.talan_badge': 'FLAGSHIP CYBERSECURITY',
+        'exp.talan_role': 'Cybersecurity Developer — Smart EASM Platform',
+        'exp.talan_sub': 'External Attack Surface Management & Threat Intelligence',
+        'exp.talan_date': '2026 Jul - Aug',
+        'exp.talan_summary': 'Design and development of the <strong class="text-white">Smart EASM</strong> platform for continuous discovery, mapping, and monitoring of Internet-exposed assets with advanced <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong> automation.',
+        'exp.talan_b1_title': 'EASM Architecture',
+        'exp.talan_b1_desc': 'Modular architecture engineered for passive and active external attack vector discovery: apex domains, orphaned subdomains, public IPs, expired TLS certificates, and vulnerable exposed ports/services.',
+        'exp.talan_b2_title': 'OSINT Connectors',
+        'exp.talan_b2_desc': 'Integration of 3rd-party APIs and reconnaissance tools: <strong>Subfinder, crt.sh, VirusTotal, WhoisXML, Netlas, AbuseIPDB, and Criminal IP</strong> for comprehensive attack surface coverage.',
+        'exp.talan_b3_title': 'Python Pipelines',
+        'exp.talan_b3_desc': 'Development of highly optimized <strong>Python</strong> pipelines to deduplicate, correlate, normalize, and filter large streams of raw OSINT telemetry into actionable dashboards.',
+        'exp.talan_verify': 'TALAN Verification & Source Code:',
+        'exp.btn_view_attest': 'View Attestation',
+        'exp.btn_explore_repo': 'Explore Repo',
+        'exp.btn_ask_ai': 'Ask AI Twin',
+        'exp.sw_badge': 'FULLSTACK & AI/OCR',
+        'exp.sw_role': 'Fullstack Web Developer — OCR & Document AI',
+        'exp.sw_sub': 'Quick Dock Platform & Smart Extraction Engine',
+        'exp.sw_summary': 'Design of the automated <strong class="text-white">OCR</strong> data extraction engine for accounting dematerialization and development of the <strong class="text-[#00f0ff]">Quick Dock</strong> web platform (Node.js/Express + Vue.js).',
+        'exp.sw_b1_title': 'OCR Engine & Document AI',
+        'exp.sw_b1_desc': 'Optical character recognition (OCR) algorithms with image pre-processing (NumPy), automatic extraction of net/gross amounts, invoice dates, and VAT numbers, eliminating 85% of manual data entry.',
+        'exp.sw_b2_title': 'Quick Dock Platform (Vue.js + Node.js)',
+        'exp.sw_b2_desc': 'Dynamic quotation and invoice generation with real-time PDF rendering, secure session handling, modular RESTful APIs, and hybrid SQL/NoSQL database integration.',
+        'exp.sw_verify': 'Quick Dock Code & Architecture:',
+        'exp.sw_explore_repo': 'Explore QuickDoc Repo',
+        'exp.sw_learn_ai': 'Learn more via AI',
+        'exp.team_badge': 'FRONTEND ARCHITECTURE',
+        'exp.team_role': 'Frontend Developer — Responsive Angular Interface',
+        'exp.team_sub': 'Stadium-Booking Platform & REST API Sync',
+        'exp.team_summary': 'Development of modern user interfaces with <strong class="text-white">Angular & TypeScript</strong> featuring high-fidelity responsive design and asynchronous REST API synchronization.',
+        'exp.team_b1_title': 'Design System & Responsive UI',
+        'exp.team_b1_desc': 'Modular reusable component structure, reactive forms with dynamic client validation, and fluid state management across mobile, tablet, and desktop views.',
+        'exp.team_b2_title': 'Performance & REST Integration',
+        'exp.team_b2_desc': 'DOM rendering optimization, client-side caching, robust HTTP error handling, and real-time state synchronization with backend microservices.',
+        'exp.team_verify': 'Angular Frontend Code:',
+        'exp.team_explore_repo': 'Explore Stadium-Booking Repo',
+        'exp.team_chat_ai': 'Chat with AI',
+        'exp.tech_badge': 'JAVA DESKTOP & SQL',
+        'exp.tech_role': 'Software Developer — Java Management Solution',
+        'exp.tech_sub': 'Desktop Restaurant Management Application (Swing/JFrame & SQL)',
+        'exp.tech_summary': 'Complete digitization of table ordering, restaurant service workflows, and inventory tracking through a <strong class="text-white">Java Swing (JFrame)</strong> desktop application connected to a relational SQL database.',
+        'exp.tech_b1_title': 'Operational Management & Order Taking',
+        'exp.tech_b1_desc': 'Ergonomic interface for servers and managers: dynamic table allocation, instant bill computation, receipt generation, and real-time order traceability.',
+        'exp.tech_b2_title': 'Data Persistence & SQL Inventory',
+        'exp.tech_b2_desc': 'Robust relational schema for ingredients inventory, low-stock threshold alerts, daily sales analytics, and audit logging of financial activities.',
+        'exp.tech_verify': 'Java Desktop Source Code:',
+        'exp.tech_explore_repo': 'Explore GitHub Repo',
+        'exp.tech_chat_ai': 'Chat with AI',
+
+        // Section 04: Radar & Milestone Timeline
+        'pipeline.tag': '04. // DEFENSE RADAR & PIPELINE TRAJECTORY',
+        'pipeline.title': 'Cyber Operations Radar & Pipeline',
+        'pipeline.subtitle': 'Real-time security telemetry, attack surface intelligence, and chronological milestone architecture across Wassim\'s career.',
+        'pipeline.livescan': 'Live Scan',
+        'pipeline.telemetry_title': 'SEC_OPS // TELEMETRY RADAR',
+        'pipeline.posture_label': '[+] POSTURE: HARDENED',
+        'pipeline.selinux_label': 'SELinux: ENFORCING',
+        'pipeline.easm_label': '[+] EASM: RECON ACTIVE',
+        'pipeline.ieee_label': 'IEEE: #33 GLOBAL',
+        'pipeline.capabilities_label': '// Station Capabilities:',
+        'pipeline.btn_details': 'View Milestone Details',
+        'pipeline.btn_ask_ai': 'Ask AI Twin about this milestone',
+
+        // Section 05: Education & Degrees
         'edu.tag': '05. // Academic Background & Degrees',
         'edu.title': 'Academic Degrees & Engineering Studies',
+        'edu.badge_ing': 'ENGINEER',
+        'edu.tekup_date': '2025 - Present',
+        'edu.tekup_title': 'National Engineering Degree in Computer Science',
+        'edu.tekup_spec': '<strong>Specialization:</strong> Cybersecurity, Systems Security, and Secure Software Engineering.',
+        'edu.tekup_desc': '<strong>Relevant Coursework:</strong> Advanced Linux Administration, Applied Cryptography, Vulnerability Analysis, Secure Coding.',
+        'edu.tekup_track': 'Cybersecurity Track',
+        'edu.badge_lic': 'BACHELOR\'S',
+        'edu.isimm_title': 'Bachelor\'s Degree in Software Engineering',
+        'edu.isimm_inst': 'Higher Institute of Computer Science and Mathematics of Monastir.',
+        'edu.isimm_desc': 'Algorithmic foundations, software architectures, data structures, advanced OOP, and relational databases.',
+        'edu.isimm_nat': 'National Degree',
+        'edu.badge_bac': 'BACCALAUREATE',
+        'edu.bac_title': 'Technical Baccalaureate',
+        'edu.bac_mention': '<strong>Honors:</strong> Honors / Assez Bien (13.72 / 20)',
+        'edu.bac_desc': 'Engineering sciences, digital electronics logic, and mathematical modeling.',
+        'edu.bac_mention_tag': 'Honors Mention',
+
+        // Section 05.1: Languages & Communication
+        'lang.title': 'Languages & Communication',
+        'lang.french': 'French',
+        'lang.french_level': 'Fluent',
+        'lang.english': 'English',
+        'lang.english_level': 'Professional (Fluent)',
+        'lang.arabic': 'Arabic',
+        'lang.arabic_level': 'Native',
+
+        // Section 05.2: Skills Matrix
         'skills.tag': '05.2 // Technical Skills Matrix',
         'skills.title': 'Technical Stack & Security Tooling',
+        'skills.subtitle': 'Filter skills across systems security, development, and toolchains.',
+        'skills.filter_all': 'All Stack',
+        'skills.filter_sys': 'Security & Linux',
+        'skills.filter_dev': 'Languages & Web',
+        'skills.filter_tools': 'DevOps, OSINT & DB',
+        'skills.rhel_sub': 'RHCSA Certified',
+        'skills.python_sub': 'PCAP Certified',
+        'skills.easm_sub': 'Attack Surface Mgmt',
+        'skills.osint_sub': 'Subfinder, VT, Netlas',
+        'skills.bash_sub': 'System Automation',
+        'skills.c_sub': 'Low-Level Systems',
+        'skills.java_sub': 'OOP & Spring Boot',
+        'skills.docker_sub': 'Containers',
+        'skills.node_sub': 'Express / REST APIs',
+        'skills.angular_sub': 'TypeScript SPA',
+        'skills.vue_sub': 'Reactive Web UI',
+        'skills.db_sub': 'MySQL, Postgres, Mongo',
+        'skills.ai_sub': 'NumPy & Doc Extraction',
+        'skills.sec_sub': 'SELinux, SSH & Audits',
+
+        // Section 06: Contact & Fast-Track Banner
         'contact.tag': '06. // Contact & Inquiries',
         'contact.title': 'Start a Discussion or Job Proposal',
         'contact.desc': 'Available immediately for roles in Cybersecurity, Linux/RHEL Administration, DevSecOps, or Python Software Security.',
-        'contact.name_label': 'Your Full Name / Company',
-        'contact.email_label': 'Email Address',
-        'contact.subject_label': 'Subject',
-        'contact.message_label': 'Your Message / Proposal',
-        'contact.send_btn': 'Send Message',
+        'contact.email_title': 'Direct Email',
+        'contact.email_btn': 'Send',
+        'contact.email_copy': 'Copy email',
+        'contact.linkedin_title': 'LinkedIn Profile',
+        'contact.linkedin_btn': 'Open',
+        'contact.linkedin_copy': 'Copy LinkedIn link',
+        'contact.phone_title': 'Mobile Phone',
+        'contact.phone_btn': 'Call',
+        'contact.phone_copy': 'Copy phone number',
+        'contact.banner_text': '⚡ Recruiters & Technical Hiring Managers: Download the complete dossier in 1 click',
+        'contact.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
+        'contact.btn_cv_pdf': 'DOWNLOAD CV (PDF)',
+
+        // Modals & Proof Viewer
         'hire.title': 'Recruiter Fast-Track Dossier',
         'hire.subtitle': 'Why Hire Wassim Bannour in 60 Seconds',
         'hire.pillar1_title': 'RHCSA Certified (Linux)',
@@ -176,6 +511,9 @@ const I18N_DATA = {
         'doc.title_default': 'Official Proof Document',
         'doc.issuer_default': 'Issuing Organization',
         'doc.verified': 'VERIFIABLE',
+        'doc.cert_btn': 'Certificate',
+        'doc.attest_btn': 'Attestation',
+        'doc.diploma_btn': 'Diploma',
         'doc.status_title': 'Official Document',
         'doc.status_subtext': 'This document is stored in the <code class="text-[#00f0ff]">proofs/</code> directory for authentic verification.',
         'doc.download': 'Download Document',
@@ -298,6 +636,23 @@ window.setLanguage = function(lang, silent = false) {
     if (window.renderTerminalScreen) {
         window.renderTerminalScreen(lang);
     }
+
+    // Trigger Radar Station & Highway nodes update
+    if (window.selectCyberStation) {
+        window.selectCyberStation(window.currentStationIdx !== undefined ? window.currentStationIdx : 0, false);
+    }
+    if (window.updateStationChipsAndNodes) {
+        window.updateStationChipsAndNodes(lang);
+    }
+
+    // Update experience accordion buttons text if needed
+    document.querySelectorAll('.experience-card').forEach(card => {
+        const isExpanded = card.classList.contains('is-expanded');
+        const btnText = card.querySelector('.expand-btn-text');
+        if (btnText) {
+            btnText.textContent = isExpanded ? (lang === 'fr' ? 'Fermer' : 'Close') : (lang === 'fr' ? 'Détails' : 'Details');
+        }
+    });
 
     if (!silent && window.showCyberToast) {
         window.showCyberToast(lang === 'fr' ? 'Langue : Français activé' : 'Language: English activated', 'info');
@@ -896,138 +1251,183 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     // 3.2 INTERACTIVE CYBER OPERATIONS RADAR & ENGINEERING PIPELINE
     // -------------------------------------------------------------
-    const cyberStations = [
+    const CYBER_STATIONS_DATA = [
         {
             id: 'bac',
-            badge: 'FOUNDATIONS',
+            badge: { fr: 'FONDATIONS', en: 'FOUNDATIONS' },
             badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
-            date: '2018 - 2022',
-            location: 'Bekalta, TN',
-            title: 'Baccalauréat Technique (Mention Assez Bien)',
-            org: 'Lycée Secondaire Bekalta — Moyenne 13.72 / 20',
-            desc: 'Solides fondations en logique électronique, analyse combinatoire et séquentielle, manipulation de structures de données primitives et modélisation algorithmique.',
-            speech: '"[+] Logique électronique & modélisation numérique initialisées avec succès."',
-            tags: ['Logique Numérique', 'Électronique', 'Algorithmique', 'Systèmes Techniques'],
-            actionText: 'Détails Formation',
+            date: { fr: '2018 - 2022', en: '2018 - 2022' },
+            location: { fr: 'Bekalta, TN', en: 'Bekalta, TN' },
+            title: { fr: 'Baccalauréat Technique (Mention Assez Bien)', en: 'Technical Baccalaureate (Honors)' },
+            org: { fr: 'Lycée Secondaire Bekalta — Moyenne 13.72 / 20', en: 'Bekalta Secondary High School — GPA 13.72 / 20' },
+            desc: { fr: 'Solides fondations en logique électronique, analyse combinatoire et séquentielle, manipulation de structures de données primitives et modélisation algorithmique.', en: 'Solid foundations in digital electronics, combinatorial/sequential logic, primitive data structures, and algorithmic modeling.' },
+            speech: { fr: '"[+] Logique électronique & modélisation numérique initialisées avec succès."', en: '"[+] Foundational logic circuits & hardware systems initialized at Bekalta!"' },
+            tags: { fr: ['Logique Numérique', 'Électronique', 'Algorithmique', 'Systèmes Techniques'], en: ['Digital Logic', 'Electronics', 'Algorithms', 'Technical Systems'] },
+            actionText: { fr: 'Détails Formation', en: 'Curriculum Details' },
             actionHref: '#skills',
-            nodeColor: 'border-[#00f0ff]/40'
+            nodeTitle: { fr: 'Baccalauréat', en: 'Baccalaureate' },
+            nodeSub: { fr: '2018 - 2022', en: '2018 - 2022' },
+            chipLabel: { fr: '01. Bac (2018)', en: '01. Bac (2018)' }
         },
         {
             id: 'isimm',
-            badge: 'LICENCE PRO',
+            badge: { fr: 'LICENCE PRO', en: 'BACHELOR' },
             badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
-            date: '2022 - 2025',
-            location: 'Monastir, TN',
-            title: 'Licence en Génie Logiciel',
-            org: 'ISIMM — Institut Supérieur d\'Informatique et de Mathématiques',
-            desc: 'Formation approfondie en conception logicielle, programmation orientée objet (Java, C++), bases de données relationnelles & NoSQL, et architectures web distribuées.',
-            speech: '"[+] Conception logicielle OOP, algorithmique avancée & architectures distribuées validées."',
-            tags: ['Java (OOP)', 'C++', 'SQL / NoSQL', 'Web Architecture', 'Design Patterns'],
-            actionText: 'Consulter le Cursus',
+            date: { fr: '2022 - 2025', en: '2022 - 2025' },
+            location: { fr: 'Monastir, TN', en: 'Monastir, TN' },
+            title: { fr: 'Licence en Génie Logiciel', en: 'Bachelor\'s Degree in Software Engineering' },
+            org: { fr: 'ISIMM — Institut Supérieur d\'Informatique et de Mathématiques', en: 'ISIMM — Higher Institute of Computer Science & Mathematics' },
+            desc: { fr: 'Formation approfondie en conception logicielle, programmation orientée objet (Java, C++), bases de données relationnelles & NoSQL, et architectures web distribuées.', en: 'Comprehensive software engineering, advanced object-oriented design (Java, C++), relational & NoSQL databases, and distributed web architectures.' },
+            speech: { fr: '"[+] Conception logicielle OOP, algorithmique avancée & architectures distribuées validées."', en: '"[+] Software engineering foundations, OOP & distributed database architecture mastered at ISIMM."' },
+            tags: { fr: ['Java (OOP)', 'C++', 'SQL / NoSQL', 'Architecture Web', 'Design Patterns'], en: ['Java (OOP)', 'C++', 'SQL / NoSQL', 'Web Architecture', 'Design Patterns'] },
+            actionText: { fr: 'Consulter le Cursus', en: 'View Bachelor Curriculum' },
             actionHref: '#skills',
-            nodeColor: 'border-[#38bdf8]/40'
+            nodeTitle: { fr: 'ISIMM Licence', en: 'ISIMM Bachelor' },
+            nodeSub: { fr: '2022 - 2025', en: '2022 - 2025' },
+            chipLabel: { fr: '02. ISIMM (2022)', en: '02. ISIMM (2022)' }
         },
         {
             id: 'ieee',
-            badge: 'GLOBAL HONORS',
+            badge: { fr: 'TOP MONDIAL', en: 'GLOBAL HONORS' },
             badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
-            date: '2023 - 2024',
-            location: 'Global / ISIMM',
-            title: 'Top 33 Mondial IEEEXtreme 17.0 & Trésorier IEEE',
-            org: 'IEEE Region 8 & IEEE ISIMM Student Branch',
-            desc: '33ème rang mondial parmi des milliers d\'équipes d\'ingénieurs internationales et 2ème rang national en Tunisie (24h de marathon algorithmique non-stop). Trésorier de l\'exécutif IEEE pour la gestion financière des événements.',
-            speech: '"[+] Performance algorithmique confirmée : Top 33 Mondial IEEEXtreme 17.0 (24h marathon non-stop)."',
-            tags: ['IEEEXtreme #33', 'Competitive Coding', 'Marathon 24h', 'Leadership Exécutif', 'Trésorerie'],
-            actionText: 'Voir les Honneurs',
+            date: { fr: '2023 - 2024', en: '2023 - 2024' },
+            location: { fr: 'Global / ISIMM', en: 'Global / ISIMM' },
+            title: { fr: 'Top 33 Mondial IEEEXtreme 17.0 & Trésorier IEEE', en: 'Top 33 Worldwide IEEEXtreme 17.0 & IEEE Treasurer' },
+            org: { fr: 'IEEE Region 8 & IEEE ISIMM Student Branch', en: 'IEEE Region 8 & IEEE ISIMM Student Branch' },
+            desc: { fr: '33ème rang mondial parmi des milliers d\'équipes d\'ingénieurs internationales et 2ème rang national en Tunisie (24h de marathon algorithmique non-stop). Trésorier de l\'exécutif IEEE pour la gestion financière des événements.', en: 'Ranked 33rd worldwide among thousands of international engineering teams and 2nd in Tunisia (24h continuous algorithmic sprint). Executive Treasurer managing finances for technical conferences.' },
+            speech: { fr: '"[+] Performance algorithmique confirmée : Top 33 Mondial IEEEXtreme 17.0 (24h marathon non-stop)."', en: '"[+] Algorithmic excellence verified: Ranked #33 Worldwide in 24h extreme coding marathon!"' },
+            tags: { fr: ['IEEEXtreme #33', 'Algorithmique Avancée', 'Marathon 24h', 'Leadership Exécutif', 'Trésorerie'], en: ['IEEEXtreme #33', 'Competitive Coding', '24h Marathon', 'Executive Leadership', 'Treasury'] },
+            actionText: { fr: 'Voir les Honneurs', en: 'View Global Honors' },
             actionHref: '#achievements',
-            nodeColor: 'border-[#00f0ff]/40'
+            nodeTitle: { fr: 'IEEE #33 Global', en: 'IEEE #33 Global' },
+            nodeSub: { fr: '2023 - 2024', en: '2023 - 2024' },
+            chipLabel: { fr: '03. IEEE #33 (2023)', en: '03. IEEE #33 (2023)' }
         },
         {
             id: 'swconsult',
-            badge: 'AI AUTOMATION',
+            badge: { fr: 'IA & OCR', en: 'AI AUTOMATION' },
             badgeColor: 'text-purple-400 bg-purple-500/20 border-purple-500/40',
-            date: '2025',
-            location: 'Monastir, TN',
-            title: 'Développeur Fullstack & IA OCR (QuickDoc)',
-            org: 'SW CONSULTING — Plateforme d\'Extraction Intelligente',
-            desc: 'Développement complet de QuickDoc pour l\'automatisation de l\'extraction de factures/devis par OCR et classification IA. Conception avec Vue.js, Node.js, Express et NumPy.',
-            speech: '"[+] Pipeline OCR & extraction automatisée par IA déployés en production chez SW Consulting."',
-            tags: ['Vue.js', 'Node.js', 'AI / OCR', 'NumPy', 'Scrum Agile'],
-            actionText: 'GitHub QuickDoc',
+            date: { fr: '2025', en: '2025' },
+            location: { fr: 'Monastir, TN', en: 'Monastir, TN' },
+            title: { fr: 'Développeur Fullstack & IA OCR (QuickDoc)', en: 'Fullstack & Document AI/OCR Developer (QuickDoc)' },
+            org: { fr: 'SW CONSULTING — Plateforme d\'Extraction Intelligente', en: 'SW CONSULTING — Intelligent Extraction Platform' },
+            desc: { fr: 'Développement complet de QuickDoc pour l\'automatisation de l\'extraction de factures/devis par OCR et classification IA. Conception avec Vue.js, Node.js, Express et NumPy.', en: 'Engineered QuickDoc automated OCR extraction engine and full-stack billing platform using Vue.js, Node.js, Express REST API, and NumPy image matrix processing.' },
+            speech: { fr: '"[+] Pipeline OCR & extraction automatisée par IA déployés en production chez SW Consulting."', en: '"[+] Production OCR extraction engine & Vue.js web platform deployed at SW Consulting."' },
+            tags: { fr: ['Vue.js', 'Node.js', 'IA / OCR', 'NumPy', 'Scrum Agile'], en: ['Vue.js', 'Node.js', 'AI / OCR', 'NumPy', 'Scrum Agile'] },
+            actionText: { fr: 'GitHub QuickDoc', en: 'GitHub QuickDoc' },
             actionHref: 'https://github.com/WassimBannour1/QuickDoc',
-            nodeColor: 'border-purple-500/40'
+            nodeTitle: { fr: 'SW Consult', en: 'SW Consult' },
+            nodeSub: { fr: '2025 (IA OCR)', en: '2025 (AI OCR)' },
+            chipLabel: { fr: '04. SW Consult (2025)', en: '04. SW Consult (2025)' }
         },
         {
             id: 'talan',
-            badge: 'FLAGSHIP CYBERSEC',
+            badge: { fr: 'CYBERSÉCURITÉ', en: 'FLAGSHIP CYBERSEC' },
             badgeColor: 'text-[#10b981] bg-emerald-500/20 border-emerald-500/40',
-            date: '2026 (Juil - Août)',
-            location: 'Tunis, TN',
-            title: 'Développeur Cybersécurité — Smart EASM & OSINT',
-            org: 'TALAN TUNISIE — External Attack Surface Management',
-            desc: 'Conception et développement de la plateforme Smart EASM pour la découverte continue des actifs exposés et la corrélation de renseignements sur les menaces (VirusTotal, Subfinder, crt.sh, AbuseIPDB, Criminal IP).',
-            speech: '"[+] Connecteurs OSINT multi-sources & cartographie de surface d\'attaque externe opérationnels chez Talan."',
-            tags: ['Smart EASM', 'OSINT Connectors', 'Python', 'VirusTotal API', 'Subfinder', 'Threat Intelligence'],
-            actionText: 'Détails Expérience',
+            date: { fr: '2026 (Juil - Août)', en: '2026 (Jul - Aug)' },
+            location: { fr: 'Tunis, TN', en: 'Tunis, TN' },
+            title: { fr: 'Développeur Cybersécurité — Smart EASM & OSINT', en: 'Cybersecurity Developer — Smart EASM & OSINT' },
+            org: { fr: 'TALAN TUNISIE — External Attack Surface Management', en: 'TALAN TUNISIE — External Attack Surface Management' },
+            desc: { fr: 'Conception et développement de la plateforme Smart EASM pour la découverte continue des actifs exposés et la corrélation de renseignements sur les menaces (VirusTotal, Subfinder, crt.sh, AbuseIPDB, Criminal IP).', en: 'Engineered Smart EASM platform for continuous discovery of exposed digital assets and threat intelligence correlation (VirusTotal, Subfinder, crt.sh, AbuseIPDB, Criminal IP).' },
+            speech: { fr: '"[+] Connecteurs OSINT multi-sources & cartographie de surface d\'attaque externe opérationnels chez Talan."', en: '"[+] Multi-source OSINT connectors & external attack surface platform operational at Talan."' },
+            tags: { fr: ['Smart EASM', 'Connecteurs OSINT', 'Python', 'API VirusTotal', 'Subfinder', 'Threat Intelligence'], en: ['Smart EASM', 'OSINT Connectors', 'Python', 'VirusTotal API', 'Subfinder', 'Threat Intelligence'] },
+            actionText: { fr: 'Détails Expérience', en: 'View Experience Details' },
             actionHref: '#experience',
-            nodeColor: 'border-emerald-500/40'
+            nodeTitle: { fr: 'TALAN EASM', en: 'TALAN EASM' },
+            nodeSub: { fr: '2026 (OSINT)', en: '2026 (OSINT)' },
+            chipLabel: { fr: '05. TALAN EASM (2026)', en: '05. TALAN EASM (2026)' }
         },
         {
             id: 'certs',
-            badge: 'CREDLY VERIFIED',
+            badge: { fr: 'BADGES CREDLY', en: 'CREDLY VERIFIED' },
             badgeColor: 'text-yellow-400 bg-yellow-500/20 border-yellow-500/40',
-            date: '2026',
-            location: 'Global Credentials',
-            title: 'Certifications RHCSA & PCAP Vérifiées',
-            org: 'Red Hat, Inc. & Python Institute (Badges Credly Officiels)',
-            desc: 'Double certification d\'élite : Red Hat Certified System Administrator (Administration Linux Enterprise RHEL, SELinux, Storage LVM, FirewallD) + Certified Associate in Python Programming.',
-            speech: '"[+] Double accréditation officielle validée : Red Hat RHCSA (Linux Kernel) & PCAP (Python Institute)."',
-            tags: ['RHCSA (Red Hat)', 'PCAP (Python)', 'SELinux Enforcing', 'LVM Storage', 'Credly Badges'],
-            actionText: 'Vérifier sur Credly',
+            date: { fr: '2026', en: '2026' },
+            location: { fr: 'Accréditation Mondiale', en: 'Global Credentials' },
+            title: { fr: 'Certifications RHCSA & PCAP Vérifiées', en: 'Verified RHCSA & PCAP Credentials' },
+            org: { fr: 'Red Hat, Inc. & Python Institute (Badges Credly Officiels)', en: 'Red Hat, Inc. & Python Institute (Official Credly Badges)' },
+            desc: { fr: 'Double certification d\'élite : Red Hat Certified System Administrator (Administration Linux Enterprise RHEL, SELinux, Storage LVM, FirewallD) + Certified Associate in Python Programming.', en: 'Elite dual certification: Red Hat Certified System Administrator (Enterprise Linux RHEL, SELinux, LVM Storage, FirewallD) + Python Institute PCAP Certified Associate.' },
+            speech: { fr: '"[+] Double accréditation officielle validée : Red Hat RHCSA (Linux Kernel) & PCAP (Python Institute)."', en: '"[+] Official dual industry certifications verified on Credly: Red Hat RHCSA & Python PCAP."' },
+            tags: { fr: ['RHCSA (Red Hat)', 'PCAP (Python)', 'SELinux Enforcing', 'Stockage LVM', 'Badges Credly'], en: ['RHCSA (Red Hat)', 'PCAP (Python)', 'SELinux Enforcing', 'LVM Storage', 'Credly Badges'] },
+            actionText: { fr: 'Vérifier sur Credly', en: 'Verify on Credly' },
             actionHref: '#certifications',
-            nodeColor: 'border-yellow-500/40'
+            nodeTitle: { fr: 'RHCSA & PCAP', en: 'RHCSA & PCAP' },
+            nodeSub: { fr: '2026 (Certs)', en: '2026 (Certs)' },
+            chipLabel: { fr: '06. RHCSA & PCAP (2026)', en: '06. RHCSA & PCAP (2026)' }
         },
         {
             id: 'tekup',
-            badge: 'ACTIVE STATION',
+            badge: { fr: 'STATION ACTIVE', en: 'ACTIVE STATION' },
             badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
-            date: '2025 - Présent',
-            location: 'Ariana, TN',
-            title: 'Diplôme National d\'Ingénieur en Cybersécurité',
-            org: 'TEK-UP University — Cycle Ingénieur',
-            desc: 'Spécialisation avancée en Sécurité des Systèmes d\'Information, Durcissement Linux (Hardening), Cryptographie appliquée, Analyse de Vulnérabilités et Pratiques Security-by-Design.',
-            speech: '"[+] Poste actif : Sécurisation d\'infrastructures critiques, Linux Hardening & Security-by-Design chez TEK-UP."',
-            tags: ['Ingénieur Cybersécurité', 'Linux Hardening', 'Crypto Appliquée', 'Security-by-Design', 'TEK-UP'],
-            actionText: 'Détails Cursus',
+            date: { fr: '2025 - Présent', en: '2025 - Present' },
+            location: { fr: 'Ariana, TN', en: 'Ariana, TN' },
+            title: { fr: 'Diplôme National d\'Ingénieur en Cybersécurité', en: 'National Engineering Degree in Cybersecurity' },
+            org: { fr: 'TEK-UP University — Cycle Ingénieur', en: 'TEK-UP University — Engineering Cycle' },
+            desc: { fr: 'Spécialisation avancée en Sécurité des Systèmes d\'Information, Durcissement Linux (Hardening), Cryptographie appliquée, Analyse de Vulnérabilités et Pratiques Security-by-Design.', en: 'Advanced engineering specialization in Systems Security, Linux Hardening, Applied Cryptography, Vulnerability Analysis, and Security-by-Design software architecture.' },
+            speech: { fr: '"[+] Poste actif : Sécurisation d\'infrastructures critiques, Linux Hardening & Security-by-Design chez TEK-UP."', en: '"[+] Active station: Engineering Degree in Cybersecurity & Systems Hardening at TEK-UP."' },
+            tags: { fr: ['Ingénieur Cybersécurité', 'Durcissement Linux', 'Crypto Appliquée', 'Security-by-Design', 'TEK-UP'], en: ['Cybersecurity Engineer', 'Linux Hardening', 'Applied Cryptography', 'Security-by-Design', 'TEK-UP'] },
+            actionText: { fr: 'Détails Cursus', en: 'View Engineering Curriculum' },
             actionHref: '#skills',
-            nodeColor: 'border-[#00f0ff]/40'
+            nodeTitle: { fr: 'TEK-UP Active', en: 'TEK-UP Active' },
+            nodeSub: { fr: '2025 - Présent', en: '2025 - Present' },
+            chipLabel: { fr: '07. TEK-UP Active', en: '07. TEK-UP Active' }
         },
         {
             id: 'target',
-            badge: 'FORWARD VECTOR',
+            badge: { fr: 'VECTEUR FUTUR', en: 'FORWARD VECTOR' },
             badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
-            date: 'Horizon Recrutement',
-            location: 'On-site / Hybrid / Remote',
-            title: 'Ingénierie Cybersécurité & Systèmes Linux',
-            org: 'Prêt pour Rôles à Fort Impact Stratégique',
-            desc: 'Disponible pour intégrer des équipes d\'ingénierie d\'élite en Cybersécurité, Administration Systèmes Linux Enterprise, DevSecOps et Conception Logicielle Résiliente.',
-            speech: '"[+] Prêt pour déploiement immédiat en ingénierie Cybersécurité, Administration Linux Enterprise & DevSecOps."',
-            tags: ['Open to Roles', 'Cybersecurity Engineer', 'Linux Admin', 'DevSecOps', 'Tunisie / International'],
-            actionText: 'Contacter Wassim',
+            date: { fr: 'Horizon Recrutement', en: 'Career Horizon' },
+            location: { fr: 'Sur site / Hybride / Télétravail', en: 'On-site / Hybrid / Remote' },
+            title: { fr: 'Ingénierie Cybersécurité & Systèmes Linux', en: 'Cybersecurity & Linux Systems Engineering' },
+            org: { fr: 'Prêt pour Rôles à Fort Impact Stratégique', en: 'Ready for High-Impact Strategic Roles' },
+            desc: { fr: 'Disponible pour intégrer des équipes d\'ingénierie d\'élite en Cybersécurité, Administration Systèmes Linux Enterprise, DevSecOps et Conception Logicielle Résiliente.', en: 'Ready for deployment in elite engineering teams across Cybersecurity, Enterprise Linux Systems Administration, DevSecOps, and Resilient Software Development.' },
+            speech: { fr: '"[+] Prêt pour déploiement immédiat en ingénierie Cybersécurité, Administration Linux Enterprise & DevSecOps."', en: '"[+] Ready for immediate high-impact deployment in Cybersecurity, Linux Administration & DevSecOps."' },
+            tags: { fr: ['Disponible Immédiatement', 'Ingénieur Cybersécurité', 'Admin Linux RHEL', 'DevSecOps', 'Tunisie / International'], en: ['Open to Roles', 'Cybersecurity Engineer', 'Linux Admin RHEL', 'DevSecOps', 'Tunisia / International'] },
+            actionText: { fr: 'Contacter Wassim', en: 'Contact Wassim' },
             actionHref: '#contact',
-            nodeColor: 'border-[#38bdf8]/40'
+            nodeTitle: { fr: 'Next Vector', en: 'Next Vector' },
+            nodeSub: { fr: 'Postes Entreprise', en: 'Enterprise Roles' },
+            chipLabel: { fr: '08. Next Vector', en: '08. Next Vector' }
         }
     ];
 
     let currentStationIdx = 0;
+    window.currentStationIdx = 0;
     let autoCruiseInterval = null;
     let isAutoCruising = false;
 
+    window.updateStationChipsAndNodes = function(lang) {
+        const langKey = lang === 'en' ? 'en' : 'fr';
+        
+        // Update Horizontal Chip Buttons
+        const stationBtns = document.querySelectorAll('.station-btn');
+        stationBtns.forEach((btn, idx) => {
+            if (CYBER_STATIONS_DATA[idx]) {
+                const spanText = btn.querySelector('span:last-child');
+                if (spanText) {
+                    spanText.textContent = CYBER_STATIONS_DATA[idx].chipLabel[langKey];
+                }
+            }
+        });
+
+        // Update Bottom Highway Node Cards
+        const nodeCards = document.querySelectorAll('.road-node-card');
+        nodeCards.forEach((card, idx) => {
+            if (CYBER_STATIONS_DATA[idx]) {
+                const titleSpan = card.querySelector('span.block');
+                const subSpan = card.querySelector('span.text-gray-400');
+                if (titleSpan) titleSpan.textContent = CYBER_STATIONS_DATA[idx].nodeTitle[langKey];
+                if (subSpan) subSpan.textContent = CYBER_STATIONS_DATA[idx].nodeSub[langKey];
+            }
+        });
+    };
+
     window.selectCyberStation = function(idx, playSfx = true) {
-        if (idx < 0) idx = cyberStations.length - 1;
-        if (idx >= cyberStations.length) idx = 0;
+        if (idx < 0) idx = CYBER_STATIONS_DATA.length - 1;
+        if (idx >= CYBER_STATIONS_DATA.length) idx = 0;
         currentStationIdx = idx;
-        const station = cyberStations[idx];
+        window.currentStationIdx = idx;
+        const station = CYBER_STATIONS_DATA[idx];
+        const langKey = CURRENT_LANG === 'en' ? 'en' : 'fr';
 
         // Update station buttons
         const stationBtns = document.querySelectorAll('.station-btn');
@@ -1044,12 +1444,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const nodeCards = document.querySelectorAll('.road-node-card');
         nodeCards.forEach((card, cIdx) => {
             if (cIdx === idx) {
-                card.style.borderColor = '#00f0ff';
-                card.style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.4)';
+                card.classList.add('active');
                 card.style.transform = 'translateY(-3px)';
             } else {
-                card.style.borderColor = '#1e293b';
-                card.style.boxShadow = 'none';
+                card.classList.remove('active');
                 card.style.transform = 'translateY(0)';
             }
         });
@@ -1057,8 +1455,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Telemetry Callout & HUD
         const tuxSpeechText = document.getElementById('tuxSpeechText');
         const tuxStationBadge = document.getElementById('tuxStationBadge');
-        if (tuxSpeechText) tuxSpeechText.textContent = station.speech;
-        if (tuxStationBadge) tuxStationBadge.textContent = `MILESTONE 0${idx + 1} / 08`;
+        if (tuxSpeechText) tuxSpeechText.textContent = station.speech[langKey];
+        if (tuxStationBadge) tuxStationBadge.textContent = `${langKey === 'fr' ? 'JALON' : 'MILESTONE'} 0${idx + 1} / 08`;
 
         // Pulse Radar Screen
         const radarContainer = document.getElementById('cyberTuxContainer');
@@ -1081,17 +1479,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const dossierActionText = document.getElementById('dossierActionText');
 
         if (dossierBadge) {
-            dossierBadge.textContent = station.badge;
+            dossierBadge.textContent = station.badge[langKey];
             dossierBadge.className = `px-2.5 py-0.5 rounded-md font-mono text-xs font-extrabold border ${station.badgeColor}`;
         }
-        if (dossierDate) dossierDate.textContent = station.date;
-        if (dossierLocation) dossierLocation.innerHTML = `<i class="fa-solid fa-location-dot text-[#00f0ff]"></i> ${station.location}`;
-        if (dossierTitle) dossierTitle.textContent = station.title;
-        if (dossierOrg) dossierOrg.textContent = station.org;
-        if (dossierDesc) dossierDesc.textContent = station.desc;
+        if (dossierDate) dossierDate.textContent = station.date[langKey];
+        if (dossierLocation) dossierLocation.innerHTML = `<i class="fa-solid fa-location-dot text-[#00f0ff]"></i> ${station.location[langKey]}`;
+        if (dossierTitle) dossierTitle.textContent = station.title[langKey];
+        if (dossierOrg) dossierOrg.textContent = station.org[langKey];
+        if (dossierDesc) dossierDesc.textContent = station.desc[langKey];
 
         if (dossierTags) {
-            dossierTags.innerHTML = station.tags.map((t, i) => 
+            dossierTags.innerHTML = station.tags[langKey].map((t, i) => 
                 `<span class="px-2 py-0.5 rounded bg-[#0f172a] ${i === 0 ? 'text-[#00f0ff] border border-[#00f0ff]/30 font-bold' : 'text-gray-300 border border-[#1e293b]'}">${t}</span>`
             ).join('');
         }
@@ -1106,7 +1504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 dossierActionBtn.removeAttribute('rel');
             }
         }
-        if (dossierActionText) dossierActionText.textContent = station.actionText;
+        if (dossierActionText) dossierActionText.textContent = station.actionText[langKey];
 
         if (playSfx) {
             playFuturisticTone(850 + idx * 45, 0.035, 'triangle', 0.025);
@@ -1146,7 +1544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startAutoCruise() {
         isAutoCruising = true;
         if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-pause text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = 'Scanning...';
+        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Scan en cours...' : 'Scanning...';
         if (autoCruiseBtn) {
             autoCruiseBtn.classList.add('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
         }
@@ -1163,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoCruiseInterval = null;
         }
         if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-radar text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = 'Live Scan';
+        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Scan Direct' : 'Live Scan';
         if (autoCruiseBtn) {
             autoCruiseBtn.classList.remove('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
         }
@@ -1626,9 +2024,10 @@ window.showCyberToast = function(message, type = 'success') {
  * Copy text to clipboard with instant Cyber Toast feedback
  */
 window.copyToClipboard = function(text, label = 'Élément') {
+    const isFr = CURRENT_LANG === 'fr';
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(() => {
-            window.showCyberToast(`<strong>${label}</strong> copié dans le presse-papier !`, 'success');
+            window.showCyberToast(`<strong>${label}</strong> ${isFr ? 'copié dans le presse-papier !' : 'copied to clipboard!'}`, 'success');
         }).catch(() => {
             fallbackCopyTextToClipboard(text, label);
         });
@@ -1638,6 +2037,7 @@ window.copyToClipboard = function(text, label = 'Élément') {
 };
 
 function fallbackCopyTextToClipboard(text, label) {
+    const isFr = CURRENT_LANG === 'fr';
     const textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
@@ -1647,9 +2047,9 @@ function fallbackCopyTextToClipboard(text, label) {
     textArea.select();
     try {
         document.execCommand('copy');
-        window.showCyberToast(`<strong>${label}</strong> copié dans le presse-papier !`, 'success');
+        window.showCyberToast(`<strong>${label}</strong> ${isFr ? 'copié dans le presse-papier !' : 'copied to clipboard!'}`, 'success');
     } catch (err) {
-        window.showCyberToast(`Impossible de copier automatiquement : ${text}`, 'warn');
+        window.showCyberToast(`${isFr ? 'Impossible de copier automatiquement :' : 'Unable to copy automatically:'} ${text}`, 'warn');
     }
     document.body.removeChild(textArea);
 }
@@ -1668,10 +2068,11 @@ window.openDocViewer = function(title, issuer, filePath, description) {
     const statusSubtext = document.getElementById('docViewerStatusSubtext');
 
     if (!modal) return;
+    const isFr = CURRENT_LANG === 'fr';
 
     if (modalTitle) modalTitle.textContent = title;
-    if (modalIssuer) modalIssuer.textContent = `Émis par : ${issuer}`;
-    if (modalDesc) modalDesc.textContent = description || `Document officiel de référence attestant des compétences et réalisations de Wassim Bannour.`;
+    if (modalIssuer) modalIssuer.textContent = `${isFr ? 'Émis par :' : 'Issued by:'} ${issuer}`;
+    if (modalDesc) modalDesc.textContent = description || (isFr ? `Document officiel de référence attestant des compétences et réalisations de Wassim Bannour.` : `Official proof document verifying Wassim Bannour's credentials and achievements.`);
 
     if (downloadBtn) {
         downloadBtn.href = filePath;
@@ -1683,7 +2084,7 @@ window.openDocViewer = function(title, issuer, filePath, description) {
     }
 
     if (statusTitle) statusTitle.textContent = `${title}`;
-    if (statusSubtext) statusSubtext.innerHTML = `Fichier indexé : <code class="text-[#00f0ff]">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">Consultez en plein écran ou téléchargez la copie officielle numérisée.</span>`;
+    if (statusSubtext) statusSubtext.innerHTML = `${isFr ? 'Fichier indexé :' : 'Indexed File:'} <code class="text-[#00f0ff]">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">${isFr ? 'Consultez en plein écran ou téléchargez la copie officielle numérisée.' : 'View in full screen or download the official digitized copy.'}</span>`;
 
     modal.classList.add('active');
     playFuturisticTone(880, 0.05, 'sine', 0.04);
