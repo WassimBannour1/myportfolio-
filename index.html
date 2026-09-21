@@ -28,6 +28,14 @@
         tailwind.config = {
             darkMode: 'class',
             theme: {
+                screens: {
+                    'xs': '400px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px'
+                },
                 extend: {
                     colors: {
                         cyber: {
@@ -1220,11 +1228,64 @@
             color: #0284c7 !important;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
         }
-        html.light-mode #floatingRadarBtn:hover,
-        html.light-mode #backToTopBtn:hover {
-            background-color: #0284c7 !important;
-            color: #ffffff !important;
-            border-color: #0284c7 !important;
+        /* Mobile Touch & Viewport Optimizations */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        button, a, input, [role="button"] {
+            touch-action: manipulation;
+        }
+        .overflow-y-auto, .overflow-x-auto {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 639px) {
+            /* Mobile Modal Adjustments */
+            .cyber-modal-container {
+                width: calc(100vw - 1.25rem) !important;
+                max-height: 92vh !important;
+                border-radius: 1.25rem !important;
+            }
+
+            /* AI Chat Widget Mobile Docking */
+            #aiChatModal {
+                bottom: 0.5rem !important;
+                right: 0.5rem !important;
+                left: 0.5rem !important;
+                width: calc(100vw - 1rem) !important;
+                max-width: none !important;
+                height: 82vh !important;
+                max-height: 560px !important;
+            }
+            #aiChatModal > div {
+                height: 100% !important;
+                border-radius: 1.25rem !important;
+            }
+
+            /* Mobile Menu Drawer scroll styling */
+            #mobileMenu {
+                max-height: 85vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Mobile ambient glowing orbs */
+            .cyber-orb-1 { width: 280px; height: 280px; filter: blur(75px); }
+            .cyber-orb-2 { width: 250px; height: 250px; filter: blur(75px); }
+            .cyber-orb-3 { width: 270px; height: 270px; filter: blur(75px); }
+        }
+
+        @media (max-width: 399px) {
+            #hero h1 {
+                font-size: 1.95rem !important;
+                line-height: 1.15 !important;
+            }
+            .hero-portrait-wrapper {
+                max-width: 290px !important;
+            }
+            #heroTypewriterContainer {
+                font-size: 11px !important;
+            }
         }
     </style>
 </head>
@@ -1243,16 +1304,16 @@
 
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-xl bg-[#070b14]/90 border-b border-[#1e293b]/80 transition-all duration-300" id="mainHeader">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4">
             
             <!-- Brand Identity & Mini-Avatar -->
-            <a href="#hero" class="flex items-center gap-3 group shrink-0 focus:outline-none" title="Wassim Bannour - Portfolio">
-                <div class="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-[#00f0ff]/70 shadow-[0_0_15px_rgba(0,240,255,0.35)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.7)] group-hover:border-[#00f0ff] transition-all">
+            <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 focus:outline-none" title="Wassim Bannour - Portfolio">
+                <div class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden border-2 border-[#00f0ff]/70 shadow-[0_0_15px_rgba(0,240,255,0.35)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.7)] group-hover:border-[#00f0ff] transition-all shrink-0">
                     <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-sm sm:text-base tracking-wide text-white group-hover:text-[#00f0ff] transition-colors leading-tight">Wassim Bannour</span>
-                    <div class="flex items-center gap-1.5 font-mono text-[11px] text-slate-400">
+                    <div class="flex items-center gap-1 sm:gap-1.5 font-mono text-[10px] sm:text-[11px] text-slate-400">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
                         <span class="text-[#00f0ff] font-semibold">RHCSA</span>
                         <span class="text-slate-500">•</span>
@@ -1308,7 +1369,7 @@
                 </div>
 
                 <!-- Recruiter Fast-Track High-Impact CTA -->
-                <button onclick="window.openHireMeModal()" class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#00f0ff]/15 via-[#38bdf8]/15 to-[#a855f7]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)] hover:shadow-[0_0_22px_rgba(0,240,255,0.5)] cursor-pointer" title="Executive Summary & Why Hire Wassim in 60s">
+                <button onclick="window.openHireMeModal()" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#00f0ff]/15 via-[#38bdf8]/15 to-[#a855f7]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)] hover:shadow-[0_0_22px_rgba(0,240,255,0.5)] cursor-pointer shrink-0" title="Executive Summary & Why Hire Wassim in 60s">
                     <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
                     <span data-i18n="nav.fasttrack">FAST-TRACK</span>
                 </button>
@@ -1328,43 +1389,61 @@
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden xl:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-6 py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
+        <div id="mobileMenu" class="hidden xl:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-4 sm:px-6 py-5 sm:py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
             <!-- Mobile Quick Settings -->
             <div class="grid grid-cols-3 gap-2 pb-3 border-b border-[#1e293b]">
-                <button id="mobileLangBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm">
+                <button id="mobileLangBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
                     <i class="fa-solid fa-globe text-xs"></i> <span id="mobileLangText">FR</span>
                 </button>
-                <button id="mobileThemeBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm">
+                <button id="mobileThemeBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
                     <i id="mobileThemeIcon" class="fa-solid fa-moon text-xs"></i> <span>Theme</span>
                 </button>
-                <button id="mobileSfxBtn" class="px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1 shadow-sm">
+                <button id="mobileSfxBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1 shadow-sm active:scale-95 transition-transform">
                     SFX: ON
                 </button>
             </div>
             
             <!-- Mobile Links -->
-            <div class="space-y-2 pt-1">
-                <a href="#achievements" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.achievements">Distinctions</a>
-                <a href="#certifications" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.certs">Certifications</a>
-                <a href="#experience" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.experience">Expérience</a>
-                <a href="#pipeline" class="block text-[#00f0ff] font-bold hover:text-[#38bdf8] hover:translate-x-1 py-1.5 transition-all mobile-link flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-xs"></i>
-                    <span data-i18n="nav.pipeline">Radar des Opérations</span>
+            <div class="space-y-1.5 pt-1">
+                <a href="#achievements" class="flex items-center justify-between text-slate-200 hover:text-[#00f0ff] hover:bg-white/5 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span data-i18n="nav.achievements">Distinctions</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i>
                 </a>
-                <a href="#skills" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.skills">Formation & Compétences</a>
-                <a href="#contact" class="block text-slate-300 hover:text-[#00f0ff] hover:translate-x-1 py-1.5 transition-all mobile-link" data-i18n="nav.contact">Contact</a>
+                <a href="#certifications" class="flex items-center justify-between text-slate-200 hover:text-[#00f0ff] hover:bg-white/5 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span data-i18n="nav.certs">Certifications</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i>
+                </a>
+                <a href="#experience" class="flex items-center justify-between text-slate-200 hover:text-[#00f0ff] hover:bg-white/5 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span data-i18n="nav.experience">Expérience</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i>
+                </a>
+                <a href="#pipeline" class="flex items-center justify-between text-[#00f0ff] font-bold hover:text-[#38bdf8] hover:bg-[#00f0ff]/10 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-xs"></i>
+                        <span data-i18n="nav.pipeline">Radar des Opérations</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-[#00f0ff]"></i>
+                </a>
+                <a href="#skills" class="flex items-center justify-between text-slate-200 hover:text-[#00f0ff] hover:bg-white/5 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span data-i18n="nav.skills">Formation & Compétences</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i>
+                </a>
+                <a href="#contact" class="flex items-center justify-between text-slate-200 hover:text-[#00f0ff] hover:bg-white/5 py-2 px-3 rounded-xl transition-all mobile-link">
+                    <span data-i18n="nav.contact">Contact</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-500"></i>
+                </a>
             </div>
             
             <div class="pt-2 border-t border-[#1e293b] space-y-2.5">
-                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 font-mono text-xs font-bold shadow-sm">
+                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 font-mono text-xs font-bold shadow-sm active:scale-98 transition-transform">
                     <i class="fa-solid fa-file-arrow-down text-sm"></i>
                     <span data-i18n="nav.cv_download">Télécharger le CV Officiel (PDF)</span>
                 </a>
-                <button onclick="document.getElementById('mobileMenu').classList.add('hidden'); window.openHireMeModal();" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.25)]">
+                <button onclick="document.getElementById('mobileMenu').classList.add('hidden'); window.openHireMeModal();" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff]/20 to-[#38bdf8]/20 text-[#00f0ff] border border-[#00f0ff]/60 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.25)] active:scale-98 transition-transform">
                     <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
                     <span data-i18n="nav.fasttrack">FAST-TRACK (60s)</span>
                 </button>
-                <button id="mobileAiChatBtn" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                <button id="mobileAiChatBtn" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)] active:scale-98 transition-transform">
                     <i class="fa-solid fa-robot text-sm"></i>
                     <span data-i18n="nav.launch_ai">LANCER L'AI TWIN</span>
                 </button>
@@ -1372,118 +1451,124 @@
         </div>
     </header>
 
-    <main class="relative z-10 pt-20">
+    <main class="relative z-10 pt-16 sm:pt-20">
         
         <!-- HERO SECTION: ULTRA-PROMINENT PORTRAIT & PROFILE -->
-        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto w-full space-y-10">
+        <section id="hero" class="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-8 sm:py-12 px-3.5 sm:px-6 lg:px-8 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full space-y-8 sm:space-y-10">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     
                     <!-- Hero Left Column: Intro & Headline Details -->
-                    <div class="lg:col-span-7 space-y-6">
+                    <div class="lg:col-span-7 space-y-5 sm:space-y-6">
                         
-                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f172a] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                        <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0f172a] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-[11px] sm:text-xs font-bold shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                            <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#10b981] animate-pulse shrink-0"></span>
                             <span data-i18n="hero.badge">CYBERSECURITY & SYSTEMS LINUX ENGINEER</span>
                         </div>
 
-                        <div class="space-y-3">
-                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        <div class="space-y-2.5 sm:space-y-3">
+                            <h1 class="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
                                 Wassim <span class="bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#a855f7] bg-clip-text text-transparent">Bannour</span>
                             </h1>
 
                             <!-- Dynamic Cyber Typewriter Subtitle -->
-                            <div id="heroTypewriterContainer" class="font-mono text-xs sm:text-sm text-[#00f0ff] font-bold flex items-center gap-2 bg-[#070b14]/90 px-3.5 py-2 rounded-xl border border-[#1e293b] shadow-inner w-fit">
-                                <i class="fa-solid fa-terminal text-[#00f0ff]"></i>
-                                <span class="text-gray-400" data-i18n="hero.role_prefix">role:~$</span>
-                                <span id="heroTypewriter" class="text-white">Ingénieur Cybersécurité & Linux</span>
-                                <span class="terminal-cursor">|</span>
+                            <div id="heroTypewriterContainer" class="font-mono text-xs sm:text-sm text-[#00f0ff] font-bold flex items-center gap-2 bg-[#070b14]/90 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-[#1e293b] shadow-inner max-w-full overflow-hidden">
+                                <i class="fa-solid fa-terminal text-[#00f0ff] shrink-0"></i>
+                                <span class="text-gray-400 shrink-0" data-i18n="hero.role_prefix">role:~$</span>
+                                <span id="heroTypewriter" class="text-white truncate">Ingénieur Cybersécurité & Linux</span>
+                                <span class="terminal-cursor shrink-0">|</span>
                             </div>
 
                             <p class="font-mono text-xs sm:text-sm text-gray-300 flex items-center gap-2">
-                                <i class="fa-solid fa-graduation-cap text-[#38bdf8]"></i>
+                                <i class="fa-solid fa-graduation-cap text-[#38bdf8] shrink-0"></i>
                                 <span data-i18n-html="hero.education">Diplôme National d'Ingénieur Cybersécurité @ <span class="text-white font-bold underline decoration-[#38bdf8]">TEK-UP</span></span>
                             </p>
                         </div>
 
-                        <p id="heroBioBox" class="text-gray-200 text-base sm:text-lg leading-relaxed bg-[#0f172a]/60 p-4 rounded-xl border border-[#1e293b]" data-i18n-html="hero.bio">
+                        <p id="heroBioBox" class="text-gray-200 text-sm sm:text-base leading-relaxed bg-[#0f172a]/60 p-3.5 sm:p-4 rounded-xl border border-[#1e293b]" data-i18n-html="hero.bio">
                             Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>'Security-by-Design'</em>.
                         </p>
 
                         <!-- Key Verified Badges -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-red-500/50 text-red-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(239,68,68,0.15)] hover:border-red-400 transition-all">
-                                <i class="fa-brands fa-redhat text-lg text-red-500 mb-1"></i>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 pt-1">
+                            <div class="p-2 sm:p-2.5 rounded-xl bg-[#0f172a] border border-red-500/50 text-red-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(239,68,68,0.15)] hover:border-red-400 transition-all">
+                                <i class="fa-brands fa-redhat text-base sm:text-lg text-red-500 mb-1"></i>
                                 <span class="font-bold text-white text-[11px]">RHCSA</span>
                                 <span class="text-[9px] text-gray-400">Red Hat Certified</span>
                             </div>
-                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-yellow-500/50 text-yellow-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(234,179,8,0.15)] hover:border-yellow-400 transition-all">
-                                <i class="fa-brands fa-python text-lg text-yellow-400 mb-1"></i>
+                            <div class="p-2 sm:p-2.5 rounded-xl bg-[#0f172a] border border-yellow-500/50 text-yellow-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(234,179,8,0.15)] hover:border-yellow-400 transition-all">
+                                <i class="fa-brands fa-python text-base sm:text-lg text-yellow-400 mb-1"></i>
                                 <span class="font-bold text-white text-[11px]">PCAP</span>
                                 <span class="text-[9px] text-gray-400">Python Institute</span>
                             </div>
-                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-[#00f0ff]/50 text-[#00f0ff] font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(0,240,255,0.15)] hover:border-[#00f0ff] transition-all">
-                                <i class="fa-solid fa-trophy text-lg text-[#00f0ff] mb-1"></i>
+                            <div class="p-2 sm:p-2.5 rounded-xl bg-[#0f172a] border border-[#00f0ff]/50 text-[#00f0ff] font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(0,240,255,0.15)] hover:border-[#00f0ff] transition-all">
+                                <i class="fa-solid fa-trophy text-base sm:text-lg text-[#00f0ff] mb-1"></i>
                                 <span class="font-bold text-white text-[11px]">#33 Global</span>
                                 <span class="text-[9px] text-gray-400">IEEEXtreme 17.0</span>
                             </div>
-                            <div class="p-2.5 rounded-lg bg-[#0f172a] border border-emerald-500/50 text-emerald-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(16,185,129,0.15)] hover:border-emerald-400 transition-all">
-                                <i class="fa-solid fa-shield-virus text-lg text-emerald-400 mb-1"></i>
+                            <div class="p-2 sm:p-2.5 rounded-xl bg-[#0f172a] border border-emerald-500/50 text-emerald-400 font-mono text-xs flex flex-col items-center justify-center text-center shadow-[0_0_12px_rgba(16,185,129,0.15)] hover:border-emerald-400 transition-all">
+                                <i class="fa-solid fa-shield-virus text-base sm:text-lg text-emerald-400 mb-1"></i>
                                 <span class="font-bold text-white text-[11px]">EASM & OSINT</span>
                                 <span class="text-[9px] text-gray-400">Talan Tunisie</span>
                             </div>
                         </div>
 
                         <!-- Direct Coordinates with 1-Click Copy Shortcuts -->
-                        <div class="pt-1 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-mono text-gray-300">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir / Tunis, TN</span>
-                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] text-gray-300 hover:text-[#38bdf8] transition-all" title="Click to copy email address">
+                        <div class="pt-1 flex flex-wrap items-center gap-2 sm:gap-x-4 text-xs font-mono text-gray-300">
+                            <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b]">
+                                <i class="fa-solid fa-location-dot text-[#00f0ff]"></i> Monastir / Tunis, TN
+                            </span>
+                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] text-gray-300 hover:text-[#38bdf8] transition-all cursor-pointer" title="Click to copy email address">
                                 <i class="fa-solid fa-envelope text-[#38bdf8]"></i>
-                                <span>wisoghost@gmail.com</span>
+                                <span class="truncate max-w-[170px] xs:max-w-none">wisoghost@gmail.com</span>
                                 <i class="fa-regular fa-copy text-[10px] text-gray-400 ml-0.5"></i>
                             </button>
-                            <button onclick="window.copyToClipboard('+21694101910', 'Phone (+216 94101910)')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] text-gray-300 hover:text-[#10b981] transition-all" title="Click to copy phone number">
+                            <button onclick="window.copyToClipboard('+21694101910', 'Phone (+216 94101910)')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] text-gray-300 hover:text-[#10b981] transition-all cursor-pointer" title="Click to copy phone number">
                                 <i class="fa-solid fa-phone text-[#10b981]"></i>
                                 <span>+216 94101910</span>
                                 <i class="fa-regular fa-copy text-[10px] text-gray-400 ml-0.5"></i>
                             </button>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-globe text-[#a855f7]"></i> FR / EN / AR</span>
+                            <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0f172a] border border-[#1e293b]">
+                                <i class="fa-solid fa-globe text-[#a855f7]"></i> FR / EN / AR
+                            </span>
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="pt-3 flex flex-wrap gap-3">
-                            <button onclick="window.openHireMeModal()" class="cyber-glow-btn px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] text-black font-extrabold text-sm font-mono tracking-wider flex items-center gap-2.5 hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] transition-all">
-                                <i class="fa-solid fa-bolt text-base"></i>
+                        <div class="pt-3 flex flex-col sm:flex-row sm:flex-wrap gap-2.5 sm:gap-3">
+                            <button onclick="window.openHireMeModal()" class="cyber-glow-btn w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] text-black font-extrabold text-xs sm:text-sm font-mono tracking-wider flex items-center justify-center gap-2.5 hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] transition-all">
+                                <i class="fa-solid fa-bolt text-sm sm:text-base"></i>
                                 <span data-i18n="hero.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
                             </button>
 
-                            <button onclick="document.getElementById('openAiChatBtn').click()" class="px-5 py-3.5 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff]/15 font-mono text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-                                <i class="fa-solid fa-comments text-base"></i>
-                                <span data-i18n="hero.btn_aichat">Chat AI Twin</span>
-                            </button>
+                            <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3 w-full sm:w-auto">
+                                <button onclick="document.getElementById('openAiChatBtn').click()" class="px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff]/15 font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                                    <i class="fa-solid fa-comments text-sm sm:text-base"></i>
+                                    <span data-i18n="hero.btn_aichat">Chat AI Twin</span>
+                                </button>
 
-                            <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-4 py-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-mono text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]">
-                                <i class="fa-solid fa-file-pdf text-base"></i>
-                                <span>CV (PDF)</span>
-                            </a>
+                                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+                                    <i class="fa-solid fa-file-pdf text-sm sm:text-base"></i>
+                                    <span>CV (PDF)</span>
+                                </a>
 
-                            <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" class="px-3.5 py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-sm font-semibold flex items-center gap-1.5 transition-all">
-                                <i class="fa-brands fa-github text-base"></i>
-                                <span>GitHub</span>
-                            </a>
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" class="px-3.5 py-3 sm:py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all">
+                                    <i class="fa-brands fa-github text-sm sm:text-base"></i>
+                                    <span>GitHub</span>
+                                </a>
 
-                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-sm font-semibold flex items-center gap-1.5 transition-all">
-                                <i class="fa-brands fa-linkedin text-base"></i>
-                                <span>LinkedIn</span>
-                            </a>
+                                <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-3 sm:py-3.5 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] hover:border-[#38bdf8] hover:text-[#38bdf8] font-mono text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all">
+                                    <i class="fa-brands fa-linkedin text-sm sm:text-base"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Hero Right Column: Crystal-Clear Prominent Photo Showcase -->
                     <div class="lg:col-span-5 flex flex-col items-center">
                         
-                        <div id="heroPortraitContainer" class="w-full max-w-[420px] hero-portrait-wrapper rounded-3xl p-3.5 relative">
+                        <div id="heroPortraitContainer" class="w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[420px] hero-portrait-wrapper rounded-3xl p-3 sm:p-3.5 relative">
                             <!-- Cyber corner reticles -->
                             <div class="cyber-corner-tl"></div>
                             <div class="cyber-corner-tr"></div>
@@ -1492,34 +1577,34 @@
 
                             <!-- Photo Display Container (Completely Unobstructed & Crystal-Clear) -->
                             <div class="relative w-full rounded-2xl overflow-hidden bg-[#030712] border border-[#00f0ff]/30">
-                                <img src="1000015101.jpg" alt="Wassim Bannour - Cybersecurity Engineer" class="w-full h-auto max-h-[500px] object-contain object-top mx-auto block hover:scale-102 transition-transform duration-300">
+                                <img src="1000015101.jpg" alt="Wassim Bannour - Cybersecurity Engineer" class="w-full h-auto max-h-[440px] sm:max-h-[500px] object-contain object-top mx-auto block hover:scale-102 transition-transform duration-300">
                                 
                                 <!-- Floating Status Pill Top Left -->
-                                <div class="absolute top-3 left-3 z-10">
-                                    <span class="px-3 py-1 rounded-full bg-[#070b14]/90 border border-[#10b981] text-[#10b981] font-mono text-[11px] font-extrabold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10">
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-[#070b14]/90 border border-[#10b981] text-[#10b981] font-mono text-[10px] sm:text-[11px] font-extrabold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
                                         <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
                                         <span data-i18n="hero.status_pill">STATUS: ACTIVE // OPEN TO ROLES</span>
                                     </span>
                                 </div>
 
                                 <!-- Floating Cert Tag Top Right -->
-                                <div class="absolute top-3 right-3 z-10">
-                                    <span class="px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-[#00f0ff] text-[#00f0ff] font-mono text-[10px] font-bold backdrop-blur-md shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                                <div class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10">
+                                    <span class="px-2 sm:px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-[#00f0ff] text-[#00f0ff] font-mono text-[9px] sm:text-[10px] font-bold backdrop-blur-md shadow-[0_0_10px_rgba(0,240,255,0.4)]">
                                         RHCSA • PCAP
                                     </span>
                                 </div>
                             </div>
 
                             <!-- Under-Photo Identity HUD Card -->
-                            <div id="heroIdentityCard" class="mt-3 p-3.5 rounded-xl bg-[#070b14]/95 border border-[#1e293b] font-mono text-xs flex items-center justify-between">
+                            <div id="heroIdentityCard" class="mt-2.5 sm:mt-3 p-3 sm:p-3.5 rounded-xl bg-[#070b14]/95 border border-[#1e293b] font-mono text-xs flex items-center justify-between">
                                 <div>
-                                    <h3 class="text-white font-extrabold text-sm flex items-center gap-1.5">
+                                    <h3 class="text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5">
                                         <span>Wassim Bannour</span>
                                         <i class="fa-solid fa-circle-check text-[#00f0ff] text-xs"></i>
                                     </h3>
-                                    <p class="text-[11px] text-gray-400" data-i18n="hero.badge">Cybersecurity & Linux Systems Engineer</p>
+                                    <p class="text-[10px] sm:text-[11px] text-gray-400" data-i18n="hero.badge">Cybersecurity & Linux Systems Engineer</p>
                                 </div>
-                                <span class="px-2.5 py-1 rounded bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 text-[10px] font-bold">
+                                <span class="px-2 sm:px-2.5 py-1 rounded bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 text-[10px] font-bold">
                                     TEK-UP
                                 </span>
                             </div>
@@ -1527,7 +1612,7 @@
                         </div>
 
                         <!-- Mini Interactive Telemetry -->
-                        <div id="heroTelemetryCard" class="w-full max-w-[420px] mt-3 p-3 rounded-xl bg-[#0f172a] border border-[#1e293b] font-mono text-[11px] text-gray-300">
+                        <div id="heroTelemetryCard" class="w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[420px] mt-2.5 sm:mt-3 p-2.5 sm:p-3 rounded-xl bg-[#0f172a] border border-[#1e293b] font-mono text-[10px] sm:text-[11px] text-gray-300">
                             <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#1e293b]">
                                 <span class="text-gray-400" data-i18n="hero.telemetry_title">// System Telemetry</span>
                                 <span class="text-[#00f0ff] flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero.security_by_design">Security-by-Design</span></span>
@@ -1540,41 +1625,41 @@
                 </div>
 
                 <!-- High-Impact Quick Stats Matrix with Counter Animation -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card">
-                        <span class="font-extrabold text-3xl sm:text-4xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_rank">Mondial IEEEXtreme</p>
-                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_rank_sub">2ᵉ National en Tunisie</span>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 pt-2 sm:pt-4">
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card">
+                        <span class="font-extrabold text-2xl sm:text-4xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
+                        <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_rank">Mondial IEEEXtreme</p>
+                        <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_rank_sub">2ᵉ National en Tunisie</span>
                     </div>
 
-                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-3xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_certs">Red Hat SysAdmin</p>
-                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_certs_sub">Noyau Linux Entreprise</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card">
+                        <span class="font-extrabold text-2xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
+                        <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_certs">Red Hat SysAdmin</p>
+                        <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_certs_sub">Noyau Linux Entreprise</span>
                     </div>
 
-                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-3xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_stage">Python Institute</p>
-                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_stage_sub">Algorithmes & Pipelines</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card">
+                        <span class="font-extrabold text-2xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
+                        <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_stage">Python Institute</p>
+                        <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_stage_sub">Algorithmes & Pipelines</span>
                     </div>
 
-                    <div class="cyber-card p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-3xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
-                        <p class="text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_sec">Talan Tunisie</p>
-                        <span class="text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_sec_sub">Surface d'Attaque & OSINT</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card">
+                        <span class="font-extrabold text-2xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
+                        <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_sec">Talan Tunisie</p>
+                        <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_sec_sub">Surface d'Attaque & OSINT</span>
                     </div>
                 </div>
 
                 <!-- INTERACTIVE LIVE CYBER TERMINAL CONSOLE -->
                 <div class="cyber-card rounded-2xl bg-[#070b14]/95 border border-[#1e293b] shadow-[0_0_30px_rgba(0,0,0,0.7)] overflow-hidden font-mono text-xs reveal-card">
                     <!-- Terminal Top Bar -->
-                    <div class="px-4 py-3 bg-[#030712] border-b border-[#1e293b] flex items-center justify-between">
+                    <div class="px-3 sm:px-4 py-2.5 sm:py-3 bg-[#030712] border-b border-[#1e293b] flex items-center justify-between">
                         <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                            <span class="ml-2 text-gray-400 text-[11px] font-semibold flex items-center gap-1.5">
+                            <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                            <span class="ml-1 sm:ml-2 text-gray-400 text-[10px] sm:text-[11px] font-semibold flex items-center gap-1.5">
                                 <i class="fa-solid fa-terminal text-[#00f0ff] text-xs"></i>
                                 <span data-i18n="terminal.title">wassim@tekup-sec: ~ (Interactive Live Cyber Console)</span>
                             </span>
@@ -1582,26 +1667,26 @@
                         <span class="text-[10px] text-gray-500 hidden sm:inline-block" data-i18n="terminal.subtext">Type a command or click a chip below</span>
                     </div>
 
-                    <!-- Quick Command Action Chips -->
-                    <div class="px-4 py-2 bg-[#0a101f] border-b border-[#1e293b] flex flex-wrap items-center gap-2 text-[11px]">
-                        <span class="text-gray-500 text-[10px] uppercase font-bold" data-i18n="terminal.quickrun">Quick Run:</span>
-                        <button class="terminal-chip px-2.5 py-1 rounded-md bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/30 hover:bg-[#00f0ff] hover:text-black transition-colors" data-cmd="whoami">whoami</button>
-                        <button class="terminal-chip px-2.5 py-1 rounded-md bg-[#0f172a] text-[#10b981] border border-[#10b981]/30 hover:bg-[#10b981] hover:text-black transition-colors" data-cmd="cat certs.txt">cat certs.txt</button>
-                        <button class="terminal-chip px-2.5 py-1 rounded-md bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/30 hover:bg-[#38bdf8] hover:text-black transition-colors" data-cmd="easm --scan">easm --scan</button>
-                        <button class="terminal-chip px-2.5 py-1 rounded-md bg-[#0f172a] text-yellow-400 border border-yellow-400/30 hover:bg-yellow-400 hover:text-black transition-colors" data-cmd="nmap --skills">nmap --skills</button>
-                        <button class="terminal-chip px-2.5 py-1 rounded-md bg-[#0f172a] text-purple-400 border border-purple-400/30 hover:bg-purple-400 hover:text-black transition-colors" data-cmd="hire --wassim">hire --wassim</button>
-                        <button class="terminal-chip px-2 py-1 rounded-md bg-[#0f172a] text-gray-400 border border-[#1e293b] hover:text-white transition-colors" data-cmd="clear" data-i18n="terminal.clear_btn">clear</button>
+                    <!-- Quick Command Action Chips (Horizontally Scrollable) -->
+                    <div class="px-3 sm:px-4 py-2 bg-[#0a101f] border-b border-[#1e293b] flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[11px]">
+                        <span class="text-gray-500 text-[10px] uppercase font-bold shrink-0" data-i18n="terminal.quickrun">Quick Run:</span>
+                        <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/30 hover:bg-[#00f0ff] hover:text-black transition-colors" data-cmd="whoami">whoami</button>
+                        <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-[#10b981] border border-[#10b981]/30 hover:bg-[#10b981] hover:text-black transition-colors" data-cmd="cat certs.txt">cat certs.txt</button>
+                        <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/30 hover:bg-[#38bdf8] hover:text-black transition-colors" data-cmd="easm --scan">easm --scan</button>
+                        <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-yellow-400 border border-yellow-400/30 hover:bg-yellow-400 hover:text-black transition-colors" data-cmd="nmap --skills">nmap --skills</button>
+                        <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-purple-400 border border-purple-400/30 hover:bg-purple-400 hover:text-black transition-colors" data-cmd="hire --wassim">hire --wassim</button>
+                        <button class="terminal-chip shrink-0 px-2 py-1 rounded-md bg-[#0f172a] text-gray-400 border border-[#1e293b] hover:text-white transition-colors" data-cmd="clear" data-i18n="terminal.clear_btn">clear</button>
                     </div>
 
                     <!-- Terminal Output Screen (Populated dynamically in script.js) -->
-                    <div id="terminalScreen" class="p-4 sm:p-5 h-48 overflow-y-auto space-y-1 text-xs text-gray-300">
+                    <div id="terminalScreen" class="p-3.5 sm:p-5 h-44 sm:h-48 overflow-y-auto space-y-1 text-[11px] sm:text-xs text-gray-300">
                     </div>
 
                     <!-- Terminal Prompt Input Line -->
-                    <form id="terminalForm" class="p-3 bg-[#030712] border-t border-[#1e293b] flex items-center gap-2">
-                        <span class="text-[#10b981] font-bold">wassim@tekup-sec</span>:<span class="text-[#38bdf8] font-bold">~</span>$
-                        <input type="text" id="terminalInput" placeholder="type 'help', 'whoami', 'certs', 'easm', 'skills', 'clear'..." data-i18n-placeholder="terminal.placeholder" autocomplete="off" class="flex-1 bg-transparent text-[#00f0ff] focus:outline-none font-mono text-xs">
-                        <button type="submit" class="px-3 py-1 rounded bg-[#0f172a] text-gray-400 hover:text-[#00f0ff] border border-[#1e293b] hover:border-[#00f0ff]/40 text-xs font-bold transition-all" data-i18n="terminal.exec_btn">
+                    <form id="terminalForm" class="p-2 sm:p-3 bg-[#030712] border-t border-[#1e293b] flex items-center gap-1.5 sm:gap-2">
+                        <span class="text-[#10b981] font-bold text-xs shrink-0"><span class="hidden xs:inline">wassim@tekup-sec:</span><span class="xs:hidden">wassim:</span><span class="text-[#38bdf8]">~</span>$</span>
+                        <input type="text" id="terminalInput" placeholder="type 'help', 'whoami', 'certs', 'easm'..." data-i18n-placeholder="terminal.placeholder" autocomplete="off" class="flex-1 min-w-0 bg-transparent text-[#00f0ff] focus:outline-none font-mono text-xs py-1">
+                        <button type="submit" class="px-3 py-1.5 rounded-lg bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black text-xs font-bold transition-all shrink-0" data-i18n="terminal.exec_btn">
                             EXEC
                         </button>
                     </form>
@@ -2358,7 +2443,7 @@
                 </div>
 
                 <!-- Station Quick-Select HUD Chips & Cruise Controller -->
-                <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0f172a] border border-[#1e293b] flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-lg reveal-card">
+                <div class="p-3 sm:p-4 rounded-2xl bg-[#0f172a] border border-[#1e293b] flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-lg reveal-card">
                     
                     <!-- Station Selector Buttons (Horizontal Scrollable) -->
                     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs font-mono" id="stationButtonsContainer">
@@ -2397,13 +2482,13 @@
                     </div>
 
                     <!-- Mode & Prev/Next Controls -->
-                    <div class="flex items-center gap-2 self-end md:self-center font-mono text-xs">
-                        <button id="autoCruiseBtn" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#10b981]/50 text-[#10b981] hover:bg-[#10b981]/20 font-bold transition-all flex items-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    <div class="flex items-center justify-between sm:justify-end gap-2 w-full md:w-auto font-mono text-xs">
+                        <button id="autoCruiseBtn" class="flex-1 sm:flex-initial px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#10b981]/50 text-[#10b981] hover:bg-[#10b981]/20 font-bold transition-all flex items-center justify-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                             <i class="fa-solid fa-radar text-xs" id="autoCruiseIcon"></i>
                             <span id="autoCruiseText" data-i18n="pipeline.livescan">Scan Direct</span>
                         </button>
                         
-                        <div class="flex items-center gap-1">
+                        <div class="flex items-center gap-1.5">
                             <button id="prevStationBtn" class="w-8 h-8 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-[#00f0ff] hover:border-[#00f0ff] flex items-center justify-center transition-all" aria-label="Previous Station">
                                 <i class="fa-solid fa-chevron-left text-xs"></i>
                             </button>
@@ -2416,15 +2501,15 @@
                 </div>
 
                 <!-- THE INTERACTIVE STAGE (Cyber Radar & Milestone Dossier) -->
-                <div class="cyber-road-track rounded-3xl p-6 sm:p-8 relative reveal-card overflow-hidden">
+                <div class="cyber-road-track rounded-2xl sm:rounded-3xl p-4 sm:p-8 relative reveal-card overflow-hidden">
                     
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
                         
                         <!-- Left Column: Sophisticated Cyber Operations Radar HUD -->
                         <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
                             
                             <!-- Dynamic Operations Telemetry Callout -->
-                            <div class="w-full max-w-[340px] mb-3 p-3.5 rounded-2xl bg-[#070b14]/95 border border-[#00f0ff]/40 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative font-mono text-xs">
+                            <div class="w-full max-w-[340px] mb-3 p-3 sm:p-3.5 rounded-2xl bg-[#070b14]/95 border border-[#00f0ff]/40 shadow-[0_0_20px_rgba(0,240,255,0.25)] relative font-mono text-xs">
                                 <div class="flex items-center justify-between pb-1 mb-1.5 border-b border-[#1e293b]">
                                     <span class="text-[#10b981] font-bold text-[10px] flex items-center gap-1.5">
                                         <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
@@ -2439,8 +2524,8 @@
                                 </p>
                             </div>
 
-                            <!-- High-Tech Animated Radar Screen SVG -->
-                            <div class="relative w-60 sm:w-68 h-60 sm:h-68 cursor-pointer group" id="cyberTuxContainer" title="Click to pulse radar scan telemetry!">
+                            <!-- High-Tech Animated Radar Screen SVG (Responsive Dimensions) -->
+                            <div class="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-68 sm:h-68 cursor-pointer group my-1" id="cyberTuxContainer" title="Click to pulse radar scan telemetry!">
                                 
                                 <svg class="w-full h-full drop-shadow-[0_0_35px_rgba(0,240,255,0.35)]" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -2524,7 +2609,7 @@
                             </div>
 
                             <!-- Live Security Telemetry Readout Metrics -->
-                            <div class="w-full max-w-[340px] mt-3 p-3 rounded-xl bg-[#070b14]/90 border border-[#1e293b] font-mono text-[10px] space-y-1">
+                            <div class="w-full max-w-[340px] mt-2.5 sm:mt-3 p-2.5 sm:p-3 rounded-xl bg-[#070b14]/90 border border-[#1e293b] font-mono text-[10px] space-y-1">
                                 <div class="flex items-center justify-between text-[#00f0ff]">
                                     <span data-i18n="pipeline.posture_label">[+] POSTURE : DURCIE</span>
                                     <span data-i18n="pipeline.selinux_label">SELinux : STRICT (ENFORCING)</span>
@@ -2540,9 +2625,9 @@
                         <!-- Right Column: Active Station Dossier & Milestones Briefing -->
                         <div class="lg:col-span-7 space-y-4">
                             
-                            <div class="p-6 sm:p-7 rounded-2xl bg-[#070b14]/90 border border-[#1e293b] shadow-xl space-y-4 relative" id="stationDossierCard">
+                            <div class="p-5 sm:p-7 rounded-2xl bg-[#070b14]/90 border border-[#1e293b] shadow-xl space-y-3.5 sm:space-y-4 relative" id="stationDossierCard">
                                 
-                                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#1e293b]">
+                                <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b border-[#1e293b]">
                                     <div class="flex items-center gap-2">
                                         <span id="dossierBadge" class="px-2.5 py-0.5 rounded-md bg-[#00f0ff]/20 text-[#00f0ff] font-mono text-xs font-extrabold border border-[#00f0ff]/40">
                                             FOUNDATIONS
@@ -2557,7 +2642,7 @@
                                 </div>
 
                                 <div class="space-y-1">
-                                    <h3 id="dossierTitle" class="text-2xl font-extrabold text-white">
+                                    <h3 id="dossierTitle" class="text-xl sm:text-2xl font-extrabold text-white">
                                         Baccalauréat Technique (Mention Assez Bien)
                                     </h3>
                                     <p id="dossierOrg" class="text-[#38bdf8] font-mono text-xs font-bold">
@@ -2565,12 +2650,12 @@
                                     </p>
                                 </div>
 
-                                <p id="dossierDesc" class="text-gray-300 text-sm leading-relaxed">
+                                <p id="dossierDesc" class="text-gray-300 text-xs sm:text-sm leading-relaxed">
                                     Solides fondations en logique électronique, systèmes combinatoires et séquentiels, manipulation de structures de données primitives et modélisation algorithmique.
                                 </p>
 
                                 <!-- Stack Tags for Station -->
-                                <div class="space-y-1.5 pt-2">
+                                <div class="space-y-1.5 pt-1 sm:pt-2">
                                     <span class="text-[10px] font-mono text-gray-400 uppercase font-bold" data-i18n="pipeline.capabilities_label">// Capacités de la Station :</span>
                                     <div id="dossierTags" class="flex flex-wrap gap-1.5 font-mono text-xs">
                                         <span class="px-2 py-0.5 rounded bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/30">Logique Numérique</span>
@@ -2581,13 +2666,13 @@
                                 </div>
 
                                 <!-- Action Buttons for Station -->
-                                <div class="pt-3 flex flex-wrap items-center gap-3 border-t border-[#1e293b]">
-                                    <a id="dossierActionBtn" href="#skills" class="cyber-glow-btn px-4 py-2 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                <div class="pt-3 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 border-t border-[#1e293b]">
+                                    <a id="dossierActionBtn" href="#skills" class="cyber-glow-btn px-4 py-2.5 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold inline-flex items-center justify-center gap-2 transition-all">
                                         <i class="fa-solid fa-arrow-right"></i>
                                         <span id="dossierActionText" data-i18n="pipeline.btn_details">Consulter les Détails</span>
                                     </a>
 
-                                    <button type="button" onclick="document.getElementById('openAiChatBtn').click()" class="px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="document.getElementById('openAiChatBtn').click()" class="px-4 py-2.5 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:border-[#00f0ff] hover:text-[#00f0ff] font-mono text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
                                         <span data-i18n="pipeline.btn_ask_ai">Interroger l'AI Twin sur ce jalon</span>
                                     </button>
@@ -2600,65 +2685,65 @@
                     </div>
 
                     <!-- Cyber Highway Pipeline Track with 8 Checkpoint Nodes -->
-                    <div class="mt-8 pt-6 border-t border-[#1e293b]/70 relative">
+                    <div class="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#1e293b]/70 relative">
                         <div class="road-energy-line hidden sm:block"></div>
                         
-                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 relative z-10 font-mono text-[11px]">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3 relative z-10 font-mono text-[11px]">
                             
                             <!-- Node 1 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#00f0ff]/40 text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(0)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#00f0ff]/40 text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(0)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#00f0ff]/20 text-[#00f0ff] font-bold flex items-center justify-center text-[10px] mb-1">1</span>
-                                <span class="text-white font-bold block text-[11px]">Baccalauréat</span>
-                                <span class="text-gray-400 text-[9px]">2018 - 2022</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">Baccalauréat</span>
+                                <span class="text-gray-400 text-[9px] block">2018 - 2022</span>
                             </div>
 
                             <!-- Node 2 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(1)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(1)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-gray-300 font-bold flex items-center justify-center text-[10px] mb-1">2</span>
-                                <span class="text-white font-bold block text-[11px]">ISIMM Licence</span>
-                                <span class="text-gray-400 text-[9px]">2022 - 2025</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">ISIMM Licence</span>
+                                <span class="text-gray-400 text-[9px] block">2022 - 2025</span>
                             </div>
 
                             <!-- Node 3 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(2)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(2)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-[#00f0ff] font-bold flex items-center justify-center text-[10px] mb-1">3</span>
-                                <span class="text-white font-bold block text-[11px]">IEEE #33 Global</span>
-                                <span class="text-gray-400 text-[9px]">2023 - 2024</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">IEEE #33 Global</span>
+                                <span class="text-gray-400 text-[9px] block">2023 - 2024</span>
                             </div>
 
                             <!-- Node 4 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(3)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(3)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-purple-400 font-bold flex items-center justify-center text-[10px] mb-1">4</span>
-                                <span class="text-white font-bold block text-[11px]">SW Consult</span>
-                                <span class="text-gray-400 text-[9px]">2025 (AI OCR)</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">SW Consult</span>
+                                <span class="text-gray-400 text-[9px] block">2025 (AI OCR)</span>
                             </div>
 
                             <!-- Node 5 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(4)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(4)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-[#10b981] font-bold flex items-center justify-center text-[10px] mb-1">5</span>
-                                <span class="text-white font-bold block text-[11px]">TALAN EASM</span>
-                                <span class="text-gray-400 text-[9px]">2026 (OSINT)</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">TALAN EASM</span>
+                                <span class="text-gray-400 text-[9px] block">2026 (OSINT)</span>
                             </div>
 
                             <!-- Node 6 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(5)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(5)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-red-400 font-bold flex items-center justify-center text-[10px] mb-1">6</span>
-                                <span class="text-white font-bold block text-[11px]">RHCSA & PCAP</span>
-                                <span class="text-gray-400 text-[9px]">2026 (Certs)</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">RHCSA & PCAP</span>
+                                <span class="text-gray-400 text-[9px] block">2026 (Certs)</span>
                             </div>
 
                             <!-- Node 7 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(6)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(6)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#00f0ff]/20 text-[#00f0ff] font-bold flex items-center justify-center text-[10px] mb-1">7</span>
-                                <span class="text-white font-bold block text-[11px]">TEK-UP Active</span>
-                                <span class="text-gray-400 text-[9px]">2025 - Présent</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">TEK-UP Active</span>
+                                <span class="text-gray-400 text-[9px] block">2025 - Présent</span>
                             </div>
 
                             <!-- Node 8 -->
-                            <div class="road-node-card p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(7)">
+                            <div class="road-node-card p-2 sm:p-2.5 rounded-xl bg-[#070b14]/90 border border-[#1e293b] text-center cursor-pointer hover:border-[#00f0ff] transition-all" onclick="selectCyberStation(7)">
                                 <span class="w-5 h-5 mx-auto rounded-full bg-[#1e293b] text-[#38bdf8] font-bold flex items-center justify-center text-[10px] mb-1">8</span>
-                                <span class="text-white font-bold block text-[11px]">Next Vector</span>
-                                <span class="text-gray-400 text-[9px]">Enterprise Roles</span>
+                                <span class="text-white font-bold block text-[10px] sm:text-[11px] truncate">Next Vector</span>
+                                <span class="text-gray-400 text-[9px] block">Enterprise Roles</span>
                             </div>
 
                         </div>
@@ -2777,113 +2862,113 @@
                         </div>
 
                         <!-- Filter Buttons -->
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <button class="skill-filter-btn active px-4 py-2 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] transition-all" data-filter="all" data-i18n="skills.filter_all">Toutes les compétences</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="sys" data-i18n="skills.filter_sys">Sécurité & Linux</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="dev" data-i18n="skills.filter_dev">Langages & Web</button>
-                            <button class="skill-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] transition-all" data-filter="tools" data-i18n="skills.filter_tools">DevOps, OSINT & BDD</button>
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 font-mono text-xs">
+                            <button class="skill-filter-btn active px-3 sm:px-4 py-2 rounded-xl bg-[#0f172a] text-white border border-[#1e293b] text-[11px] sm:text-xs transition-all" data-filter="all" data-i18n="skills.filter_all">Toutes les compétences</button>
+                            <button class="skill-filter-btn px-3 sm:px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] text-[11px] sm:text-xs transition-all" data-filter="sys" data-i18n="skills.filter_sys">Sécurité & Linux</button>
+                            <button class="skill-filter-btn px-3 sm:px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] text-[11px] sm:text-xs transition-all" data-filter="dev" data-i18n="skills.filter_dev">Langages & Web</button>
+                            <button class="skill-filter-btn px-3 sm:px-4 py-2 rounded-xl bg-[#0f172a] text-gray-300 border border-[#1e293b] text-[11px] sm:text-xs transition-all" data-filter="tools" data-i18n="skills.filter_tools">DevOps, OSINT & BDD</button>
                         </div>
                     </div>
 
                     <!-- Skills Grid -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="skillsGrid">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4" id="skillsGrid">
                         
                         <!-- Linux RHEL -->
-                        <div class="skill-card sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-500 transition-all group">
-                            <i class="fa-brands fa-redhat text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Linux RHEL</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.rhel_sub">Certifié RHCSA</span>
+                        <div class="skill-card sys reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-500 transition-all group">
+                            <i class="fa-brands fa-redhat text-2xl sm:text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Linux RHEL</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.rhel_sub">Certifié RHCSA</span>
                         </div>
 
                         <!-- Python -->
-                        <div class="skill-card dev sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-yellow-400 transition-all group">
-                            <i class="fa-brands fa-python text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Python</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.python_sub">Certifié PCAP</span>
+                        <div class="skill-card dev sys tools reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-yellow-400 transition-all group">
+                            <i class="fa-brands fa-python text-2xl sm:text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Python</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.python_sub">Certifié PCAP</span>
                         </div>
 
                         <!-- EASM & Attack Surface -->
-                        <div class="skill-card sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
-                            <i class="fa-solid fa-radar text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Smart EASM</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.easm_sub">Gestion Surface d'Attaque</span>
+                        <div class="skill-card sys tools reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
+                            <i class="fa-solid fa-radar text-2xl sm:text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Smart EASM</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.easm_sub">Gestion Surface d'Attaque</span>
                         </div>
 
                         <!-- OSINT Tooling -->
-                        <div class="skill-card sys tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
-                            <i class="fa-solid fa-eye text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">OSINT Tools</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.osint_sub">Subfinder, VT, Netlas</span>
+                        <div class="skill-card sys tools reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
+                            <i class="fa-solid fa-eye text-2xl sm:text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">OSINT Tools</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.osint_sub">Subfinder, VT, Netlas</span>
                         </div>
 
                         <!-- Bash Scripting -->
-                        <div class="skill-card sys dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-green-400 transition-all group">
-                            <i class="fa-solid fa-terminal text-3xl text-green-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Bash Scripting</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.bash_sub">Automatisation Système</span>
+                        <div class="skill-card sys dev reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-green-400 transition-all group">
+                            <i class="fa-solid fa-terminal text-2xl sm:text-3xl text-green-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Bash Scripting</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.bash_sub">Automatisation Système</span>
                         </div>
 
                         <!-- C Language -->
-                        <div class="skill-card dev sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
-                            <i class="fa-solid fa-c text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">C Language</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.c_sub">Systèmes Bas Niveau</span>
+                        <div class="skill-card dev sys reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#00f0ff] transition-all group">
+                            <i class="fa-solid fa-c text-2xl sm:text-3xl text-[#00f0ff] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">C Language</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.c_sub">Systèmes Bas Niveau</span>
                         </div>
 
                         <!-- Java -->
-                        <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-orange-500 transition-all group">
-                            <i class="fa-brands fa-java text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Java</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.java_sub">POO & Spring Boot</span>
+                        <div class="skill-card dev reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-orange-500 transition-all group">
+                            <i class="fa-brands fa-java text-2xl sm:text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Java</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.java_sub">POO & Spring Boot</span>
                         </div>
 
                         <!-- Docker -->
-                        <div class="skill-card tools sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-blue-400 transition-all group">
-                            <i class="fa-brands fa-docker text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Docker</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.docker_sub">Conteneurs</span>
+                        <div class="skill-card tools sys reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-blue-400 transition-all group">
+                            <i class="fa-brands fa-docker text-2xl sm:text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Docker</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.docker_sub">Conteneurs</span>
                         </div>
 
                         <!-- Node.js & Express -->
-                        <div class="skill-card dev tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-500 transition-all group">
-                            <i class="fa-brands fa-node text-3xl text-emerald-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Node.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.node_sub">APIs Express / REST</span>
+                        <div class="skill-card dev tools reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-500 transition-all group">
+                            <i class="fa-brands fa-node text-2xl sm:text-3xl text-emerald-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Node.js</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.node_sub">APIs Express / REST</span>
                         </div>
 
                         <!-- Angular -->
-                        <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-600 transition-all group">
-                            <i class="fa-brands fa-angular text-3xl text-red-600 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Angular</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.angular_sub">TypeScript SPA</span>
+                        <div class="skill-card dev reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-red-600 transition-all group">
+                            <i class="fa-brands fa-angular text-2xl sm:text-3xl text-red-600 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Angular</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.angular_sub">TypeScript SPA</span>
                         </div>
 
                         <!-- Vue.js -->
-                        <div class="skill-card dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-400 transition-all group">
-                            <i class="fa-brands fa-vuejs text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Vue.js</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.vue_sub">UI Web Réactive</span>
+                        <div class="skill-card dev reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-emerald-400 transition-all group">
+                            <i class="fa-brands fa-vuejs text-2xl sm:text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Vue.js</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.vue_sub">UI Web Réactive</span>
                         </div>
 
                         <!-- SQL & Databases -->
-                        <div class="skill-card tools reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-sky-400 transition-all group">
-                            <i class="fa-solid fa-database text-3xl text-sky-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Databases</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.db_sub">MySQL, Postgres, Mongo</span>
+                        <div class="skill-card tools reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-sky-400 transition-all group">
+                            <i class="fa-solid fa-database text-2xl sm:text-3xl text-sky-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Databases</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.db_sub">MySQL, Postgres, Mongo</span>
                         </div>
 
                         <!-- AI / OCR (NumPy) -->
-                        <div class="skill-card tools dev reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-purple-400 transition-all group">
-                            <i class="fa-solid fa-brain text-3xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">AI / OCR</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.ai_sub">NumPy & Extraction Doc</span>
+                        <div class="skill-card tools dev reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-purple-400 transition-all group">
+                            <i class="fa-solid fa-brain text-2xl sm:text-3xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">AI / OCR</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.ai_sub">NumPy & Extraction Doc</span>
                         </div>
 
                         <!-- Security Hardening -->
-                        <div class="skill-card sys reveal-card p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
-                            <i class="fa-solid fa-shield-halved text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
-                            <h4 class="text-sm font-bold text-white">Security Hardening</h4>
-                            <span class="text-[10px] font-mono text-gray-400" data-i18n="skills.sec_sub">SELinux, SSH & Audits</span>
+                        <div class="skill-card sys reveal-card p-3 sm:p-4 rounded-xl bg-[#0f172a] border border-[#1e293b] text-center hover:border-[#10b981] transition-all group">
+                            <i class="fa-solid fa-shield-halved text-2xl sm:text-3xl text-[#10b981] mb-2 group-hover:scale-110 transition-transform"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-white">Security Hardening</h4>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-gray-400" data-i18n="skills.sec_sub">SELinux, SSH & Audits</span>
                         </div>
 
                     </div>
@@ -2893,61 +2978,61 @@
         </section>
 
         <!-- 06. CONTACT SECTION -->
-        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#030712]/60">
-            <div class="max-w-4xl mx-auto space-y-10 text-center">
+        <section id="contact" class="py-16 sm:py-20 px-3.5 sm:px-6 lg:px-8 border-t border-[#1e293b]/50 bg-[#030712]/60">
+            <div class="max-w-4xl mx-auto space-y-8 sm:space-y-10 text-center">
                 
-                <div class="space-y-3 reveal-card">
+                <div class="space-y-2.5 sm:space-y-3 reveal-card">
                     <span class="font-mono text-xs text-[#00f0ff] tracking-wider uppercase font-bold" data-i18n="contact.tag">06. // Communication & Prise de Contact</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="contact.title">Initier une Proposition ou un Échange</h2>
-                    <p class="text-gray-300 text-base max-w-xl mx-auto" data-i18n="contact.desc">
+                    <h2 class="text-2xl xs:text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="contact.title">Initier une Proposition ou un Échange</h2>
+                    <p class="text-gray-300 text-xs sm:text-base max-w-xl mx-auto leading-relaxed" data-i18n="contact.desc">
                         Disponible immédiatement pour des opportunités en Cybersécurité, Administration Linux RHEL, DevSecOps ou Développement Python.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 font-mono text-sm">
-                    <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#00f0ff] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
-                        <div class="flex flex-col items-center gap-2">
-                            <i class="fa-solid fa-envelope text-3xl text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#00f0ff]" data-i18n="contact.email_title">Email Direct</span>
-                            <span class="text-xs text-gray-300">wisoghost@gmail.com</span>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 pt-2 sm:pt-4 font-mono text-sm">
+                    <div class="p-4 sm:p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#00f0ff] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
+                        <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                            <i class="fa-solid fa-envelope text-2xl sm:text-3xl text-[#00f0ff] group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-white group-hover:text-[#00f0ff] text-xs sm:text-sm" data-i18n="contact.email_title">Email Direct</span>
+                            <span class="text-xs text-gray-300 truncate max-w-[240px] xs:max-w-none">wisoghost@gmail.com</span>
                         </div>
-                        <div class="flex items-center gap-2 pt-2">
-                            <a href="mailto:wisoghost@gmail.com?subject=Prise%20de%20contact%20professionnelle%20-%20Wassim%20Bannour" class="px-3 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-paper-plane mr-1"></i> <span data-i18n="contact.email_btn">Envoyer</span>
+                        <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
+                            <a href="mailto:wisoghost@gmail.com?subject=Prise%20de%20contact%20professionnelle%20-%20Wassim%20Bannour" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                                <i class="fa-solid fa-paper-plane mr-1.5"></i> <span data-i18n="contact.email_btn">Envoyer</span>
                             </a>
-                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.email_copy" title="Copier l'email">
+                            <button onclick="window.copyToClipboard('wisoghost@gmail.com', 'Email (wisoghost@gmail.com)')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.email_copy" title="Copier l'email">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
                     </div>
 
-                    <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
-                        <div class="flex flex-col items-center gap-2">
-                            <i class="fa-brands fa-linkedin text-3xl text-[#38bdf8] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#38bdf8]" data-i18n="contact.linkedin_title">Profil LinkedIn</span>
+                    <div class="p-4 sm:p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#38bdf8] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
+                        <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                            <i class="fa-brands fa-linkedin text-2xl sm:text-3xl text-[#38bdf8] group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-white group-hover:text-[#38bdf8] text-xs sm:text-sm" data-i18n="contact.linkedin_title">Profil LinkedIn</span>
                             <span class="text-xs text-gray-300">Wassim Bannour</span>
                         </div>
-                        <div class="flex items-center gap-2 pt-2">
-                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> <span data-i18n="contact.linkedin_btn">Ouvrir</span>
+                        <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
+                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> <span data-i18n="contact.linkedin_btn">Ouvrir</span>
                             </a>
-                            <button onclick="window.copyToClipboard('https://www.linkedin.com/in/wassim-bannour-513448317/', 'Lien LinkedIn')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.linkedin_copy" title="Copier le lien LinkedIn">
+                            <button onclick="window.copyToClipboard('https://www.linkedin.com/in/wassim-bannour-513448317/', 'Lien LinkedIn')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.linkedin_copy" title="Copier le lien LinkedIn">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
                     </div>
 
-                    <div class="p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
-                        <div class="flex flex-col items-center gap-2">
-                            <i class="fa-solid fa-phone text-3xl text-[#10b981] group-hover:scale-110 transition-transform"></i>
-                            <span class="font-bold text-white group-hover:text-[#10b981]" data-i18n="contact.phone_title">Téléphone Mobile</span>
+                    <div class="p-4 sm:p-6 rounded-2xl bg-[#0f172a] border border-[#1e293b] hover:border-[#10b981] transition-all flex flex-col items-center justify-between gap-3 group shadow-lg reveal-card">
+                        <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                            <i class="fa-solid fa-phone text-2xl sm:text-3xl text-[#10b981] group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-white group-hover:text-[#10b981] text-xs sm:text-sm" data-i18n="contact.phone_title">Téléphone Mobile</span>
                             <span class="text-xs text-gray-300">+216 94101910</span>
                         </div>
-                        <div class="flex items-center gap-2 pt-2">
-                            <a href="tel:+21694101910" class="px-3 py-1.5 rounded-lg bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black font-bold text-xs transition-all">
-                                <i class="fa-solid fa-phone mr-1"></i> <span data-i18n="contact.phone_btn">Appeler</span>
+                        <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
+                            <a href="tel:+21694101910" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                                <i class="fa-solid fa-phone mr-1.5"></i> <span data-i18n="contact.phone_btn">Appeler</span>
                             </a>
-                            <button onclick="window.copyToClipboard('+21694101910', 'Téléphone (+216 94101910)')" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.phone_copy" title="Copier le numéro">
+                            <button onclick="window.copyToClipboard('+21694101910', 'Téléphone (+216 94101910)')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.phone_copy" title="Copier le numéro">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
@@ -2955,15 +3040,15 @@
                 </div>
 
                 <!-- Recruiter Quick Summary Banner -->
-                <div class="p-6 rounded-2xl bg-gradient-to-r from-[#00f0ff]/10 via-[#38bdf8]/10 to-[#10b981]/10 border border-[#00f0ff]/30 text-center font-mono text-xs space-y-3 reveal-card">
-                    <p class="text-white text-sm font-bold" data-i18n="contact.banner_text">
+                <div class="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-[#00f0ff]/10 via-[#38bdf8]/10 to-[#10b981]/10 border border-[#00f0ff]/30 text-center font-mono text-xs space-y-3 reveal-card">
+                    <p class="text-white text-xs sm:text-sm font-bold leading-relaxed" data-i18n="contact.banner_text">
                         ⚡ Recruteurs & Responsables Techniques : Téléchargez le dossier complet en 1 clic
                     </p>
-                    <div class="flex flex-wrap items-center justify-center gap-3">
-                        <button onclick="window.openHireMeModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] transition-all">
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3">
+                        <button onclick="window.openHireMeModal()" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold text-xs hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] active:scale-98 transition-all flex items-center justify-center">
                             <i class="fa-solid fa-bolt mr-1.5"></i> <span data-i18n="contact.btn_fasttrack">RECRUITER FAST-TRACK (60s)</span>
                         </button>
-                        <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="px-5 py-2.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold transition-all shadow-[0_0_12px_rgba(16,185,129,0.25)]">
+                        <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold text-xs active:scale-98 transition-all shadow-[0_0_12px_rgba(16,185,129,0.25)] flex items-center justify-center">
                             <i class="fa-solid fa-file-pdf mr-1.5"></i> <span data-i18n="contact.btn_cv_pdf">TÉLÉCHARGER LE CV (PDF)</span>
                         </a>
                     </div>
@@ -2975,8 +3060,8 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-[#1e293b] py-8 px-4 font-mono text-xs text-center text-gray-500">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer class="border-t border-[#1e293b] py-6 sm:py-8 px-4 font-mono text-xs text-center text-gray-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <p data-i18n="footer.copy">© 2026 Wassim Bannour. Systems Security & Linux Engineering.</p>
             <p class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
@@ -2986,85 +3071,85 @@
     </footer>
 
     <!-- AI TWIN FLOATING CHAT WIDGET -->
-    <div id="aiChatModal" class="fixed bottom-6 right-6 z-50 transition-all duration-300 transform translate-y-full opacity-0 pointer-events-none max-w-md w-[calc(100vw-3rem)]">
-        <div class="cyber-card rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/60 shadow-[0_0_35px_rgba(0,240,255,0.35)] flex flex-col h-[560px] overflow-hidden backdrop-blur-2xl relative">
+    <div id="aiChatModal" class="fixed bottom-2 right-2 left-2 sm:bottom-6 sm:right-6 sm:left-auto z-50 transition-all duration-300 transform translate-y-full opacity-0 pointer-events-none max-w-md w-auto sm:w-[420px]">
+        <div class="cyber-card rounded-2xl sm:rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/60 shadow-[0_0_35px_rgba(0,240,255,0.35)] flex flex-col h-[82vh] sm:h-[560px] max-h-[580px] overflow-hidden backdrop-blur-2xl relative">
             
             <!-- Chat Header -->
-            <div class="px-4 py-3.5 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
+            <div class="px-3.5 sm:px-4 py-3 sm:py-3.5 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
+                <div class="flex items-center gap-2 sm:gap-2.5">
                     <div class="relative">
-                        <div class="w-9 h-9 rounded-xl overflow-hidden border-2 border-[#00f0ff] flex items-center justify-center shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border-2 border-[#00f0ff] flex items-center justify-center shadow-[0_0_10px_rgba(0,240,255,0.4)] shrink-0">
                             <img src="1000015101.jpg" alt="Wassim AI Twin" class="w-full h-full object-cover object-top">
                         </div>
                         <span id="headerStatusDot" class="w-2.5 h-2.5 rounded-full bg-[#10b981] border-2 border-[#070b14] absolute -top-1 -right-1"></span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-sm text-white flex items-center gap-1.5 leading-tight">
+                        <h4 class="font-bold text-xs sm:text-sm text-white flex items-center gap-1.5 leading-tight">
                             <span data-i18n="ai.title">Wassim's AI Twin</span>
                             <span id="backendModeBadge" class="text-[9px] px-1.5 py-0.2 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono font-bold">CYBER-AI</span>
                         </h4>
-                        <span id="backendStatusSubtext" class="text-[10px] font-mono text-gray-400 flex items-center gap-1">
+                        <span id="backendStatusSubtext" class="text-[9px] sm:text-[10px] font-mono text-gray-400 flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] inline-block"></span>
                             <span data-i18n="ai.engine_status">Engine: Ready (Autonomous / Worker)</span>
                         </span>
                     </div>
                 </div>
                 
-                <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" aria-label="Close Chat">
-                    <i class="fa-solid fa-xmark text-base"></i>
+                <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" aria-label="Close Chat">
+                    <i class="fa-solid fa-xmark text-lg sm:text-base"></i>
                 </button>
             </div>
 
             <!-- Chat Message Stream -->
-            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 font-sans text-sm">
-                <div class="chat-bubble assistant flex items-start gap-2.5 max-w-[90%]">
-                    <div class="w-8 h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md">
+            <div id="chatMessages" class="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3 font-sans text-xs sm:text-sm">
+                <div class="chat-bubble assistant flex items-start gap-2 sm:gap-2.5 max-w-[92%] sm:max-w-[90%]">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md">
                         <img src="1000015101.jpg" alt="Wassim" class="w-full h-full object-cover object-top">
                     </div>
-                    <div data-i18n-html="ai.welcome" class="p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] leading-relaxed shadow-sm">
+                    <div data-i18n-html="ai.welcome" class="p-3 sm:p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] leading-relaxed shadow-sm text-xs sm:text-sm">
                         Hello! I am Wassim's AI Twin. Ask me about his <strong>RHCSA & PCAP certifications</strong>, his <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his fullstack engineering background!
                     </div>
                 </div>
             </div>
 
-            <!-- Pre-built Prompt Pills -->
-            <div class="px-4 py-2 bg-[#030712] border-t border-[#1e293b] overflow-x-auto flex gap-2 no-scrollbar text-xs font-mono">
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black transition-colors font-bold" data-prompt="What are Wassim's top skills & certifications?" data-i18n="ai.pill1">
+            <!-- Pre-built Prompt Pills (Horizontal Scrollable) -->
+            <div class="px-3 sm:px-4 py-2 bg-[#030712] border-t border-[#1e293b] overflow-x-auto flex gap-1.5 sm:gap-2 no-scrollbar text-[11px] sm:text-xs font-mono">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black transition-colors font-bold" data-prompt="What are Wassim's top skills & certifications?" data-i18n="ai.pill1">
                     ⚡ Top Skills & Certs
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT)." data-i18n="ai.pill2">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT)." data-i18n="ai.pill2">
                     🛡️ Talan EASM & OSINT
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold" data-prompt="Tell me about his IEEEXtreme 17.0 ranking." data-i18n="ai.pill3">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold" data-prompt="Tell me about his IEEEXtreme 17.0 ranking." data-i18n="ai.pill3">
                     🏆 IEEEXtreme #33 Rank
                 </button>
-                <button class="prompt-pill shrink-0 px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold" data-prompt="Why should we hire Wassim for a security / software role?" data-i18n="ai.pill4">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold" data-prompt="Why should we hire Wassim for a security / software role?" data-i18n="ai.pill4">
                     🚀 Why hire Wassim?
                 </button>
             </div>
 
             <!-- Chat Input Bar -->
-            <form id="chatForm" class="p-3 bg-[#070b14] border-t border-[#1e293b] flex items-center gap-2">
-                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." data-i18n-placeholder="ai.input_ph" autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-3.5 py-2.5 rounded-xl text-sm focus:outline-none font-mono">
-                <button type="submit" id="sendBtn" class="w-10 h-10 rounded-xl bg-[#00f0ff] text-black font-extrabold flex items-center justify-center hover:shadow-[0_0_15px_rgba(0,240,255,0.7)] transition-all">
-                    <i class="fa-solid fa-paper-plane text-sm"></i>
+            <form id="chatForm" class="p-2.5 sm:p-3 bg-[#070b14] border-t border-[#1e293b] flex items-center gap-2">
+                <input type="text" id="chatInput" placeholder="Ask recruiter questions..." data-i18n-placeholder="ai.input_ph" autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm focus:outline-none font-mono">
+                <button type="submit" id="sendBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#00f0ff] text-black font-extrabold flex items-center justify-center hover:shadow-[0_0_15px_rgba(0,240,255,0.7)] active:scale-95 transition-all shrink-0">
+                    <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
                 </button>
             </form>
         </div>
     </div>
 
     <!-- OFFICIAL DOCUMENT VERIFICATION MODAL / LIGHTBOX -->
-    <div id="docViewerModal" class="cyber-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-        <div class="cyber-modal-container w-full max-w-3xl rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/60 shadow-[0_0_40px_rgba(0,240,255,0.35)] overflow-hidden flex flex-col max-h-[90vh]">
+    <div id="docViewerModal" class="cyber-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xl">
+        <div class="cyber-modal-container w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/60 shadow-[0_0_40px_rgba(0,240,255,0.35)] overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh]">
             <!-- Modal Top Bar -->
-            <div class="px-5 py-4 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] flex items-center justify-center text-lg shadow-[0_0_12px_rgba(0,240,255,0.3)]">
+            <div class="px-4 py-3 sm:px-5 sm:py-4 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
+                <div class="flex items-center gap-2.5 sm:gap-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] flex items-center justify-center text-sm sm:text-lg shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0">
                         <i class="fa-solid fa-file-shield"></i>
                     </div>
                     <div>
-                        <h3 id="docModalTitle" data-i18n="doc.title_default" class="text-white font-extrabold text-base leading-tight">Attestation Officielle</h3>
-                        <p id="docModalIssuer" data-i18n="doc.issuer_default" class="text-xs font-mono text-[#38bdf8]">Organisme Émetteur</p>
+                        <h3 id="docModalTitle" data-i18n="doc.title_default" class="text-white font-extrabold text-sm sm:text-base leading-tight">Attestation Officielle</h3>
+                        <p id="docModalIssuer" data-i18n="doc.issuer_default" class="text-[10px] sm:text-xs font-mono text-[#38bdf8]">Organisme Émetteur</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
@@ -3078,27 +3163,27 @@
             </div>
 
             <!-- Modal Document Viewer Area -->
-            <div class="p-6 overflow-y-auto space-y-4 flex-1 bg-[#070b14]/70 font-mono text-xs">
-                <div class="p-3 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-300 text-xs">
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-3 sm:space-y-4 flex-1 bg-[#070b14]/70 font-mono text-xs">
+                <div class="p-2.5 sm:p-3 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-300 text-[11px] sm:text-xs">
                     <p id="docModalDesc" class="leading-relaxed"></p>
                 </div>
 
                 <!-- PDF / Preview Frame Container -->
-                <div id="docViewerFrameContainer" class="rounded-2xl border border-[#1e293b] bg-[#030712] min-h-[320px] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-                    <div id="docViewerPlaceholder" class="space-y-3 max-w-md mx-auto">
-                        <div class="w-16 h-16 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[#00f0ff] flex items-center justify-center text-3xl mx-auto shadow-[0_0_20px_rgba(0,240,255,0.25)]">
+                <div id="docViewerFrameContainer" class="rounded-2xl border border-[#1e293b] bg-[#030712] min-h-[260px] sm:min-h-[320px] flex flex-col items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                    <div id="docViewerPlaceholder" class="space-y-2.5 sm:space-y-3 max-w-md mx-auto">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[#00f0ff] flex items-center justify-center text-2xl sm:text-3xl mx-auto shadow-[0_0_20px_rgba(0,240,255,0.25)]">
                             <i class="fa-solid fa-file-pdf"></i>
                         </div>
-                        <h4 id="docViewerStatusTitle" data-i18n="doc.status_title" class="text-white font-bold text-sm">Document Officiel</h4>
-                        <p id="docViewerStatusSubtext" data-i18n-html="doc.status_subtext" class="text-gray-400 text-xs leading-relaxed">
+                        <h4 id="docViewerStatusTitle" data-i18n="doc.status_title" class="text-white font-bold text-xs sm:text-sm">Document Officiel</h4>
+                        <p id="docViewerStatusSubtext" data-i18n-html="doc.status_subtext" class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
                             Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification authentique.
                         </p>
-                        <div class="pt-2 flex flex-wrap justify-center gap-2">
-                            <a id="docDirectDownloadBtn" href="#" download class="px-4 py-2 rounded-xl bg-[#00f0ff] text-black font-bold font-mono text-xs inline-flex items-center gap-2 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all">
+                        <div class="pt-2 flex flex-col sm:flex-row justify-center gap-2">
+                            <a id="docDirectDownloadBtn" href="#" download class="px-4 py-2 rounded-xl bg-[#00f0ff] text-black font-bold font-mono text-xs inline-flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all">
                                 <i class="fa-solid fa-download"></i>
                                 <span data-i18n="doc.download">Télécharger le Document</span>
                             </a>
-                            <a id="docOpenTabBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8]/20 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                            <a id="docOpenTabBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8]/20 font-mono text-xs font-bold inline-flex items-center justify-center gap-1.5 transition-all">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 <span data-i18n="doc.fullscreen">Ouvrir Plein Écran</span>
                             </a>
@@ -3108,13 +3193,13 @@
             </div>
 
             <!-- Modal Footer -->
-            <div class="px-5 py-3.5 bg-[#070b14] border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-2">
-                <span data-i18n-html="doc.authenticity" class="text-[11px] font-mono text-gray-400">
+            <div class="px-4 py-3 sm:px-5 sm:py-3.5 bg-[#070b14] border-t border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-2">
+                <span data-i18n-html="doc.authenticity" class="text-[10px] sm:text-[11px] font-mono text-gray-400 text-center sm:text-left">
                     <i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i>
                     Authenticité garantie • Wassim Bannour
                 </span>
-                <div class="flex items-center gap-2">
-                    <a href="mailto:wisoghost@gmail.com?subject=Demande%20de%20document%20officiel%20-%20Wassim%20Bannour" class="px-3 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-[#00f0ff] hover:border-[#00f0ff] font-mono text-xs transition-all">
+                <div class="flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <a href="mailto:wisoghost@gmail.com?subject=Demande%20de%20document%20officiel%20-%20Wassim%20Bannour" class="flex-1 sm:flex-initial px-3 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-[#00f0ff] hover:border-[#00f0ff] font-mono text-xs text-center transition-all">
                         <i class="fa-solid fa-envelope mr-1 text-[#00f0ff]"></i> <span data-i18n="doc.ask_email">Demander par Email</span>
                     </a>
                     <button onclick="window.closeDocViewer()" data-i18n="doc.close" class="px-4 py-1.5 rounded-lg bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/40 hover:bg-[#00f0ff] hover:text-black font-mono text-xs font-bold transition-all">
@@ -3126,17 +3211,17 @@
     </div>
 
     <!-- RECRUITER FAST-TRACK MODAL (WHY HIRE WASSIM IN 60s) -->
-    <div id="hireMeModal" class="cyber-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-        <div class="cyber-modal-container w-full max-w-2xl rounded-3xl bg-[#0f172a] border-2 border-yellow-400/60 shadow-[0_0_40px_rgba(234,179,8,0.25)] overflow-hidden flex flex-col max-h-[90vh]">
+    <div id="hireMeModal" class="cyber-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xl">
+        <div class="cyber-modal-container w-full max-w-2xl rounded-2xl sm:rounded-3xl bg-[#0f172a] border-2 border-yellow-400/60 shadow-[0_0_40px_rgba(234,179,8,0.25)] overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh]">
             <!-- Modal Top Bar -->
-            <div class="px-6 py-4 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-yellow-500/15 border border-yellow-500/40 text-yellow-400 flex items-center justify-center text-lg shadow-[0_0_12px_rgba(234,179,8,0.3)]">
+            <div class="px-4 py-3.5 sm:px-6 sm:py-4 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
+                <div class="flex items-center gap-2.5 sm:gap-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-yellow-500/15 border border-yellow-500/40 text-yellow-400 flex items-center justify-center text-sm sm:text-lg shadow-[0_0_12px_rgba(234,179,8,0.3)] shrink-0">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <div>
-                        <h3 data-i18n="hire.title" class="text-white font-extrabold text-base leading-tight">Recruiter Fast-Track Dossier</h3>
-                        <p data-i18n="hire.subtitle" class="text-xs font-mono text-yellow-400">Why Hire Wassim Bannour in 60 Seconds</p>
+                        <h3 data-i18n="hire.title" class="text-white font-extrabold text-sm sm:text-base leading-tight">Recruiter Fast-Track Dossier</h3>
+                        <p data-i18n="hire.subtitle" class="text-[10px] sm:text-xs font-mono text-yellow-400">Why Hire Wassim Bannour in 60 Seconds</p>
                     </div>
                 </div>
                 <button onclick="window.closeHireMeModal()" class="w-8 h-8 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-white hover:border-yellow-400 flex items-center justify-center transition-all" aria-label="Close">
@@ -3145,10 +3230,10 @@
             </div>
 
             <!-- Modal Content -->
-            <div class="p-6 overflow-y-auto space-y-5 bg-[#070b14]/70 font-sans text-xs">
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 bg-[#070b14]/70 font-sans text-xs">
                 <!-- 4 Pillars of Value -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono">
-                    <div class="p-3.5 rounded-xl bg-[#030712] border border-red-500/40 space-y-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-[#030712] border border-red-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-red-400 font-bold text-xs">
                             <i class="fa-brands fa-redhat text-sm"></i>
                             <span data-i18n="hire.pillar1_title">RHCSA Certified (Linux)</span>
@@ -3158,7 +3243,7 @@
                         </p>
                     </div>
 
-                    <div class="p-3.5 rounded-xl bg-[#030712] border border-yellow-500/40 space-y-1">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-[#030712] border border-yellow-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-yellow-400 font-bold text-xs">
                             <i class="fa-brands fa-python text-sm"></i>
                             <span data-i18n="hire.pillar2_title">PCAP Certified (Python)</span>
@@ -3168,7 +3253,7 @@
                         </p>
                     </div>
 
-                    <div class="p-3.5 rounded-xl bg-[#030712] border border-[#00f0ff]/40 space-y-1">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-[#030712] border border-[#00f0ff]/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-[#00f0ff] font-bold text-xs">
                             <i class="fa-solid fa-trophy text-sm"></i>
                             <span data-i18n="hire.pillar3_title">Top 33 Worldwide (IEEE)</span>
@@ -3178,7 +3263,7 @@
                         </p>
                     </div>
 
-                    <div class="p-3.5 rounded-xl bg-[#030712] border border-emerald-500/40 space-y-1">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-[#030712] border border-emerald-500/40 space-y-1">
                         <div class="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
                             <i class="fa-solid fa-shield-virus text-sm"></i>
                             <span data-i18n="hire.pillar4_title">EASM & Threat Intel (Talan)</span>
@@ -3190,23 +3275,23 @@
                 </div>
 
                 <!-- Availability & Target Roles -->
-                <div class="p-4 rounded-xl bg-[#030712] border border-[#1e293b] space-y-2 font-mono">
-                    <div class="flex items-center justify-between text-[#10b981] font-bold text-xs">
+                <div class="p-3.5 sm:p-4 rounded-xl bg-[#030712] border border-[#1e293b] space-y-2 font-mono">
+                    <div class="flex flex-col xs:flex-row xs:items-center justify-between text-[#10b981] font-bold text-xs gap-1">
                         <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> <span data-i18n="hire.avail">Disponibilité : Immédiate // PFE & Postes Ingénieur</span></span>
                         <span class="text-gray-400 text-[10px]">Tunisie / France / Remote</span>
                     </div>
-                    <p data-i18n-html="hire.target_roles" class="text-gray-300 text-[11px]">
+                    <p data-i18n-html="hire.target_roles" class="text-gray-300 text-[11px] leading-relaxed">
                         <strong>Postes cibles :</strong> Ingénieur Cybersécurité, Administrateur Systèmes Linux / RHEL, Ingénieur DevSecOps, Développeur Python / Full Stack Sécurisé.
                     </p>
                 </div>
 
                 <!-- 1-Click Direct Action Bar -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono">
-                    <a href="mailto:wisoghost@gmail.com?subject=Proposition%20de%20recrutement%20-%20Wassim%20Bannour" class="p-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] transition-all">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono">
+                    <a href="mailto:wisoghost@gmail.com?subject=Proposition%20de%20recrutement%20-%20Wassim%20Bannour" class="p-3 sm:p-3.5 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] active:scale-98 transition-all">
                         <i class="fa-solid fa-paper-plane"></i>
                         <span data-i18n="hire.btn_email">Envoyer une Proposition (Email)</span>
                     </a>
-                    <a href="tel:+21694101910" class="p-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                    <a href="tel:+21694101910" class="p-3 sm:p-3.5 rounded-xl bg-[#0f172a] text-[#10b981] border border-[#10b981]/50 hover:bg-[#10b981]/20 font-bold flex items-center justify-center gap-2 active:scale-98 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                         <i class="fa-solid fa-phone"></i>
                         <span data-i18n="hire.btn_call">Appel Direct (+216 94101910)</span>
                     </a>
@@ -3214,11 +3299,11 @@
             </div>
 
             <!-- Modal Footer -->
-            <div class="px-6 py-3.5 bg-[#070b14] border-t border-[#1e293b] flex items-center justify-between">
-                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="text-xs font-mono text-[#00f0ff] hover:underline flex items-center gap-1 font-bold">
+            <div class="px-4 py-3 sm:px-6 sm:py-3.5 bg-[#070b14] border-t border-[#1e293b] flex items-center justify-between">
+                <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="text-[11px] sm:text-xs font-mono text-[#00f0ff] hover:underline flex items-center gap-1 font-bold">
                     <i class="fa-solid fa-file-pdf"></i> <span data-i18n="hire.cv_pdf">Télécharger le CV Complet (PDF)</span>
                 </a>
-                <button onclick="window.closeHireMeModal()" data-i18n="hire.close" class="px-4 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-white font-mono text-xs transition-all">
+                <button onclick="window.closeHireMeModal()" data-i18n="hire.close" class="px-3.5 sm:px-4 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-white font-mono text-xs transition-all">
                     Fermer
                 </button>
             </div>
@@ -3226,21 +3311,21 @@
     </div>
 
     <!-- Floating Quick Actions (Bottom Right) -->
-    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+    <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
         <!-- Floating Cyber Pipeline Quick Launcher -->
-        <a href="#pipeline" id="floatingRadarBtn" class="w-11 h-11 rounded-2xl bg-[#0f172a]/95 backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black shadow-[0_0_15px_rgba(0,240,255,0.35)] flex items-center justify-center transition-all duration-300 hover:scale-110 group" title="Jump to Security Pipeline & Radar">
-            <i class="fa-solid fa-shield-halved text-sm group-hover:scale-110 transition-transform"></i>
+        <a href="#pipeline" id="floatingRadarBtn" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#0f172a]/95 backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black shadow-[0_0_15px_rgba(0,240,255,0.35)] flex items-center justify-center transition-all duration-300 hover:scale-110 group" title="Jump to Security Pipeline & Radar">
+            <i class="fa-solid fa-shield-halved text-xs sm:text-sm group-hover:scale-110 transition-transform"></i>
         </a>
 
         <!-- Back to Top Button -->
-        <button id="backToTopBtn" class="w-11 h-11 rounded-2xl bg-[#0f172a]/90 backdrop-blur-md border border-[#1e293b] text-gray-400 hover:text-[#00f0ff] hover:border-[#00f0ff]/50 shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-105" aria-label="Back to Top">
-            <i class="fa-solid fa-arrow-up text-sm"></i>
+        <button id="backToTopBtn" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#0f172a]/90 backdrop-blur-md border border-[#1e293b] text-gray-400 hover:text-[#00f0ff] hover:border-[#00f0ff]/50 shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-105" aria-label="Back to Top">
+            <i class="fa-solid fa-arrow-up text-xs sm:text-sm"></i>
         </button>
 
         <!-- Floating Chat Trigger Button -->
-        <button id="floatingChatBtn" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#00f0ff] to-[#38bdf8] text-black font-bold flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.6)] hover:scale-110 transition-all duration-300 group" aria-label="Open AI Chat">
-            <i class="fa-solid fa-robot text-2xl group-hover:rotate-12 transition-transform"></i>
-            <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#10b981] border-2 border-[#070b14]"></span>
+        <button id="floatingChatBtn" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-[#00f0ff] to-[#38bdf8] text-black font-bold flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.6)] hover:scale-110 transition-all duration-300 group" aria-label="Open AI Chat">
+            <i class="fa-solid fa-robot text-xl sm:text-2xl group-hover:rotate-12 transition-transform"></i>
+            <span class="absolute -top-1 -right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-[#10b981] border-2 border-[#070b14]"></span>
         </button>
     </div>
 
