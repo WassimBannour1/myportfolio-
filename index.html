@@ -14,6 +14,11 @@
     <meta property="og:image" content="1000015101.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Cache Control: Ensures visitors instantly receive latest portfolio updates -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <!-- Google Fonts: Outfit (headings) & JetBrains Mono (code/HUD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1569,28 +1574,40 @@
 
                 </div>
 
-                <!-- High-Impact Key Metrics Bar with Counter Animation -->
+                <!-- High-Impact Key Metrics Bar with Counter Animation & FA Icons -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 pt-2 sm:pt-4">
-                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card">
-                        <span class="font-extrabold text-2xl sm:text-4xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-[#00f0ff]/30 text-center reveal-card hover:border-[#00f0ff] transition-all group">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[#00f0ff] flex items-center justify-center text-lg mb-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <span class="font-extrabold text-2xl sm:text-3xl text-[#00f0ff] font-mono count-target" data-count="33" data-suffix="ᵉ">33ᵉ</span>
                         <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_rank">Mondial IEEEXtreme</p>
                         <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_rank_sub">2ᵉ National en Tunisie</span>
                     </div>
 
-                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-2xl sm:text-4xl text-red-400 font-mono">RHCSA</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-red-500/30 text-center reveal-card hover:border-red-500 transition-all group">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center text-lg mb-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-redhat text-xl"></i>
+                        </div>
+                        <span class="font-extrabold text-2xl sm:text-3xl text-red-400 font-mono">RHCSA</span>
                         <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_certs">Red Hat SysAdmin</p>
                         <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_certs_sub">Noyau Linux Entreprise</span>
                     </div>
 
-                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-2xl sm:text-4xl text-yellow-400 font-mono">PCAP</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-yellow-500/30 text-center reveal-card hover:border-yellow-500 transition-all group">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 flex items-center justify-center text-lg mb-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-python text-xl"></i>
+                        </div>
+                        <span class="font-extrabold text-2xl sm:text-3xl text-yellow-400 font-mono">PCAP</span>
                         <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_stage">Python Institute</p>
                         <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_stage_sub">Algorithmes & Pipelines</span>
                     </div>
 
-                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card">
-                        <span class="font-extrabold text-2xl sm:text-4xl text-emerald-400 font-mono">EASM</span>
+                    <div class="cyber-card p-3.5 sm:p-5 rounded-2xl bg-[#0f172a] border border-emerald-500/30 text-center reveal-card hover:border-emerald-500 transition-all group">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-lg mb-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="font-extrabold text-2xl sm:text-3xl text-emerald-400 font-mono">EASM</span>
                         <p class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider mt-1" data-i18n="hero.stat_sec">Talan Tunisie</p>
                         <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono" data-i18n="hero.stat_sec_sub">Surface d'Attaque & OSINT</span>
                     </div>
@@ -1612,13 +1629,13 @@
                             </span>
                         </div>
                         <div class="flex items-center gap-2 text-gray-400 text-xs">
-                            <span class="text-[10px] hidden sm:inline" data-i18n="terminal.toggle_hint">Click to expand / collapse</span>
-                            <i id="terminalChevron" class="fa-solid fa-chevron-up text-xs text-[#00f0ff] transition-transform duration-300"></i>
+                            <span class="text-[10px] hidden sm:inline text-[#00f0ff]/80" data-i18n="terminal.toggle_hint">Click to expand / collapse</span>
+                            <i id="terminalChevron" class="fa-solid fa-chevron-down text-xs text-[#00f0ff] transition-transform duration-300"></i>
                         </div>
                     </button>
 
-                    <!-- Collapsible Drawer Container -->
-                    <div id="terminalDrawerBody" class="transition-all duration-300">
+                    <!-- Collapsible Drawer Container (Closed by Default) -->
+                    <div id="terminalDrawerBody" class="hidden transition-all duration-300">
                         <!-- Quick Command Action Chips (Horizontally Scrollable) -->
                         <div class="px-3 sm:px-4 py-2 bg-[#0a101f] border-b border-[#1e293b] flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[11px]">
                             <span class="text-gray-500 text-[10px] uppercase font-bold shrink-0" data-i18n="terminal.quickrun">Quick Run:</span>
@@ -3217,7 +3234,7 @@
         </button>
     </div>
 
-    <!-- Custom Client Script -->
-    <script src="script.js"></script>
+    <!-- Custom Client Script with Cache-Buster -->
+    <script src="script.js?v=20260921-2"></script>
 </body>
 </html>

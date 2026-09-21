@@ -919,11 +919,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const isHidden = terminalDrawerBody.classList.contains('hidden');
             if (isHidden) {
                 terminalDrawerBody.classList.remove('hidden');
-                if (terminalChevron) terminalChevron.style.transform = 'rotate(0deg)';
+                if (terminalChevron) terminalChevron.style.transform = 'rotate(180deg)';
                 playFuturisticTone(880, 0.03, 'sine', 0.03);
             } else {
                 terminalDrawerBody.classList.add('hidden');
-                if (terminalChevron) terminalChevron.style.transform = 'rotate(180deg)';
+                if (terminalChevron) terminalChevron.style.transform = 'rotate(0deg)';
                 playFuturisticTone(650, 0.03, 'sine', 0.03);
             }
         });
