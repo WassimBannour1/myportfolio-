@@ -1287,7 +1287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'bac',
             badge: { fr: 'FONDATIONS', en: 'FOUNDATIONS' },
             badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
-            date: { fr: '2018 - 2022', en: '2018 - 2022' },
+            date: { fr: '2022', en: '2022' },
             location: { fr: 'Bekalta, TN', en: 'Bekalta, TN' },
             title: { fr: 'Baccalauréat Technique (Mention Assez Bien)', en: 'Technical Baccalaureate (Honors)' },
             org: { fr: 'Lycée Secondaire Bekalta — Moyenne 13.72 / 20', en: 'Bekalta Secondary High School — GPA 13.72 / 20' },
@@ -1297,8 +1297,8 @@ document.addEventListener('DOMContentLoaded', () => {
             actionText: { fr: 'Détails Formation', en: 'Curriculum Details' },
             actionHref: '#skills',
             nodeTitle: { fr: 'Baccalauréat', en: 'Baccalaureate' },
-            nodeSub: { fr: '2018 - 2022', en: '2018 - 2022' },
-            chipLabel: { fr: '01. Bac (2018)', en: '01. Bac (2018)' }
+            nodeSub: { fr: '2022', en: '2022' },
+            chipLabel: { fr: '01. Bac (2022)', en: '01. Bac (2022)' }
         },
         {
             id: 'isimm',
@@ -1887,7 +1887,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 6. Education & Academic Background
         if (q.includes('education') || q.includes('tek-up') || q.includes('isimm') || q.includes('university') || q.includes('school') || q.includes('degree') || q.includes('bac') || q.includes('bekalta')) {
-            return `Wassim's Academic Background:\n\n1. 🎓 **TEK-UP University (2025 - Présent, Ariana)**:\n- **Diplôme National d'Ingénieur en Informatique**\n- Specialization: *Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée*.\n- Relevant Courses: Advanced Linux Admin, Cryptography, Vulnerability Analysis, Secure Coding.\n\n2. 🎓 **ISIMM (2022 - 2025, Monastir)**:\n- **Licence en Génie Logiciel**\n- Algorithms, software architecture, data structures, and database engineering.\n\n3. 🎓 **Lycée Secondaire Bekalta (2018 - 2022, Monastir)**:\n- **Baccalauréat Technique** (Mention: Assez Bien - 13.72/20).`;
+            return `Wassim's Academic Background:\n\n1. 🎓 **TEK-UP University (2025 - Présent, Ariana)**:\n- **Diplôme National d'Ingénieur en Informatique**\n- Specialization: *Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée*.\n- Relevant Courses: Advanced Linux Admin, Cryptography, Vulnerability Analysis, Secure Coding.\n\n2. 🎓 **ISIMM (2022 - 2025, Monastir)**:\n- **Licence en Génie Logiciel**\n- Algorithms, software architecture, data structures, and database engineering.\n\n3. 🎓 **Lycée Secondaire Bekalta (2022, Monastir)**:\n- **Baccalauréat Technique** (Mention: Assez Bien - 13.72/20).`;
         }
 
         // 7. Languages

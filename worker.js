@@ -77,7 +77,7 @@ export default {
 - Summary: Specializes in infrastructure security, Linux hardening, and intelligent automation (Python/Bash). Combines fullstack engineering with EASM and OSINT methodologies for proactive attack surface monitoring. Ranked 33rd worldwide in competitive programming (IEEEXtreme 17.0), applying 'Security-by-Design' practices to architect resilient systems.
 - Current Education: TEK-UP University (Diplôme National d'Ingénieur en Informatique - Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée, 2025 - Présent)
 - Previous Education: ISIMM - Institut Supérieur d'Informatique et de Mathématiques de Monastir (Licence en Génie Logiciel, 2022 - 2025)
-- High School: Lycée Secondaire Bekalta (Baccalauréat Technique 2022, Mention Assez Bien 13.72/20, 2018 - 2022)
+- High School: Lycée Secondaire Bekalta (Baccalauréat Technique 2022, Mention Assez Bien 13.72/20)
 - Location: Monastir, Tunisia
 - Languages: Français (Courant), Anglais (Professionnel / Courant), Arabe (Langue maternelle)
 - Contact: Email (wisoghost@gmail.com) | Phone (+216 94101910) | LinkedIn (https://www.linkedin.com/in/wassim-bannour-513448317/) | GitHub (https://github.com/WassimBannour1)
