@@ -940,6 +940,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Input Sanitization (Anti-XSS Defense)
+    function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+    window.escapeHTML = escapeHTML;
+
     function appendTerminalLog(type, content) {
         if (!terminalScreen) return;
         const line = document.createElement('div');
@@ -954,8 +966,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cmd) return;
 
         const isFr = CURRENT_LANG === 'fr';
+        const safeCmd = escapeHTML(rawCmd);
 
-        appendTerminalLog('cmd', `<span class="text-[#10b981]">wassim@tekup-sec</span>:<span class="text-[#38bdf8]">~</span>$ ${rawCmd}`);
+        appendTerminalLog('cmd', `<span class="text-[#10b981]">wassim@tekup-sec</span>:<span class="text-[#38bdf8]">~</span>$ ${safeCmd}`);
         playFuturisticTone(950, 0.03, 'square', 0.02);
 
         if (cmd === 'clear') {
@@ -1785,10 +1798,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Helper: Markdown to HTML Formatter
+    // Helper: Markdown to HTML Formatter (Sanitized)
     function formatMarkdown(text) {
         if (!text) return '';
-        return text
+        const safeText = escapeHTML(text);
+        return safeText
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/40 text-[#00f0ff] font-mono text-xs">$1</code>')
