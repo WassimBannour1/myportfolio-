@@ -216,24 +216,38 @@ export default {
 
             // 4. Cloudflare Workers AI (Native on Cloudflare GPUs - 100% Free, NO API Key needed!)
             if (env.AI) {
-                const aiResult = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        ...userMessages.map(m => ({
-                            role: m.role === 'user' ? 'user' : 'assistant',
-                            content: m.content
-                        }))
-                    ]
-                });
+                const candidateModels = [
+                    '@cf/meta/llama-3.1-8b-instruct',
+                    '@cf/meta/llama-3.2-3b-instruct',
+                    '@cf/meta/llama-3.2-1b-instruct',
+                    '@cf/meta/llama-3-8b-instruct',
+                    '@cf/mistral/mistral-7b-instruct-v0.1'
+                ];
 
-                if (aiResult && aiResult.response) {
-                    return new Response(
-                        JSON.stringify({ 
-                            reply: aiResult.response,
-                            provider: 'Cloudflare Workers AI (Llama 3.1 8B - 100% Free)' 
-                        }),
-                        { status: 200, headers: corsHeaders }
-                    );
+                for (const model of candidateModels) {
+                    try {
+                        const aiResult = await env.AI.run(model, {
+                            messages: [
+                                { role: 'system', content: systemPrompt },
+                                ...userMessages.map(m => ({
+                                    role: m.role === 'user' ? 'user' : 'assistant',
+                                    content: m.content
+                                }))
+                            ]
+                        });
+
+                        if (aiResult && (aiResult.response || aiResult.reply)) {
+                            return new Response(
+                                JSON.stringify({ 
+                                    reply: aiResult.response || aiResult.reply,
+                                    provider: `Cloudflare Workers AI (${model})` 
+                                }),
+                                { status: 200, headers: corsHeaders }
+                            );
+                        }
+                    } catch (modelErr) {
+                        console.warn(`Model ${model} failed, trying next:`, modelErr.message);
+                    }
                 }
             }
 
