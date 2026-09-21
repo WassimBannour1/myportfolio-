@@ -13,8 +13,8 @@
  * 9. AI Twin Chat Client with Cloudflare Worker Support & Deep Knowledge Fallback
  */
 
-// Cloudflare Worker URL stored in localStorage or empty initially
-let CLOUDFLARE_WORKER_URL = localStorage.getItem('WB_WORKER_URL') || '';
+// Cloudflare Worker URL stored in localStorage or default to production worker
+let CLOUDFLARE_WORKER_URL = localStorage.getItem('WB_WORKER_URL') || 'https://wassim-portfolio-backend.wassbennour123.workers.dev';
 
 // Audio SFX state
 let SFX_ENABLED = localStorage.getItem('WB_SFX_ENABLED') !== 'false';
