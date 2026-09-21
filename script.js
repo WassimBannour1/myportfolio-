@@ -276,6 +276,7 @@ const I18N_DATA = {
         'footer.copy': '© 2026 Wassim Bannour. Sécurité des Systèmes & Ingénierie Linux.',
         'footer.status': 'Statut : Systèmes Opérationnels & Disponible Immédiatement',
         'terminal.title': 'wassim@tekup-sec: ~ (Console Cybersécurité Interactive)',
+        'terminal.toggle_hint': 'Cliquer pour ouvrir / fermer',
         'terminal.subtext': 'Tapez une commande ou cliquez sur un bouton ci-dessous',
         'terminal.quickrun': 'Exécution Rapide :',
         'terminal.clear_btn': 'effacer',
@@ -532,6 +533,7 @@ const I18N_DATA = {
         'footer.copy': '© 2026 Wassim Bannour. Systems Security & Linux Engineering.',
         'footer.status': 'Status: Systems Operational & Ready for Hire',
         'terminal.title': 'wassim@tekup-sec: ~ (Interactive Live Cyber Console)',
+        'terminal.toggle_hint': 'Click to expand / collapse',
         'terminal.subtext': 'Type a command or click a chip below',
         'terminal.quickrun': 'Quick Run:',
         'terminal.clear_btn': 'clear',
@@ -902,12 +904,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -------------------------------------------------------------
-    // 1.2 INTERACTIVE LIVE CYBER TERMINAL CLI ENGINE
+    // 1.2 INTERACTIVE LIVE CYBER TERMINAL CLI ENGINE & DRAWER
     // -------------------------------------------------------------
     const terminalForm = document.getElementById('terminalForm');
     const terminalInput = document.getElementById('terminalInput');
     const terminalScreen = document.getElementById('terminalScreen');
     const terminalChips = document.querySelectorAll('.terminal-chip');
+    const terminalToggleBtn = document.getElementById('terminalToggleBtn');
+    const terminalDrawerBody = document.getElementById('terminalDrawerBody');
+    const terminalChevron = document.getElementById('terminalChevron');
+
+    if (terminalToggleBtn && terminalDrawerBody) {
+        terminalToggleBtn.addEventListener('click', () => {
+            const isHidden = terminalDrawerBody.classList.contains('hidden');
+            if (isHidden) {
+                terminalDrawerBody.classList.remove('hidden');
+                if (terminalChevron) terminalChevron.style.transform = 'rotate(0deg)';
+                playFuturisticTone(880, 0.03, 'sine', 0.03);
+            } else {
+                terminalDrawerBody.classList.add('hidden');
+                if (terminalChevron) terminalChevron.style.transform = 'rotate(180deg)';
+                playFuturisticTone(650, 0.03, 'sine', 0.03);
+            }
+        });
+    }
 
     function appendTerminalLog(type, content) {
         if (!terminalScreen) return;
