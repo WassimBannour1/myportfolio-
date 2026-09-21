@@ -1344,18 +1344,18 @@
             <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
                 
                 <!-- Unified Quick-Switchers Capsule (FR/EN + Theme + SFX) -->
-                <div class="header-settings-pill hidden sm:flex items-center bg-[#0b1120]/85 border border-[#1e293b] rounded-full p-1 shadow-inner">
+                <div class="header-settings-pill hidden sm:flex items-center bg-[#0b1120]/90 border border-[#1e293b] rounded-full p-1 shadow-inner backdrop-blur-md">
                     <!-- Language Toggle -->
-                    <button id="langToggleBtn" class="flex items-center gap-1 px-2.5 py-1 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-white/5 font-mono text-xs font-bold transition-all focus:outline-none" title="Changer de langue / Switch Language">
-                        <i class="fa-solid fa-globe text-[11px] text-[#00f0ff]"></i>
-                        <span id="langBtnText">FR</span>
+                    <button id="langToggleBtn" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 font-mono text-xs font-bold transition-all focus:outline-none cursor-pointer" title="Changer de langue / Switch Language">
+                        <i class="fa-solid fa-globe text-xs text-[#00f0ff]"></i>
+                        <span id="langBtnText" class="tracking-wider">FR</span>
                     </button>
                     
                     <!-- Divider -->
                     <div class="h-3.5 w-px bg-[#1e293b]"></div>
                     
                     <!-- Theme Toggle -->
-                    <button id="themeToggleBtn" class="flex items-center justify-center w-7 h-7 rounded-full text-slate-300 hover:text-yellow-400 hover:bg-white/5 transition-all focus:outline-none" title="Mode Sombre / Clair">
+                    <button id="themeToggleBtn" class="flex items-center justify-center w-7 h-7 rounded-full text-slate-300 hover:text-yellow-400 hover:bg-yellow-400/10 transition-all focus:outline-none cursor-pointer" title="Mode Sombre / Clair">
                         <i id="themeIcon" class="fa-solid fa-moon text-xs text-yellow-400"></i>
                     </button>
                     
@@ -1363,26 +1363,22 @@
                     <div class="h-3.5 w-px bg-[#1e293b] hidden md:block"></div>
                     
                     <!-- SFX Toggle -->
-                    <button id="sfxToggleBtn" class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-slate-400 hover:text-[#00f0ff] hover:bg-white/5 font-mono text-[11px] transition-all focus:outline-none" title="Effets Sonores Cyber SFX">
-                        <span class="inline-flex items-center gap-0.5 text-[#00f0ff]">
-                            <span class="sound-wave-bar"></span>
-                            <span class="sound-wave-bar"></span>
-                            <span class="sound-wave-bar"></span>
-                        </span>
-                        <span id="sfxBtnText" class="font-bold">SFX</span>
+                    <button id="sfxToggleBtn" class="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full text-slate-300 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 font-mono text-[11px] font-bold transition-all focus:outline-none cursor-pointer" title="Effets Sonores Cyber SFX">
+                        <i id="sfxIcon" class="fa-solid fa-volume-high text-xs text-[#00f0ff]"></i>
+                        <span id="sfxBtnText">SFX: ON</span>
                     </button>
                 </div>
 
                 <!-- Recruiter Fast-Track High-Impact CTA -->
-                <button onclick="window.openHireMeModal()" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#00f0ff]/15 via-[#38bdf8]/15 to-[#a855f7]/15 text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff] hover:text-black font-mono text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)] hover:shadow-[0_0_22px_rgba(0,240,255,0.5)] cursor-pointer shrink-0" title="Executive Summary & Why Hire Wassim in 60s">
-                    <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
+                <button onclick="window.openHireMeModal()" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-[#00f0ff]/20 via-[#38bdf8]/20 to-[#a855f7]/20 text-[#00f0ff] border border-[#00f0ff]/60 hover:bg-[#00f0ff] hover:text-black font-mono text-[11px] sm:text-xs font-extrabold transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] active:scale-95 cursor-pointer shrink-0" title="Executive Summary & Why Hire Wassim in 60s">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-xs animate-pulse"></i>
                     <span data-i18n="nav.fasttrack">FAST-TRACK</span>
                 </button>
 
                 <!-- AI Twin Assistant CTA -->
-                <button id="openAiChatBtn" class="cyber-btn hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0b1120] text-slate-200 border border-[#1e293b] hover:border-[#00f0ff]/60 hover:text-[#00f0ff] font-mono text-xs font-semibold transition-all shadow-sm group cursor-pointer" title="Lancer l'assistant IA de Wassim">
-                    <span class="w-2 h-2 rounded-full bg-[#10b981] group-hover:animate-ping"></span>
-                    <i class="fa-solid fa-robot text-xs text-[#00f0ff]"></i>
+                <button id="openAiChatBtn" class="cyber-btn hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1120] text-slate-200 border border-[#00f0ff]/40 hover:border-[#00f0ff] hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 font-mono text-xs font-bold transition-all shadow-[0_0_12px_rgba(0,240,255,0.15)] group cursor-pointer" title="Lancer l'assistant IA de Wassim">
+                    <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+                    <i class="fa-solid fa-robot text-xs text-[#00f0ff] group-hover:rotate-12 transition-transform"></i>
                     <span data-i18n="nav.aichat">AI TWIN</span>
                 </button>
 
@@ -1397,14 +1393,14 @@
         <div id="mobileMenu" class="hidden xl:hidden bg-[#070b14]/98 border-b border-[#1e293b] px-4 sm:px-6 py-5 sm:py-6 font-mono text-sm space-y-4 backdrop-blur-2xl">
             <!-- Mobile Quick Settings -->
             <div class="grid grid-cols-3 gap-2 pb-3 border-b border-[#1e293b]">
-                <button id="mobileLangBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+                <button id="mobileLangBtn" class="min-h-[44px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
                     <i class="fa-solid fa-globe text-xs"></i> <span id="mobileLangText">FR</span>
                 </button>
-                <button id="mobileThemeBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+                <button id="mobileThemeBtn" class="min-h-[44px] px-2 py-2 rounded-xl bg-[#0f172a] text-yellow-400 border border-yellow-400/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
                     <i id="mobileThemeIcon" class="fa-solid fa-moon text-xs"></i> <span>Theme</span>
                 </button>
-                <button id="mobileSfxBtn" class="min-h-[42px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1 shadow-sm active:scale-95 transition-transform">
-                    SFX: ON
+                <button id="mobileSfxBtn" class="min-h-[44px] px-2 py-2 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/40 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+                    <i id="mobileSfxIcon" class="fa-solid fa-volume-high text-xs"></i> <span id="mobileSfxText">SFX: ON</span>
                 </button>
             </div>
             

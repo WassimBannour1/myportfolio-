@@ -728,8 +728,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileSfxBtn = document.getElementById('mobileSfxBtn');
 
     function updateSfxUI() {
+        const sfxIcon = document.getElementById('sfxIcon');
+        const mobileSfxIcon = document.getElementById('mobileSfxIcon');
+        const mobileSfxText = document.getElementById('mobileSfxText');
+
         if (sfxBtnText) sfxBtnText.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
-        if (mobileSfxBtn) mobileSfxBtn.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
+        if (mobileSfxText) mobileSfxText.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
+
+        if (sfxIcon) {
+            sfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-[#00f0ff]' : 'fa-solid fa-volume-xmark text-xs text-gray-500';
+        }
+        if (mobileSfxIcon) {
+            mobileSfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-[#00f0ff]' : 'fa-solid fa-volume-xmark text-xs text-gray-400';
+        }
         if (sfxToggleBtn) {
             if (SFX_ENABLED) sfxToggleBtn.classList.remove('sfx-muted');
             else sfxToggleBtn.classList.add('sfx-muted');
