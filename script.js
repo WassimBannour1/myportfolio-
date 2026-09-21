@@ -1763,7 +1763,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'loading') colorClass = 'text-[#00f0ff] border-[#00f0ff]/40';
 
         workerTestResult.className = `text-[11px] p-2 rounded bg-[#111827] border ${colorClass}`;
-        workerTestResult.innerHTML = msg;
+        workerTestResult.textContent = msg;
     }
 
     function updateBackendStatusUI(mode, subtext) {
@@ -1798,7 +1798,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Helper: Markdown to HTML Formatter (Sanitized)
+    // Helper: Markdown to HTML Formatter (Sanitized & Safe Links)
     function formatMarkdown(text) {
         if (!text) return '';
         const safeText = escapeHTML(text);
@@ -1806,6 +1806,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/40 text-[#00f0ff] font-mono text-xs">$1</code>')
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#00f0ff] underline hover:text-[#38bdf8] font-semibold">$1 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>')
             .replace(/^-\s+(.*)$/gm, '<li class="ml-4 list-disc">$1</li>')
             .replace(/\n\n/g, '<br><br>')
             .replace(/\n/g, '<br>');
@@ -2047,10 +2048,15 @@ window.showCyberToast = function(message, type = 'success') {
     let iconHtml = '<i class="fa-solid fa-circle-check text-[#10b981] text-sm"></i>';
     if (type === 'info') iconHtml = '<i class="fa-solid fa-circle-info text-[#00f0ff] text-sm"></i>';
     if (type === 'warn') iconHtml = '<i class="fa-solid fa-triangle-exclamation text-yellow-400 text-sm"></i>';
+    if (type === 'error') iconHtml = '<i class="fa-solid fa-circle-xmark text-red-400 text-sm"></i>';
+
+    const safeContent = typeof message === 'string' && (message.includes('<strong') || message.includes('<span') || message.includes('<i '))
+        ? message
+        : (typeof escapeHTML === 'function' ? escapeHTML(message) : message);
 
     toast.innerHTML = `
         ${iconHtml}
-        <span class="flex-1 leading-tight">${message}</span>
+        <span class="flex-1 leading-tight">${safeContent}</span>
         <button class="text-gray-400 hover:text-white text-xs ml-1 focus:outline-none" onclick="this.parentElement.remove()">
             <i class="fa-solid fa-xmark"></i>
         </button>

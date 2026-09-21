@@ -19,10 +19,11 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <!-- Security Hardening Headers -->
+    <!-- Defense-in-Depth Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 
     <!-- Google Fonts: Outfit (headings) & JetBrains Mono (code/HUD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3236,6 +3237,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20260921-3"></script>
+    <script src="script.js?v=20260921-sec"></script>
 </body>
 </html>
