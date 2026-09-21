@@ -3010,47 +3010,9 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-1">
-                    <button id="chatSettingsToggleBtn" class="text-gray-400 hover:text-[#00f0ff] p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" title="Backend & Worker Settings">
-                        <i class="fa-solid fa-gear text-sm"></i>
-                    </button>
-                    <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" aria-label="Close Chat">
-                        <i class="fa-solid fa-xmark text-base"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Backend Settings Drawer (Collapsible) -->
-            <div id="chatSettingsPanel" class="hidden bg-[#030712]/98 border-b border-[#1e293b] p-4 text-xs font-mono space-y-3 backdrop-blur-xl z-20">
-                <div class="flex items-center justify-between pb-1 border-b border-[#1e293b]">
-                    <span class="text-[#00f0ff] font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-server"></i> Cloudflare Worker Backend Config
-                    </span>
-                    <button id="closeSettingsPanelBtn" class="text-gray-400 hover:text-white text-xs">
-                        <i class="fa-solid fa-times"></i>
-                    </button>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-gray-300 block text-[11px]">Cloudflare Worker URL:</label>
-                    <input type="text" id="workerUrlInput" placeholder="https://wassim-portfolio-backend.YOUR-SUBDOMAIN.workers.dev" class="w-full bg-[#0f172a] border border-[#1e293b] focus:border-[#00f0ff] text-white px-2.5 py-1.5 rounded text-xs focus:outline-none">
-                </div>
-
-                <div class="flex items-center gap-2 pt-1">
-                    <button id="saveWorkerUrlBtn" class="flex-1 px-3 py-1.5 bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/40 rounded hover:bg-[#00f0ff] hover:text-black font-semibold transition-colors">
-                        Save & Apply
-                    </button>
-                    <button id="testWorkerBtn" class="px-3 py-1.5 bg-[#0f172a] text-gray-300 border border-[#1e293b] rounded hover:border-[#00f0ff] hover:text-white transition-colors">
-                        Test Worker
-                    </button>
-                </div>
-
-                <div id="workerTestResult" class="text-[11px] text-gray-400 hidden p-2 rounded bg-[#0f172a] border border-[#1e293b]">
-                </div>
-
-                <p class="text-[10px] text-gray-400 leading-tight">
-                    * The AI Twin operates seamlessly via the built-in Cyber Engine with full CV knowledge or via your remote Cloudflare Worker!
-                </p>
+                <button id="closeAiChatBtn" class="text-gray-400 hover:text-white p-1.5 rounded-lg hover:bg-[#0f172a] transition-colors focus:outline-none" aria-label="Close Chat">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
             </div>
 
             <!-- Chat Message Stream -->
