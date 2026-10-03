@@ -1312,6 +1312,47 @@
         .cyber-scan-beam {
             animation: cyberScanLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
+
+        /* Ultra-Premium Hero Cadre Styling */
+        .hero-cadre-card {
+            position: relative;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 11, 20, 0.98) 100%);
+            border-radius: 2rem;
+            padding: 0.85rem;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.18), 0 20px 50px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-cadre-card:hover {
+            box-shadow: 0 0 55px rgba(0, 240, 255, 0.35), 0 25px 60px rgba(0, 0, 0, 0.85);
+            transform: translateY(-3px);
+        }
+        .hero-cadre-glow-border {
+            position: absolute;
+            inset: -2px;
+            border-radius: 2.15rem;
+            background: linear-gradient(135deg, #00f0ff, #38bdf8, #10b981, #f59e0b, #00f0ff);
+            background-size: 300% 300%;
+            animation: cyberBorderGradient 6s ease infinite;
+            z-index: 0;
+            opacity: 0.85;
+            filter: blur(1.5px);
+        }
+        @keyframes cyberBorderGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .equalizer-bar-1 { animation: eqBounce1 0.9s ease-in-out infinite alternate; }
+        .equalizer-bar-2 { animation: eqBounce2 1.1s ease-in-out infinite alternate; }
+        .equalizer-bar-3 { animation: eqBounce3 0.7s ease-in-out infinite alternate; }
+        .equalizer-bar-4 { animation: eqBounce4 1.3s ease-in-out infinite alternate; }
+        .equalizer-bar-5 { animation: eqBounce5 0.8s ease-in-out infinite alternate; }
+        @keyframes eqBounce1 { 0% { height: 20%; } 100% { height: 90%; } }
+        @keyframes eqBounce2 { 0% { height: 40%; } 100% { height: 100%; } }
+        @keyframes eqBounce3 { 0% { height: 15%; } 100% { height: 75%; } }
+        @keyframes eqBounce4 { 0% { height: 50%; } 100% { height: 95%; } }
+        @keyframes eqBounce5 { 0% { height: 30%; } 100% { height: 85%; } }
     </style>
 </head>
 <body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
@@ -1699,28 +1740,70 @@
                         </div>
                     </div>
 
-                    <!-- Hero Right Column: Crystal-Clear Portrait Showcase -->
+                    <!-- Hero Right Column: Ultra-Premium Hologram Cadre & Video Pitch Trigger -->
                     <div class="lg:col-span-5 flex flex-col items-center">
                         
-                        <div id="heroPortraitContainer" class="w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] hero-portrait-wrapper rounded-3xl p-3 sm:p-3.5 relative">
-                            <!-- Cyber corner reticles -->
-                            <div class="cyber-corner-tl"></div>
-                            <div class="cyber-corner-tr"></div>
-                            <div class="cyber-corner-bl"></div>
-                            <div class="cyber-corner-br"></div>
+                        <div id="heroPortraitContainer" class="w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] hero-cadre-card relative group">
+                            <!-- Animated Neon Gradient Border Underlay -->
+                            <div class="hero-cadre-glow-border"></div>
 
-                            <!-- Photo Display Container (Completely Unobstructed & Crystal-Clear) -->
-                            <div class="relative w-full rounded-2xl overflow-hidden bg-[#030712] border border-[#00f0ff]/30">
-                                <img src="1000015101.jpg" alt="Wassim Bannour - Cybersecurity Engineer" class="w-full h-auto max-h-[440px] sm:max-h-[480px] object-contain object-top mx-auto block hover:scale-102 transition-transform duration-300">
+                            <!-- Photo Showcase Inner Frame -->
+                            <div class="relative w-full rounded-2xl overflow-hidden bg-[#030712] border border-[#00f0ff]/40 shadow-inner">
+                                <!-- Subtle Hologram Cyber Grid Overlay -->
+                                <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_90%,rgba(0,240,255,0.06)_100%)] bg-[size:100%_4px] pointer-events-none z-10"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-60 pointer-events-none z-10"></div>
+
+                                <!-- The Portrait -->
+                                <img src="1000015101.jpg" alt="Wassim Bannour - Cybersecurity Engineer" class="w-full h-auto max-h-[440px] sm:max-h-[480px] object-cover object-top mx-auto block group-hover:scale-103 transition-transform duration-500 relative z-0">
                                 
                                 <!-- Floating Status Pill Top Left -->
-                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10">
+                                <div class="absolute top-3 left-3 z-20">
                                     <span class="px-2.5 sm:px-3 py-1 rounded-full bg-[#070b14]/90 border border-[#10b981] text-[#10b981] font-mono text-[10px] sm:text-[11px] font-extrabold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(16,185,129,0.5)]">
                                         <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
                                         <span data-i18n="hero.status_pill">STATUS: ACTIVE // OPEN TO ROLES</span>
                                     </span>
                                 </div>
+
+                                <!-- Floating RHCSA Verification Badge Top Right -->
+                                <div class="absolute top-3 right-3 z-20">
+                                    <span class="px-2 sm:px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-red-500/70 text-red-400 font-mono text-[10px] font-extrabold backdrop-blur-md flex items-center gap-1 shadow-[0_0_10px_rgba(239,68,68,0.4)]">
+                                        <i class="fa-brands fa-redhat text-xs"></i>
+                                        <span>RHCSA</span>
+                                    </span>
+                                </div>
+
+                                <!-- Floating Top 33 Global Badge Bottom Left -->
+                                <div class="absolute bottom-3 left-3 z-20">
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-[#070b14]/90 border border-yellow-400/70 text-yellow-300 font-mono text-[10px] sm:text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5 shadow-[0_0_12px_rgba(234,179,8,0.4)]">
+                                        <i class="fa-solid fa-trophy text-xs text-yellow-400"></i>
+                                        <span>TOP 33 GLOBAL</span>
+                                    </span>
+                                </div>
+
+                                <!-- Floating PCAP Badge Bottom Right -->
+                                <div class="absolute bottom-3 right-3 z-20">
+                                    <span class="px-2 sm:px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-[#00f0ff]/70 text-[#00f0ff] font-mono text-[10px] font-bold backdrop-blur-md flex items-center gap-1 shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                                        <i class="fa-brands fa-python text-xs"></i>
+                                        <span>PCAP</span>
+                                    </span>
+                                </div>
                             </div>
+
+                            <!-- Corner HUD Brackets -->
+                            <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#00f0ff] z-20"></div>
+                            <div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#00f0ff] z-20"></div>
+                            <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#00f0ff] z-20"></div>
+                            <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#00f0ff] z-20"></div>
+                        </div>
+
+                        <!-- "Why Hire Me? — Watch AI Video Pitch" CTA Button -->
+                        <div class="w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] mt-3 sm:mt-4">
+                            <button onclick="window.openVideoPitchModal()" class="w-full py-3 sm:py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] text-black font-extrabold font-mono text-xs sm:text-sm tracking-wide shadow-[0_0_25px_rgba(0,240,255,0.55)] hover:shadow-[0_0_40px_rgba(0,240,255,0.9)] hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2.5 group cursor-pointer border border-white/20">
+                                <span class="w-7 h-7 rounded-xl bg-black/20 text-black flex items-center justify-center group-hover:scale-110 group-hover:bg-black group-hover:text-[#00f0ff] transition-all shrink-0">
+                                    <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                </span>
+                                <span data-i18n="hero.btn_videopitch" class="font-black">POURQUOI ME RECRUTER ? (VIDÉO PITCH)</span>
+                            </button>
                         </div>
 
                     </div>
@@ -3365,6 +3448,166 @@
                     Fermer
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- AI VIDEO & AUDIO HOLOGRAM PITCH MODAL (WHY HIRE WASSIM BANNOUR) -->
+    <div id="videoPitchModal" class="cyber-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-xl">
+        <div class="cyber-modal-container w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-[#0f172a] border-2 border-[#00f0ff]/70 shadow-[0_0_50px_rgba(0,240,255,0.4)] overflow-hidden flex flex-col max-h-[94vh] sm:max-h-[90vh]">
+            
+            <!-- Video Player Header -->
+            <div class="px-4 py-3 sm:px-5 sm:py-3.5 bg-[#070b14] border-b border-[#1e293b] flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#00f0ff]/20 border border-[#00f0ff] text-[#00f0ff] flex items-center justify-center text-sm shadow-[0_0_12px_rgba(0,240,255,0.4)] shrink-0">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-white font-extrabold text-xs sm:text-sm font-mono tracking-wider">AI_VIDEO_PITCH.MP4</h3>
+                            <span class="px-2 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 font-mono text-[9px] font-bold flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span> 1080P HD
+                            </span>
+                        </div>
+                        <p class="text-[10px] sm:text-xs font-mono text-gray-400">Pourquoi recruter Wassim Bannour ? • Synthèse Vidéo & Vocale</p>
+                    </div>
+                </div>
+                
+                <!-- Audio Equalizer Visualizer & Close Button -->
+                <div class="flex items-center gap-3">
+                    <div id="pitchEqualizer" class="hidden sm:flex items-end gap-1 h-5 w-12 px-1 py-0.5 rounded bg-[#030712] border border-[#1e293b]">
+                        <span class="w-1.5 bg-[#00f0ff] rounded-sm equalizer-bar-1 h-[30%]"></span>
+                        <span class="w-1.5 bg-[#38bdf8] rounded-sm equalizer-bar-2 h-[60%]"></span>
+                        <span class="w-1.5 bg-[#10b981] rounded-sm equalizer-bar-3 h-[40%]"></span>
+                        <span class="w-1.5 bg-[#00f0ff] rounded-sm equalizer-bar-4 h-[80%]"></span>
+                        <span class="w-1.5 bg-[#38bdf8] rounded-sm equalizer-bar-5 h-[50%]"></span>
+                    </div>
+                    <button onclick="window.closeVideoPitchModal()" class="w-8 h-8 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-white hover:border-[#00f0ff] flex items-center justify-center transition-all" aria-label="Fermer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Hologram Cinema Stage -->
+            <div class="p-3 sm:p-5 overflow-y-auto space-y-3.5 sm:space-y-4 bg-[#070b14]/90 flex-1 font-sans">
+                
+                <!-- Cinematic Screen Frame -->
+                <div class="relative w-full rounded-2xl overflow-hidden bg-[#030712] border border-[#00f0ff]/40 shadow-2xl min-h-[220px] sm:min-h-[280px] flex flex-col justify-between p-4 sm:p-6 group">
+                    <!-- Scanlines & Ambient Hologram Grid -->
+                    <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,240,255,0.04)_51%)] bg-[size:100%_4px] pointer-events-none z-10"></div>
+                    <div class="absolute inset-0 bg-radial-gradient from-transparent via-[#030712]/50 to-[#030712] pointer-events-none z-10"></div>
+
+                    <!-- Screen Top Telemetry HUD -->
+                    <div class="relative z-20 flex items-center justify-between font-mono text-[10px] text-gray-400 border-b border-[#1e293b]/70 pb-2">
+                        <span class="flex items-center gap-1.5 text-[#00f0ff] font-bold">
+                            <i class="fa-solid fa-shield-halved"></i> CANDIDATE_PROFILE // WASSIM_BANNOUR
+                        </span>
+                        <span id="pitchTimeDisplay" class="text-emerald-400 font-bold">00:00 / 01:30</span>
+                    </div>
+
+                    <!-- Screen Central Content Stage (Dynamic Chapter Slides) -->
+                    <div class="relative z-20 my-auto py-3 sm:py-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                        <!-- Holographic Presenter Avatar Badge -->
+                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00f0ff] shadow-[0_0_20px_rgba(0,240,255,0.5)] shrink-0 bg-[#070b14]">
+                            <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
+                            <div class="absolute inset-0 bg-[#00f0ff]/10 animate-pulse"></div>
+                            <!-- Live Voice Pulse Ring -->
+                            <div id="avatarVoiceWave" class="absolute inset-0 border-2 border-[#10b981] rounded-2xl opacity-0 transition-opacity"></div>
+                        </div>
+
+                        <!-- Dynamic Slide Texts & Badges -->
+                        <div class="flex-1 text-center sm:text-left space-y-1.5">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-[10px] font-bold">
+                                <span id="pitchSlideBadge">CHAPITRE 01/04</span>
+                            </div>
+                            <h4 id="pitchSlideTitle" class="text-base sm:text-lg font-black text-white font-mono">
+                                01. Expertise Linux Entreprise & Certification RHCSA
+                            </h4>
+                            <p id="pitchSlideSubtitle" class="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
+                                Solide maîtrise de Red Hat Enterprise Linux (RHEL 9), du durcissement système, des règles SELinux et de l'automatisation Bash/Python en environnement critique.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Live Subtitle Teleprompter Strip -->
+                    <div class="relative z-20 rounded-xl bg-[#070b14]/95 border border-[#00f0ff]/30 p-2.5 sm:p-3 text-center sm:text-left font-mono text-[11px] sm:text-xs text-white shadow-lg flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+                        <p id="pitchSubtitleText" class="truncate sm:whitespace-normal leading-normal text-emerald-300">
+                            "Bonjour ! Découvrez en 90 secondes pourquoi Wassim Bannour est le candidat idéal pour vos équipes cybersécurité et systèmes."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Chapter Navigation Pills (Recruiters can click to jump) -->
+                <div class="space-y-1.5">
+                    <span class="font-mono text-[10px] text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                        <i class="fa-solid fa-list-check text-[#00f0ff]"></i> Chapitres Interactifs (Cliquez pour écouter) :
+                    </span>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[11px]">
+                        <button onclick="window.selectPitchChapter(0)" id="chapterBtn0" class="p-2 rounded-xl bg-[#030712] border border-[#00f0ff] text-[#00f0ff] font-bold text-left transition-all hover:bg-[#00f0ff]/10 flex flex-col gap-0.5 cursor-pointer">
+                            <span class="text-[9px] opacity-70">01 // LINUX</span>
+                            <span class="truncate">RHCSA & Kernel</span>
+                        </button>
+                        <button onclick="window.selectPitchChapter(1)" id="chapterBtn1" class="p-2 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-300 font-bold text-left transition-all hover:border-yellow-400 hover:text-yellow-400 flex flex-col gap-0.5 cursor-pointer">
+                            <span class="text-[9px] opacity-70">02 // ALGO</span>
+                            <span class="truncate">Top 33 Mondial</span>
+                        </button>
+                        <button onclick="window.selectPitchChapter(2)" id="chapterBtn2" class="p-2 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-300 font-bold text-left transition-all hover:border-emerald-400 hover:text-emerald-400 flex flex-col gap-0.5 cursor-pointer">
+                            <span class="text-[9px] opacity-70">03 // DEFENSE</span>
+                            <span class="truncate">EASM & OSINT</span>
+                        </button>
+                        <button onclick="window.selectPitchChapter(3)" id="chapterBtn3" class="p-2 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-300 font-bold text-left transition-all hover:border-[#38bdf8] hover:text-[#38bdf8] flex flex-col gap-0.5 cursor-pointer">
+                            <span class="text-[9px] opacity-70">04 // IMPACT</span>
+                            <span class="truncate">Fullstack & ROI</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Player Control Bar -->
+                <div class="p-3 rounded-xl bg-[#030712] border border-[#1e293b] flex items-center justify-between gap-2 font-mono text-xs">
+                    <div class="flex items-center gap-2">
+                        <button id="pitchPlayBtn" onclick="window.togglePitchPlayback()" class="px-4 py-2 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#38bdf8] text-black font-extrabold flex items-center gap-1.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.7)] transition-all cursor-pointer">
+                            <i id="pitchPlayIcon" class="fa-solid fa-play"></i>
+                            <span id="pitchPlayText">LANCER LA VIDÉO</span>
+                        </button>
+                        <button onclick="window.restartPitchPlayback()" class="p-2 rounded-lg bg-[#070b14] border border-[#1e293b] text-gray-400 hover:text-white hover:border-[#00f0ff] transition-all cursor-pointer" title="Recommencer">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="pitchSpeedBtn" onclick="window.togglePitchSpeed()" class="px-2.5 py-1.5 rounded-lg bg-[#070b14] border border-[#1e293b] text-gray-300 hover:text-[#00f0ff] font-bold text-[11px] transition-all cursor-pointer" title="Vitesse de lecture">
+                            1.0x
+                        </button>
+                        <button id="pitchMuteBtn" onclick="window.togglePitchMute()" class="p-2 rounded-lg bg-[#070b14] border border-[#1e293b] text-gray-300 hover:text-[#00f0ff] transition-all cursor-pointer" title="Activer / Couper la voix">
+                            <i id="pitchMuteIcon" class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1-Click Fast-Track Action Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 font-mono text-xs">
+                    <a href="mailto:wassimbannour10@gmail.com?subject=Proposition%20d'entretien%20suite%20au%20Video%20Pitch%20-%20Wassim%20Bannour" class="p-3 rounded-xl bg-gradient-to-r from-[#00f0ff] to-[#10b981] text-black font-extrabold flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,240,255,0.7)] active:scale-98 transition-all">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>PLANIFIER UN ENTRETIEN (FAST-TRACK)</span>
+                    </a>
+                    <a href="wassim_bnannour_cv.pdf" download="Wassim_Bannour_CV.pdf" class="p-3 rounded-xl bg-[#0f172a] text-[#00f0ff] border border-[#00f0ff]/50 hover:bg-[#00f0ff]/20 font-bold flex items-center justify-center gap-2 active:scale-98 transition-all">
+                        <i class="fa-solid fa-download"></i>
+                        <span>TÉLÉCHARGER LE CV COMPLET (PDF)</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Video Player Footer -->
+            <div class="px-4 py-2.5 sm:px-5 sm:py-3 bg-[#070b14] border-t border-[#1e293b] flex items-center justify-between font-mono text-[11px] text-gray-400">
+                <span class="flex items-center gap-1.5 text-gray-300">
+                    <i class="fa-solid fa-envelope text-[#00f0ff]"></i> wassimbannour10@gmail.com
+                </span>
+                <button onclick="window.closeVideoPitchModal()" class="px-3 py-1 rounded-lg bg-[#0f172a] border border-[#1e293b] text-gray-300 hover:text-white cursor-pointer">
+                    Fermer
+                </button>
+            </div>
+
         </div>
     </div>
 

@@ -46,6 +46,7 @@ const I18N_DATA = {
         'hero.bio': 'Spécialisé dans la <strong>sécurisation des infrastructures</strong> et l’<strong>automatisation intelligente</strong> (<em>Python / Bash</em>). Allie une expertise technique en développement Full Stack à une maîtrise des méthodologies <strong>EASM</strong> et <strong>OSINT</strong> pour la surveillance proactive des surfaces d’attaque. Classé <strong>33ᵉ mondial</strong> en programmation compétitive (<strong>IEEEXtreme</strong>), combinant rigueur algorithmique et pratiques de <em>\'Security-by-Design\'</em>.',
         'hero.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
         'hero.btn_aichat': 'Chat AI Twin',
+        'hero.btn_videopitch': 'POURQUOI ME RECRUTER ? (VIDÉO PITCH)',
         'hero.status_pill': 'STATUT : ACTIF // DISPONIBLE',
         'hero.stat_rank': 'Mondial IEEEXtreme',
         'hero.stat_rank_sub': '2ᵉ National en Tunisie',
@@ -304,6 +305,7 @@ const I18N_DATA = {
         'hero.bio': 'Specialized in <strong>infrastructure hardening</strong> and <strong>intelligent automation</strong> (<em>Python / Bash</em>). Combines technical full-stack software expertise with <strong>EASM</strong> and <strong>OSINT</strong> methodologies for proactive attack surface monitoring. Ranked <strong>33rd worldwide</strong> in competitive programming (<strong>IEEEXtreme</strong>), combining algorithmic precision with <em>\'Security-by-Design\'</em> principles.',
         'hero.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
         'hero.btn_aichat': 'Chat AI Twin',
+        'hero.btn_videopitch': 'WHY HIRE WASSIM? (VIDEO PITCH)',
         'hero.status_pill': 'STATUS: ACTIVE // OPEN TO ROLES',
         'hero.stat_rank': 'Worldwide IEEEXtreme',
         'hero.stat_rank_sub': '2nd National in Tunisia',
@@ -2263,6 +2265,257 @@ window.closeHireMeModal = function() {
     }
 };
 
+// -------------------------------------------------------------
+// 8. AI VIDEO & AUDIO HOLOGRAM PITCH PLAYER (WHY HIRE WASSIM)
+// -------------------------------------------------------------
+const PITCH_CHAPTERS = {
+    fr: [
+        {
+            time: '00:00 / 01:30',
+            badge: 'CHAPITRE 01/04',
+            title: '01. Expertise Linux Entreprise & Certification RHCSA',
+            subtitle: 'Solide maîtrise de Red Hat Enterprise Linux (RHEL 9), du durcissement système, des règles SELinux et de l\'automatisation Bash/Python en environnement critique.',
+            caption: '« Premier atout : Wassim est certifié Red Hat (RHCSA #240-275-103). Il sécurise et automatise les parcs de serveurs Linux d\'entreprise avec rigueur. »',
+            speech: 'Premier atout majeur : Wassim est certifié Red Hat Certified System Administrator. Il maîtrise l\'administration système Linux d\'entreprise, le durcissement du noyau, les politiques SELinux et l\'automatisation avancée par scripts Bash et Python.'
+        },
+        {
+            time: '00:22 / 01:30',
+            badge: 'CHAPITRE 02/04',
+            title: '02. Top 33 Mondial en Algorithmique (IEEEXtreme 17.0)',
+            subtitle: 'Classé 33ème mondial parmi des milliers d\'équipes d\'ingénieurs internationales lors d\'un marathon de 24h de programmation compétitive non-stop.',
+            caption: '« Deuxième atout : Rigueur algorithmique d\'élite. 33ème mondial au prestigieux concours IEEEXtreme, capable de résoudre les problèmes les plus ardus sous pression. »',
+            speech: 'Deuxième atout : Une rigueur algorithmique d\'élite. Classé trente-troisième mondial parmi des milliers d\'équipes au concours IEEEXtreme, Wassim résout des problèmes informatiques complexes sous haute pression avec une efficacité et une rapidité éprouvées.'
+        },
+        {
+            time: '00:45 / 01:30',
+            badge: 'CHAPITRE 03/04',
+            title: '03. Cybersécurité Proactive, EASM & OSINT (Talan)',
+            subtitle: 'Conception d\'une solution d\'External Attack Surface Management connectée aux flux OSINT pour cartographier et neutraliser les menaces avant impact.',
+            caption: '« Troisième atout : Sécurité offensive et défensive. Expérience concrète chez Talan sur l\'automatisation de la détection de vulnérabilités. »',
+            speech: 'Troisième atout : Cybersécurité appliquée et renseignement sur les menaces. Lors de son expérience chez Talan, Wassim a conçu une plateforme d\'External Attack Surface Management intégrant de multiples connecteurs OSINT pour cartographier proactivement les vulnérabilités.'
+        },
+        {
+            time: '01:08 / 01:30',
+            badge: 'CHAPITRE 04/04',
+            title: '04. Polyvalence Fullstack & Impact Opérationnel Immédiat',
+            subtitle: 'Capacité à relier le bas niveau (Linux/Noyau) aux architectures applicatives modernes (Node.js, Angular, Python, Docker) avec une approche Security-by-Design.',
+            caption: '« Quatrième atout : Immédiatement opérationnel. Wassim allie rigueur de sécurité, rapidité de développement et disponibilité totale. »',
+            speech: 'Quatrième atout : Polyvalence technique et rentabilité immédiate. Capable d\'intervenir du noyau Linux jusqu\'aux architectures applicatives modernes, Wassim apporte une approche Security-by-Design opérationnelle dès le premier jour.'
+        }
+    ],
+    en: [
+        {
+            time: '00:00 / 01:30',
+            badge: 'CHAPTER 01/04',
+            title: '01. Enterprise Linux & Red Hat (RHCSA) Mastery',
+            subtitle: 'Certified expertise in Red Hat Enterprise Linux (RHEL 9), OS hardening, SELinux enforcement, and production Bash/Python automation.',
+            caption: '“First core strength: Wassim is a Red Hat Certified System Administrator (RHCSA #240-275-103), hardening and automating enterprise Linux fleets.”',
+            speech: 'First key strength: Wassim is a Red Hat Certified System Administrator. He specializes in enterprise Linux systems administration, kernel hardening, SELinux security policies, and robust automation with Bash and Python.'
+        },
+        {
+            time: '00:22 / 01:30',
+            badge: 'CHAPTER 02/04',
+            title: '02. Top 33 Worldwide in Competitive Algorithms (IEEEXtreme)',
+            subtitle: 'Ranked 33rd globally out of thousands of international engineering teams during an intense 24-hour non-stop algorithmic championship.',
+            caption: '“Second strength: Elite problem-solving capabilities. Ranked 33rd globally in IEEEXtreme, thriving under high pressure.”',
+            speech: 'Second strength: Elite algorithmic capabilities. Ranked 33rd globally among thousands of engineering teams in IEEEXtreme, Wassim solves complex technical challenges under high pressure with speed and precision.'
+        },
+        {
+            time: '00:45 / 01:30',
+            badge: 'CHAPTER 03/04',
+            title: '03. Proactive EASM & Threat Intelligence (Talan)',
+            subtitle: 'Engineered an External Attack Surface Management platform integrating multi-source OSINT to detect and neutralize risks proactively.',
+            caption: '“Third strength: Proactive defense-in-depth. Built automated attack surface management pipelines at Talan.”',
+            speech: 'Third strength: Applied cybersecurity and threat intelligence. During his experience at Talan, Wassim engineered an External Attack Surface Management platform with OSINT connectors to discover vulnerabilities before adversaries do.'
+        },
+        {
+            time: '01:08 / 01:30',
+            badge: 'CHAPTER 04/04',
+            title: '04. Full-Stack Agility & Immediate Engineering Value',
+            subtitle: 'Bridges low-level systems and high-level modern stacks (Node.js, Angular, Python, Docker) with built-in Security-by-Design.',
+            caption: '“Fourth strength: Immediate operational impact. Full-stack agility with enterprise security-by-design from day one.”',
+            speech: 'Fourth strength: Full-stack agility and immediate ROI. Bridging low-level Linux systems with modern application architectures, Wassim delivers secure, production-grade solutions from day one.'
+        }
+    ]
+};
+
+let currentPitchChapter = 0;
+let isPitchPlaying = false;
+let pitchPlaybackRate = 1.0;
+let isPitchMuted = false;
+let pitchTimer = null;
+
+window.openVideoPitchModal = function() {
+    const modal = document.getElementById('videoPitchModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    playFuturisticTone(750, 0.05, 'sine', 0.04);
+    window.selectPitchChapter(0);
+    window.startPitchPlayback();
+};
+
+window.closeVideoPitchModal = function() {
+    const modal = document.getElementById('videoPitchModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    window.pausePitchPlayback();
+    playFuturisticTone(520, 0.04, 'sine', 0.03);
+};
+
+window.selectPitchChapter = function(index) {
+    const lang = CURRENT_LANG === 'en' ? 'en' : 'fr';
+    const chapters = PITCH_CHAPTERS[lang] || PITCH_CHAPTERS.fr;
+    if (index < 0 || index >= chapters.length) return;
+    currentPitchChapter = index;
+
+    const data = chapters[index];
+    const badgeElem = document.getElementById('pitchSlideBadge');
+    const titleElem = document.getElementById('pitchSlideTitle');
+    const subElem = document.getElementById('pitchSlideSubtitle');
+    const captionElem = document.getElementById('pitchSubtitleText');
+    const timeElem = document.getElementById('pitchTimeDisplay');
+
+    if (badgeElem) badgeElem.textContent = data.badge;
+    if (titleElem) titleElem.textContent = data.title;
+    if (subElem) subElem.textContent = data.subtitle;
+    if (captionElem) captionElem.textContent = data.caption;
+    if (timeElem) timeElem.textContent = data.time;
+
+    // Update chapter buttons active status
+    for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById('chapterBtn' + i);
+        if (btn) {
+            if (i === index) {
+                btn.className = 'p-2 rounded-xl bg-[#00f0ff]/20 border border-[#00f0ff] text-[#00f0ff] font-bold text-left transition-all flex flex-col gap-0.5 shadow-[0_0_12px_rgba(0,240,255,0.4)] cursor-pointer';
+            } else {
+                btn.className = 'p-2 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-400 font-bold text-left transition-all hover:border-gray-500 hover:text-white flex flex-col gap-0.5 cursor-pointer';
+            }
+        }
+    }
+
+    if (isPitchPlaying) {
+        window.speakCurrentChapter();
+    }
+};
+
+window.togglePitchPlayback = function() {
+    if (isPitchPlaying) {
+        window.pausePitchPlayback();
+    } else {
+        window.startPitchPlayback();
+    }
+};
+
+window.startPitchPlayback = function() {
+    isPitchPlaying = true;
+    const playIcon = document.getElementById('pitchPlayIcon');
+    const playText = document.getElementById('pitchPlayText');
+    if (playIcon) playIcon.className = 'fa-solid fa-pause';
+    if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'PAUSE' : 'PAUSE';
+
+    const avatarWave = document.getElementById('avatarVoiceWave');
+    if (avatarWave) avatarWave.classList.remove('opacity-0');
+
+    window.speakCurrentChapter();
+};
+
+window.pausePitchPlayback = function() {
+    isPitchPlaying = false;
+    const playIcon = document.getElementById('pitchPlayIcon');
+    const playText = document.getElementById('pitchPlayText');
+    if (playIcon) playIcon.className = 'fa-solid fa-play';
+    if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'RESUME PITCH' : 'REPRENDRE';
+
+    const avatarWave = document.getElementById('avatarVoiceWave');
+    if (avatarWave) avatarWave.classList.add('opacity-0');
+
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+    if (pitchTimer) {
+        clearTimeout(pitchTimer);
+        pitchTimer = null;
+    }
+};
+
+window.restartPitchPlayback = function() {
+    currentPitchChapter = 0;
+    window.selectPitchChapter(0);
+    window.startPitchPlayback();
+};
+
+window.togglePitchSpeed = function() {
+    if (pitchPlaybackRate === 1.0) pitchPlaybackRate = 1.25;
+    else if (pitchPlaybackRate === 1.25) pitchPlaybackRate = 1.5;
+    else pitchPlaybackRate = 1.0;
+
+    const speedBtn = document.getElementById('pitchSpeedBtn');
+    if (speedBtn) speedBtn.textContent = pitchPlaybackRate.toFixed(1) + 'x';
+
+    if (isPitchPlaying) {
+        window.speakCurrentChapter();
+    }
+};
+
+window.togglePitchMute = function() {
+    isPitchMuted = !isPitchMuted;
+    const muteIcon = document.getElementById('pitchMuteIcon');
+    if (muteIcon) {
+        muteIcon.className = isPitchMuted ? 'fa-solid fa-volume-xmark text-red-400' : 'fa-solid fa-volume-high text-[#00f0ff]';
+    }
+    if (isPitchMuted && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    } else if (!isPitchMuted && isPitchPlaying) {
+        window.speakCurrentChapter();
+    }
+};
+
+window.speakCurrentChapter = function() {
+    if (pitchTimer) clearTimeout(pitchTimer);
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+
+    const lang = CURRENT_LANG === 'en' ? 'en' : 'fr';
+    const chapters = PITCH_CHAPTERS[lang] || PITCH_CHAPTERS.fr;
+    const currentData = chapters[currentPitchChapter];
+
+    const advanceNext = () => {
+        if (!isPitchPlaying) return;
+        if (currentPitchChapter < chapters.length - 1) {
+            window.selectPitchChapter(currentPitchChapter + 1);
+        } else {
+            // Reached end of pitch
+            window.pausePitchPlayback();
+            const playText = document.getElementById('pitchPlayText');
+            if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'REPLAY PITCH' : 'REJOUER';
+        }
+    };
+
+    if (!isPitchMuted && 'speechSynthesis' in window && currentData && currentData.speech) {
+        const utterance = new SpeechSynthesisUtterance(currentData.speech);
+        utterance.lang = lang === 'en' ? 'en-US' : 'fr-FR';
+        utterance.rate = pitchPlaybackRate;
+        utterance.pitch = 1.0;
+
+        utterance.onend = () => {
+            if (isPitchPlaying) {
+                pitchTimer = setTimeout(advanceNext, 1200);
+            }
+        };
+        utterance.onerror = () => {
+            if (isPitchPlaying) {
+                pitchTimer = setTimeout(advanceNext, 7000 / pitchPlaybackRate);
+            }
+        };
+
+        window.speechSynthesis.speak(utterance);
+    } else {
+        const duration = 7500 / pitchPlaybackRate;
+        pitchTimer = setTimeout(advanceNext, duration);
+    }
+};
+
 // Close modals when clicking backdrop outside container
 document.addEventListener('click', (e) => {
     const docModal = document.getElementById('docViewerModal');
@@ -2273,6 +2526,10 @@ document.addEventListener('click', (e) => {
     if (hireModal && hireModal.classList.contains('active') && e.target === hireModal) {
         window.closeHireMeModal();
     }
+    const videoModal = document.getElementById('videoPitchModal');
+    if (videoModal && videoModal.classList.contains('active') && e.target === videoModal) {
+        window.closeVideoPitchModal();
+    }
 });
 
 // Close modals on Escape key
@@ -2280,6 +2537,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         window.closeDocViewer();
         window.closeHireMeModal();
+        window.closeVideoPitchModal();
         const aiChatModal = document.getElementById('aiChatModal');
         if (aiChatModal && aiChatModal.classList.contains('active')) {
             document.getElementById('closeAiChatBtn')?.click();
