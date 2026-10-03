@@ -1103,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (cmd.includes('contact')) {
-            appendTerminalLog('success', `[+] Email: wisoghost@gmail.com`);
+            appendTerminalLog('success', `[+] Email: wassimbannour10@gmail.com`);
             appendTerminalLog('info', `[+] Phone: +216 94101910`);
             appendTerminalLog('info', `[+] LinkedIn: https://www.linkedin.com/in/wassim-bannour-513448317/`);
             appendTerminalLog('info', `[+] GitHub: https://github.com/WassimBannour1`);
@@ -2001,11 +2001,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 10. Contact & Socials
         if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('linkedin') || q.includes('github') || q.includes('location') || q.includes('address')) {
-            return `Connect with Wassim directly:\n\n- 📧 **Email**: [wisoghost@gmail.com](mailto:wisoghost@gmail.com)\n- 📱 **Phone**: **+216 94101910**\n- 💼 **LinkedIn**: [linkedin.com/in/wassim-bannour-513448317](https://www.linkedin.com/in/wassim-bannour-513448317/)\n- 🐙 **GitHub**: [github.com/WassimBannour1](https://github.com/WassimBannour1)\n- 📍 **Location**: Monastir, Tunisia (Open to on-site, hybrid, and remote roles).`;
+            return `Connect with Wassim directly:\n\n- 📧 **Email**: [wassimbannour10@gmail.com](mailto:wassimbannour10@gmail.com)\n- 📱 **Phone**: **+216 94101910**\n- 💼 **LinkedIn**: [linkedin.com/in/wassim-bannour-513448317](https://www.linkedin.com/in/wassim-bannour-513448317/)\n- 🐙 **GitHub**: [github.com/WassimBannour1](https://github.com/WassimBannour1)\n- 📍 **Location**: Monastir, Tunisia (Open to on-site, hybrid, and remote roles).`;
         }
 
         // Default Fallback Synthesis
-        return `Wassim Bannour is an **RHCSA & PCAP Certified Cybersecurity & Linux Systems Engineer** at **TEK-UP University**, ranked **#33 Worldwide in IEEEXtreme 17.0**.\n\nHis core expertise covers **External Attack Surface Management (EASM), OSINT automation (Talan Tunisie), Linux hardening, and fullstack AI/OCR software engineering**.\n\nFeel free to ask about his **Talan cybersecurity experience**, **certifications**, **projects**, or contact him at **wisoghost@gmail.com**!`;
+        return `Wassim Bannour is an **RHCSA & PCAP Certified Cybersecurity & Linux Systems Engineer** at **TEK-UP University**, ranked **#33 Worldwide in IEEEXtreme 17.0**.\n\nHis core expertise covers **External Attack Surface Management (EASM), OSINT automation (Talan Tunisie), Linux hardening, and fullstack AI/OCR software engineering**.\n\nFeel free to ask about his **Talan cybersecurity experience**, **certifications**, **projects**, or contact him at **wassimbannour10@gmail.com**!`;
     }
 
     // -------------------------------------------------------------

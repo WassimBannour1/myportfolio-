@@ -285,7 +285,7 @@ export default {
 - High School: Lycée Secondaire Bekalta (Baccalauréat Technique 2022, Mention Assez Bien 13.72/20)
 - Location: Monastir, Tunisia
 - Languages: Français (Courant), Anglais (Professionnel / Courant), Arabe (Langue maternelle)
-- Contact: Email (wisoghost@gmail.com) | Phone (+216 94101910) | LinkedIn (https://www.linkedin.com/in/wassim-bannour-513448317/) | GitHub (https://github.com/WassimBannour1)
+- Contact: Email (wassimbannour10@gmail.com) | Phone (+216 94101910) | LinkedIn (https://www.linkedin.com/in/wassim-bannour-513448317/) | GitHub (https://github.com/WassimBannour1)
 
 [INDUSTRY CERTIFICATIONS]
 1. RHCSA (Red Hat Certified System Administrator) – Red Hat:
@@ -325,7 +325,7 @@ export default {
 [COMMUNICATION RULES]
 - Provide articulate, confident, and professional answers.
 - Use clear bullet points and bold text when listing accomplishments or tech stacks.
-- Encourage recruiters to schedule an interview or contact Wassim at wisoghost@gmail.com or via LinkedIn.`;
+- Encourage recruiters to schedule an interview or contact Wassim at wassimbannour10@gmail.com or via LinkedIn.`;
 
             // Provider Priority Strategy:
             // 1. Anthropic Claude (if CLAUDE_API_KEY is set)
@@ -459,7 +459,7 @@ export default {
             // Fallback Guidance if no provider is active
             return new Response(
                 JSON.stringify({
-                    reply: `Hello! I am Wassim Bannour's AI Twin. Wassim is an **RHCSA & PCAP Certified Cybersecurity & Linux Systems Engineer** studying at **TEK-UP**, ranked **#33 Worldwide in IEEEXtreme 17.0** and specialized in **Smart EASM & OSINT at Talan Tunisie**. Feel free to contact him at **wisoghost@gmail.com**!`,
+                    reply: `Hello! I am Wassim Bannour's AI Twin. Wassim is an **RHCSA & PCAP Certified Cybersecurity & Linux Systems Engineer** studying at **TEK-UP**, ranked **#33 Worldwide in IEEEXtreme 17.0** and specialized in **Smart EASM & OSINT at Talan Tunisie**. Feel free to contact him at **wassimbannour10@gmail.com**!`,
                     provider: 'Autonomous Fallback Engine'
                 }),
                 { status: 200, headers: corsHeaders }
