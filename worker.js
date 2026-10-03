@@ -73,25 +73,39 @@ function detectPromptInjection(text) {
     return injectionPatterns.some(pattern => pattern.test(text));
 }
 
-// Proactive Off-Topic & Generic Coding Shield
-function isOffTopicQuery(text) {
+// Strict Positive Relevance Whitelist Filter for Wassim Bannour
+function isWassimRelevant(text) {
     if (!text || typeof text !== 'string') return false;
-    const lower = text.toLowerCase();
+    const lower = text.toLowerCase().trim();
 
-    // Whitelist keywords relating to Wassim Bannour
-    const isWassimContext = /wassim|bannour|talan|tek-up|tekup|isimm|bekalta|rhcsa|pcap|red hat|credly|ieee|xtreme|easm|osint|quickdoc|quick dock|stadium|sw consulting|team dev|restaurant|hire|recrut|cv|resume|certif|contact|portfolio|who are you|qui es-tu|bonjour|hello|hi|hey|salut|skills|competence|stack|experience|projet|project|education|diplome|formation/i.test(lower);
+    // 1. Basic Greetings & Introductions
+    const greetingRegex = /^(hi|hello|hey|bonjour|salut|coucou|yo|who are you|qui es-tu|qui est-ce|présente-toi|present yourself|introduce yourself)\b/i;
+    if (greetingRegex.test(lower) || lower === 'hi' || lower === 'hello' || lower === 'bonjour' || lower === 'salut') {
+        return true;
+    }
 
-    if (isWassimContext) return false;
-
-    // Pattern detecting generic coding, math problems, or unrelated requests
-    const offTopicPatterns = [
-        /\b(write|create|generate|give me|make|code|build|develop)\b.*\b(code|script|program|function|game|app|website|page|calculator|algo|algorithm|class|bot|crawler)\b/i,
-        /\b(solve|calculate|compute|solve this)\b.*\b(math|equation|problem|integral|derivative|sum|matrix)\b/i,
-        /\b(what is the capital|who is the president|tell me a joke|write a poem|write an essay|translate this|who won the)\b/i,
-        /\b(write a python|write a javascript|write a c\+\+|write a java|write an html|write a bash script to)\b/i
+    // 2. Keywords related to Wassim Bannour, his skills, engineering, education, credentials, or hiring
+    const wassimKeywords = [
+        'wassim', 'bannour', 'wisoghost', 'tek-up', 'tekup', 'isimm', 'bekalta',
+        'rhcsa', 'pcap', 'red hat', 'redhat', 'python institute', 'credly',
+        'ieee', 'xtreme', 'ieeextreme', '33', 'talan', 'easm', 'osint',
+        'quickdoc', 'quick dock', 'quick-dock', 'stadium', 'sw consulting', 'team dev',
+        'restaurant', 'swing', 'ocr', 'subfinder', 'virustotal', 'netlas', 'abuseipdb',
+        'certif', 'diplome', 'degree', 'bac', 'licence', 'ingenieur', 'engineer',
+        'formation', 'education', 'ecole', 'school', 'universite', 'university', 'study', 'studies', 'etude', 'parcours', 'cursus',
+        'experience', 'stage', 'internship', 'projet', 'project', 'travail', 'work', 'job',
+        'competence', 'skill', 'stack', 'technique', 'outil', 'tool',
+        'linux', 'rhel', 'centos', 'bash', 'kernel', 'selinux', 'firewall', 'systemd',
+        'securite', 'security', 'cyber', 'cybersecurite', 'cybersecurity', 'devsecops',
+        'c ', 'c++', 'java', 'spring', 'javascript', 'typescript', 'angular', 'vue', 'node', 'express',
+        'sql', 'mysql', 'postgres', 'postgresql', 'mongodb', 'docker', 'git', 'github',
+        'cv', 'resume', 'contact', 'email', 'mail', 'phone', 'telephone', 'linkedin', 'adresse', 'location',
+        'recrut', 'hire', 'embauche', 'disponible', 'availability', 'salaire', 'role', 'poste', 'offre',
+        'langue', 'language', 'anglais', 'english', 'francais', 'french', 'arabe', 'arabic',
+        'ctf', 'cybertek', 'tsyp', 'leadership', 'tresorier', 'chapter'
     ];
 
-    return offTopicPatterns.some(p => p.test(lower));
+    return wassimKeywords.some(kw => lower.includes(kw));
 }
 
 // Input Sanitization: Strip null-bytes and dangerous control characters
@@ -239,12 +253,12 @@ export default {
                 );
             }
 
-            // Proactive Off-Topic / Generic Coding Refusal (Edge Guardrail)
-            if (isOffTopicQuery(latestUserMessage)) {
-                const isFrench = /[éàèùâêîôûç]/i.test(latestUserMessage) || /\b(bonjour|salut|code|écris|fais|donne|moi|qui)\b/i.test(latestUserMessage);
+            // Proactive Off-Topic & Relevance Refusal (Edge Guardrail)
+            if (!isWassimRelevant(latestUserMessage)) {
+                const isFrench = /[éàèùâêîôûç]/i.test(latestUserMessage) || /\b(bonjour|salut|code|écris|fais|donne|moi|qui|combien|calcul|jeu|météo)\b/i.test(latestUserMessage);
                 const refusalReply = isFrench
-                    ? "Je suis exclusivement l'AI Twin professionnel de **Wassim Bannour** (Ingénieur Cybersécurité & Systèmes Linux). Je ne peux pas générer de code généraliste ou répondre à des sujets non liés à Wassim.\n\nEn revanche, je serais ravi de vous présenter ses projets techniques (comme sa plateforme **Smart EASM & OSINT chez Talan Tunisie**, son application **QuickDoc** ou **Stadium-Booking**), son expertise Linux/Python ou ses certifications **RHCSA et PCAP**. Comment puis-je vous renseigner sur son profil ?"
-                    : "I am exclusively the professional AI Twin for **Wassim Bannour** (Cybersecurity & Linux Systems Engineer). I cannot generate generic code or answer unrelated general queries.\n\nHowever, I would be delighted to discuss Wassim's technical projects (such as his **Smart EASM & OSINT platform at Talan Tunisie**, **QuickDoc**, or **Stadium-Booking**), his enterprise Linux & Python engineering background, or his verified **RHCSA & PCAP certifications**. How can I assist you with evaluating Wassim's profile?";
+                    ? "Je suis exclusivement l'AI Twin professionnel de **Wassim Bannour** (Ingénieur Cybersécurité & Systèmes Linux). Je ne réponds qu'aux questions relatives à son parcours, ses certifications (**RHCSA & PCAP**), ses projets (**Smart EASM & OSINT chez Talan Tunisie**, **QuickDoc**, **Stadium-Booking**) ou son recrutement.\n\nComment puis-je vous renseigner sur le profil de Wassim ?"
+                    : "I am exclusively the professional AI Twin for **Wassim Bannour** (Cybersecurity & Linux Systems Engineer). I only answer questions regarding his background, verified certifications (**RHCSA & PCAP**), technical projects (**Smart EASM & OSINT at Talan Tunisie**, **QuickDoc**, **Stadium-Booking**), or recruitment inquiries.\n\nHow can I assist you with evaluating Wassim's qualifications?";
 
                 return new Response(
                     JSON.stringify({
