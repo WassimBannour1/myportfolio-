@@ -2212,6 +2212,8 @@ window.openDocViewer = function(title, issuer, filePath, description) {
     const openTabBtn = document.getElementById('docOpenTabBtn');
     const statusTitle = document.getElementById('docViewerStatusTitle');
     const statusSubtext = document.getElementById('docViewerStatusSubtext');
+    const iframe = document.getElementById('docViewerIframe');
+    const placeholder = document.getElementById('docViewerPlaceholder');
 
     if (!modal) return;
     const isFr = CURRENT_LANG === 'fr';
@@ -2229,6 +2231,15 @@ window.openDocViewer = function(title, issuer, filePath, description) {
         openTabBtn.href = filePath;
     }
 
+    if (iframe) {
+        iframe.src = filePath;
+        iframe.classList.remove('hidden');
+    }
+
+    if (placeholder) {
+        placeholder.classList.add('hidden');
+    }
+
     if (statusTitle) statusTitle.textContent = `${title}`;
     if (statusSubtext) statusSubtext.innerHTML = `${isFr ? 'Fichier indexé :' : 'Indexed File:'} <code class="text-[#00f0ff]">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">${isFr ? 'Consultez en plein écran ou téléchargez la copie officielle numérisée.' : 'View in full screen or download the official digitized copy.'}</span>`;
 
@@ -2238,6 +2249,17 @@ window.openDocViewer = function(title, issuer, filePath, description) {
 
 window.closeDocViewer = function() {
     const modal = document.getElementById('docViewerModal');
+    const iframe = document.getElementById('docViewerIframe');
+    const placeholder = document.getElementById('docViewerPlaceholder');
+
+    if (iframe) {
+        iframe.src = '';
+        iframe.classList.add('hidden');
+    }
+    if (placeholder) {
+        placeholder.classList.remove('hidden');
+    }
+
     if (modal) {
         modal.classList.remove('active');
         playFuturisticTone(520, 0.04, 'sine', 0.03);
