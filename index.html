@@ -1298,15 +1298,24 @@
                 font-size: 11px !important;
             }
         }
+
+        @keyframes cyberScanLine {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(200%); opacity: 0; }
+        }
+        .cyber-scan-beam {
+            animation: cyberScanLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
     </style>
 </head>
 <body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
 
-    <!-- ULTRA-PREMIUM CYBER PRELOADER (Initial Boot Animation) -->
+    <!-- ULTRA-PREMIUM CYBER PRELOADER (Initial Boot Animation - 3.2s Cinematic Sequence) -->
     <div id="cyberPreloader" class="fixed inset-0 z-[99999] bg-[#030712] flex flex-col items-center justify-center transition-all duration-700 select-none overflow-hidden">
         <!-- Ambient Grid & Glow Background -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.08)_0%,transparent_70%)]"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#00f0ff08_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.09)_0%,transparent_70%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#00f0ff08_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff08_1px,transparent_1px)] bg-[size:3.5rem_3.5rem]"></div>
 
         <div class="relative z-10 flex flex-col items-center max-w-sm sm:max-w-md w-full px-6">
             <!-- Central Cyber Core HUD Animation -->
@@ -1318,9 +1327,10 @@
                 <!-- Glowing Pulsing Inner Ring -->
                 <div class="absolute inset-4 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff] shadow-[0_0_30px_rgba(0,240,255,0.5)] animate-pulse"></div>
                 
-                <!-- Center Avatar/Initials Badge -->
+                <!-- Center Avatar/Initials Badge with Laser Scan Beam -->
                 <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-[#00f0ff] shadow-[0_0_20px_rgba(0,240,255,0.7)] flex items-center justify-center bg-[#070b14]">
                     <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
+                    <div class="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent cyber-scan-beam"></div>
                 </div>
 
                 <!-- Corner HUD Brackets -->
@@ -1345,28 +1355,98 @@
             <!-- Telemetry Boot Terminal Box -->
             <div class="w-full rounded-xl bg-[#070b14]/90 border border-[#1e293b] p-3 font-mono text-[11px] space-y-1.5 shadow-inner mb-4">
                 <div class="flex items-center justify-between text-[10px] text-gray-400 pb-1.5 border-b border-[#1e293b]/60">
-                    <span class="flex items-center gap-1 text-[#00f0ff]">
+                    <span class="flex items-center gap-1.5 text-[#00f0ff]">
                         <i class="fa-solid fa-terminal text-[9px]"></i> SYSTEM_BOOT.SH
                     </span>
-                    <span id="preloaderStatusText" class="text-emerald-400">INITIALIZING...</span>
+                    <span id="preloaderStatusText" class="text-emerald-400 font-bold tracking-wider">AUTH_OK</span>
                 </div>
                 <div id="preloaderLogLine" class="text-gray-300 truncate h-5 flex items-center text-[10px] sm:text-[11px]">
-                    <span class="text-emerald-400 mr-1.5">></span> Loading security modules...
+                    <span class="text-emerald-400 mr-1.5">></span> Decrypting Security Clearance & Credentials...
                 </div>
             </div>
 
             <!-- Glowing Progress Bar with Percentage Counter -->
             <div class="w-full space-y-1.5">
                 <div class="flex items-center justify-between font-mono text-[10px] text-gray-400 px-0.5">
-                    <span>SECURITY_PIPELINE</span>
-                    <span id="preloaderPercent" class="text-[#00f0ff] font-bold">0%</span>
+                    <span class="text-gray-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        SECURITY_PIPELINE
+                    </span>
+                    <span id="preloaderPercent" class="text-[#00f0ff] font-bold font-mono">0%</span>
                 </div>
-                <div class="w-full h-1.5 rounded-full bg-[#0f172a] border border-[#1e293b] overflow-hidden p-0.5">
-                    <div id="preloaderBar" class="h-full rounded-full bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] transition-all duration-100 shadow-[0_0_12px_rgba(0,240,255,0.8)]" style="width: 0%"></div>
+                <div class="w-full h-2 rounded-full bg-[#0f172a] border border-[#1e293b] overflow-hidden p-0.5 shadow-inner">
+                    <div id="preloaderBar" class="h-full rounded-full bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] transition-all duration-75 shadow-[0_0_14px_rgba(0,240,255,0.8)]" style="width: 0%"></div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        (function() {
+            var preloader = document.getElementById('cyberPreloader');
+            if (!preloader) return;
+            var percentElem = document.getElementById('preloaderPercent');
+            var barElem = document.getElementById('preloaderBar');
+            var logElem = document.getElementById('preloaderLogLine');
+            var statusElem = document.getElementById('preloaderStatusText');
+
+            var logs = [
+                { progress: 14, log: 'Decrypting Security Clearance & Credentials...', status: 'AUTH_OK' },
+                { progress: 32, log: 'Initializing RHEL 9 & Linux Kernel Subsystems...', status: 'KERNEL_READY' },
+                { progress: 54, log: 'Verifying Red Hat (RHCSA) & PCAP Credentials...', status: 'CERTS_OK' },
+                { progress: 74, log: 'Arming Smart EASM & Cloud Attack Surface Engine...', status: 'DEFENSE_READY' },
+                { progress: 90, log: 'Synchronizing Wassim AI Twin Neural Interface...', status: 'AI_LINKED' },
+                { progress: 100, log: 'All Systems Operational. Access Granted. Welcome!', status: 'SYS_ONLINE' }
+            ];
+
+            var currentProgress = 0;
+            var logIndex = 0;
+            window.__cyberBootStarted = true;
+
+            // 3.2 seconds total duration: 100 steps * 32ms = 3200ms
+            var timer = setInterval(function() {
+                currentProgress += 1;
+                if (currentProgress > 100) currentProgress = 100;
+
+                if (percentElem) percentElem.textContent = currentProgress + '%';
+                if (barElem) barElem.style.width = currentProgress + '%';
+
+                if (logIndex < logs.length && currentProgress >= logs[logIndex].progress) {
+                    if (logElem) {
+                        logElem.innerHTML = '<span class="text-emerald-400 mr-1.5">></span> ' + logs[logIndex].log;
+                    }
+                    if (statusElem) statusElem.textContent = logs[logIndex].status;
+                    logIndex++;
+                }
+
+                if (currentProgress >= 100) {
+                    clearInterval(timer);
+                    try {
+                        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+                        if (AudioCtx) {
+                            var ctx = new AudioCtx();
+                            var osc = ctx.createOscillator();
+                            var gain = ctx.createGain();
+                            osc.type = 'sine';
+                            osc.frequency.setValueAtTime(880, ctx.currentTime);
+                            gain.gain.setValueAtTime(0.04, ctx.currentTime);
+                            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+                            osc.connect(gain);
+                            gain.connect(ctx.destination);
+                            osc.start();
+                            osc.stop(ctx.currentTime + 0.18);
+                        }
+                    } catch(e) {}
+
+                    setTimeout(function() {
+                        preloader.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
+                        setTimeout(function() {
+                            if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+                        }, 750);
+                    }, 350);
+                }
+            }, 32);
+        })();
+    </script>
 
     <!-- Ambient Glowing Cyber Orbs (Soft, subtle depth with zero eye strain) -->
     <div class="cyber-orb cyber-orb-1"></div>
@@ -3314,6 +3394,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261003-boot"></script>
+    <script src="script.js?v=20261003-boot3s"></script>
 </body>
 </html>

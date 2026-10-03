@@ -2291,27 +2291,30 @@ document.addEventListener('keydown', (e) => {
 // 7. ULTRA-SLEEK CYBER BOOT PRELOADER
 // -------------------------------------------------------------
 function initCyberPreloader() {
+    if (window.__cyberBootStarted) return;
     const preloader = document.getElementById('cyberPreloader');
     if (!preloader) return;
 
+    window.__cyberBootStarted = true;
     const percentElem = document.getElementById('preloaderPercent');
     const barElem = document.getElementById('preloaderBar');
     const logElem = document.getElementById('preloaderLogLine');
     const statusElem = document.getElementById('preloaderStatusText');
 
     const logs = [
-        { progress: 20, log: 'Loading RHEL & Linux Kernel Subsystems...', status: 'KERNEL_OK' },
-        { progress: 45, log: 'Verifying RHCSA & PCAP Certifications... [OK]', status: 'CERTS_OK' },
-        { progress: 70, log: 'Initializing Smart EASM & OSINT Modules... [OK]', status: 'EASM_READY' },
-        { progress: 90, log: 'Connecting AI Twin Autonomous Neural Core...', status: 'AI_SYNAPSE' },
-        { progress: 100, log: 'All Systems Operational. Access Granted.', status: 'SYS_ONLINE' }
+        { progress: 14, log: 'Decrypting Security Clearance & Credentials...', status: 'AUTH_OK' },
+        { progress: 32, log: 'Initializing RHEL 9 & Linux Kernel Subsystems...', status: 'KERNEL_READY' },
+        { progress: 54, log: 'Verifying Red Hat (RHCSA) & PCAP Credentials...', status: 'CERTS_OK' },
+        { progress: 74, log: 'Arming Smart EASM & Cloud Attack Surface Engine...', status: 'DEFENSE_READY' },
+        { progress: 90, log: 'Synchronizing Wassim AI Twin Neural Interface...', status: 'AI_LINKED' },
+        { progress: 100, log: 'All Systems Operational. Access Granted. Welcome!', status: 'SYS_ONLINE' }
     ];
 
     let currentProgress = 0;
     let logIndex = 0;
 
     const interval = setInterval(() => {
-        currentProgress += Math.floor(Math.random() * 8) + 6;
+        currentProgress += 1;
         if (currentProgress > 100) currentProgress = 100;
 
         if (percentElem) percentElem.textContent = `${currentProgress}%`;
@@ -2327,20 +2330,20 @@ function initCyberPreloader() {
 
         if (currentProgress >= 100) {
             clearInterval(interval);
-            playFuturisticTone(1100, 0.05, 'sine', 0.03);
             setTimeout(() => {
                 preloader.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
                 setTimeout(() => {
                     preloader.remove();
                 }, 750);
-            }, 260);
+            }, 350);
         }
-    }, 40);
+    }, 32);
 }
 
-// Trigger preloader immediately
+// Trigger preloader if not already initialized
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCyberPreloader);
 } else {
     initCyberPreloader();
 }
+
