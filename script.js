@@ -1707,8 +1707,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!bubble) return;
 
         window.dismissAiGreeting = function() {
-            bubble.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-            bubble.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+            bubble.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
+            bubble.classList.add('opacity-0', 'translate-x-4', 'pointer-events-none');
             sessionStorage.setItem('WB_AI_GREETING_SEEN', 'true');
         };
 
@@ -1716,8 +1716,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (!sessionStorage.getItem('WB_AI_GREETING_SEEN')) {
                 if (aiChatModal && !aiChatModal.classList.contains('active')) {
-                    bubble.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
-                    bubble.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    bubble.classList.remove('opacity-0', 'translate-x-4', 'pointer-events-none');
+                    bubble.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
                     playFuturisticTone(880, 0.05, 'sine', 0.02);
                 }
             }
