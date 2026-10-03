@@ -1302,6 +1302,72 @@
 </head>
 <body class="bg-[#070b14] text-gray-200 font-sans antialiased selection:bg-[#00f0ff] selection:text-black relative overflow-x-hidden">
 
+    <!-- ULTRA-PREMIUM CYBER PRELOADER (Initial Boot Animation) -->
+    <div id="cyberPreloader" class="fixed inset-0 z-[99999] bg-[#030712] flex flex-col items-center justify-center transition-all duration-700 select-none overflow-hidden">
+        <!-- Ambient Grid & Glow Background -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.08)_0%,transparent_70%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#00f0ff08_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+
+        <div class="relative z-10 flex flex-col items-center max-w-sm sm:max-w-md w-full px-6">
+            <!-- Central Cyber Core HUD Animation -->
+            <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-6 flex items-center justify-center">
+                <!-- Outer Rotating Dashed Ring -->
+                <div class="absolute inset-0 rounded-full border-2 border-dashed border-[#00f0ff]/50 animate-[spin_6s_linear_infinite]"></div>
+                <!-- Middle Reverse Rotating Ring -->
+                <div class="absolute inset-2 rounded-full border-2 border-t-transparent border-b-[#10b981]/70 border-l-transparent border-r-[#38bdf8]/70 animate-[spin_3s_linear_infinite_reverse]"></div>
+                <!-- Glowing Pulsing Inner Ring -->
+                <div class="absolute inset-4 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff] shadow-[0_0_30px_rgba(0,240,255,0.5)] animate-pulse"></div>
+                
+                <!-- Center Avatar/Initials Badge -->
+                <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-[#00f0ff] shadow-[0_0_20px_rgba(0,240,255,0.7)] flex items-center justify-center bg-[#070b14]">
+                    <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
+                </div>
+
+                <!-- Corner HUD Brackets -->
+                <div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[#00f0ff]"></div>
+                <div class="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-[#00f0ff]"></div>
+                <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-[#00f0ff]"></div>
+                <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-[#00f0ff]"></div>
+            </div>
+
+            <!-- Identity Title & Credentials -->
+            <div class="text-center space-y-1 mb-5">
+                <h3 class="font-mono font-black text-base sm:text-lg text-white tracking-widest flex items-center justify-center gap-2">
+                    <span class="text-[#00f0ff]">WASSIM</span> BANNOUR
+                </h3>
+                <div class="font-mono text-[11px] text-gray-400 flex items-center justify-center gap-2">
+                    <span class="text-[#10b981] font-semibold"><i class="fa-solid fa-shield-halved text-[10px] mr-1"></i>CYBERSECURITY</span>
+                    <span>•</span>
+                    <span class="text-[#38bdf8] font-semibold">LINUX (RHCSA)</span>
+                </div>
+            </div>
+
+            <!-- Telemetry Boot Terminal Box -->
+            <div class="w-full rounded-xl bg-[#070b14]/90 border border-[#1e293b] p-3 font-mono text-[11px] space-y-1.5 shadow-inner mb-4">
+                <div class="flex items-center justify-between text-[10px] text-gray-400 pb-1.5 border-b border-[#1e293b]/60">
+                    <span class="flex items-center gap-1 text-[#00f0ff]">
+                        <i class="fa-solid fa-terminal text-[9px]"></i> SYSTEM_BOOT.SH
+                    </span>
+                    <span id="preloaderStatusText" class="text-emerald-400">INITIALIZING...</span>
+                </div>
+                <div id="preloaderLogLine" class="text-gray-300 truncate h-5 flex items-center text-[10px] sm:text-[11px]">
+                    <span class="text-emerald-400 mr-1.5">></span> Loading security modules...
+                </div>
+            </div>
+
+            <!-- Glowing Progress Bar with Percentage Counter -->
+            <div class="w-full space-y-1.5">
+                <div class="flex items-center justify-between font-mono text-[10px] text-gray-400 px-0.5">
+                    <span>SECURITY_PIPELINE</span>
+                    <span id="preloaderPercent" class="text-[#00f0ff] font-bold">0%</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-[#0f172a] border border-[#1e293b] overflow-hidden p-0.5">
+                    <div id="preloaderBar" class="h-full rounded-full bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#10b981] transition-all duration-100 shadow-[0_0_12px_rgba(0,240,255,0.8)]" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Ambient Glowing Cyber Orbs (Soft, subtle depth with zero eye strain) -->
     <div class="cyber-orb cyber-orb-1"></div>
     <div class="cyber-orb cyber-orb-2"></div>
@@ -3248,6 +3314,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261003-strict"></script>
+    <script src="script.js?v=20261003-boot"></script>
 </body>
 </html>

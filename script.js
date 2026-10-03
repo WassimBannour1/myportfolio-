@@ -2286,3 +2286,61 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// -------------------------------------------------------------
+// 7. ULTRA-SLEEK CYBER BOOT PRELOADER
+// -------------------------------------------------------------
+function initCyberPreloader() {
+    const preloader = document.getElementById('cyberPreloader');
+    if (!preloader) return;
+
+    const percentElem = document.getElementById('preloaderPercent');
+    const barElem = document.getElementById('preloaderBar');
+    const logElem = document.getElementById('preloaderLogLine');
+    const statusElem = document.getElementById('preloaderStatusText');
+
+    const logs = [
+        { progress: 20, log: 'Loading RHEL & Linux Kernel Subsystems...', status: 'KERNEL_OK' },
+        { progress: 45, log: 'Verifying RHCSA & PCAP Certifications... [OK]', status: 'CERTS_OK' },
+        { progress: 70, log: 'Initializing Smart EASM & OSINT Modules... [OK]', status: 'EASM_READY' },
+        { progress: 90, log: 'Connecting AI Twin Autonomous Neural Core...', status: 'AI_SYNAPSE' },
+        { progress: 100, log: 'All Systems Operational. Access Granted.', status: 'SYS_ONLINE' }
+    ];
+
+    let currentProgress = 0;
+    let logIndex = 0;
+
+    const interval = setInterval(() => {
+        currentProgress += Math.floor(Math.random() * 8) + 6;
+        if (currentProgress > 100) currentProgress = 100;
+
+        if (percentElem) percentElem.textContent = `${currentProgress}%`;
+        if (barElem) barElem.style.width = `${currentProgress}%`;
+
+        if (logIndex < logs.length && currentProgress >= logs[logIndex].progress) {
+            if (logElem) {
+                logElem.innerHTML = `<span class="text-emerald-400 mr-1.5">></span> ${logs[logIndex].log}`;
+            }
+            if (statusElem) statusElem.textContent = logs[logIndex].status;
+            logIndex++;
+        }
+
+        if (currentProgress >= 100) {
+            clearInterval(interval);
+            playFuturisticTone(1100, 0.05, 'sine', 0.03);
+            setTimeout(() => {
+                preloader.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
+                setTimeout(() => {
+                    preloader.remove();
+                }, 750);
+            }, 260);
+        }
+    }, 40);
+}
+
+// Trigger preloader immediately
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCyberPreloader);
+} else {
+    initCyberPreloader();
+}
