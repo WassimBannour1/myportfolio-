@@ -2369,11 +2369,20 @@ window.selectPitchChapter = function(index) {
     currentPitchChapter = index;
 
     const data = chapters[index];
+    
+    // Modal elements
     const badgeElem = document.getElementById('pitchSlideBadge');
     const titleElem = document.getElementById('pitchSlideTitle');
     const subElem = document.getElementById('pitchSlideSubtitle');
     const captionElem = document.getElementById('pitchSubtitleText');
     const timeElem = document.getElementById('pitchTimeDisplay');
+
+    // In-Page elements
+    const inBadgeElem = document.getElementById('inlineSlideBadge');
+    const inTitleElem = document.getElementById('inlineSlideTitle');
+    const inSubElem = document.getElementById('inlineSlideSubtitle');
+    const inCaptionElem = document.getElementById('inlineSubtitleText');
+    const inTimeElem = document.getElementById('inlinePitchTimeDisplay');
 
     if (badgeElem) badgeElem.textContent = data.badge;
     if (titleElem) titleElem.textContent = data.title;
@@ -2381,7 +2390,13 @@ window.selectPitchChapter = function(index) {
     if (captionElem) captionElem.textContent = data.caption;
     if (timeElem) timeElem.textContent = data.time;
 
-    // Update chapter buttons active status
+    if (inBadgeElem) inBadgeElem.textContent = data.badge;
+    if (inTitleElem) inTitleElem.textContent = data.title;
+    if (inSubElem) inSubElem.textContent = data.subtitle;
+    if (inCaptionElem) inCaptionElem.textContent = data.caption;
+    if (inTimeElem) inTimeElem.textContent = data.time;
+
+    // Update chapter buttons active status (Modal + Inline)
     for (let i = 0; i < 4; i++) {
         const btn = document.getElementById('chapterBtn' + i);
         if (btn) {
@@ -2389,6 +2404,14 @@ window.selectPitchChapter = function(index) {
                 btn.className = 'p-2 rounded-xl bg-[#00f0ff]/20 border border-[#00f0ff] text-[#00f0ff] font-bold text-left transition-all flex flex-col gap-0.5 shadow-[0_0_12px_rgba(0,240,255,0.4)] cursor-pointer';
             } else {
                 btn.className = 'p-2 rounded-xl bg-[#030712] border border-[#1e293b] text-gray-400 font-bold text-left transition-all hover:border-gray-500 hover:text-white flex flex-col gap-0.5 cursor-pointer';
+            }
+        }
+        const inBtn = document.getElementById('inlineChapterBtn' + i);
+        if (inBtn) {
+            if (i === index) {
+                inBtn.className = 'p-2 sm:p-2.5 rounded-xl bg-[#00f0ff]/20 border border-[#00f0ff] text-[#00f0ff] font-bold text-left transition-all flex flex-col gap-0.5 shadow-[0_0_10px_rgba(0,240,255,0.3)] cursor-pointer';
+            } else {
+                inBtn.className = 'p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-[#1e293b] text-gray-400 font-bold text-left transition-all hover:border-gray-500 hover:text-white flex flex-col gap-0.5 cursor-pointer';
             }
         }
     }
@@ -2408,26 +2431,48 @@ window.togglePitchPlayback = function() {
 
 window.startPitchPlayback = function() {
     isPitchPlaying = true;
+    
+    // Modal play button
     const playIcon = document.getElementById('pitchPlayIcon');
     const playText = document.getElementById('pitchPlayText');
     if (playIcon) playIcon.className = 'fa-solid fa-pause';
     if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'PAUSE' : 'PAUSE';
 
+    // In-page play button
+    const inPlayIcon = document.getElementById('inlinePitchPlayIcon');
+    const inPlayText = document.getElementById('inlinePitchPlayText');
+    if (inPlayIcon) inPlayIcon.className = 'fa-solid fa-pause text-xs';
+    if (inPlayText) inPlayText.textContent = CURRENT_LANG === 'en' ? 'PAUSE' : 'PAUSE';
+
     const avatarWave = document.getElementById('avatarVoiceWave');
     if (avatarWave) avatarWave.classList.remove('opacity-0');
+
+    const inVoiceWave = document.getElementById('inlineVoiceWave');
+    if (inVoiceWave) inVoiceWave.classList.remove('opacity-0');
 
     window.speakCurrentChapter();
 };
 
 window.pausePitchPlayback = function() {
     isPitchPlaying = false;
+    
+    // Modal play button
     const playIcon = document.getElementById('pitchPlayIcon');
     const playText = document.getElementById('pitchPlayText');
     if (playIcon) playIcon.className = 'fa-solid fa-play';
     if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'RESUME PITCH' : 'REPRENDRE';
 
+    // In-page play button
+    const inPlayIcon = document.getElementById('inlinePitchPlayIcon');
+    const inPlayText = document.getElementById('inlinePitchPlayText');
+    if (inPlayIcon) inPlayIcon.className = 'fa-solid fa-play text-xs';
+    if (inPlayText) inPlayText.textContent = CURRENT_LANG === 'en' ? 'RESUME' : 'REPRENDRE';
+
     const avatarWave = document.getElementById('avatarVoiceWave');
     if (avatarWave) avatarWave.classList.add('opacity-0');
+
+    const inVoiceWave = document.getElementById('inlineVoiceWave');
+    if (inVoiceWave) inVoiceWave.classList.add('opacity-0');
 
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -2452,6 +2497,9 @@ window.togglePitchSpeed = function() {
     const speedBtn = document.getElementById('pitchSpeedBtn');
     if (speedBtn) speedBtn.textContent = pitchPlaybackRate.toFixed(1) + 'x';
 
+    const inSpeedBtn = document.getElementById('inlinePitchSpeedBtn');
+    if (inSpeedBtn) inSpeedBtn.textContent = pitchPlaybackRate.toFixed(1) + 'x';
+
     if (isPitchPlaying) {
         window.speakCurrentChapter();
     }
@@ -2463,12 +2511,24 @@ window.togglePitchMute = function() {
     if (muteIcon) {
         muteIcon.className = isPitchMuted ? 'fa-solid fa-volume-xmark text-red-400' : 'fa-solid fa-volume-high text-[#00f0ff]';
     }
+    const inMuteIcon = document.getElementById('inlinePitchMuteIcon');
+    if (inMuteIcon) {
+        inMuteIcon.className = isPitchMuted ? 'fa-solid fa-volume-xmark text-red-400' : 'fa-solid fa-volume-high text-[#00f0ff]';
+    }
+
     if (isPitchMuted && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
     } else if (!isPitchMuted && isPitchPlaying) {
         window.speakCurrentChapter();
     }
 };
+
+// Aliases for Inline Player Controls
+window.toggleInlinePitch = window.togglePitchPlayback;
+window.selectInlineChapter = window.selectPitchChapter;
+window.restartInlinePitch = window.restartPitchPlayback;
+window.toggleInlinePitchSpeed = window.togglePitchSpeed;
+window.toggleInlinePitchMute = window.togglePitchMute;
 
 window.speakCurrentChapter = function() {
     if (pitchTimer) clearTimeout(pitchTimer);
@@ -2489,6 +2549,8 @@ window.speakCurrentChapter = function() {
             window.pausePitchPlayback();
             const playText = document.getElementById('pitchPlayText');
             if (playText) playText.textContent = CURRENT_LANG === 'en' ? 'REPLAY PITCH' : 'REJOUER';
+            const inPlayText = document.getElementById('inlinePitchPlayText');
+            if (inPlayText) inPlayText.textContent = CURRENT_LANG === 'en' ? 'REPLAY' : 'REJOUER';
         }
     };
 
