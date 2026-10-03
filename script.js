@@ -267,7 +267,8 @@ const I18N_DATA = {
         'doc.close': 'Fermer',
         'ai.title': 'AI Twin de Wassim',
         'ai.engine_status': 'Moteur : Prêt (Autonome / Worker)',
-        'ai.welcome': 'Bonjour ! Je suis l\'AI Twin de Wassim. Posez-moi des questions sur ses <strong>certifications RHCSA & PCAP</strong>, son travail en <strong>Smart EASM & OSINT chez Talan Tunisie</strong>, son <strong>33ᵉ rang mondial à IEEEXtreme</strong> ou son profil d\'ingénieur !',
+        'ai.greeting_bubble': 'Bonjour ! Je suis l\'AI Twin de Wassim Bannour. Comment puis-je vous aider aujourd\'hui ?',
+        'ai.welcome': 'Bonjour ! Je suis l\'AI Twin de Wassim Bannour. Comment puis-je vous aider aujourd\'hui ? Posez-moi vos questions sur le parcours de Wassim (cursus TEK-UP, certifications <strong>RHCSA & PCAP</strong>, projets <strong>Smart EASM & OSINT chez Talan Tunisie</strong>, top <strong>33ᵉ mondial à IEEEXtreme</strong>) ou son profil technique.',
         'ai.pill1': '⚡ Compétences & Certifs',
         'ai.pill2': '🛡️ Talan EASM & OSINT',
         'ai.pill3': '🏆 Rang #33 IEEEXtreme',
@@ -524,7 +525,8 @@ const I18N_DATA = {
         'doc.close': 'Close',
         'ai.title': 'Wassim\'s AI Twin',
         'ai.engine_status': 'Engine: Ready (Autonomous / Worker)',
-        'ai.welcome': 'Hello! I am Wassim\'s AI Twin. Ask me about his <strong>RHCSA & PCAP certifications</strong>, his <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, his <strong>33rd global rank in IEEEXtreme</strong>, or his fullstack engineering background!',
+        'ai.greeting_bubble': 'Hello! I\'m Wassim Bannour\'s AI Twin. How can I assist you today?',
+        'ai.welcome': 'Hello! I\'m Wassim Bannour\'s AI Twin. How can I assist you today? Ask me anything about Wassim\'s qualifications (TEK-UP engineering, <strong>RHCSA & PCAP certifications</strong>, <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, <strong>#33 worldwide rank in IEEEXtreme</strong>), or his technical background!',
         'ai.pill1': '⚡ Top Skills & Certs',
         'ai.pill2': '🛡️ Talan EASM & OSINT',
         'ai.pill3': '🏆 IEEEXtreme #33 Rank',
@@ -1685,16 +1687,50 @@ document.addEventListener('DOMContentLoaded', () => {
             aiChatModal.classList.add('active');
             if (floatingChatBtn) floatingChatBtn.classList.add('scale-0');
             if (chatInput) chatInput.focus();
+            if (typeof window.dismissAiGreeting === 'function') window.dismissAiGreeting();
         } else {
             aiChatModal.classList.remove('active');
             if (floatingChatBtn) floatingChatBtn.classList.remove('scale-0');
         }
     }
+    window.openAiChat = () => toggleChat(true);
+    window.closeAiChat = () => toggleChat(false);
 
     if (openAiChatBtn) openAiChatBtn.addEventListener('click', () => toggleChat(true));
     if (mobileAiChatBtn) mobileAiChatBtn.addEventListener('click', () => toggleChat(true));
     if (floatingChatBtn) floatingChatBtn.addEventListener('click', () => toggleChat(true));
     if (closeAiChatBtn) closeAiChatBtn.addEventListener('click', () => toggleChat(false));
+
+    // Proactive AI Twin Welcome Greeting Bubble
+    function initAiWelcomeGreeting() {
+        const bubble = document.getElementById('aiWelcomeBubble');
+        if (!bubble) return;
+
+        window.dismissAiGreeting = function() {
+            bubble.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            bubble.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+            sessionStorage.setItem('WB_AI_GREETING_SEEN', 'true');
+        };
+
+        // Auto-show after 1.2s delay if not previously dismissed
+        setTimeout(() => {
+            if (!sessionStorage.getItem('WB_AI_GREETING_SEEN')) {
+                if (aiChatModal && !aiChatModal.classList.contains('active')) {
+                    bubble.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+                    bubble.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    playFuturisticTone(880, 0.05, 'sine', 0.02);
+                }
+            }
+        }, 1200);
+
+        // Clicking bubble opens chat
+        bubble.addEventListener('click', () => {
+            window.dismissAiGreeting();
+            toggleChat(true);
+        });
+    }
+
+    initAiWelcomeGreeting();
 
     // Settings panel toggle
     if (chatSettingsToggleBtn && chatSettingsPanel) {
@@ -1874,6 +1910,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     function getDeepKnowledgeResponse(query) {
         const q = query.toLowerCase().trim();
+
+        // 0. Off-Topic & Generic Coding Refusal Shield
+        const isWassimContext = /wassim|bannour|talan|tek-up|tekup|isimm|bekalta|rhcsa|pcap|red hat|credly|ieee|xtreme|easm|osint|quickdoc|quick dock|stadium|sw consulting|team dev|restaurant|hire|recrut|cv|resume|certif|contact|portfolio|who are you|qui es-tu|bonjour|hello|hi|hey|salut|skills|competence|stack|experience|projet|project|education|diplome|formation/i.test(q);
+        const offTopicPatterns = [
+            /\b(write|create|generate|give me|make|code|build|develop)\b.*\b(code|script|program|function|game|app|website|page|calculator|algo|algorithm|class|bot|crawler)\b/i,
+            /\b(solve|calculate|compute|solve this)\b.*\b(math|equation|problem|integral|derivative|sum|matrix)\b/i,
+            /\b(what is the capital|who is the president|tell me a joke|write a poem|write an essay|translate this|who won the)\b/i,
+            /\b(write a python|write a javascript|write a c\+\+|write a java|write an html|write a bash script to)\b/i
+        ];
+        if (!isWassimContext && offTopicPatterns.some(p => p.test(q))) {
+            const isFr = CURRENT_LANG === 'fr' || /[éàèùâêîôûç]/i.test(q) || /\b(bonjour|salut|code|écris|fais|donne|moi|qui)\b/i.test(q);
+            return isFr
+                ? "Je suis exclusivement l'AI Twin professionnel de **Wassim Bannour** (Ingénieur Cybersécurité & Systèmes Linux). Je ne peux pas générer de code généraliste ou répondre à des requêtes non liées à Wassim.\n\nEn revanche, je serais ravi de vous présenter ses compétences techniques (administration Linux RHEL, certifications **RHCSA & PCAP**, développement d'outils **EASM & OSINT chez Talan Tunisie**, ou projets GitHub). Comment puis-je vous renseigner sur son profil ?"
+                : "I am exclusively the professional AI Twin for **Wassim Bannour** (Cybersecurity & Linux Systems Engineer). I cannot generate generic code or answer unrelated general queries.\n\nHowever, I would be delighted to discuss Wassim's technical expertise (enterprise Linux administration, verified **RHCSA & PCAP certifications**, **Smart EASM & OSINT pipelines at Talan Tunisie**, or his GitHub projects). How can I assist you with evaluating Wassim's background?";
+        }
 
         // 1. Greetings & Introduction
         if (q.includes('who are you') || q.includes('who is wassim') || q.includes('introduce') || q.includes('about yourself') || q === 'hi' || q === 'hello' || q === 'hey' || q.includes('bonjour') || q.includes('salut') || q.includes('qui es-tu')) {
