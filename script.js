@@ -2432,6 +2432,10 @@ window.togglePitchPlayback = function() {
 window.startPitchPlayback = function() {
     isPitchPlaying = true;
     
+    // Hide Play Overlay
+    const overlay = document.getElementById('videoPlayOverlay');
+    if (overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
+
     // Modal play button
     const playIcon = document.getElementById('pitchPlayIcon');
     const playText = document.getElementById('pitchPlayText');
@@ -2456,6 +2460,10 @@ window.startPitchPlayback = function() {
 window.pausePitchPlayback = function() {
     isPitchPlaying = false;
     
+    // Show Play Overlay
+    const overlay = document.getElementById('videoPlayOverlay');
+    if (overlay) overlay.classList.remove('opacity-0', 'pointer-events-none');
+
     // Modal play button
     const playIcon = document.getElementById('pitchPlayIcon');
     const playText = document.getElementById('pitchPlayText');
@@ -2577,6 +2585,324 @@ window.speakCurrentChapter = function() {
         pitchTimer = setTimeout(advanceNext, duration);
     }
 };
+
+// -------------------------------------------------------------
+// 9. 60-FPS MOTION GRAPHICS VIDEO CANVAS ENGINE
+// -------------------------------------------------------------
+let motionCanvas = null;
+let motionCtx = null;
+let portraitImg = new Image();
+let portraitLoaded = false;
+let motionParticles = [];
+
+function initPitchMotionCanvas() {
+    motionCanvas = document.getElementById('pitchMotionCanvas');
+    if (!motionCanvas) return;
+    motionCtx = motionCanvas.getContext('2d');
+
+    // High definition internal resolution
+    motionCanvas.width = 1280;
+    motionCanvas.height = 720;
+
+    portraitImg.src = '1000015101.jpg';
+    portraitImg.onload = () => {
+        portraitLoaded = true;
+    };
+
+    // Initialize ambient cyber light particles
+    motionParticles = [];
+    for (let i = 0; i < 40; i++) {
+        motionParticles.push({
+            x: Math.random() * 1280,
+            y: Math.random() * 720,
+            radius: Math.random() * 2.5 + 1,
+            speedX: (Math.random() - 0.5) * 1.5,
+            speedY: (Math.random() - 0.5) * 1.2,
+            alpha: Math.random() * 0.7 + 0.2,
+            color: i % 2 === 0 ? '#00f0ff' : '#10b981'
+        });
+    }
+
+    requestAnimationFrame(renderMotionLoop);
+}
+
+function renderMotionLoop(timestamp) {
+    if (!motionCtx || !motionCanvas) return;
+    const ctx = motionCtx;
+    const w = motionCanvas.width;
+    const h = motionCanvas.height;
+    const t = (timestamp || 0) * 0.001;
+
+    // 1. Dark Futuristic Cyber Studio Backdrop
+    const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+    bgGrad.addColorStop(0, '#040814');
+    bgGrad.addColorStop(0.5, '#070e1e');
+    bgGrad.addColorStop(1, '#02050d');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, w, h);
+
+    // 2. Animated Perspective Matrix Floor / Grid
+    ctx.save();
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.07)';
+    ctx.lineWidth = 1;
+    const gridOffset = ((timestamp || 0) * 0.04) % 40;
+    for (let x = 0; x < w; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+    }
+    for (let y = gridOffset; y < h; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+    }
+    ctx.restore();
+
+    // 3. Floating Ambient Sparks / Cyber Dust
+    motionParticles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha * (0.6 + 0.4 * Math.sin(t * 3 + p.radius));
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+    });
+
+    // 4. Candidate Portrait Motion (Ken Burns Camera Zoom + Parallax)
+    const zoom = 1.0 + (isPitchPlaying ? 0.04 * Math.sin(t * 1.5) : 0.02 * Math.sin(t * 0.8));
+    const avatarX = 260 + (isPitchPlaying ? 8 * Math.cos(t * 1.2) : 0);
+    const avatarY = 360 + (isPitchPlaying ? 6 * Math.sin(t * 1.5) : 0);
+    const avatarRadius = 155 * zoom;
+
+    // Glowing Neon Hologram Energy Rings behind avatar
+    ctx.save();
+    ctx.translate(avatarX, avatarY);
+    
+    // Outer rotating dashed ring
+    ctx.rotate(t * 0.4);
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 3;
+    ctx.setLineDash([16, 12]);
+    ctx.beginPath();
+    ctx.arc(0, 0, avatarRadius + 28, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Inner reverse rotating emerald ring
+    ctx.rotate(-t * 0.8);
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([8, 8]);
+    ctx.beginPath();
+    ctx.arc(0, 0, avatarRadius + 16, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+
+    // Avatar Circle Clip & Image Render
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(avatarX, avatarY, avatarRadius, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.clip();
+
+    if (portraitLoaded) {
+        ctx.drawImage(portraitImg, avatarX - avatarRadius, avatarY - avatarRadius, avatarRadius * 2, avatarRadius * 2);
+    } else {
+        ctx.fillStyle = '#0b1120';
+        ctx.fillRect(avatarX - avatarRadius, avatarY - avatarRadius, avatarRadius * 2, avatarRadius * 2);
+    }
+
+    // Laser scan beam sweeping vertically across avatar
+    const scanY = avatarY - avatarRadius + ((t * 220) % (avatarRadius * 2));
+    const scanGrad = ctx.createLinearGradient(0, scanY - 20, 0, scanY + 20);
+    scanGrad.addColorStop(0, 'transparent');
+    scanGrad.addColorStop(0.5, 'rgba(0, 240, 255, 0.45)');
+    scanGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = scanGrad;
+    ctx.fillRect(avatarX - avatarRadius, scanY - 20, avatarRadius * 2, 40);
+    ctx.restore();
+
+    // Avatar Cyber Border
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(avatarX, avatarY, avatarRadius, 0, Math.PI * 2);
+    ctx.strokeStyle = isPitchPlaying ? '#00f0ff' : 'rgba(0,240,255,0.6)';
+    ctx.lineWidth = 5;
+    ctx.shadowColor = '#00f0ff';
+    ctx.shadowBlur = isPitchPlaying ? 25 : 12;
+    ctx.stroke();
+    ctx.restore();
+
+    // 5. Kinetic Motion Graphics Card (Right Column)
+    const lang = CURRENT_LANG === 'en' ? 'en' : 'fr';
+    const chapters = PITCH_CHAPTERS[lang] || PITCH_CHAPTERS.fr;
+    const currentData = chapters[currentPitchChapter] || chapters[0];
+
+    const cardX = 490;
+    const cardY = 120;
+    const cardW = 730;
+    const cardH = 450;
+
+    // Card Glassmorphic Background
+    ctx.save();
+    ctx.fillStyle = 'rgba(7, 14, 28, 0.9)';
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
+    ctx.lineWidth = 2;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 24);
+    ctx.fill();
+    ctx.stroke();
+
+    // Chapter Pill Badge
+    ctx.fillStyle = 'rgba(0, 240, 255, 0.15)';
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, cardX + 30, cardY + 28, 190, 34, 17);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#00f0ff';
+    ctx.font = 'bold 15px "JetBrains Mono", monospace';
+    ctx.fillText(currentData.badge || 'CHAPTER 01/04', cardX + 45, cardY + 51);
+
+    // Dynamic Title
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 24px "Outfit", sans-serif';
+    ctx.shadowColor = 'rgba(0,240,255,0.4)';
+    ctx.shadowBlur = 8;
+    ctx.fillText(currentData.title, cardX + 30, cardY + 98);
+    ctx.shadowBlur = 0;
+
+    // Subtitle / Description Text
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = '15px "Outfit", sans-serif';
+    wrapText(ctx, currentData.subtitle, cardX + 30, cardY + 135, cardW - 60, 24);
+
+    // 3 Live Key Checkpoints
+    const highlights = getChapterHighlights(currentPitchChapter, lang);
+    highlights.forEach((h, idx) => {
+        const itemY = cardY + 245 + idx * 44;
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
+        roundRect(ctx, cardX + 30, itemY - 20, cardW - 60, 36, 10);
+        ctx.fill();
+
+        ctx.fillStyle = '#10b981';
+        ctx.font = 'bold 16px "JetBrains Mono", monospace';
+        ctx.fillText('✓', cardX + 45, itemY + 4);
+
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = '600 15px "Outfit", sans-serif';
+        ctx.fillText(h, cardX + 70, itemY + 4);
+    });
+
+    ctx.restore();
+
+    // 6. Live Dynamic Audio Spectrum Waveform Bars (Bottom of Canvas)
+    const numBars = 44;
+    const barW = 14;
+    const barGap = 6;
+    const startX = 490;
+    const baseWaveY = 660;
+
+    for (let b = 0; b < numBars; b++) {
+        let barHeight = 6;
+        if (isPitchPlaying) {
+            barHeight = 12 + 45 * Math.abs(Math.sin(t * 8 + b * 0.3) * Math.cos(t * 5 + b * 0.5));
+        } else {
+            barHeight = 6 + 10 * Math.abs(Math.sin(t * 2 + b * 0.2));
+        }
+
+        const barX = startX + b * (barW + barGap);
+        if (barX + barW > w - 40) break;
+
+        const barGrad = ctx.createLinearGradient(0, baseWaveY, 0, baseWaveY - barHeight);
+        barGrad.addColorStop(0, '#00f0ff');
+        barGrad.addColorStop(0.6, '#38bdf8');
+        barGrad.addColorStop(1, '#10b981');
+
+        ctx.fillStyle = barGrad;
+        roundRect(ctx, barX, baseWaveY - barHeight, barW, barHeight, 4);
+        ctx.fill();
+    }
+
+    // 7. Video Broadcast Overlays (Top HUD Bar)
+    ctx.save();
+    // Timecode
+    const tcMin = Math.floor((t % 90) / 60).toString().padStart(2, '0');
+    const tcSec = Math.floor(t % 60).toString().padStart(2, '0');
+    const tcFrm = Math.floor(((timestamp || 0) % 1000) / 16.6).toString().padStart(2, '0');
+    ctx.fillStyle = '#10b981';
+    ctx.font = 'bold 15px "JetBrains Mono", monospace';
+    ctx.fillText(`TC 00:${tcMin}:${tcSec}:${tcFrm}`, 50, 50);
+
+    // Audio status
+    ctx.fillStyle = isPitchPlaying ? '#00f0ff' : '#64748b';
+    ctx.font = '13px "JetBrains Mono", monospace';
+    ctx.fillText(isPitchPlaying ? 'AUDIO_SYNAPSE // TRANSMITTING [LIVE]' : 'AUDIO_STANDBY // READY', 340, 50);
+
+    ctx.restore();
+
+    requestAnimationFrame(renderMotionLoop);
+}
+
+function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    const words = (text || '').split(' ');
+    let line = '';
+    for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && n > 0) {
+            ctx.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+        } else {
+            line = testLine;
+        }
+    }
+    ctx.fillText(line, x, y);
+}
+
+function getChapterHighlights(idx, lang) {
+    if (lang === 'en') {
+        if (idx === 0) return ['Red Hat Certified System Administrator #240-275-103', 'RHEL 9 Kernel Hardening & SELinux Security', 'Production Bash & Python Automation Scripts'];
+        if (idx === 1) return ['Ranked 33rd Worldwide in IEEEXtreme 17.0', '2nd National in Tunisia (Out of Thousands)', 'High-Pressure 24h Non-Stop Algorithmic Solving'];
+        if (idx === 2) return ['External Attack Surface Management (Talan Tunisie)', 'Multi-Source OSINT Threat Intelligence Ingestion', 'Proactive Vulnerability Scanning & Risk Scoring'];
+        return ['End-to-End Security-by-Design Architecture', 'Full-Stack Modern Stacks (Node.js, Angular, Python)', 'Immediate Availability & High Operational ROI'];
+    } else {
+        if (idx === 0) return ['Certifié Red Hat SysAdmin (RHCSA #240-275-103)', 'Durcissement du Noyau RHEL 9 & Politiques SELinux', 'Automatisation Avancée par Scripts Bash & Python'];
+        if (idx === 1) return ['Classé 33ème Mondial au Concours IEEEXtreme 17.0', '2ème National en Tunisie (Parmi des Milliers)', 'Résolution Algorithmique Complexe en 24h Non-Stop'];
+        if (idx === 2) return ['Gestion de Surface d\'Attaque Externe (Talan Tunisie)', 'Connecteurs Renseignement de Menaces OSINT Multiples', 'Détection Proactive des Vulnérabilités & Surface Web'];
+        return ['Architecture Logicielle Sécurisée dès la Conception', 'Maîtrise Full-Stack Complète (Node.js, Angular, Python)', 'Disponibilité Immédiate & Rentabilité Opérationnelle'];
+    }
+}
+
+// Initialize Motion Video Canvas on Page Load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPitchMotionCanvas);
+} else {
+    initPitchMotionCanvas();
+}
 
 // Close modals when clicking backdrop outside container
 document.addEventListener('click', (e) => {

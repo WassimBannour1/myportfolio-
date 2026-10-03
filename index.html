@@ -1884,53 +1884,61 @@
                         </div>
                     </div>
 
-                    <!-- Video Cinema Screen Stage -->
-                    <div class="p-4 sm:p-6 bg-[#030712] relative overflow-hidden space-y-4">
-                        <!-- Holographic Ambient Grid -->
-                        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_75%,rgba(0,240,255,0.04)_100%)] bg-[size:100%_4px] pointer-events-none"></div>
-
-                        <!-- Video Screen Card -->
-                        <div class="relative rounded-2xl bg-[#070b14] border border-[#00f0ff]/30 p-4 sm:p-6 shadow-2xl flex flex-col justify-between min-h-[220px] sm:min-h-[260px]">
+                    <!-- Video Cinema Screen Stage (60 FPS Motion Graphics + Real Video Support) -->
+                    <div class="p-3 sm:p-5 bg-[#030712] relative overflow-hidden space-y-3.5">
+                        
+                        <!-- Screen Frame & Canvas Container -->
+                        <div class="relative w-full rounded-2xl overflow-hidden bg-[#070b14] border border-[#00f0ff]/40 shadow-[0_0_30px_rgba(0,240,255,0.2)] aspect-video min-h-[260px] sm:min-h-[360px] max-h-[440px] flex items-center justify-center group">
                             
-                            <!-- Telemetry HUD Bar -->
-                            <div class="flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-gray-400 border-b border-[#1e293b] pb-2.5">
-                                <span class="flex items-center gap-1.5 text-[#00f0ff] font-bold">
-                                    <i class="fa-solid fa-shield-halved"></i> CANDIDATE_PROFILE // WASSIM_BANNOUR
-                                </span>
-                                <span id="inlinePitchTimeDisplay" class="text-emerald-400 font-bold">00:00 / 01:30</span>
-                            </div>
+                            <!-- 60FPS Live Motion Graphics Canvas -->
+                            <canvas id="pitchMotionCanvas" class="w-full h-full object-cover block cursor-pointer" onclick="window.toggleInlinePitch()"></canvas>
 
-                            <!-- Screen Central Content -->
-                            <div class="my-auto py-3 sm:py-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                                <!-- Presenter Avatar with Hologram Pulse -->
-                                <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00f0ff] shadow-[0_0_20px_rgba(0,240,255,0.5)] shrink-0 bg-[#030712]">
-                                    <img src="1000015101.jpg" alt="Wassim Bannour" class="w-full h-full object-cover object-top">
-                                    <div class="absolute inset-0 bg-[#00f0ff]/10 animate-pulse"></div>
-                                    <div id="inlineVoiceWave" class="absolute inset-0 border-2 border-[#10b981] rounded-2xl opacity-0 transition-opacity"></div>
-                                </div>
+                            <!-- Optional Fallback Native HTML5 Video Element (Auto-activated if pitch_video.mp4 is provided) -->
+                            <video id="nativeVideoPlayer" class="hidden w-full h-full object-cover" playsinline controls></video>
 
-                                <!-- Dynamic Pitch Slide Content -->
-                                <div class="flex-1 text-center sm:text-left space-y-1.5">
-                                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00f0ff]/15 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-[10px] font-bold">
-                                        <span id="inlineSlideBadge">CHAPITRE 01/04</span>
+                            <!-- Floating Big Play / Resume Overlay (when paused) -->
+                            <div id="videoPlayOverlay" onclick="window.toggleInlinePitch()" class="absolute inset-0 bg-black/60 backdrop-blur-xs flex flex-col items-center justify-center transition-all duration-300 cursor-pointer group-hover:bg-black/40 z-30">
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-[#00f0ff] via-[#38bdf8] to-[#10b981] p-1 shadow-[0_0_35px_rgba(0,240,255,0.8)] group-hover:scale-110 transition-transform flex items-center justify-center">
+                                    <div class="w-full h-full rounded-full bg-[#070b14] flex items-center justify-center text-[#00f0ff]">
+                                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1 text-white group-hover:text-[#00f0ff] transition-colors"></i>
                                     </div>
-                                    <h4 id="inlineSlideTitle" class="text-base sm:text-lg font-black text-white font-mono leading-snug">
-                                        01. Expertise Linux Entreprise & Certification RHCSA
-                                    </h4>
-                                    <p id="inlineSlideSubtitle" class="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
-                                        Solide maîtrise de Red Hat Enterprise Linux (RHEL 9), du durcissement système, des règles SELinux et de l'automatisation Bash/Python en environnement critique.
-                                    </p>
+                                </div>
+                                <div class="mt-3 text-center space-y-1">
+                                    <span class="font-mono font-black text-xs sm:text-sm text-white tracking-widest block drop-shadow-md">
+                                        CLIQUEZ POUR LIRE LE VIDEO PITCH
+                                    </span>
+                                    <span class="font-mono text-[10px] text-[#00f0ff] bg-[#070b14]/90 px-3 py-0.5 rounded-full border border-[#00f0ff]/40 inline-block">
+                                        ● 60 FPS MOTION GRAPHICS & AUDIO SYNTHESIS
+                                    </span>
                                 </div>
                             </div>
 
-                            <!-- Live Teleprompter Subtitle Strip -->
-                            <div class="rounded-xl bg-[#030712]/95 border border-[#00f0ff]/30 p-2.5 sm:p-3 text-center sm:text-left font-mono text-[11px] sm:text-xs text-white shadow-lg flex items-center gap-2.5">
-                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
-                                <p id="inlineSubtitleText" class="truncate sm:whitespace-normal leading-normal text-emerald-300">
-                                    « Premier atout : Wassim est certifié Red Hat (RHCSA #240-275-103). Il sécurise et automatise les parcs de serveurs Linux d'entreprise avec rigueur. »
-                                </p>
+                            <!-- Live Telemetry Status Overlay (Top-Left and Top-Right) -->
+                            <div class="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-2">
+                                <span class="px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-red-500/70 text-red-400 font-mono text-[10px] font-bold flex items-center gap-1.5 shadow-md">
+                                    <span id="recStatusDot" class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                                    <span id="recStatusText">● REC 60FPS</span>
+                                </span>
+                                <span class="px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-[10px] font-bold hidden sm:inline-block">
+                                    1080P PRORES HDR
+                                </span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 z-20 pointer-events-none">
+                                <span id="inlinePitchTimeDisplay" class="px-2.5 py-1 rounded-full bg-[#070b14]/90 border border-emerald-400/60 text-emerald-400 font-mono text-[10px] font-bold">
+                                    00:00 / 01:30
+                                </span>
                             </div>
                         </div>
+
+                        <!-- Live Teleprompter Subtitle Strip -->
+                        <div class="rounded-xl bg-[#070b14] border border-[#00f0ff]/40 p-3 text-center sm:text-left font-mono text-xs text-white shadow-lg flex items-center gap-2.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+                            <p id="inlineSubtitleText" class="truncate sm:whitespace-normal leading-normal text-emerald-300 flex-1">
+                                « Premier atout : Wassim est certifié Red Hat (RHCSA #240-275-103). Il sécurise et automatise les parcs de serveurs Linux d'entreprise avec rigueur. »
+                            </p>
+                        </div>
+                    </div>
 
                         <!-- 4 Interactive Chapter Quick-Select Tabs -->
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[11px]">
@@ -3772,6 +3780,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261003-pitchv2"></script>
+    <script src="script.js?v=20261003-motion60fps"></script>
 </body>
 </html>
