@@ -93,28 +93,6 @@
             outline-offset: 3px !important;
         }
 
-        /* Physical Micro-Interactions on Interactive Elements */
-        button, a, .cyber-btn, .cyber-glow-btn, .prompt-pill, .station-btn, .skill-filter-btn {
-            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        button:active, a.inline-flex:active, .cyber-btn:active, .cyber-glow-btn:active, .prompt-pill:active {
-            transform: scale(0.97) !important;
-        }
-
-        /* Respect Reduced Motion Preferences */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .cyber-orb { display: none !important; }
-            .road-energy-line::after { display: none !important; }
-            .radar-sweep-line { animation: none !important; }
-            .sound-wave-bar { animation: none !important; }
-        }
-
         /* Custom Cyber Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -3423,6 +3401,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261118-pro-max"></script>
+    <script src="script.js?v=20261119-anim-restored"></script>
 </body>
 </html>
