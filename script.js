@@ -747,45 +747,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 1. DYNAMIC CYBER MATRIX CANVAS BACKGROUND (MAGNETIC PARTICLES)
     // -------------------------------------------------------------
-    const canvas = document.getElementById('cyberCanvas');
+    // 1. EXECUTIVE AMBIENT TOPOLOGY CANVAS & INTERACTIVE SPOTLIGHT
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('ambientNetworkCanvas');
+    const spotlight = document.getElementById('ambientSpotlight');
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let ticking = false;
+
+    // Smooth Cursor Spotlight Tracking (CSS Custom Properties)
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                if (spotlight) {
+                    spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+                    spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width = (canvas.width = window.innerWidth);
         let height = (canvas.height = window.innerHeight);
-        let mouseX = -1000;
-        let mouseY = -1000;
 
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }, 150);
+        }, { passive: true });
 
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // Grid particle nodes
-        const nodes = Array.from({ length: 48 }, () => ({
+        // 30 Discrete, Calm Architectural Topology Nodes
+        const nodeCount = window.innerWidth < 768 ? 16 : 28;
+        const nodes = Array.from({ length: nodeCount }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.45,
-            vy: (Math.random() - 0.5) * 0.45,
-            radius: Math.random() * 1.5 + 1
+            vx: (Math.random() - 0.5) * 0.22,
+            vy: (Math.random() - 0.5) * 0.22,
+            radius: Math.random() * 1.2 + 0.8
         }));
 
+        let animationFrameId;
+        let isVisible = true;
+
+        document.addEventListener('visibilitychange', () => {
+            isVisible = !document.hidden;
+            if (isVisible) {
+                animationFrameId = requestAnimationFrame(animateCanvas);
+            } else {
+                cancelAnimationFrame(animationFrameId);
+            }
+        });
+
         function animateCanvas() {
+            if (!isVisible) return;
             ctx.clearRect(0, 0, width, height);
 
             const isLight = document.documentElement.classList.contains('light-mode');
-            const lineBaseColor = isLight ? 'rgba(2, 132, 199, 0.12)' : 'rgba(0, 240, 255, 0.07)';
-            const nodeFillColor = isLight ? 'rgba(2, 132, 199, 0.5)' : 'rgba(0, 240, 255, 0.45)';
+            const lineBaseColor = isLight ? 'rgba(100, 116, 139, 0.08)' : 'rgba(59, 130, 246, 0.08)';
+            const nodeFillColor = isLight ? 'rgba(71, 85, 105, 0.35)' : 'rgba(147, 197, 253, 0.45)';
 
-            // Connecting lines between close nodes
-            ctx.strokeStyle = lineBaseColor;
-            ctx.lineWidth = 0.6;
+            // Subtle Connecting Lines Between Nearby Nodes
+            ctx.lineWidth = 0.5;
 
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
@@ -793,7 +825,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dy = nodes[i].y - nodes[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 140) {
+                    if (dist < 130) {
+                        const alpha = (1 - dist / 130) * (isLight ? 0.08 : 0.07);
+                        ctx.strokeStyle = isLight ? `rgba(100, 116, 139, ${alpha})` : `rgba(59, 130, 246, ${alpha})`;
                         ctx.beginPath();
                         ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -801,28 +835,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Connect to mouse if near
+                // Delicate Proximity Reaction to Cursor
                 const mdx = nodes[i].x - mouseX;
                 const mdy = nodes[i].y - mouseY;
                 const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                if (mdist < 120) {
-                    ctx.strokeStyle = isLight 
-                        ? `rgba(2, 132, 199, ${0.35 * (1 - mdist / 120)})`
-                        : `rgba(0, 240, 255, ${0.25 * (1 - mdist / 120)})`;
+                if (mdist < 140) {
+                    const mAlpha = (1 - mdist / 140) * 0.12;
+                    ctx.strokeStyle = isLight ? `rgba(59, 130, 246, ${mAlpha})` : `rgba(96, 165, 250, ${mAlpha})`;
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(mouseX, mouseY);
                     ctx.stroke();
+
+                    // Very gentle push
+                    nodes[i].x += (mdx / mdist) * 0.25;
+                    nodes[i].y += (mdy / mdist) * 0.25;
                 }
             }
 
-            // Draw nodes
+            // Draw & Update Nodes
             nodes.forEach(node => {
                 node.x += node.vx;
                 node.y += node.vy;
 
-                if (node.x < 0 || node.x > width) node.vx *= -1;
-                if (node.y < 0 || node.y > height) node.vy *= -1;
+                if (node.x < 0) { node.x = width; }
+                else if (node.x > width) { node.x = 0; }
+                if (node.y < 0) { node.y = height; }
+                else if (node.y > height) { node.y = 0; }
 
                 ctx.fillStyle = nodeFillColor;
                 ctx.beginPath();
@@ -830,7 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fill();
             });
 
-            requestAnimationFrame(animateCanvas);
+            animationFrameId = requestAnimationFrame(animateCanvas);
         }
 
         animateCanvas();
