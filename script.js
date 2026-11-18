@@ -31,7 +31,7 @@ const I18N_DATA = {
         'nav.achievements': 'Distinctions',
         'nav.certs': 'Certifications',
         'nav.experience': 'Expérience',
-        'nav.pipeline': 'Radar',
+        'nav.pipeline': 'Architecture',
         'nav.skills': 'Formation',
         'nav.contact': 'Contact',
         'nav.fasttrack': 'FAST-TRACK',
@@ -107,7 +107,7 @@ const I18N_DATA = {
         'exp.talan_role': 'Développeur Cybersécurité — Plateforme Smart EASM',
         'exp.talan_sub': 'External Attack Surface Management & Threat Intelligence',
         'exp.talan_date': '2026 Juil - Août',
-        'exp.talan_summary': 'Conception et développement de la plateforme <strong class="text-white">Smart EASM</strong> pour la découverte continue, la cartographie et la surveillance des actifs exposés sur Internet, avec automatisation avancée des flux <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong>.',
+        'exp.talan_summary': 'Conception et développement de la plateforme <strong class="text-white">Smart EASM</strong> pour la découverte continue, la cartographie et la surveillance des actifs exposés sur Internet, avec automatisation avancée des flux <strong class="text-blue-400">OSINT & Threat Intelligence</strong>.',
         'exp.talan_b1_title': 'Architecture EASM',
         'exp.talan_b1_desc': 'Architecture modulaire conçue pour la découverte passive et active des vecteurs d\'attaque externes : domaines racine, sous-domaines orphelins, adresses IP publiques, certificats TLS expirés et ports/services vulnérables.',
         'exp.talan_b2_title': 'Connecteurs OSINT',
@@ -121,7 +121,7 @@ const I18N_DATA = {
         'exp.sw_badge': 'FULLSTACK & IA/OCR',
         'exp.sw_role': 'Développeur Web Fullstack — OCR & IA Documentaire',
         'exp.sw_sub': 'Plateforme Quick Dock & Moteur d\'Extraction Intelligente',
-        'exp.sw_summary': 'Conception du moteur d\'extraction automatique de données par <strong class="text-white">OCR</strong> pour la dématérialisation comptable et développement de la plateforme web <strong class="text-[#00f0ff]">Quick Dock</strong> (Node.js/Express + Vue.js).',
+        'exp.sw_summary': 'Conception du moteur d\'extraction automatique de données par <strong class="text-white">OCR</strong> pour la dématérialisation comptable et développement de la plateforme web <strong class="text-blue-400">Quick Dock</strong> (Node.js/Express + Vue.js).',
         'exp.sw_b1_title': 'Moteur OCR & IA Documentaire',
         'exp.sw_b1_desc': 'Algorithmes de reconnaissance optique de caractères (OCR) avec pré-traitement d\'images (NumPy), extraction automatique des montants HT/TTC, dates et numéros de TVA, éliminant 85% de la saisie manuelle.',
         'exp.sw_b2_title': 'Plateforme Quick Dock (Vue.js + Node.js)',
@@ -152,17 +152,17 @@ const I18N_DATA = {
         'exp.tech_explore_repo': 'Explorer le Repo GitHub',
         'exp.tech_chat_ai': 'Discuter avec l\'IA',
 
-        // Section 04: Radar & Milestone Timeline
-        'pipeline.tag': '04. // RADAR DE DÉFENSE & TRAJECTOIRE',
-        'pipeline.title': 'Radar des Opérations Cyber & Pipeline',
-        'pipeline.subtitle': 'Télémétrie de sécurité temps réel, renseignement sur les surfaces d\'attaque et architecture chronologique des jalons de Wassim.',
-        'pipeline.livescan': 'Scan Direct',
-        'pipeline.telemetry_title': 'SEC_OPS // TÉLÉMÉTRIE RADAR',
+        // Section 04: Systems & Milestone Architecture
+        'pipeline.tag': '04. // ARCHITECTURE SYSTÈMES & TRAJECTOIRE',
+        'pipeline.title': 'Architecture Systèmes, Sécurité & Trajectoire',
+        'pipeline.subtitle': 'Cartographie des compétences fondamentales en ingénierie des systèmes, EASM, durcissement de noyau Linux et jalons chronologiques de Wassim.',
+        'pipeline.livescan': 'Défilement Auto',
+        'pipeline.telemetry_title': 'ARCHITECTURE & POSTURE SYSTÈMES',
         'pipeline.posture_label': '[+] POSTURE : DURCIE',
         'pipeline.selinux_label': 'SELinux : STRICT (ENFORCING)',
         'pipeline.easm_label': '[+] EASM : RECON ACTIVE',
         'pipeline.ieee_label': 'IEEE : #33 MONDIAL',
-        'pipeline.capabilities_label': '// Capacités de la Station :',
+        'pipeline.capabilities_label': '// Capacités du Jalon :',
         'pipeline.btn_details': 'Consulter les Détails',
         'pipeline.btn_ask_ai': 'Interroger l\'AI Twin sur ce jalon',
 
@@ -259,7 +259,7 @@ const I18N_DATA = {
         'doc.attest_btn': 'Attestation',
         'doc.diploma_btn': 'Diplôme',
         'doc.status_title': 'Document Officiel',
-        'doc.status_subtext': 'Ce document est stocké dans le répertoire <code class="text-[#00f0ff]">proofs/</code> pour vérification authentique.',
+        'doc.status_subtext': 'Ce document est stocké dans le répertoire <code class="text-blue-400">proofs/</code> pour vérification authentique.',
         'doc.download': 'Télécharger le Document',
         'doc.fullscreen': 'Ouvrir Plein Écran',
         'doc.authenticity': '<i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i> Authenticité garantie • Wassim Bannour',
@@ -271,7 +271,7 @@ const I18N_DATA = {
         'ai.welcome': 'Bonjour ! Je suis l\'AI Twin de Wassim Bannour. Comment puis-je vous aider aujourd\'hui ? Posez-moi vos questions sur le parcours de Wassim (cursus TEK-UP, certifications <strong>RHCSA & PCAP</strong>, projets <strong>Smart EASM & OSINT chez Talan Tunisie</strong>, top <strong>33ᵉ mondial à IEEEXtreme</strong>) ou son profil technique.',
         'ai.pill1': '<i class="fa-solid fa-bolt text-yellow-400 text-[10px] mr-1.5"></i>Compétences & Certifs',
         'ai.pill2': '<i class="fa-solid fa-shield-halved text-emerald-400 text-[10px] mr-1.5"></i>Talan EASM & OSINT',
-        'ai.pill3': '<i class="fa-solid fa-trophy text-[#00f0ff] text-[10px] mr-1.5"></i>Rang #33 IEEEXtreme',
+        'ai.pill3': '<i class="fa-solid fa-trophy text-blue-400 text-[10px] mr-1.5"></i>Rang #33 IEEEXtreme',
         'ai.pill4': '<i class="fa-solid fa-rocket text-[#38bdf8] text-[10px] mr-1.5"></i>Pourquoi recruter Wassim ?',
         'ai.input_ph': 'Posez vos questions de recruteur...',
         'footer.copy': '© 2026 Wassim Bannour. Sécurité des Systèmes & Ingénierie Linux.',
@@ -289,7 +289,7 @@ const I18N_DATA = {
         'nav.achievements': 'Achievements',
         'nav.certs': 'Certifications',
         'nav.experience': 'Experience',
-        'nav.pipeline': 'Radar',
+        'nav.pipeline': 'Architecture',
         'nav.skills': 'Education',
         'nav.contact': 'Contact',
         'nav.fasttrack': 'FAST-TRACK',
@@ -365,7 +365,7 @@ const I18N_DATA = {
         'exp.talan_role': 'Cybersecurity Developer — Smart EASM Platform',
         'exp.talan_sub': 'External Attack Surface Management & Threat Intelligence',
         'exp.talan_date': '2026 Jul - Aug',
-        'exp.talan_summary': 'Design and development of the <strong class="text-white">Smart EASM</strong> platform for continuous discovery, mapping, and monitoring of Internet-exposed assets with advanced <strong class="text-[#00f0ff]">OSINT & Threat Intelligence</strong> automation.',
+        'exp.talan_summary': 'Design and development of the <strong class="text-white">Smart EASM</strong> platform for continuous discovery, mapping, and monitoring of Internet-exposed assets with advanced <strong class="text-blue-400">OSINT & Threat Intelligence</strong> automation.',
         'exp.talan_b1_title': 'EASM Architecture',
         'exp.talan_b1_desc': 'Modular architecture engineered for passive and active external attack vector discovery: apex domains, orphaned subdomains, public IPs, expired TLS certificates, and vulnerable exposed ports/services.',
         'exp.talan_b2_title': 'OSINT Connectors',
@@ -379,7 +379,7 @@ const I18N_DATA = {
         'exp.sw_badge': 'FULLSTACK & AI/OCR',
         'exp.sw_role': 'Fullstack Web Developer — OCR & Document AI',
         'exp.sw_sub': 'Quick Dock Platform & Smart Extraction Engine',
-        'exp.sw_summary': 'Design of the automated <strong class="text-white">OCR</strong> data extraction engine for accounting dematerialization and development of the <strong class="text-[#00f0ff]">Quick Dock</strong> web platform (Node.js/Express + Vue.js).',
+        'exp.sw_summary': 'Design of the automated <strong class="text-white">OCR</strong> data extraction engine for accounting dematerialization and development of the <strong class="text-blue-400">Quick Dock</strong> web platform (Node.js/Express + Vue.js).',
         'exp.sw_b1_title': 'OCR Engine & Document AI',
         'exp.sw_b1_desc': 'Optical character recognition (OCR) algorithms with image pre-processing (NumPy), automatic extraction of net/gross amounts, invoice dates, and VAT numbers, eliminating 85% of manual data entry.',
         'exp.sw_b2_title': 'Quick Dock Platform (Vue.js + Node.js)',
@@ -410,17 +410,17 @@ const I18N_DATA = {
         'exp.tech_explore_repo': 'Explore GitHub Repo',
         'exp.tech_chat_ai': 'Chat with AI',
 
-        // Section 04: Radar & Milestone Timeline
-        'pipeline.tag': '04. // DEFENSE RADAR & PIPELINE TRAJECTORY',
-        'pipeline.title': 'Cyber Operations Radar & Pipeline',
-        'pipeline.subtitle': 'Real-time security telemetry, attack surface intelligence, and chronological milestone architecture across Wassim\'s career.',
-        'pipeline.livescan': 'Live Scan',
-        'pipeline.telemetry_title': 'SEC_OPS // TELEMETRY RADAR',
+        // Section 04: Systems & Milestone Architecture
+        'pipeline.tag': '04. // SYSTEMS & SECURITY ARCHITECTURE',
+        'pipeline.title': 'Systems Architecture, Security & Trajectory',
+        'pipeline.subtitle': 'Core systems engineering topology, EASM attack surface pipelines, Linux kernel hardening, and chronological engineering milestones.',
+        'pipeline.livescan': 'Auto-Tour',
+        'pipeline.telemetry_title': 'SYSTEMS & ARCHITECTURE STATE',
         'pipeline.posture_label': '[+] POSTURE: HARDENED',
         'pipeline.selinux_label': 'SELinux: ENFORCING',
         'pipeline.easm_label': '[+] EASM: RECON ACTIVE',
         'pipeline.ieee_label': 'IEEE: #33 GLOBAL',
-        'pipeline.capabilities_label': '// Station Capabilities:',
+        'pipeline.capabilities_label': '// Milestone Capabilities:',
         'pipeline.btn_details': 'View Milestone Details',
         'pipeline.btn_ask_ai': 'Ask AI Twin about this milestone',
 
@@ -517,7 +517,7 @@ const I18N_DATA = {
         'doc.attest_btn': 'Attestation',
         'doc.diploma_btn': 'Diploma',
         'doc.status_title': 'Official Document',
-        'doc.status_subtext': 'This document is stored in the <code class="text-[#00f0ff]">proofs/</code> directory for authentic verification.',
+        'doc.status_subtext': 'This document is stored in the <code class="text-blue-400">proofs/</code> directory for authentic verification.',
         'doc.download': 'Download Document',
         'doc.fullscreen': 'Open Fullscreen',
         'doc.authenticity': '<i class="fa-solid fa-shield-halved text-[#10b981] mr-1"></i> Guaranteed Authenticity • Wassim Bannour',
@@ -529,7 +529,7 @@ const I18N_DATA = {
         'ai.welcome': 'Hello! I\'m Wassim Bannour\'s AI Twin. How can I assist you today? Ask me anything about Wassim\'s qualifications (TEK-UP engineering, <strong>RHCSA & PCAP certifications</strong>, <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, <strong>#33 worldwide rank in IEEEXtreme</strong>), or his technical background!',
         'ai.pill1': '<i class="fa-solid fa-bolt text-yellow-400 text-[10px] mr-1.5"></i>Top Skills & Certs',
         'ai.pill2': '<i class="fa-solid fa-shield-halved text-emerald-400 text-[10px] mr-1.5"></i>Talan EASM & OSINT',
-        'ai.pill3': '<i class="fa-solid fa-trophy text-[#00f0ff] text-[10px] mr-1.5"></i>IEEEXtreme #33 Rank',
+        'ai.pill3': '<i class="fa-solid fa-trophy text-blue-400 text-[10px] mr-1.5"></i>IEEEXtreme #33 Rank',
         'ai.pill4': '<i class="fa-solid fa-rocket text-[#38bdf8] text-[10px] mr-1.5"></i>Why hire Wassim?',
         'ai.input_ph': 'Ask recruiter questions...',
         'footer.copy': '© 2026 Wassim Bannour. Systems Security & Linux Engineering.',
@@ -545,28 +545,8 @@ const I18N_DATA = {
 };
 
 function playFuturisticTone(freq = 880, duration = 0.04, type = 'sine', volume = 0.03) {
-    if (!SFX_ENABLED) return;
-    try {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
-        gain.gain.setValueAtTime(volume, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-    } catch (e) {
-        // AudioContext not allowed before user interaction
-    }
+    // Audio synthesizer disabled for clean professional executive experience
+    return;
 }
 
 /**
@@ -585,7 +565,7 @@ window.renderTerminalScreen = function(lang) {
         <div class="terminal-log-line success">${isFr ? '[+] Plateforme Surface d\'Attaque : Active & Surveillance Continue' : '[+] Attack Surface Platform: Active & Monitoring'}</div>
         <div class="terminal-log-line info">${isFr ? '[+] Certifications Vérifiées : Red Hat RHCSA & Python PCAP' : '[+] Verified Certifications: Red Hat RHCSA & Python PCAP'}</div>
         <div class="terminal-log-line info">${isFr ? '[+] Classement Mondial : #33 Mondial IEEEXtreme 17.0 (2ème National TN)' : '[+] Global Ranking: #33 Worldwide IEEEXtreme 17.0 (2nd National TN)'}</div>
-        <div class="terminal-log-line text-[#00f0ff] font-bold">${isFr ? '[✓] Statut : Prêt pour opportunités à fort impact en Cybersécurité & Ingénierie Systèmes.' : '[✓] Status: Ready for High-Impact Cybersecurity & Systems Engineering Opportunities.'}</div>
+        <div class="terminal-log-line text-blue-400 font-bold">${isFr ? '[✓] Statut : Prêt pour opportunités à fort impact en Cybersécurité & Ingénierie Systèmes.' : '[✓] Status: Ready for High-Impact Cybersecurity & Systems Engineering Opportunities.'}</div>
     `;
     terminalScreen.scrollTop = terminalScreen.scrollHeight;
 };
@@ -738,10 +718,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileSfxText) mobileSfxText.textContent = SFX_ENABLED ? 'SFX: ON' : 'SFX: OFF';
 
         if (sfxIcon) {
-            sfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-[#00f0ff]' : 'fa-solid fa-volume-xmark text-xs text-gray-500';
+            sfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-blue-400' : 'fa-solid fa-volume-xmark text-xs text-gray-500';
         }
         if (mobileSfxIcon) {
-            mobileSfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-[#00f0ff]' : 'fa-solid fa-volume-xmark text-xs text-gray-400';
+            mobileSfxIcon.className = SFX_ENABLED ? 'fa-solid fa-volume-high text-xs text-blue-400' : 'fa-solid fa-volume-xmark text-xs text-gray-400';
         }
         if (sfxToggleBtn) {
             if (SFX_ENABLED) sfxToggleBtn.classList.remove('sfx-muted');
@@ -981,9 +961,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cmd === 'help') {
             if (isFr) {
-                appendTerminalLog('info', `Commandes Disponibles:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identité, cursus TEK-UP & spécialisation Linux / Sécurité\n- <strong class="text-[#00f0ff]">certs</strong> : Certifications officielles Red Hat RHCSA & Python PCAP\n- <strong class="text-[#00f0ff]">proofs</strong> : Répertoire des attestations de stages & diplômes vérifiables\n- <strong class="text-[#00f0ff]">easm</strong> : Modules Smart EASM & connecteurs OSINT @ Talan Tunisie\n- <strong class="text-[#00f0ff]">skills</strong> : Stack technique complète (Linux, DevSecOps, Python, Web)\n- <strong class="text-[#00f0ff]">rank</strong> : Performance IEEEXtreme 17.0 (#33 mondial, #2 Tunisie)\n- <strong class="text-[#00f0ff]">hire</strong> : Ouvrir le Dossier Recruteur Express (60s)\n- <strong class="text-[#00f0ff]">cv</strong> : Télécharger le CV officiel de Wassim Bannour (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Coordonnées directes (Email, téléphone, LinkedIn)\n- <strong class="text-[#00f0ff]">clear</strong> : Effacer l'écran de la console`);
+                appendTerminalLog('info', `Commandes Disponibles:\n- <strong class="text-blue-400">whoami</strong> : Identité, cursus TEK-UP & spécialisation Linux / Sécurité\n- <strong class="text-blue-400">certs</strong> : Certifications officielles Red Hat RHCSA & Python PCAP\n- <strong class="text-blue-400">proofs</strong> : Répertoire des attestations de stages & diplômes vérifiables\n- <strong class="text-blue-400">easm</strong> : Modules Smart EASM & connecteurs OSINT @ Talan Tunisie\n- <strong class="text-blue-400">skills</strong> : Stack technique complète (Linux, DevSecOps, Python, Web)\n- <strong class="text-blue-400">rank</strong> : Performance IEEEXtreme 17.0 (#33 mondial, #2 Tunisie)\n- <strong class="text-blue-400">hire</strong> : Ouvrir le Dossier Recruteur Express (60s)\n- <strong class="text-blue-400">cv</strong> : Télécharger le CV officiel de Wassim Bannour (PDF)\n- <strong class="text-blue-400">contact</strong> : Coordonnées directes (Email, téléphone, LinkedIn)\n- <strong class="text-blue-400">clear</strong> : Effacer l'écran de la console`);
             } else {
-                appendTerminalLog('info', `Available Commands:\n- <strong class="text-[#00f0ff]">whoami</strong> : Identity, education & current specialization\n- <strong class="text-[#00f0ff]">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-[#00f0ff]">proofs</strong> : Official verified documents, attestations & degrees\n- <strong class="text-[#00f0ff]">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-[#00f0ff]">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-[#00f0ff]">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-[#00f0ff]">hire</strong> : Recruiter Fast-Track (Open in 60s summary)\n- <strong class="text-[#00f0ff]">cv</strong> : Download official Wassim Bannour CV (PDF)\n- <strong class="text-[#00f0ff]">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-[#00f0ff]">clear</strong> : Clear terminal console`);
+                appendTerminalLog('info', `Available Commands:\n- <strong class="text-blue-400">whoami</strong> : Identity, education & current specialization\n- <strong class="text-blue-400">certs</strong> : Verified Red Hat RHCSA & Python PCAP credentials\n- <strong class="text-blue-400">proofs</strong> : Official verified documents, attestations & degrees\n- <strong class="text-blue-400">easm</strong> : Smart EASM & OSINT threat modules (Talan)\n- <strong class="text-blue-400">skills</strong> : Complete security, development & toolchain stack\n- <strong class="text-blue-400">rank</strong> : IEEEXtreme 17.0 #33 worldwide performance\n- <strong class="text-blue-400">hire</strong> : Recruiter Fast-Track (Open in 60s summary)\n- <strong class="text-blue-400">cv</strong> : Download official Wassim Bannour CV (PDF)\n- <strong class="text-blue-400">contact</strong> : Direct email, phone & LinkedIn links\n- <strong class="text-blue-400">clear</strong> : Clear terminal console`);
             }
             return;
         }
@@ -1029,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
                 appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
                 appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
-                appendTerminalLog('text-[#00f0ff]', `[✓] Cliquez sur un bouton [Attestation] ou [Diplôme] sur le site pour ouvrir la visionneuse.`);
+                appendTerminalLog('text-blue-400', `[✓] Cliquez sur un bouton [Attestation] ou [Diplôme] sur le site pour ouvrir la visionneuse.`);
             } else {
                 appendTerminalLog('success', `[+] Official Documents Directory (proofs/):`);
                 appendTerminalLog('info', `    [1] TALAN Tunisie (EASM & OSINT Stage) -> proofs/attestation_talan.pdf`);
@@ -1040,7 +1020,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendTerminalLog('info', `    [6] TEK-UP Cursus Ingénieur Cybersécurité -> proofs/tekup_attestation.pdf`);
                 appendTerminalLog('info', `    [7] Baccalauréat Technique Mention Assez Bien -> proofs/diplome_bac.pdf`);
                 appendTerminalLog('info', `    [8] IEEEXtreme 17.0 World Top 33 Certificate -> proofs/cert_ieeextreme.pdf`);
-                appendTerminalLog('text-[#00f0ff]', `[✓] Click any [Attestation] / [Diplôme] button on the portfolio to open the verification lightbox.`);
+                appendTerminalLog('text-blue-400', `[✓] Click any [Attestation] / [Diplôme] button on the portfolio to open the verification lightbox.`);
             }
             return;
         }
@@ -1081,11 +1061,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFr) {
                 appendTerminalLog('success', `[✓] Valeur Clé : Administrateur Linux Certifié (RHCSA) + Développeur Python Certifié (PCAP) + Top 33 Mondial.`);
                 appendTerminalLog('info', `[✓] Expérience : Réalisations prouvées en production chez Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
-                appendTerminalLog('text-[#00f0ff]', `[+] Ouverture du Dossier Recruteur Express (60s)...`);
+                appendTerminalLog('text-blue-400', `[+] Ouverture du Dossier Recruteur Express (60s)...`);
             } else {
                 appendTerminalLog('success', `[✓] Key Value: Certified Linux Admin (RHCSA) + Certified Python Dev (PCAP) + Global Top 33.`);
                 appendTerminalLog('info', `[✓] Experience: Proven production deliverables at Talan Tunisie, SW Consulting, Team Dev, TechCenter.`);
-                appendTerminalLog('text-[#00f0ff]', `[+] Launching Recruiter Fast-Track Dossier in 60s...`);
+                appendTerminalLog('text-blue-400', `[+] Launching Recruiter Fast-Track Dossier in 60s...`);
             }
             if (window.openHireMeModal) window.openHireMeModal();
             return;
@@ -1127,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Default unknown command
-        appendTerminalLog('warn', isFr ? `Commande non reconnue : "${rawCmd}". Tapez <strong class="text-[#00f0ff]">help</strong> pour la liste des commandes.` : `Command not found: "${rawCmd}". Type <strong class="text-[#00f0ff]">help</strong> for a list of valid commands.`);
+        appendTerminalLog('warn', isFr ? `Commande non reconnue : "${rawCmd}". Tapez <strong class="text-blue-400">help</strong> pour la liste des commandes.` : `Command not found: "${rawCmd}". Type <strong class="text-blue-400">help</strong> for a list of valid commands.`);
     }
 
     if (terminalForm && terminalInput) {
@@ -1301,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'bac',
             badge: { fr: 'FONDATIONS', en: 'FOUNDATIONS' },
-            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            badgeColor: 'text-blue-400 bg-[#38bdf8]/20 border-[#38bdf8]/40',
             date: { fr: '2022', en: '2022' },
             location: { fr: 'Bekalta, TN', en: 'Bekalta, TN' },
             title: { fr: 'Baccalauréat Technique (Mention Assez Bien)', en: 'Technical Baccalaureate (Honors)' },
@@ -1318,7 +1298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'isimm',
             badge: { fr: 'LICENCE PRO', en: 'BACHELOR' },
-            badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
+            badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
             date: { fr: '2022 - 2025', en: '2022 - 2025' },
             location: { fr: 'Monastir, TN', en: 'Monastir, TN' },
             title: { fr: 'Licence en Génie Logiciel', en: 'Bachelor\'s Degree in Software Engineering' },
@@ -1335,7 +1315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'ieee',
             badge: { fr: 'TOP MONDIAL', en: 'GLOBAL HONORS' },
-            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            badgeColor: 'text-blue-400 bg-[#38bdf8]/20 border-[#38bdf8]/40',
             date: { fr: '2023 - 2024', en: '2023 - 2024' },
             location: { fr: 'Global / ISIMM', en: 'Global / ISIMM' },
             title: { fr: 'Top 33 Mondial IEEEXtreme 17.0 & Trésorier IEEE', en: 'Top 33 Worldwide IEEEXtreme 17.0 & IEEE Treasurer' },
@@ -1403,7 +1383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'tekup',
             badge: { fr: 'STATION ACTIVE', en: 'ACTIVE STATION' },
-            badgeColor: 'text-[#00f0ff] bg-[#00f0ff]/20 border-[#00f0ff]/40',
+            badgeColor: 'text-blue-400 bg-[#38bdf8]/20 border-[#38bdf8]/40',
             date: { fr: '2025 - Présent', en: '2025 - Present' },
             location: { fr: 'Ariana, TN', en: 'Ariana, TN' },
             title: { fr: 'Diplôme National d\'Ingénieur en Cybersécurité', en: 'National Engineering Degree in Cybersecurity' },
@@ -1420,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'target',
             badge: { fr: 'VECTEUR FUTUR', en: 'FORWARD VECTOR' },
-            badgeColor: 'text-[#38bdf8] bg-[#38bdf8]/20 border-[#38bdf8]/40',
+            badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
             date: { fr: 'Horizon Recrutement', en: 'Career Horizon' },
             location: { fr: 'Sur site / Hybride / Télétravail', en: 'On-site / Hybrid / Remote' },
             title: { fr: 'Ingénierie Cybersécurité & Systèmes Linux', en: 'Cybersecurity & Linux Systems Engineering' },
@@ -1529,14 +1509,14 @@ document.addEventListener('DOMContentLoaded', () => {
             dossierBadge.className = `px-2.5 py-0.5 rounded-md font-mono text-xs font-extrabold border ${station.badgeColor}`;
         }
         if (dossierDate) dossierDate.textContent = station.date[langKey];
-        if (dossierLocation) dossierLocation.innerHTML = `<i class="fa-solid fa-location-dot text-[#00f0ff]"></i> ${station.location[langKey]}`;
+        if (dossierLocation) dossierLocation.innerHTML = `<i class="fa-solid fa-location-dot text-blue-400"></i> ${station.location[langKey]}`;
         if (dossierTitle) dossierTitle.textContent = station.title[langKey];
         if (dossierOrg) dossierOrg.textContent = station.org[langKey];
         if (dossierDesc) dossierDesc.textContent = station.desc[langKey];
 
         if (dossierTags) {
             dossierTags.innerHTML = station.tags[langKey].map((t, i) => 
-                `<span class="px-2 py-0.5 rounded bg-[#0f172a] ${i === 0 ? 'text-[#00f0ff] border border-[#00f0ff]/30 font-bold' : 'text-gray-300 border border-[#1e293b]'}">${t}</span>`
+                `<span class="px-2 py-0.5 rounded bg-[#0f172a] ${i === 0 ? 'text-blue-400 border border-[#38bdf8]/30 font-bold' : 'text-gray-300 border border-[#1e293b]'}">${t}</span>`
             ).join('');
         }
 
@@ -1590,13 +1570,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function startAutoCruise() {
         isAutoCruising = true;
         if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-pause text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Scan en cours...' : 'Scanning...';
+        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Défilement...' : 'Touring...';
         if (autoCruiseBtn) {
-            autoCruiseBtn.classList.add('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
+            autoCruiseBtn.classList.add('bg-emerald-500/20', 'border-emerald-500');
         }
         autoCruiseInterval = setInterval(() => {
             selectCyberStation(currentStationIdx + 1, false);
-            playFuturisticTone(900, 0.02, 'sine', 0.015);
         }, 3600);
     }
 
@@ -1606,10 +1585,10 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(autoCruiseInterval);
             autoCruiseInterval = null;
         }
-        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-radar text-xs';
-        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Scan Direct' : 'Live Scan';
+        if (autoCruiseIcon) autoCruiseIcon.className = 'fa-solid fa-play text-xs';
+        if (autoCruiseText) autoCruiseText.textContent = CURRENT_LANG === 'fr' ? 'Auto-Tour' : 'Auto-Tour';
         if (autoCruiseBtn) {
-            autoCruiseBtn.classList.remove('bg-[#10b981]/20', 'shadow-[0_0_15px_rgba(16,185,129,0.5)]');
+            autoCruiseBtn.classList.remove('bg-emerald-500/20', 'border-emerald-500');
         }
     }
 
@@ -1793,10 +1772,10 @@ document.addEventListener('DOMContentLoaded', () => {
         workerTestResult.classList.remove('hidden');
         
         let colorClass = 'text-gray-300';
-        if (type === 'success') colorClass = 'text-[#00ff9d] border-[#00ff9d]/40';
+        if (type === 'success') colorClass = 'text-[#10b981] border-[#10b981]/40';
         else if (type === 'error') colorClass = 'text-red-400 border-red-500/40';
         else if (type === 'warn') colorClass = 'text-yellow-400 border-yellow-500/40';
-        else if (type === 'loading') colorClass = 'text-[#00f0ff] border-[#00f0ff]/40';
+        else if (type === 'loading') colorClass = 'text-blue-400 border-[#38bdf8]/40';
 
         workerTestResult.className = `text-[11px] p-2 rounded bg-[#111827] border ${colorClass}`;
         workerTestResult.textContent = msg;
@@ -1809,17 +1788,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 backendModeBadge.className = 'text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-mono';
             } else {
                 backendModeBadge.textContent = 'CYBER-AI';
-                backendModeBadge.className = 'text-[9px] px-1.5 py-0.2 rounded bg-[#00f0ff]/20 text-[#00f0ff] font-mono';
+                backendModeBadge.className = 'text-[9px] px-1.5 py-0.2 rounded bg-[#38bdf8]/20 text-blue-400 font-mono';
             }
         }
         if (backendStatusSubtext) {
             backendStatusSubtext.innerHTML = `
-                <span class="w-1.5 h-1.5 rounded-full ${mode === 'worker' ? 'bg-[#00ff9d]' : 'bg-[#00f0ff]'} inline-block"></span>
+                <span class="w-1.5 h-1.5 rounded-full ${mode === 'worker' ? 'bg-[#10b981]' : 'bg-[#38bdf8]'} inline-block"></span>
                 <span>${subtext}</span>
             `;
         }
         if (headerStatusDot) {
-            headerStatusDot.className = `w-2.5 h-2.5 rounded-full ${mode === 'worker' ? 'bg-[#00ff9d]' : 'bg-[#00f0ff]'} border-2 border-[#0b0f19] absolute -top-1 -right-1`;
+            headerStatusDot.className = `w-2.5 h-2.5 rounded-full ${mode === 'worker' ? 'bg-[#10b981]' : 'bg-[#38bdf8]'} border-2 border-[#0b0f19] absolute -top-1 -right-1`;
         }
     }
 
@@ -1841,8 +1820,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return safeText
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/40 text-[#00f0ff] font-mono text-xs">$1</code>')
-            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#00f0ff] underline hover:text-[#38bdf8] font-semibold">$1 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>')
+            .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/40 text-blue-400 font-mono text-xs">$1</code>')
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-[#38bdf8] font-semibold">$1 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>')
             .replace(/^-\s+(.*)$/gm, '<li class="ml-4 list-disc">$1</li>')
             .replace(/\n\n/g, '<br><br>')
             .replace(/\n/g, '<br>');
@@ -1858,7 +1837,7 @@ document.addEventListener('DOMContentLoaded', () => {
             avatar.className = 'w-8 h-8 rounded-xl text-xs shrink-0 mt-0.5 flex items-center justify-center font-mono font-bold bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/50';
             avatar.textContent = 'YOU';
         } else {
-            avatar.className = 'w-8 h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md';
+            avatar.className = 'w-8 h-8 rounded-xl overflow-hidden border-2 border-[#38bdf8]/60 shrink-0 mt-0.5 shadow-md';
             avatar.innerHTML = '<img src="1000015101.jpg" alt="Wassim" class="w-full h-full object-cover object-top">';
         }
 
@@ -1884,7 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
         indicatorWrapper.className = 'chat-bubble assistant flex items-start gap-2.5 max-w-[90%]';
 
         indicatorWrapper.innerHTML = `
-            <div class="w-8 h-8 rounded-xl overflow-hidden border-2 border-[#00f0ff]/60 shrink-0 mt-0.5 shadow-md">
+            <div class="w-8 h-8 rounded-xl overflow-hidden border-2 border-[#38bdf8]/60 shrink-0 mt-0.5 shadow-md">
                 <img src="1000015101.jpg" alt="Wassim" class="w-full h-full object-cover object-top">
             </div>
             <div class="p-3.5 rounded-2xl bg-[#070b14] text-gray-200 border border-[#1e293b] flex items-center gap-2">
@@ -2138,10 +2117,10 @@ window.showCyberToast = function(message, type = 'success') {
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = 'cyber-toast px-4 py-3 rounded-2xl bg-[#070b14]/95 border border-[#00f0ff]/60 text-white font-mono text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)] backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto max-w-sm';
+    toast.className = 'cyber-toast px-4 py-3 rounded-2xl bg-[#070b14]/95 border border-[#38bdf8]/60 text-white font-mono text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)] backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto max-w-sm';
     
     let iconHtml = '<i class="fa-solid fa-circle-check text-[#10b981] text-sm"></i>';
-    if (type === 'info') iconHtml = '<i class="fa-solid fa-circle-info text-[#00f0ff] text-sm"></i>';
+    if (type === 'info') iconHtml = '<i class="fa-solid fa-circle-info text-blue-400 text-sm"></i>';
     if (type === 'warn') iconHtml = '<i class="fa-solid fa-triangle-exclamation text-yellow-400 text-sm"></i>';
     if (type === 'error') iconHtml = '<i class="fa-solid fa-circle-xmark text-red-400 text-sm"></i>';
 
@@ -2241,7 +2220,7 @@ window.openDocViewer = function(title, issuer, filePath, description) {
     }
 
     if (statusTitle) statusTitle.textContent = `${title}`;
-    if (statusSubtext) statusSubtext.innerHTML = `${isFr ? 'Fichier indexé :' : 'Indexed File:'} <code class="text-[#00f0ff]">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">${isFr ? 'Consultez en plein écran ou téléchargez la copie officielle numérisée.' : 'View in full screen or download the official digitized copy.'}</span>`;
+    if (statusSubtext) statusSubtext.innerHTML = `${isFr ? 'Fichier indexé :' : 'Indexed File:'} <code class="text-blue-400">${filePath}</code><br><span class="text-[11px] text-gray-400 mt-1 block">${isFr ? 'Consultez en plein écran ou téléchargez la copie officielle numérisée.' : 'View in full screen or download the official digitized copy.'}</span>`;
 
     modal.classList.add('active');
     playFuturisticTone(880, 0.05, 'sine', 0.04);
@@ -2309,60 +2288,12 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// -------------------------------------------------------------
-// 7. ULTRA-SLEEK CYBER BOOT PRELOADER
-// -------------------------------------------------------------
+// Instant load without artificial preloader delay
 function initCyberPreloader() {
-    if (window.__cyberBootStarted) return;
     const preloader = document.getElementById('cyberPreloader');
-    if (!preloader) return;
-
-    window.__cyberBootStarted = true;
-    const percentElem = document.getElementById('preloaderPercent');
-    const barElem = document.getElementById('preloaderBar');
-    const logElem = document.getElementById('preloaderLogLine');
-    const statusElem = document.getElementById('preloaderStatusText');
-
-    const logs = [
-        { progress: 14, log: 'Decrypting Security Clearance & Credentials...', status: 'AUTH_OK' },
-        { progress: 32, log: 'Initializing RHEL 9 & Linux Kernel Subsystems...', status: 'KERNEL_READY' },
-        { progress: 54, log: 'Verifying Red Hat (RHCSA) & PCAP Credentials...', status: 'CERTS_OK' },
-        { progress: 74, log: 'Arming Smart EASM & Cloud Attack Surface Engine...', status: 'DEFENSE_READY' },
-        { progress: 90, log: 'Synchronizing Wassim AI Twin Neural Interface...', status: 'AI_LINKED' },
-        { progress: 100, log: 'All Systems Operational. Access Granted. Welcome!', status: 'SYS_ONLINE' }
-    ];
-
-    let currentProgress = 0;
-    let logIndex = 0;
-
-    const interval = setInterval(() => {
-        currentProgress += 1;
-        if (currentProgress > 100) currentProgress = 100;
-
-        if (percentElem) percentElem.textContent = `${currentProgress}%`;
-        if (barElem) barElem.style.width = `${currentProgress}%`;
-
-        if (logIndex < logs.length && currentProgress >= logs[logIndex].progress) {
-            if (logElem) {
-                logElem.innerHTML = `<span class="text-emerald-400 mr-1.5">></span> ${logs[logIndex].log}`;
-            }
-            if (statusElem) statusElem.textContent = logs[logIndex].status;
-            logIndex++;
-        }
-
-        if (currentProgress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                preloader.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
-                setTimeout(() => {
-                    preloader.remove();
-                }, 750);
-            }, 350);
-        }
-    }, 32);
+    if (preloader) preloader.remove();
 }
 
-// Trigger preloader if not already initialized
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCyberPreloader);
 } else {
