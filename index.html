@@ -263,38 +263,86 @@
             transform: scale(1) translateY(0);
         }
 
+        /* Custom Smooth Interactive Cursor Aura */
+        .cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            margin-top: -16px;
+            margin-left: -16px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(56, 189, 248, 0.5);
+            background: rgba(59, 130, 246, 0.08);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            transform: translate3d(-100px, -100px, 0);
+        }
+        .cursor-follower.hovering {
+            width: 46px;
+            height: 46px;
+            margin-top: -23px;
+            margin-left: -23px;
+            border-color: rgba(96, 165, 250, 0.85);
+            background: rgba(59, 130, 246, 0.16);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+        }
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            margin-top: -3px;
+            margin-left: -3px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate3d(-100px, -100px, 0);
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-follower, .cursor-dot {
+                display: none !important;
+            }
+        }
+
         /* Ambient Executive Atmosphere */
         .ambient-spotlight {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(750px circle at var(--mouse-x, 50vw) var(--mouse-y, 35vh), rgba(59, 130, 246, 0.055), transparent 75%);
-            transition: opacity 0.5s ease;
+            background: radial-gradient(650px circle at var(--mouse-x, 50vw) var(--mouse-y, 35vh), rgba(37, 99, 235, 0.18) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 70%);
+            transition: opacity 0.3s ease;
             z-index: 0;
         }
         .ambient-mesh-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(80px);
             pointer-events: none;
             z-index: 0;
             will-change: transform;
         }
         .ambient-mesh-orb.orb-1 {
             top: -10%;
-            left: 15%;
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.07) 0%, rgba(37, 99, 235, 0) 70%);
-            animation: meshFloat1 26s ease-in-out infinite alternate;
+            left: 10%;
+            width: 580px;
+            height: 580px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 70%);
+            animation: meshFloat1 22s ease-in-out infinite alternate;
         }
         .ambient-mesh-orb.orb-2 {
-            top: 50%;
+            top: 45%;
             right: 5%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0) 70%);
-            animation: meshFloat2 32s ease-in-out infinite alternate;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.13) 0%, rgba(37, 99, 235, 0.03) 50%, transparent 70%);
+            animation: meshFloat2 28s ease-in-out infinite alternate;
         }
         @keyframes meshFloat1 {
             0% { transform: translate(0, 0) scale(1); }
@@ -426,6 +474,10 @@
     <!-- Reading Progress Bar -->
     <div id="scrollProgressBar" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 z-50 transition-all duration-75" style="width: 0%"></div>
 
+    <!-- Custom Smooth Interactive Cursor Aura -->
+    <div id="cursorFollower" class="cursor-follower hidden md:block"></div>
+    <div id="cursorDot" class="cursor-dot hidden md:block"></div>
+
     <!-- Ambient Executive Background Layer -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
         <!-- Subtle Interactive Cursor Spotlight / Torch Glow -->
@@ -434,7 +486,7 @@
         <div class="ambient-mesh-orb orb-1"></div>
         <div class="ambient-mesh-orb orb-2"></div>
         <!-- Architectural Topology Canvas -->
-        <canvas id="ambientNetworkCanvas" class="w-full h-full opacity-60"></canvas>
+        <canvas id="ambientNetworkCanvas" class="absolute inset-0 w-full h-full"></canvas>
     </div>
 
     <!-- Header Navigation -->
@@ -1510,7 +1562,7 @@
         </section>
 
         <!-- 04. SYSTEMS & SECURITY ARCHITECTURE SECTION -->
-        <section id="pipeline" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 bg-[#090d16] relative overflow-hidden">
+        <section id="pipeline" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 bg-[#090d16]/70 backdrop-blur-sm relative overflow-hidden">
             
             <div class="max-w-7xl mx-auto space-y-10">
                 
