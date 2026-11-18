@@ -231,7 +231,7 @@ const I18N_DATA = {
         'contact.phone_title': 'Téléphone Mobile',
         'contact.phone_btn': 'Appeler',
         'contact.phone_copy': 'Copier le numéro',
-        'contact.banner_text': '⚡ Recruteurs & Responsables Techniques : Téléchargez le dossier complet en 1 clic',
+        'contact.banner_text': '<i class="fa-solid fa-bolt text-yellow-400 mr-1.5"></i>Recruteurs & Responsables Techniques : Téléchargez le dossier complet en 1 clic',
         'contact.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
         'contact.btn_cv_pdf': 'TÉLÉCHARGER LE CV (PDF)',
 
@@ -269,10 +269,10 @@ const I18N_DATA = {
         'ai.engine_status': 'Moteur : Prêt (Autonome / Worker)',
         'ai.greeting_bubble': 'Bonjour ! Je suis l\'AI Twin de Wassim Bannour. Comment puis-je vous aider aujourd\'hui ?',
         'ai.welcome': 'Bonjour ! Je suis l\'AI Twin de Wassim Bannour. Comment puis-je vous aider aujourd\'hui ? Posez-moi vos questions sur le parcours de Wassim (cursus TEK-UP, certifications <strong>RHCSA & PCAP</strong>, projets <strong>Smart EASM & OSINT chez Talan Tunisie</strong>, top <strong>33ᵉ mondial à IEEEXtreme</strong>) ou son profil technique.',
-        'ai.pill1': '⚡ Compétences & Certifs',
-        'ai.pill2': '🛡️ Talan EASM & OSINT',
-        'ai.pill3': '🏆 Rang #33 IEEEXtreme',
-        'ai.pill4': '🚀 Pourquoi recruter Wassim ?',
+        'ai.pill1': '<i class="fa-solid fa-bolt text-yellow-400 text-[10px] mr-1.5"></i>Compétences & Certifs',
+        'ai.pill2': '<i class="fa-solid fa-shield-halved text-emerald-400 text-[10px] mr-1.5"></i>Talan EASM & OSINT',
+        'ai.pill3': '<i class="fa-solid fa-trophy text-[#00f0ff] text-[10px] mr-1.5"></i>Rang #33 IEEEXtreme',
+        'ai.pill4': '<i class="fa-solid fa-rocket text-[#38bdf8] text-[10px] mr-1.5"></i>Pourquoi recruter Wassim ?',
         'ai.input_ph': 'Posez vos questions de recruteur...',
         'footer.copy': '© 2026 Wassim Bannour. Sécurité des Systèmes & Ingénierie Linux.',
         'footer.status': 'Statut : Systèmes Opérationnels & Disponible Immédiatement',
@@ -489,7 +489,7 @@ const I18N_DATA = {
         'contact.phone_title': 'Mobile Phone',
         'contact.phone_btn': 'Call',
         'contact.phone_copy': 'Copy phone number',
-        'contact.banner_text': '⚡ Recruiters & Technical Hiring Managers: Download the complete dossier in 1 click',
+        'contact.banner_text': '<i class="fa-solid fa-bolt text-yellow-400 mr-1.5"></i>Recruiters & Technical Hiring Managers: Download the complete dossier in 1 click',
         'contact.btn_fasttrack': 'RECRUITER FAST-TRACK (60s)',
         'contact.btn_cv_pdf': 'DOWNLOAD CV (PDF)',
 
@@ -527,10 +527,10 @@ const I18N_DATA = {
         'ai.engine_status': 'Engine: Ready (Autonomous / Worker)',
         'ai.greeting_bubble': 'Hello! I\'m Wassim Bannour\'s AI Twin. How can I assist you today?',
         'ai.welcome': 'Hello! I\'m Wassim Bannour\'s AI Twin. How can I assist you today? Ask me anything about Wassim\'s qualifications (TEK-UP engineering, <strong>RHCSA & PCAP certifications</strong>, <strong>Smart EASM & OSINT work at Talan Tunisie</strong>, <strong>#33 worldwide rank in IEEEXtreme</strong>), or his technical background!',
-        'ai.pill1': '⚡ Top Skills & Certs',
-        'ai.pill2': '🛡️ Talan EASM & OSINT',
-        'ai.pill3': '🏆 IEEEXtreme #33 Rank',
-        'ai.pill4': '🚀 Why hire Wassim?',
+        'ai.pill1': '<i class="fa-solid fa-bolt text-yellow-400 text-[10px] mr-1.5"></i>Top Skills & Certs',
+        'ai.pill2': '<i class="fa-solid fa-shield-halved text-emerald-400 text-[10px] mr-1.5"></i>Talan EASM & OSINT',
+        'ai.pill3': '<i class="fa-solid fa-trophy text-[#00f0ff] text-[10px] mr-1.5"></i>IEEEXtreme #33 Rank',
+        'ai.pill4': '<i class="fa-solid fa-rocket text-[#38bdf8] text-[10px] mr-1.5"></i>Why hire Wassim?',
         'ai.input_ph': 'Ask recruiter questions...',
         'footer.copy': '© 2026 Wassim Bannour. Systems Security & Linux Engineering.',
         'footer.status': 'Status: Systems Operational & Ready for Hire',
@@ -1956,7 +1956,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Greetings & Introduction
         if (q.includes('who are you') || q.includes('who is wassim') || q.includes('introduce') || q.includes('about yourself') || q === 'hi' || q === 'hello' || q === 'hey' || q.includes('bonjour') || q.includes('salut') || q.includes('qui es-tu')) {
-            return `Hello! I am **Wassim Bannour's AI Twin**.\n\nWassim is a **Cybersecurity & Linux Systems Engineer** certified **RHCSA** and **PCAP**, currently preparing his Diplôme National d'Ingénieur at **TEK-UP University**.\n\nKey highlights:\n- 🛡️ **Cybersecurity Flagship**: Developed a Smart EASM (External Attack Surface Management) platform & OSINT modules at **TALAN TUNISIE**.\n- 📜 **Dual Certifications**: **RHCSA** (Red Hat) & **PCAP** (Python Institute).\n- 🏆 **Global Rank**: **#33 Worldwide** in **IEEEXtreme 17.0** (2nd in Tunisia).\n- 💻 **Fullstack & AI**: Automated OCR engines and modern web platforms (Node.js, Vue.js, Angular).\n\nWhat would you like to explore regarding his experience, skills, or projects?`;
+            return `Hello! I am **Wassim Bannour's AI Twin**.\n\nWassim is a **Cybersecurity & Linux Systems Engineer** certified **RHCSA** and **PCAP**, currently preparing his Diplôme National d'Ingénieur at **TEK-UP University**.\n\nKey highlights:\n- **Cybersecurity Flagship**: Developed a Smart EASM (External Attack Surface Management) platform & OSINT modules at **TALAN TUNISIE**.\n- **Dual Certifications**: **RHCSA** (Red Hat) & **PCAP** (Python Institute).\n- **Global Rank**: **#33 Worldwide** in **IEEEXtreme 17.0** (2nd in Tunisia).\n- **Fullstack & AI**: Automated OCR engines and modern web platforms (Node.js, Vue.js, Angular).\n\nWhat would you like to explore regarding his experience, skills, or projects?`;
         }
 
         // 2. Talan Tunisie & Cybersecurity / EASM / OSINT
@@ -1966,27 +1966,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Certifications (RHCSA & PCAP)
         if (q.includes('cert') || q.includes('rhcsa') || q.includes('pcap') || q.includes('red hat') || q.includes('python institute') || q.includes('credly')) {
-            return `Wassim holds two industry-standard certifications verified on **Credly**:\n\n1. 🔴 **RHCSA (Red Hat Certified System Administrator)** – *Red Hat*:\n- Enterprise Linux administration (RHEL/CentOS), user & group access control, LVM storage, SELinux enforcement, FirewallD & systemd orchestration.\n- 🏅 **Credly Verification**: [Verify Red Hat RHCSA on Credly](https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89)\n\n2. 🟡 **PCAP (Certified Associate in Python Programming)** – *Python Institute*:\n- Advanced OOP, complex algorithmic data structures, automated scripting, and multi-source data normalization pipelines.\n- 🏅 **Credly Verification**: [Verify Python PCAP on Credly](https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1)`;
+            return `Wassim holds two industry-standard certifications verified on **Credly**:\n\n1. **RHCSA (Red Hat Certified System Administrator)** – *Red Hat*:\n- Enterprise Linux administration (RHEL/CentOS), user & group access control, LVM storage, SELinux enforcement, FirewallD & systemd orchestration.\n- **Credly Verification**: [Verify Red Hat RHCSA on Credly](https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89)\n\n2. **PCAP (Certified Associate in Python Programming)** – *Python Institute*:\n- Advanced OOP, complex algorithmic data structures, automated scripting, and multi-source data normalization pipelines.\n- **Credly Verification**: [Verify Python PCAP on Credly](https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1)`;
         }
 
         // 4. Competitions, IEEEXtreme Rank, CTF & Leadership
         if (q.includes('rank') || q.includes('ieee') || q.includes('extreme') || q.includes('winner') || q.includes('competition') || q.includes('cybertek') || q.includes('ctf') || q.includes('tsyp') || q.includes('33')) {
-            return `Wassim's Competitive Track Record & Community Impact:\n\n- 🏆 **IEEEXtreme 17.0 (1er Prix)**:\n  - Ranked **#33 Worldwide** out of thousands of international university engineering teams.\n  - Ranked **#2 Nationally in Tunisia** during a 24-hour non-stop algorithmic marathon.\n- 🛡️ **CyberTEK 3.0 CTF**: Competitive Capture The Flag player focusing on vulnerability exploitation, binary analysis, and packet forensics.\n- 👥 **Leadership: Trésorier IEEE ISIMM CIS Chapter**: Managed chapter budgets, negotiated sponsorships & strategic partnerships for student technical workshops.\n- 🌐 **Congrès TSYP 11 (Hammamet)**: Active participant in Tunisia's premier engineering student congress and industrial roundtables.`;
+            return `Wassim's Competitive Track Record & Community Impact:\n\n- **IEEEXtreme 17.0 (1er Prix)**:\n  - Ranked **#33 Worldwide** out of thousands of international university engineering teams.\n  - Ranked **#2 Nationally in Tunisia** during a 24-hour non-stop algorithmic marathon.\n- **CyberTEK 3.0 CTF**: Competitive Capture The Flag player focusing on vulnerability exploitation, binary analysis, and packet forensics.\n- **Leadership: Trésorier IEEE ISIMM CIS Chapter**: Managed chapter budgets, negotiated sponsorships & strategic partnerships for student technical workshops.\n- **Congrès TSYP 11 (Hammamet)**: Active participant in Tunisia's premier engineering student congress and industrial roundtables.`;
         }
 
         // 5. Work Experience & Internships
         if (q.includes('experience') || q.includes('work') || q.includes('job') || q.includes('consulting') || q.includes('sw consulting') || q.includes('team dev') || q.includes('quick dock') || q.includes('quickdoc') || q.includes('stadium') || q.includes('ocr') || q.includes('restaurant')) {
-            return `Wassim's Professional Experience:\n\n1. **TALAN TUNISIE (2026, Tunis)** - *Développeur Cybersécurité*\n- Smart EASM platform, OSINT integration (Subfinder, VirusTotal, AbuseIPDB, Netlas), and Python automation pipelines.\n\n2. **SW CONSULTING (2025, Monastir)** - *Développeur Web Fullstack*\n- Intelligent document extraction via OCR and AI categorization algorithms.\n- Developed the 'Quick Dock' fullstack platform using **Node.js** and **Vue.js**.\n- 📁 **Repository**: [GitHub - WassimBannour1/QuickDoc](https://github.com/WassimBannour1/QuickDoc)\n\n3. **TEAM DEV (2024, Sousse)** - *Développeur Frontend*\n- Built responsive, adaptive Stadium-Booking reservation interface with **Angular & TypeScript**, with real-time REST API synchronization.\n- 📁 **Repository**: [GitHub - WassimBannour1/Stadium-Booking](https://github.com/WassimBannour1/Stadium-Booking)\n\n4. **We Are Technology Center (2023, Monastir)** - *Développeur Logiciel*\n- Desktop Restaurant Management Solution with **Java Swing (JFrame)** and relational SQL backend.`;
+            return `Wassim's Professional Experience:\n\n1. **TALAN TUNISIE (2026, Tunis)** - *Développeur Cybersécurité*\n- Smart EASM platform, OSINT integration (Subfinder, VirusTotal, AbuseIPDB, Netlas), and Python automation pipelines.\n\n2. **SW CONSULTING (2025, Monastir)** - *Développeur Web Fullstack*\n- Intelligent document extraction via OCR and AI categorization algorithms.\n- Developed the 'Quick Dock' fullstack platform using **Node.js** and **Vue.js**.\n- **Repository**: [GitHub - WassimBannour1/QuickDoc](https://github.com/WassimBannour1/QuickDoc)\n\n3. **TEAM DEV (2024, Sousse)** - *Développeur Frontend*\n- Built responsive, adaptive Stadium-Booking reservation interface with **Angular & TypeScript**, with real-time REST API synchronization.\n- **Repository**: [GitHub - WassimBannour1/Stadium-Booking](https://github.com/WassimBannour1/Stadium-Booking)\n\n4. **We Are Technology Center (2023, Monastir)** - *Développeur Logiciel*\n- Desktop Restaurant Management Solution with **Java Swing (JFrame)** and relational SQL backend.`;
         }
 
         // 6. Education & Academic Background
         if (q.includes('education') || q.includes('tek-up') || q.includes('isimm') || q.includes('university') || q.includes('school') || q.includes('degree') || q.includes('bac') || q.includes('bekalta')) {
-            return `Wassim's Academic Background:\n\n1. 🎓 **TEK-UP University (2025 - Présent, Ariana)**:\n- **Diplôme National d'Ingénieur en Informatique**\n- Specialization: *Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée*.\n- Relevant Courses: Advanced Linux Admin, Cryptography, Vulnerability Analysis, Secure Coding.\n\n2. 🎓 **ISIMM (2022 - 2025, Monastir)**:\n- **Licence en Génie Logiciel**\n- Algorithms, software architecture, data structures, and database engineering.\n\n3. 🎓 **Lycée Secondaire Bekalta (2022, Monastir)**:\n- **Baccalauréat Technique** (Mention: Assez Bien - 13.72/20).`;
+            return `Wassim's Academic Background:\n\n1. **TEK-UP University (2025 - Présent, Ariana)**:\n- **Diplôme National d'Ingénieur en Informatique**\n- Specialization: *Cybersécurité, Sécurité des Systèmes et Ingénierie Logicielle Sécurisée*.\n- Relevant Courses: Advanced Linux Admin, Cryptography, Vulnerability Analysis, Secure Coding.\n\n2. **ISIMM (2022 - 2025, Monastir)**:\n- **Licence en Génie Logiciel**\n- Algorithms, software architecture, data structures, and database engineering.\n\n3. **Lycée Secondaire Bekalta (2022, Monastir)**:\n- **Baccalauréat Technique** (Mention: Assez Bien - 13.72/20).`;
         }
 
         // 7. Languages
         if (q.includes('language') || q.includes('langue') || q.includes('french') || q.includes('francais') || q.includes('english') || q.includes('anglais') || q.includes('arabic') || q.includes('arabe')) {
-            return `Wassim's Language Proficiencies:\n\n- 🇫🇷 **Français**: Courant (Fluent)\n- 🇬🇧 **Anglais**: Professionnel / Courant (Professional Proficiency)\n- 🇹🇳 **Arabe**: Langue maternelle (Native)`;
+            return `Wassim's Language Proficiencies:\n\n- **Français**: Courant (Fluent)\n- **Anglais**: Professionnel / Courant (Professional Proficiency)\n- **Arabe**: Langue maternelle (Native)`;
         }
 
         // 8. Skills & Tech Stack
@@ -2001,7 +2001,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 10. Contact & Socials
         if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('linkedin') || q.includes('github') || q.includes('location') || q.includes('address')) {
-            return `Connect with Wassim directly:\n\n- 📧 **Email**: [wassimbannour10@gmail.com](mailto:wassimbannour10@gmail.com)\n- 📱 **Phone**: **+216 94101910**\n- 💼 **LinkedIn**: [linkedin.com/in/wassim-bannour-513448317](https://www.linkedin.com/in/wassim-bannour-513448317/)\n- 🐙 **GitHub**: [github.com/WassimBannour1](https://github.com/WassimBannour1)\n- 📍 **Location**: Monastir, Tunisia (Open to on-site, hybrid, and remote roles).`;
+            return `Connect with Wassim directly:\n\n- **Email**: [wassimbannour10@gmail.com](mailto:wassimbannour10@gmail.com)\n- **Phone**: **+216 94101910**\n- **LinkedIn**: [linkedin.com/in/wassim-bannour-513448317](https://www.linkedin.com/in/wassim-bannour-513448317/)\n- **GitHub**: [github.com/WassimBannour1](https://github.com/WassimBannour1)\n- **Location**: Monastir, Tunisia (Open to on-site, hybrid, and remote roles).`;
         }
 
         // Default Fallback Synthesis

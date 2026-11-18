@@ -10,11 +10,16 @@ Architected for **100% Free Hosting** on **Cloudflare Pages** (Frontend) and **C
 
 ```text
 my-portfolio/
-├── index.html         # Frontend layout, cyber HUD styling, and AI Chat widget
+├── .agents/skills/ui-ux-pro-max/  # UI/UX Pro Max design intelligence engine (from GitHub)
+├── design-system/                 # Master design system specification & tokens
+│   └── wassim-bannour-portfolio/
+│       └── MASTER.md
+├── index.html         # Frontend layout, cyber HUD Bento styling, and AI Chat widget
 ├── script.js          # Matrix canvas, skill filtering, AI client & Deep Knowledge Engine
 ├── worker.js          # Cloudflare Worker ES module proxying Anthropic Claude API
 ├── wrangler.toml      # Cloudflare Worker deployment configuration
 ├── README.md          # Comprehensive deployment & architecture guide
+├── proofs/            # Verified internship proof attestations (PDF & images)
 └── wassim_bnannour_cv.pdf  # Source CV
 ```
 
