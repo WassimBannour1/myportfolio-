@@ -92,38 +92,14 @@
             --text-muted: #64748b;
         }
 
-        /* Subtle Architectural Dot Grid Background with Continuous Engineering Drift */
+        /* Static Architectural Precision Dot Grid Background (Zero Animation / Rock Solid) */
         body {
             background-color: var(--bg-base);
             color: var(--text-primary);
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
             background-size: 28px 28px;
-            animation: gridDrift 28s linear infinite;
-        }
-        @keyframes gridDrift {
-            0% { background-position: 0 0; }
-            100% { background-position: 56px 56px; }
-        }
-
-        /* 1px Minimalist Enterprise Diagnostic Scanline (No Glow / Sharp Precision) */
-        .system-scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.3) 25%, rgba(56, 189, 248, 0.5) 50%, rgba(59, 130, 246, 0.3) 75%, transparent 100%);
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.7;
-            animation: scanlineSweep 16s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-        @keyframes scanlineSweep {
-            0% { transform: translateY(-5px); opacity: 0; }
-            5% { opacity: 0.7; }
-            95% { opacity: 0.7; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            background-attachment: fixed;
         }
 
         /* Custom Minimalist Scrollbar */
@@ -423,18 +399,12 @@
         html.light-mode .cursor-dot {
             background: #0f172a;
         }
-        html.light-mode .system-scanline {
-            background: linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.25) 50%, transparent 100%);
-        }
     </style>
 </head>
 <body class="bg-[#0b0f19] text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
     <!-- Reading Progress Bar -->
     <div id="scrollProgressBar" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 z-50 transition-all duration-75" style="width: 0%"></div>
-
-    <!-- 1px Minimalist Enterprise Diagnostic Scanline (Sharp / No Glow) -->
-    <div class="system-scanline hidden sm:block" aria-hidden="true"></div>
 
     <!-- Executive Minimalist Cursor (Sharp Precision / No Glow) -->
     <div id="cursorFollower" class="cursor-follower hidden md:block"></div>
@@ -753,13 +723,13 @@
                     <div id="terminalDrawerBody" class="hidden transition-all duration-300">
                         <!-- Quick Command Action Chips (Horizontally Scrollable) -->
                         <div class="px-3 sm:px-4 py-2 bg-[#0a101f] border-b border-[#1e293b] flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[11px]">
-                            <span class="text-gray-500 text-[10px] uppercase font-bold shrink-0" data-i18n="terminal.quickrun">Quick Run:</span>
-                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-blue-400 border border-slate-800 hover:bg-blue-600 hover:text-black transition-colors" data-cmd="whoami">whoami</button>
-                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-[#10b981] border border-[#10b981]/30 hover:bg-[#10b981] hover:text-black transition-colors" data-cmd="cat certs.txt">cat certs.txt</button>
-                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/30 hover:bg-[#38bdf8] hover:text-black transition-colors" data-cmd="easm --scan">easm --scan</button>
-                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-yellow-400 border border-yellow-400/30 hover:bg-yellow-400 hover:text-black transition-colors" data-cmd="nmap --skills">nmap --skills</button>
-                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-[#0f172a] text-purple-400 border border-purple-400/30 hover:bg-purple-400 hover:text-black transition-colors" data-cmd="hire --wassim">hire --wassim</button>
-                            <button class="terminal-chip shrink-0 px-2 py-1 rounded-md bg-[#0f172a] text-gray-400 border border-[#1e293b] hover:text-white transition-colors" data-cmd="clear" data-i18n="terminal.clear_btn">clear</button>
+                            <span class="text-slate-400 text-[10px] uppercase font-bold shrink-0" data-i18n="terminal.quickrun">Quick Run:</span>
+                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-slate-900 text-blue-400 border border-slate-700/80 hover:bg-blue-500/15 hover:text-blue-300 hover:border-blue-400/80 transition-colors cursor-pointer" data-cmd="whoami">whoami</button>
+                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-slate-900 text-emerald-400 border border-slate-700/80 hover:bg-emerald-500/15 hover:text-emerald-300 hover:border-emerald-400/80 transition-colors cursor-pointer" data-cmd="cat certs.txt">cat certs.txt</button>
+                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-slate-900 text-sky-400 border border-slate-700/80 hover:bg-sky-500/15 hover:text-sky-300 hover:border-sky-400/80 transition-colors cursor-pointer" data-cmd="easm --scan">easm --scan</button>
+                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-slate-900 text-amber-400 border border-slate-700/80 hover:bg-amber-500/15 hover:text-amber-300 hover:border-amber-400/80 transition-colors cursor-pointer" data-cmd="nmap --skills">nmap --skills</button>
+                            <button class="terminal-chip shrink-0 px-2.5 py-1 rounded-md bg-slate-900 text-purple-400 border border-slate-700/80 hover:bg-purple-500/15 hover:text-purple-300 hover:border-purple-400/80 transition-colors cursor-pointer" data-cmd="hire --wassim">hire --wassim</button>
+                            <button class="terminal-chip shrink-0 px-2 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800 hover:text-white hover:border-slate-600 transition-colors cursor-pointer" data-cmd="clear" data-i18n="terminal.clear_btn">clear</button>
                         </div>
 
                         <!-- Terminal Output Screen -->
@@ -770,7 +740,7 @@
                         <form id="terminalForm" class="p-2 sm:p-3 bg-[#030712] border-t border-[#1e293b] flex items-center gap-1.5 sm:gap-2">
                             <span class="text-[#10b981] font-bold text-xs shrink-0"><span class="hidden xs:inline">wassim@tekup-sec:</span><span class="xs:hidden">wassim:</span><span class="text-[#38bdf8]">~</span>$</span>
                             <input type="text" id="terminalInput" placeholder="type 'help', 'whoami', 'certs', 'easm'..." data-i18n-placeholder="terminal.placeholder" autocomplete="off" class="flex-1 min-w-0 bg-transparent text-blue-400 focus:outline-none font-mono text-xs py-1">
-                            <button type="submit" class="px-3 py-1.5 rounded-lg bg-[#0f172a] text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black text-xs font-bold transition-all shrink-0" data-i18n="terminal.exec_btn">
+                            <button type="submit" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition-all shrink-0 cursor-pointer" data-i18n="terminal.exec_btn">
                                 EXEC
                             </button>
                         </form>
@@ -846,9 +816,9 @@
                     </div>
 
                     <!-- Card 3: IEEE ISIMM CIS Chapter -->
-                    <div class="cyber-card reveal-card p-6 rounded-2xl bg-[#0f172a] border border-[#38bdf8]/40 hover:border-[#38bdf8] transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(56,189,248,0.1)]">
+                    <div class="cyber-card reveal-card p-6 rounded-2xl bg-[#0f172a] border border-slate-700/40 hover:border-[#38bdf8] transition-all duration-300 group flex flex-col justify-between shadow-sm">
                         <div>
-                            <div class="w-14 h-14 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/40 text-[#38bdf8] flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all">
+                            <div class="w-14 h-14 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/30 text-[#38bdf8] flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all">
                                 <i class="fa-solid fa-users-gear"></i>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
@@ -870,9 +840,9 @@
                     </div>
 
                     <!-- Card 4: Congrès TSYP 11 -->
-                    <div class="cyber-card reveal-card p-6 rounded-2xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 transition-all duration-300 group flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+                    <div class="cyber-card reveal-card p-6 rounded-2xl bg-[#0f172a] border border-slate-700/40 hover:border-purple-500 transition-all duration-300 group flex flex-col justify-between shadow-sm">
                         <div>
-                            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/40 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all">
+                            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all">
                                 <i class="fa-solid fa-network-wired"></i>
                             </div>
                             <div class="flex items-center gap-2 mb-2">
@@ -910,13 +880,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     <!-- RHCSA Card -->
-                    <div class="cyber-card reveal-card p-8 rounded-3xl bg-[#0f172a] border-2 border-red-500/40 hover:border-red-500 transition-all duration-300 relative overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)] flex flex-col justify-between">
+                    <div class="cyber-card reveal-card p-8 rounded-3xl bg-[#0f172a] border border-red-500/40 hover:border-red-500 transition-all duration-300 relative overflow-hidden shadow-sm flex flex-col justify-between">
                         <div>
                             <div class="flex items-start justify-between mb-6">
                                 <div class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/50 text-red-500 flex items-center justify-center text-3xl">
                                     <i class="fa-brands fa-redhat"></i>
                                 </div>
-                                <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]" data-i18n="certs.rhcsa_badge">
+                                <span class="px-3.5 py-1 rounded-full bg-red-500/20 text-red-400 font-mono text-xs font-extrabold border border-red-500/50 shadow-sm" data-i18n="certs.rhcsa_badge">
                                     RED HAT CERTIFIÉ
                                 </span>
                             </div>
@@ -956,7 +926,7 @@
                                 <span data-i18n="certs.rhcsa_verify_id">ID de Vérification Red Hat</span>
                             </span>
                             <!-- Credly Badge Link for RHCSA -->
-                            <a href="https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(239,68,68,0.2)]" title="Vérifier la certification Red Hat RHCSA sur Credly">
+                            <a href="https://www.credly.com/earner/earned/share/273c40c5-2afd-4237-853a-5dfc9c835e89" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-red-500/15 text-red-400 border border-red-500/40 hover:bg-red-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-sm" title="Vérifier la certification Red Hat RHCSA sur Credly">
                                 <i class="fa-solid fa-certificate text-sm"></i>
                                 <span data-i18n="certs.verify_credly">Vérifier sur Credly</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -965,7 +935,7 @@
                     </div>
 
                     <!-- PCAP Card -->
-                    <div class="cyber-card reveal-card p-8 rounded-3xl bg-[#0f172a] border-2 border-yellow-500/40 hover:border-yellow-500 transition-all duration-300 relative overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div class="cyber-card reveal-card p-8 rounded-3xl bg-[#0f172a] border border-amber-500/40 hover:border-amber-400 transition-all duration-300 relative overflow-hidden shadow-sm flex flex-col justify-between">
                         <div>
                             <div class="flex items-start justify-between mb-6">
                                 <div class="w-16 h-16 rounded-2xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500 flex items-center justify-center text-3xl">
@@ -1011,7 +981,7 @@
                                 <span data-i18n="certs.pcap_verify_id">ID de Vérification Python Institute</span>
                             </span>
                             <!-- Credly Badge Link for PCAP -->
-                            <a href="https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-yellow-500/15 text-yellow-400 border border-yellow-500/50 hover:bg-yellow-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-sm" title="Vérifier la certification Python PCAP sur Credly">
+                            <a href="https://www.credly.com/earner/earned/share/9eaff906-83de-41e4-9483-7dd49be122a1" target="_blank" rel="noopener noreferrer" class="cyber-glow-btn px-4 py-2 rounded-xl bg-yellow-500/15 text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-slate-950 font-mono text-xs font-bold inline-flex items-center gap-2 transition-all shadow-sm" title="Vérifier la certification Python PCAP sur Credly">
                                 <i class="fa-solid fa-certificate text-sm"></i>
                                 <span data-i18n="certs.verify_credly">Vérifier sur Credly</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -1064,13 +1034,13 @@
                                 </span>
 
                                 <!-- Attestation Button -->
-                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/50 hover:bg-blue-600 hover:text-black text-blue-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation Officielle de Stage TALAN">
+                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/50 hover:bg-blue-600 hover:text-white text-blue-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation Officielle de Stage TALAN">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
                                     <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
 
                                 <!-- GitHub Code Button (Clickable independently) -->
-                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-blue-500 hover:text-blue-400 text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)]" title="View Source Code / GitHub Repository">
+                                <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-[#070b14] border border-[#1e293b] hover:border-blue-500 hover:text-blue-400 text-gray-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="View Source Code / GitHub Repository">
                                     <i class="fa-brands fa-github text-sm text-blue-400"></i>
                                     <span data-i18n="exp.btn_code">Code</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
@@ -1147,7 +1117,7 @@
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3.5 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TALAN — Smart EASM & Threat Intelligence', 'TALAN Tunisie', 'proofs/attestation_talan.pdf', 'Attestation de stage : Architecture modulaire EASM, OSINT Connectors & Data Normalization.')" class="px-3.5 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
                                         <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
@@ -1194,7 +1164,7 @@
                                     2025
                                 </span>
 
-                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation de Stage SW Consulting">
+                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-600 hover:text-white text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation de Stage SW Consulting">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
                                     <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
@@ -1259,12 +1229,12 @@
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage SW Consulting — QuickDoc AI/OCR & Fullstack', 'SW Consulting', 'proofs/attestation_sw_consulting.pdf', 'Attestation de stage : Moteur d\'extraction OCR automatique & plateforme web de facturation QuickDoc.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
                                         <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
-                                    <a href="https://github.com/WassimBannour1/QuickDoc" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                    <a href="https://github.com/WassimBannour1/QuickDoc" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
                                         <span data-i18n="exp.sw_explore_repo">Explorer le Repo QuickDoc</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -1304,7 +1274,7 @@
                                     2024
                                 </span>
 
-                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3 py-1.5 rounded-xl bg-[#38bdf8]/15 border border-[#38bdf8]/50 hover:bg-[#38bdf8] hover:text-black text-[#38bdf8] font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(56,189,248,0.2)]" title="Vérifier l'Attestation de Stage Team Dev">
+                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3 py-1.5 rounded-xl bg-[#38bdf8]/15 border border-[#38bdf8]/50 hover:bg-[#38bdf8] hover:text-slate-950 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation de Stage Team Dev">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
                                     <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
@@ -1368,12 +1338,12 @@
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage Team Dev — Frontend Angular & REST Sync', 'Team Dev', 'proofs/attestation_teamdev.pdf', 'Attestation de stage : Interface Responsive Angular TypeScript & synchronisation de réservation Stadium-Booking.')" class="px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-slate-950 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
                                         <span data-i18n="exp.btn_view_attest">Consulter l'Attestation</span>
                                     </button>
 
-                                    <a href="https://github.com/WassimBannour1/Stadium-Booking" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                    <a href="https://github.com/WassimBannour1/Stadium-Booking" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-slate-950 font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
                                         <span data-i18n="exp.team_explore_repo">Explorer le Repo Stadium-Booking</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -1414,7 +1384,7 @@
                                     2023
                                 </span>
 
-                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-500 hover:text-black text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation de Stage TechCenter">
+                                <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/50 hover:bg-emerald-600 hover:text-white text-emerald-400 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-sm" title="Vérifier l'Attestation de Stage TechCenter">
                                     <i class="fa-solid fa-file-shield text-xs"></i>
                                     <span data-i18n="exp.btn_attestation">Attestation</span>
                                 </button>
@@ -1478,17 +1448,17 @@
                                 </div>
 
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java (Attestation 1)', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Solution Desktop Java (Attestation 1)', 'We Are Technology Center', 'proofs/attestation_techcenter.pdf', 'Attestation de stage : Application Desktop Java Swing & persistance de données SQL.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
                                         <span data-i18n="exp.btn_view_attest">Attestation (Preuve 1)</span>
                                     </button>
 
-                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Document Complémentaire (Preuve 2)', 'We Are Technology Center', 'proofs/attestation_techcenter_2.pdf', 'Document officiel complémentaire attestant des activités de stage chez We Are Technology Center.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                                    <button type="button" onclick="event.stopPropagation(); window.openDocViewer('Stage TechCenter — Document Complémentaire (Preuve 2)', 'We Are Technology Center', 'proofs/attestation_techcenter_2.pdf', 'Document officiel complémentaire attestant des activités de stage chez We Are Technology Center.')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-1.5 transition-all">
                                         <i class="fa-solid fa-file-shield text-xs"></i>
                                         <span>Preuve 2</span>
                                     </button>
 
-                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500 hover:text-black font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
+                                    <a href="https://github.com/WassimBannour1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="cyber-glow-btn px-3.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white font-mono text-xs font-bold inline-flex items-center gap-2 transition-all">
                                         <i class="fa-brands fa-github text-sm"></i>
                                         <span data-i18n="exp.tech_explore_repo">Explorer le Repo GitHub</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -1769,7 +1739,7 @@
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <span class="text-xs font-mono text-gray-400 font-bold">2022 - 2025</span>
-                                    <span class="px-2.5 py-0.5 rounded bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/40 font-mono text-xs font-extrabold shadow-[0_0_10px_rgba(56,189,248,0.2)]" data-i18n="edu.badge_lic">LICENCE</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/40 font-mono text-xs font-extrabold shadow-sm" data-i18n="edu.badge_lic">LICENCE</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-white" data-i18n="edu.isimm_title">Licence en Génie Logiciel</h3>
                                 <p class="text-[#38bdf8] text-xs font-mono font-bold mb-3">ISIMM (Monastir, TN)</p>
@@ -1968,7 +1938,7 @@
                             <span class="text-xs text-gray-300 truncate max-w-[240px] xs:max-w-none">wassimbannour10@gmail.com</span>
                         </div>
                         <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
-                            <a href="mailto:wassimbannour10@gmail.com?subject=Prise%20de%20contact%20professionnelle%20-%20Wassim%20Bannour" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                            <a href="mailto:wassimbannour10@gmail.com?subject=Prise%20de%20contact%20professionnelle%20-%20Wassim%20Bannour" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-white font-bold text-xs transition-all flex items-center justify-center">
                                 <i class="fa-solid fa-paper-plane mr-1.5"></i> <span data-i18n="contact.email_btn">Envoyer</span>
                             </a>
                             <button onclick="window.copyToClipboard('wassimbannour10@gmail.com', 'Email (wassimbannour10@gmail.com)')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.email_copy" title="Copier l'email">
@@ -1984,7 +1954,7 @@
                             <span class="text-xs text-gray-300">Wassim Bannour</span>
                         </div>
                         <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
-                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                            <a href="https://www.linkedin.com/in/wassim-bannour-513448317/" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-sky-600 hover:text-white font-bold text-xs transition-all flex items-center justify-center">
                                 <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> <span data-i18n="contact.linkedin_btn">Ouvrir</span>
                             </a>
                             <button onclick="window.copyToClipboard('https://www.linkedin.com/in/wassim-bannour-513448317/', 'Lien LinkedIn')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.linkedin_copy" title="Copier le lien LinkedIn">
@@ -2000,7 +1970,7 @@
                             <span class="text-xs text-gray-300">+216 94101910</span>
                         </div>
                         <div class="flex items-center gap-2 pt-1 sm:pt-2 w-full justify-center">
-                            <a href="tel:+21694101910" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black font-bold text-xs transition-all flex items-center justify-center">
+                            <a href="tel:+21694101910" class="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 hover:bg-emerald-600 hover:text-white font-bold text-xs transition-all flex items-center justify-center">
                                 <i class="fa-solid fa-phone mr-1.5"></i> <span data-i18n="contact.phone_btn">Appeler</span>
                             </a>
                             <button onclick="window.copyToClipboard('+21694101910', 'Téléphone (+216 94101910)')" class="px-3 py-2 rounded-xl bg-[#070b14] text-gray-400 hover:text-white border border-[#1e293b] text-xs transition-all" data-i18n-title="contact.phone_copy" title="Copier le numéro">
@@ -2085,19 +2055,19 @@
 
             <!-- Pre-built Prompt Pills (Horizontal Scrollable) -->
             <div class="px-3 sm:px-4 py-2 bg-[#030712] border-t border-[#1e293b] overflow-x-auto flex gap-1.5 sm:gap-2 no-scrollbar text-[11px] sm:text-xs font-mono">
-                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black transition-colors font-bold inline-flex items-center gap-1.5" data-prompt="What are Wassim's top skills & certifications?" data-i18n-html="ai.pill1">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-blue-400 border border-blue-500/40 hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-400 transition-colors font-bold inline-flex items-center gap-1.5 cursor-pointer" data-prompt="What are Wassim's top skills & certifications?" data-i18n-html="ai.pill1">
                     <i class="fa-solid fa-bolt text-yellow-400 text-[10px]"></i>
                     <span>Top Skills & Certs</span>
                 </button>
-                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-[#10b981] hover:text-black transition-colors font-bold inline-flex items-center gap-1.5" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT)." data-i18n-html="ai.pill2">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#10b981] border border-[#10b981]/40 hover:bg-emerald-500/20 hover:text-emerald-300 hover:border-emerald-400 transition-colors font-bold inline-flex items-center gap-1.5 cursor-pointer" data-prompt="Tell me about his cybersecurity work at Talan Tunisie (EASM & OSINT)." data-i18n-html="ai.pill2">
                     <i class="fa-solid fa-shield-halved text-emerald-400 text-[10px]"></i>
                     <span>Talan EASM & OSINT</span>
                 </button>
-                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-[#38bdf8] hover:text-white transition-colors font-bold inline-flex items-center gap-1.5" data-prompt="Tell me about his IEEEXtreme 17.0 ranking." data-i18n-html="ai.pill3">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-[#38bdf8] border border-[#38bdf8]/40 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-400 transition-colors font-bold inline-flex items-center gap-1.5 cursor-pointer" data-prompt="Tell me about his IEEEXtreme 17.0 ranking." data-i18n-html="ai.pill3">
                     <i class="fa-solid fa-trophy text-blue-400 text-[10px]"></i>
                     <span>IEEEXtreme #33 Rank</span>
                 </button>
-                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-yellow-500 hover:text-black transition-colors font-bold inline-flex items-center gap-1.5" data-prompt="Why should we hire Wassim for a security / software role?" data-i18n-html="ai.pill4">
+                <button class="prompt-pill shrink-0 px-2.5 sm:px-3 py-1 rounded-full bg-[#0f172a] text-yellow-400 border border-yellow-500/40 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-400 transition-colors font-bold inline-flex items-center gap-1.5 cursor-pointer" data-prompt="Why should we hire Wassim for a security / software role?" data-i18n-html="ai.pill4">
                     <i class="fa-solid fa-rocket text-[#38bdf8] text-[10px]"></i>
                     <span>Why hire Wassim?</span>
                 </button>
@@ -2106,7 +2076,7 @@
             <!-- Chat Input Bar -->
             <form id="chatForm" class="p-2.5 sm:p-3 bg-[#070b14] border-t border-[#1e293b] flex items-center gap-2">
                 <input type="text" id="chatInput" placeholder="Ask recruiter questions..." data-i18n-placeholder="ai.input_ph" autocomplete="off" class="flex-1 bg-[#0f172a] border border-[#1e293b] focus:border-blue-500 text-white px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm focus:outline-none font-mono">
-                <button type="submit" id="sendBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600 text-black font-extrabold flex items-center justify-center hover:shadow-sm active:scale-95 transition-all shrink-0">
+                <button type="submit" id="sendBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center justify-center shadow-sm active:scale-95 transition-all shrink-0 cursor-pointer">
                     <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
                 </button>
             </form>
@@ -2156,7 +2126,7 @@
                         </p>
                     </div>
                     <div class="pt-3 w-full flex flex-col sm:flex-row justify-center gap-2 border-t border-[#1e293b]/70 mt-2">
-                        <a id="docDirectDownloadBtn" href="#" download class="px-4 py-2 rounded-xl bg-blue-600 text-black font-bold font-mono text-xs inline-flex items-center justify-center gap-2 hover:shadow-sm transition-all">
+                        <a id="docDirectDownloadBtn" href="#" download class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold font-mono text-xs inline-flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer">
                             <i class="fa-solid fa-download"></i>
                             <span data-i18n="doc.download">Télécharger le Document</span>
                         </a>
@@ -2178,7 +2148,7 @@
                     <a href="mailto:wassimbannour10@gmail.com?subject=Demande%20de%20document%20officiel%20-%20Wassim%20Bannour" class="flex-1 sm:flex-initial px-3 py-1.5 rounded-lg bg-[#0f172a] text-gray-300 border border-[#1e293b] hover:text-blue-400 hover:border-blue-500 font-mono text-xs text-center transition-all">
                         <i class="fa-solid fa-envelope mr-1 text-blue-400"></i> <span data-i18n="doc.ask_email">Demander par Email</span>
                     </a>
-                    <button onclick="window.closeDocViewer()" data-i18n="doc.close" class="px-4 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-black font-mono text-xs font-bold transition-all">
+                    <button onclick="window.closeDocViewer()" data-i18n="doc.close" class="px-4 py-1.5 rounded-lg bg-blue-600/15 text-blue-400 border border-blue-500/40 hover:bg-blue-600 hover:text-white font-mono text-xs font-bold transition-all cursor-pointer">
                         Fermer
                     </button>
                 </div>
@@ -2317,6 +2287,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261119-v6-drift"></script>
+    <script src="script.js?v=20261119-v7-final"></script>
 </body>
 </html>
