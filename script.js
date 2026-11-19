@@ -1627,13 +1627,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle Chat Window
     function toggleChat(show) {
+        if (!aiChatModal) return;
         if (show) {
             aiChatModal.classList.add('active');
+            aiChatModal.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
             if (floatingChatBtn) floatingChatBtn.classList.add('scale-0');
-            if (chatInput) chatInput.focus();
+            if (chatInput) setTimeout(() => chatInput.focus(), 150);
             if (typeof window.dismissAiGreeting === 'function') window.dismissAiGreeting();
+
+            // Background ping to Cloudflare Worker to confirm live status
+            if (CLOUDFLARE_WORKER_URL) {
+                fetch(CLOUDFLARE_WORKER_URL, { method: 'GET', mode: 'cors' })
+                    .then(r => r.json())
+                    .then(() => updateBackendStatusUI('worker', 'Cloudflare Worker: Online'))
+                    .catch(() => {});
+            }
         } else {
             aiChatModal.classList.remove('active');
+            aiChatModal.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
             if (floatingChatBtn) floatingChatBtn.classList.remove('scale-0');
         }
     }
@@ -1642,8 +1653,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (openAiChatBtn) openAiChatBtn.addEventListener('click', () => toggleChat(true));
     if (mobileAiChatBtn) mobileAiChatBtn.addEventListener('click', () => toggleChat(true));
-    if (floatingChatBtn) floatingChatBtn.addEventListener('click', () => toggleChat(true));
+    if (floatingChatBtn) floatingChatBtn.addEventListener('click', () => toggleChat(!aiChatModal.classList.contains('active')));
     if (closeAiChatBtn) closeAiChatBtn.addEventListener('click', () => toggleChat(false));
+
+    // Close chat on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && aiChatModal && aiChatModal.classList.contains('active')) {
+            toggleChat(false);
+        }
+    });
+
+    // Close chat on outside click
+    document.addEventListener('click', (e) => {
+        if (!aiChatModal || !aiChatModal.classList.contains('active')) return;
+        const clickedInsideModal = aiChatModal.contains(e.target);
+        const clickedTrigger = e.target.closest('#floatingChatBtn') ||
+                               e.target.closest('#openAiChatBtn') ||
+                               e.target.closest('#mobileAiChatBtn') ||
+                               e.target.closest('#aiWelcomeBubble') ||
+                               e.target.closest('[onclick*="openAiChatBtn"]') ||
+                               e.target.closest('[onclick*="openAiChat"]');
+        if (!clickedInsideModal && !clickedTrigger) {
+            toggleChat(false);
+        }
+    });
 
     // Proactive AI Twin Welcome Greeting Bubble
     function initAiWelcomeGreeting() {

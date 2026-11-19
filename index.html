@@ -264,6 +264,23 @@
             transform: scale(1) translateY(0);
         }
 
+        /* AI Twin Floating Chat Widget Transition */
+        #aiChatModal {
+            transform: translateY(115%);
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.25s ease, 
+                        visibility 0.25s ease;
+        }
+        #aiChatModal.active {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
         /* Executive Minimalist Cursor (No Glow / Sharp Precision) */
         .cursor-follower {
             position: fixed;
@@ -2012,7 +2029,7 @@
     </footer>
 
     <!-- AI TWIN FLOATING CHAT WIDGET -->
-    <div id="aiChatModal" class="fixed bottom-2 right-2 left-2 sm:bottom-6 sm:right-6 sm:left-auto z-50 transition-all duration-300 transform translate-y-full opacity-0 pointer-events-none max-w-md w-auto sm:w-[420px]">
+    <div id="aiChatModal" class="fixed bottom-2 right-2 left-2 sm:bottom-6 sm:right-6 sm:left-auto z-50 max-w-md w-auto sm:w-[420px]">
         <div class="cyber-card rounded-2xl sm:rounded-3xl bg-[#0f172a] border border-slate-700 shadow-sm flex flex-col h-[82vh] sm:h-[560px] max-h-[580px] overflow-hidden backdrop-blur-2xl relative">
             
             <!-- Chat Header -->
@@ -2287,6 +2304,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261119-v7-final"></script>
+    <script src="script.js?v=20261119-v8-aifix"></script>
 </body>
 </html>
