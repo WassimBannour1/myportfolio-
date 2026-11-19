@@ -748,64 +748,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -------------------------------------------------------------
     // -------------------------------------------------------------
-    // 1. EXECUTIVE AMBIENT TOPOLOGY CANVAS & INTERACTIVE CURSOR AURA
+    // 1. EXECUTIVE MINIMALIST CURSOR FOLLOWER (PRECISION / NO GLOW)
     // -------------------------------------------------------------
-    const canvas = document.getElementById('ambientNetworkCanvas');
-    const spotlight = document.getElementById('ambientSpotlight');
     const cursorFollower = document.getElementById('cursorFollower');
     const cursorDot = document.getElementById('cursorDot');
 
-    let mouseX = -1000;
-    let mouseY = -1000;
     let targetX = -100;
     let targetY = -100;
     let currentX = -100;
     let currentY = -100;
     let isMouseOnScreen = false;
-    let ticking = false;
 
-    // Track Cursor for Follower and Ambient Spotlight
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        targetX = e.clientX;
-        targetY = e.clientY;
-        isMouseOnScreen = true;
-
-        if (cursorDot) {
+    if (cursorFollower && cursorDot) {
+        window.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            isMouseOnScreen = true;
             cursorDot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
-        }
+        }, { passive: true });
 
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                if (spotlight) {
-                    spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
-                    spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
+        document.documentElement.addEventListener('mouseleave', () => {
+            isMouseOnScreen = false;
+            cursorFollower.style.opacity = '0';
+            cursorDot.style.opacity = '0';
+        });
 
-    document.documentElement.addEventListener('mouseleave', () => {
-        isMouseOnScreen = false;
-        if (cursorFollower) cursorFollower.style.opacity = '0';
-        if (cursorDot) cursorDot.style.opacity = '0';
-    });
+        document.documentElement.addEventListener('mouseenter', () => {
+            isMouseOnScreen = true;
+            cursorFollower.style.opacity = '1';
+            cursorDot.style.opacity = '1';
+        });
 
-    document.documentElement.addEventListener('mouseenter', () => {
-        isMouseOnScreen = true;
-        if (cursorFollower) cursorFollower.style.opacity = '1';
-        if (cursorDot) cursorDot.style.opacity = '1';
-    });
-
-    // Smooth Spring-Damped Follower Loop
-    if (cursorFollower) {
+        // Smooth Precision Spring-Damped Follower Loop
         function animateCursorFollower() {
             if (isMouseOnScreen) {
-                currentX += (targetX - currentX) * 0.18;
-                currentY += (targetY - currentY) * 0.18;
+                currentX += (targetX - currentX) * 0.22;
+                currentY += (targetY - currentY) * 0.22;
                 cursorFollower.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
             }
             requestAnimationFrame(animateCursorFollower);
@@ -821,112 +799,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         attachCursorHoverListeners();
-    }
-
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
-
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            }, 150);
-        }, { passive: true });
-
-        // Visible Architectural Topology Nodes
-        const nodeCount = window.innerWidth < 768 ? 20 : 38;
-        const nodes = Array.from({ length: nodeCount }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.28,
-            vy: (Math.random() - 0.5) * 0.28,
-            radius: Math.random() * 1.6 + 1.2
-        }));
-
-        let animationFrameId;
-        let isVisible = true;
-
-        document.addEventListener('visibilitychange', () => {
-            isVisible = !document.hidden;
-            if (isVisible) {
-                animationFrameId = requestAnimationFrame(animateCanvas);
-            } else {
-                cancelAnimationFrame(animationFrameId);
-            }
-        });
-
-        function animateCanvas() {
-            if (!isVisible) return;
-            ctx.clearRect(0, 0, width, height);
-
-            const isLight = document.documentElement.classList.contains('light-mode');
-
-            // Draw Connecting Lines Between Close Nodes
-            ctx.lineWidth = 0.7;
-
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 145) {
-                        const alpha = (1 - dist / 145) * (isLight ? 0.14 : 0.20);
-                        ctx.strokeStyle = isLight ? `rgba(71, 85, 105, ${alpha})` : `rgba(59, 130, 246, ${alpha})`;
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.stroke();
-                    }
-                }
-
-                // Interactive Connection Line to Cursor
-                const mdx = nodes[i].x - mouseX;
-                const mdy = nodes[i].y - mouseY;
-                const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                if (mdist < 160) {
-                    const mAlpha = (1 - mdist / 160) * (isLight ? 0.35 : 0.45);
-                    ctx.strokeStyle = isLight ? `rgba(37, 99, 235, ${mAlpha})` : `rgba(56, 189, 248, ${mAlpha})`;
-                    ctx.lineWidth = 0.9;
-                    ctx.beginPath();
-                    ctx.moveTo(nodes[i].x, nodes[i].y);
-                    ctx.lineTo(mouseX, mouseY);
-                    ctx.stroke();
-
-                    // Subtle magnetic attraction toward cursor
-                    nodes[i].x -= (mdx / mdist) * 0.4;
-                    nodes[i].y -= (mdy / mdist) * 0.4;
-                }
-            }
-
-            // Draw & Update Nodes with Subtle Glow Halo
-            nodes.forEach(node => {
-                node.x += node.vx;
-                node.y += node.vy;
-
-                if (node.x < 0) { node.x = width; }
-                else if (node.x > width) { node.x = 0; }
-                if (node.y < 0) { node.y = height; }
-                else if (node.y > height) { node.y = 0; }
-
-                ctx.save();
-                ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.75)' : 'rgba(96, 165, 250, 0.85)';
-                ctx.shadowBlur = isLight ? 0 : 8;
-                ctx.shadowColor = 'rgba(56, 189, 248, 0.6)';
-                ctx.beginPath();
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            });
-
-            animationFrameId = requestAnimationFrame(animateCanvas);
-        }
-
-        animateCanvas();
     }
 
     // -------------------------------------------------------------

@@ -263,44 +263,41 @@
             transform: scale(1) translateY(0);
         }
 
-        /* Custom Smooth Interactive Cursor Aura */
+        /* Executive Minimalist Cursor (No Glow / Sharp Precision) */
         .cursor-follower {
             position: fixed;
             top: 0;
             left: 0;
-            width: 32px;
-            height: 32px;
-            margin-top: -16px;
-            margin-left: -16px;
+            width: 28px;
+            height: 28px;
+            margin-top: -14px;
+            margin-left: -14px;
             border-radius: 50%;
-            border: 1.5px solid rgba(56, 189, 248, 0.5);
-            background: rgba(59, 130, 246, 0.08);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: transparent;
             pointer-events: none;
             z-index: 9999;
-            transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            transition: width 0.18s ease, height 0.18s ease, margin 0.18s ease, border-color 0.18s ease, background 0.18s ease;
             transform: translate3d(-100px, -100px, 0);
         }
         .cursor-follower.hovering {
-            width: 46px;
-            height: 46px;
-            margin-top: -23px;
-            margin-left: -23px;
-            border-color: rgba(96, 165, 250, 0.85);
-            background: rgba(59, 130, 246, 0.16);
-            box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+            width: 44px;
+            height: 44px;
+            margin-top: -22px;
+            margin-left: -22px;
+            border-color: rgba(59, 130, 246, 0.8);
+            background: rgba(59, 130, 246, 0.06);
         }
         .cursor-dot {
             position: fixed;
             top: 0;
             left: 0;
-            width: 6px;
-            height: 6px;
-            margin-top: -3px;
-            margin-left: -3px;
+            width: 4px;
+            height: 4px;
+            margin-top: -2px;
+            margin-left: -2px;
             border-radius: 50%;
-            background: #38bdf8;
-            box-shadow: 0 0 10px #38bdf8;
+            background: #ffffff;
             pointer-events: none;
             z-index: 10000;
             transform: translate3d(-100px, -100px, 0);
@@ -309,70 +306,6 @@
             .cursor-follower, .cursor-dot {
                 display: none !important;
             }
-        }
-
-        /* Ambient Executive Atmosphere */
-        .ambient-spotlight {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(650px circle at var(--mouse-x, 50vw) var(--mouse-y, 35vh), rgba(37, 99, 235, 0.18) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 70%);
-            transition: opacity 0.3s ease;
-            z-index: 0;
-        }
-        .ambient-mesh-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
-            will-change: transform;
-        }
-        .ambient-mesh-orb.orb-1 {
-            top: -10%;
-            left: 10%;
-            width: 580px;
-            height: 580px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 70%);
-            animation: meshFloat1 22s ease-in-out infinite alternate;
-        }
-        .ambient-mesh-orb.orb-2 {
-            top: 45%;
-            right: 5%;
-            width: 650px;
-            height: 650px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.13) 0%, rgba(37, 99, 235, 0.03) 50%, transparent 70%);
-            animation: meshFloat2 28s ease-in-out infinite alternate;
-        }
-        @keyframes meshFloat1 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, 45px) scale(1.06); }
-            100% { transform: translate(-40px, 30px) scale(0.96); }
-        }
-        @keyframes meshFloat2 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-50px, -40px) scale(1.08); }
-            100% { transform: translate(35px, -25px) scale(0.95); }
-        }
-
-        /* Hero Top Illumination Beam */
-        .hero-light-beam {
-            position: absolute;
-            top: -160px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            max-width: 90vw;
-            height: 360px;
-            border-radius: 50%;
-            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.12) 0%, rgba(56, 189, 248, 0.04) 45%, transparent 70%);
-            filter: blur(80px);
-            pointer-events: none;
-            animation: beamPulse 10s ease-in-out infinite alternate;
-        }
-        @keyframes beamPulse {
-            0% { opacity: 0.7; transform: translateX(-50%) scale(0.96); }
-            100% { opacity: 1; transform: translateX(-50%) scale(1.04); }
         }
 
         /* Toast Notification */
@@ -455,17 +388,15 @@
             border-color: #e2e8f0 !important;
             color: #64748b !important;
         }
-        html.light-mode .ambient-spotlight {
-            background: radial-gradient(750px circle at var(--mouse-x, 50vw) var(--mouse-y, 35vh), rgba(37, 99, 235, 0.035), transparent 75%);
+        html.light-mode .cursor-follower {
+            border-color: rgba(15, 23, 42, 0.35);
         }
-        html.light-mode .ambient-mesh-orb.orb-1 {
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.035) 0%, transparent 70%);
+        html.light-mode .cursor-follower.hovering {
+            border-color: rgba(37, 99, 235, 0.75);
+            background: rgba(37, 99, 235, 0.05);
         }
-        html.light-mode .ambient-mesh-orb.orb-2 {
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.03) 0%, transparent 70%);
-        }
-        html.light-mode .hero-light-beam {
-            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+        html.light-mode .cursor-dot {
+            background: #0f172a;
         }
     </style>
 </head>
@@ -474,20 +405,9 @@
     <!-- Reading Progress Bar -->
     <div id="scrollProgressBar" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 z-50 transition-all duration-75" style="width: 0%"></div>
 
-    <!-- Custom Smooth Interactive Cursor Aura -->
+    <!-- Executive Minimalist Cursor (Sharp Precision / No Glow) -->
     <div id="cursorFollower" class="cursor-follower hidden md:block"></div>
     <div id="cursorDot" class="cursor-dot hidden md:block"></div>
-
-    <!-- Ambient Executive Background Layer -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-        <!-- Subtle Interactive Cursor Spotlight / Torch Glow -->
-        <div id="ambientSpotlight" class="ambient-spotlight"></div>
-        <!-- Deep Ambient Drifting Mesh Orbs (Linear/Vercel style) -->
-        <div class="ambient-mesh-orb orb-1"></div>
-        <div class="ambient-mesh-orb orb-2"></div>
-        <!-- Architectural Topology Canvas -->
-        <canvas id="ambientNetworkCanvas" class="absolute inset-0 w-full h-full"></canvas>
-    </div>
 
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 w-full z-40 backdrop-blur-xl bg-[#070b14]/90 border-b border-[#1e293b]/80 transition-all duration-300" id="mainHeader">
@@ -627,11 +547,6 @@
         
         <!-- HERO SECTION: REFINED EXECUTIVE PRESENTATION -->
         <section id="hero" class="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-8 sm:py-12 px-3.5 sm:px-6 lg:px-8 relative overflow-hidden">
-            <!-- Ambient Top Illumination Beam -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[420px] pointer-events-none overflow-hidden -z-10" aria-hidden="true">
-                <div class="hero-light-beam"></div>
-            </div>
-
             <div class="max-w-7xl mx-auto w-full space-y-8 sm:space-y-10">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -2371,6 +2286,6 @@
     </div>
 
     <!-- Custom Client Script with Cache-Buster -->
-    <script src="script.js?v=20261119-v4"></script>
+    <script src="script.js?v=20261119-v5-minimalist"></script>
 </body>
 </html>
