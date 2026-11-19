@@ -2108,14 +2108,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // -------------------------------------------------------------
 
 /**
- * Show a sleek glowing Cyber Toast notification on screen
+ * Show a sleek executive toast notification on screen
  */
 window.showCyberToast = function(message, type = 'success') {
-    const container = document.getElementById('cyberToastContainer');
-    if (!container) return;
+    let container = document.getElementById('cyberToastContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'cyberToastContainer';
+        container.className = 'fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex flex-col gap-2.5 pointer-events-none max-w-sm';
+        document.body.appendChild(container);
+    }
 
     const toast = document.createElement('div');
-    toast.className = 'cyber-toast px-4 py-3 rounded-2xl bg-[#070b14]/95 border border-[#38bdf8]/60 text-white font-mono text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)] backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto max-w-sm';
+    toast.className = 'cyber-toast px-4 py-3 rounded-xl bg-[#0f172a] border border-slate-700 text-slate-200 font-mono text-xs shadow-lg backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto max-w-sm';
     
     let iconHtml = '<i class="fa-solid fa-circle-check text-[#10b981] text-sm"></i>';
     if (type === 'info') iconHtml = '<i class="fa-solid fa-circle-info text-blue-400 text-sm"></i>';
